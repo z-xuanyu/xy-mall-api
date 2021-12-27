@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:39:34
- * @LastEditTime: 2021-12-27 15:17:08
+ * @LastEditTime: 2021-12-27 17:17:59
  * @Description: 管理员控制器
  */
 import { ParseIdPipe } from '@app/common/pipe/parse.id.pipe';
@@ -12,7 +12,7 @@ import {
   apiSucceed,
   ApiSucceedResult,
   PaginationResult,
-} from '@app/common/result.model';
+} from '@app/common/ResponseResultModel';
 import { Admin } from '@app/db/modules/admin.model';
 import {
   Controller,
@@ -23,6 +23,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
@@ -33,6 +34,7 @@ import {
 } from '@nestjs/swagger';
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
+import { QueryAdminDto } from './dto/query-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 
 @ApiTags('管理站--管理员')
@@ -53,8 +55,10 @@ export class AdminController {
 
   @Get()
   @ApiOperation({ summary: '管理员列表' })
-  async findAll(): Promise<ApiSucceedResult<PaginationResult<Array<Admin>>>> {
-    const res = await this.adminService.findAll();
+  async findAll(
+    @Query() parameter: QueryAdminDto,
+  ): Promise<ApiSucceedResult<PaginationResult<Array<Admin>>>> {
+    const res = await this.adminService.findAll(parameter);
     return apiSucceed(res);
   }
 

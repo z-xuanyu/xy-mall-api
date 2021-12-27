@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 17:19:09
- * @LastEditTime: 2021-12-27 15:29:00
+ * @LastEditTime: 2021-12-27 17:11:19
  * @Description: 登录控制器
  */
 import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
@@ -13,7 +13,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AdminLoginDto } from './dto/adminl.login.dto';
 import { WebLoginDto } from './dto/web.login.dto';
-import { apiSucceed, ApiSucceedResult } from '@app/common/result.model';
+import { apiSucceed, ApiSucceedResult } from '@app/common/ResponseResultModel';
 import { LoginResultDto } from './dto/login.result.dto';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { User } from '@app/db/modules/user.model';

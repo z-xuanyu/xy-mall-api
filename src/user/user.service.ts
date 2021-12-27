@@ -4,15 +4,16 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:07:52
- * @LastEditTime: 2021-12-27 12:34:11
+ * @LastEditTime: 2021-12-27 18:01:07
  * @Description: Modify here please
  */
-import { PaginationResult } from '@app/common/result.model';
+import { PaginationResult } from '@app/common/ResponseResultModel';
 import { User } from '@app/db/modules/user.model';
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateUserDto } from './dto/create-user.dto';
+import { QueryUserDto } from './dto/query-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
@@ -35,12 +36,22 @@ export class UserService {
   /**
    *  会员列表
    *
+   * @param {QueryUserDto} parameters 查询参数对象
    * @return {*}  {Promise<PaginationResult<Array<User>>>}
    * @memberof UserService
    */
-  async findAll(): Promise<PaginationResult<Array<User>>> {
-    const total = await this.userModel.countDocuments();
-    const result = await this.userModel.find();
+  async findAll(
+    parameters: QueryUserDto,
+  ): Promise<PaginationResult<Array<User>>> {
+    let total = 0;
+    const result = await this.userModel
+      .find({ name: { $regex: new RegExp(parameters.name, 'i') } })
+      .limit(~~parameters.pageSize)
+      .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
+      .then((doc) => {
+        total = doc.length;
+        return doc;
+      });
     return {
       total,
       items: result,

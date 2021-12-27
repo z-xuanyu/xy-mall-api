@@ -4,15 +4,16 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:39:34
- * @LastEditTime: 2021-12-27 11:45:24
+ * @LastEditTime: 2021-12-27 18:09:16
  * @Description: 管理员Service
  */
-import { ApiFail, PaginationResult } from '@app/common/result.model';
+import { ApiFail, PaginationResult } from '@app/common/ResponseResultModel';
 import { Admin } from '@app/db/modules/admin.model';
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateAdminDto } from './dto/create-admin.dto';
+import { QueryAdminDto } from './dto/query-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 
 @Injectable()
@@ -52,9 +53,27 @@ export class AdminService {
    * @return {*}
    * @memberof AdminService
    */
-  async findAll(): Promise<PaginationResult<Array<Admin>>> {
-    const total = await this.adminModel.countDocuments();
-    const result = await this.adminModel.find();
+  async findAll(
+    parameters: QueryAdminDto,
+  ): Promise<PaginationResult<Array<Admin>>> {
+    let total = 0;
+    const result = await this.adminModel
+      .find({
+        $or: [
+          {
+            name: { $regex: new RegExp(parameters.name, 'i') },
+            status: parameters.status
+              ? parameters.status
+              : { $ne: parameters.status },
+          },
+        ],
+      })
+      .limit(~~parameters.pageSize)
+      .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
+      .then((doc) => {
+        total = doc.length;
+        return doc;
+      });
     return {
       total,
       items: result,
