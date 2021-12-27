@@ -4,11 +4,12 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:39:34
- * @LastEditTime: 2021-12-24 17:13:10
+ * @LastEditTime: 2021-12-27 11:45:24
  * @Description: 管理员Service
  */
+import { ApiFail, PaginationResult } from '@app/common/result.model';
 import { Admin } from '@app/db/modules/admin.model';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateAdminDto } from './dto/create-admin.dto';
@@ -34,12 +35,12 @@ export class AdminService {
     });
 
     if (isHasEmail) {
-      throw new HttpException('邮箱已经存在！', HttpStatus.OK);
+      throw new ApiFail(102, '邮箱已经存在！');
     }
 
     const result = await this.adminModel.create(createAdminDto);
     if (!result) {
-      throw new HttpException('系统异常，请联系管理员', HttpStatus.OK);
+      throw new ApiFail(400, '系统异常，请联系管理员');
     }
 
     return result;
@@ -51,42 +52,46 @@ export class AdminService {
    * @return {*}
    * @memberof AdminService
    */
-  async findAll(): Promise<Array<Admin>> {
+  async findAll(): Promise<PaginationResult<Array<Admin>>> {
+    const total = await this.adminModel.countDocuments();
     const result = await this.adminModel.find();
-    return result;
+    return {
+      total,
+      items: result,
+    };
   }
 
   /**
    *  管理员信息
    *
-   * @param {number} id 管理员id
+   * @param {string} id 管理员id
    * @return {*}
    * @memberof AdminService
    */
-  findOne(id: number) {
-    return `This action returns a #${id} admin`;
+  async findOne(id: string): Promise<Admin> {
+    return await this.adminModel.findById(id);
   }
 
   /**
    *  更新管理员
    *
-   * @param {number} id 管理员id
+   * @param {string} id 管理员id
    * @param {UpdateAdminDto} updateAdminDto
    * @return {*}
    * @memberof AdminService
    */
-  update(id: number, updateAdminDto: UpdateAdminDto) {
-    return `This action updates a #${id} admin`;
+  async update(id: string, updateAdminDto: UpdateAdminDto): Promise<Admin> {
+    return this.adminModel.findByIdAndUpdate(id, updateAdminDto);
   }
 
   /**
    *  删除管理员
    *
-   * @param {number} id 管理员id
+   * @param {string} id 管理员id
    * @return {*}
    * @memberof AdminService
    */
-  remove(id: number) {
-    return `This action removes a #${id} admin`;
+  async remove(id: string): Promise<Admin> {
+    return this.adminModel.findOneAndDelete({ _id: id });
   }
 }

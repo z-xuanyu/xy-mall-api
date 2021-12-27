@@ -4,9 +4,16 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:39:34
- * @LastEditTime: 2021-12-24 18:26:23
- * @Description: Modify here please
+ * @LastEditTime: 2021-12-27 15:17:08
+ * @Description: 管理员控制器
  */
+import { ParseIdPipe } from '@app/common/pipe/parse.id.pipe';
+import {
+  apiSucceed,
+  ApiSucceedResult,
+  PaginationResult,
+} from '@app/common/result.model';
+import { Admin } from '@app/db/modules/admin.model';
 import {
   Controller,
   Get,
@@ -28,7 +35,7 @@ import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 
-@ApiTags('管理员')
+@ApiTags('管理站--管理员')
 @Controller('admin')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
@@ -37,34 +44,48 @@ export class AdminController {
 
   @Post()
   @ApiOperation({ summary: '新增管理员' })
-  create(@Body() createAdminDto: CreateAdminDto) {
-    return this.adminService.create(createAdminDto);
+  async create(
+    @Body() createAdminDto: CreateAdminDto,
+  ): Promise<ApiSucceedResult<Admin>> {
+    const res = await this.adminService.create(createAdminDto);
+    return apiSucceed(res);
   }
 
   @Get()
   @ApiOperation({ summary: '管理员列表' })
-  findAll() {
-    return this.adminService.findAll();
+  async findAll(): Promise<ApiSucceedResult<PaginationResult<Array<Admin>>>> {
+    const res = await this.adminService.findAll();
+    return apiSucceed(res);
   }
 
   @Get(':id')
   @ApiOperation({ summary: '管理员信息' })
   @ApiParam({ name: 'id', description: '管理员id' })
-  findOne(@Param('id') id: string) {
-    return this.adminService.findOne(+id);
+  async findOne(
+    @Param('id', new ParseIdPipe()) id: string,
+  ): Promise<ApiSucceedResult<Admin>> {
+    const res = await this.adminService.findOne(id);
+    return apiSucceed(res);
   }
 
   @Patch(':id')
   @ApiOperation({ summary: '更新管理员' })
   @ApiParam({ name: 'id', description: '管理员id' })
-  update(@Param('id') id: string, @Body() updateAdminDto: UpdateAdminDto) {
-    return this.adminService.update(+id, updateAdminDto);
+  async update(
+    @Param('id', new ParseIdPipe()) id: string,
+    @Body() updateAdminDto: UpdateAdminDto,
+  ): Promise<ApiSucceedResult<Admin>> {
+    const res = await this.adminService.update(id, updateAdminDto);
+    return apiSucceed(res);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: '删除管理员' })
   @ApiParam({ name: 'id', description: '管理员id' })
-  remove(@Param('id') id: string) {
-    return this.adminService.remove(+id);
+  async remove(
+    @Param('id', new ParseIdPipe()) id: string,
+  ): Promise<ApiSucceedResult<Admin>> {
+    const res = await this.adminService.remove(id);
+    return apiSucceed(res);
   }
 }
