@@ -15,9 +15,10 @@ import { CommonModule } from '@app/common';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { CategoryModule } from './category/category.module';
+import { NewsModule } from './news/news.module';
 
 @Module({
-  imports: [CommonModule, AuthModule, AdminModule, UserModule, CategoryModule],
+  imports: [CommonModule, AuthModule, AdminModule, UserModule, CategoryModule, NewsModule],
   controllers: [AppController],
   providers: [AppService],
 })

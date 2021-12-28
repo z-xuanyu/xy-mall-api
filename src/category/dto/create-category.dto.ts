@@ -4,13 +4,14 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 16:17:19
- * @LastEditTime: 2021-12-27 16:21:13
+ * @LastEditTime: 2021-12-28 11:21:33
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
-
+import { IsNotEmpty } from 'class-validator';
 export class CreateCategoryDto {
   @ApiProperty({ title: '分类名称' })
+  @IsNotEmpty({ message: '名称不能为空' })
   name: string;
 
   @ApiProperty({ title: '排序' })
