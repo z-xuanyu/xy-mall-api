@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:07:52
- * @LastEditTime: 2021-12-27 17:59:38
+ * @LastEditTime: 2021-12-28 10:00:47
  * @Description: 会员控制器
  */
 import {
@@ -28,7 +28,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
-import { ParseIdPipe } from '@app/common/pipe/parse.id.pipe';
+import { ParseIdPipe } from '@app/common/pipe/parse-id.pipe';
 import { User } from '@app/db/modules/user.model';
 import {
   apiSucceed,

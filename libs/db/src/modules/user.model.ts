@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:03:28
- * @LastEditTime: 2021-12-27 12:04:31
+ * @LastEditTime: 2021-12-28 10:40:09
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -20,17 +20,23 @@ export type UserDocument = DocumentType<User>;
 })
 export class User {
   @ApiProperty({ title: '名称' })
-  @prop({ required: true })
+  @prop({ required: true, trim: true })
   name: string;
 
   @ApiProperty({ title: '邮箱' })
-  @prop({ required: true, unique: true })
+  @prop({
+    index: true,
+    required: true,
+    unique: true,
+    trim: true,
+  })
   email: string;
 
   @ApiProperty({ title: '密码' })
   @prop({
     required: true,
     select: false,
+    trim: true,
     get(val) {
       return val;
     },

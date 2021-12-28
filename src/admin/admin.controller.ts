@@ -4,10 +4,10 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:39:34
- * @LastEditTime: 2021-12-27 17:17:59
+ * @LastEditTime: 2021-12-28 10:00:44
  * @Description: 管理员控制器
  */
-import { ParseIdPipe } from '@app/common/pipe/parse.id.pipe';
+import { ParseIdPipe } from '@app/common/pipe/parse-id.pipe';
 import {
   apiSucceed,
   ApiSucceedResult,
