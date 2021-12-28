@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:53:53
- * @LastEditTime: 2021-12-28 15:01:28
- * @Description: Modify here please
+ * @LastEditTime: 2021-12-28 16:45:57
+ * @Description: 数据库模块
  */
 import { Global, Module } from '@nestjs/common';
 import { TypegooseConnectionOptions, TypegooseModule } from 'nestjs-typegoose';
@@ -13,6 +13,7 @@ import { DbService } from './db.service';
 import { Admin } from './modules/admin.model';
 import { Category } from './modules/category.model';
 import { News } from './modules/news.model';
+import { ProductTopic } from './modules/product-topic.model';
 import { Product } from './modules/product.model';
 import { User } from './modules/user.model';
 
@@ -23,6 +24,7 @@ const models = TypegooseModule.forFeature([
   Category,
   News,
   Product,
+  ProductTopic,
 ]);
 
 @Global()

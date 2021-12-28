@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2021-12-28 15:27:01
+ * @LastEditTime: 2021-12-28 17:21:40
  * @Description: 产品控制器
  */
 import {
@@ -21,7 +21,12 @@ import {
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiParam,
+  ApiTags,
+} from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import {
   apiSucceed,
@@ -59,6 +64,7 @@ export class ProductController {
 
   @Get(':id')
   @ApiOperation({ summary: '产品详情' })
+  @ApiParam({ name: 'id', description: '产品id' })
   async findOne(@Param('id') id: string): Promise<ApiSucceedResult<Product>> {
     const res = await this.productService.findOne(id);
     return apiSucceed(res);
@@ -66,6 +72,7 @@ export class ProductController {
 
   @Patch(':id')
   @ApiOperation({ summary: '更新产品' })
+  @ApiParam({ name: 'id', description: '产品id' })
   async update(
     @Param('id') id: string,
     @Body() updateProductDto: UpdateProductDto,
@@ -76,6 +83,7 @@ export class ProductController {
 
   @Delete(':id')
   @ApiOperation({ summary: '删除产品' })
+  @ApiParam({ name: 'id', description: '产品id' })
   async remove(@Param('id') id: string): Promise<ApiSucceedResult<Product>> {
     const res = await this.productService.remove(id);
     return apiSucceed(res);

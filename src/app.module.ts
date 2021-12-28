@@ -17,9 +17,10 @@ import { UserModule } from './user/user.module';
 import { CategoryModule } from './category/category.module';
 import { NewsModule } from './news/news.module';
 import { ProductModule } from './product/product.module';
+import { ProductTopicModule } from './product-topic/product-topic.module';
 
 @Module({
-  imports: [CommonModule, AuthModule, AdminModule, UserModule, CategoryModule, NewsModule, ProductModule],
+  imports: [CommonModule, AuthModule, AdminModule, UserModule, CategoryModule, NewsModule, ProductModule, ProductTopicModule],
   controllers: [AppController],
   providers: [AppService],
 })
