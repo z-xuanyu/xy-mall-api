@@ -18,9 +18,10 @@ import { CategoryModule } from './category/category.module';
 import { NewsModule } from './news/news.module';
 import { ProductModule } from './product/product.module';
 import { ProductTopicModule } from './product-topic/product-topic.module';
+import { BannerModule } from './banner/banner.module';
 
 @Module({
-  imports: [CommonModule, AuthModule, AdminModule, UserModule, CategoryModule, NewsModule, ProductModule, ProductTopicModule],
+  imports: [CommonModule, AuthModule, AdminModule, UserModule, CategoryModule, NewsModule, ProductModule, ProductTopicModule, BannerModule],
   controllers: [AppController],
   providers: [AppService],
 })

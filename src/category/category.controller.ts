@@ -4,9 +4,10 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 16:17:19
- * @LastEditTime: 2021-12-27 17:55:55
+ * @LastEditTime: 2022-01-04 14:27:49
  * @Description: 分类模块控制器
  */
+import { ParseIdPipe } from '@app/common/pipe/parse-id.pipe';
 import {
   apiSucceed,
   ApiSucceedResult,
@@ -64,7 +65,9 @@ export class CategoryController {
   @Get(':id')
   @ApiOperation({ summary: '分类信息' })
   @ApiParam({ name: 'id', description: '分类id' })
-  async findOne(@Param('id') id: string): Promise<ApiSucceedResult<Category>> {
+  async findOne(
+    @Param('id', new ParseIdPipe()) id: string,
+  ): Promise<ApiSucceedResult<Category>> {
     const res = await this.categoryService.findOne(id);
     return apiSucceed(res);
   }
@@ -73,7 +76,7 @@ export class CategoryController {
   @ApiOperation({ summary: '更新分类' })
   @ApiParam({ name: 'id', description: '分类id' })
   async update(
-    @Param('id') id: string,
+    @Param('id', new ParseIdPipe()) id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
   ): Promise<ApiSucceedResult<Category>> {
     const res = await this.categoryService.update(id, updateCategoryDto);
@@ -83,7 +86,9 @@ export class CategoryController {
   @Delete(':id')
   @ApiOperation({ summary: '删除分类' })
   @ApiParam({ name: 'id', description: '分类id' })
-  async remove(@Param('id') id: string): Promise<ApiSucceedResult<Category>> {
+  async remove(
+    @Param('id', new ParseIdPipe()) id: string,
+  ): Promise<ApiSucceedResult<Category>> {
     const res = await this.categoryService.remove(id);
     return apiSucceed(res);
   }

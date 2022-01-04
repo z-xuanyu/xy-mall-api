@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 11:32:42
- * @LastEditTime: 2021-12-28 12:12:29
+ * @LastEditTime: 2022-01-04 14:30:45
  * @Description: 新闻文章控制器
  */
 import {
@@ -35,6 +35,7 @@ import {
 } from '@app/common/ResponseResultModel';
 import { News } from '@app/db/modules/news.model';
 import { QueryNewsDto } from './dto/query-news.dto';
+import { ParseIdPipe } from '@app/common/pipe/parse-id.pipe';
 
 @ApiTags('管理站--新闻文章')
 @UseGuards(AuthGuard('admin-jwt'))
@@ -65,7 +66,9 @@ export class NewsController {
   @Get(':id')
   @ApiOperation({ summary: '文章详情' })
   @ApiParam({ name: 'id', description: '文章id' })
-  async findOne(@Param('id') id: string): Promise<ApiSucceedResult<News>> {
+  async findOne(
+    @Param('id', new ParseIdPipe()) id: string,
+  ): Promise<ApiSucceedResult<News>> {
     const res = await this.newsService.findOne(id);
     return apiSucceed(res);
   }
@@ -74,7 +77,7 @@ export class NewsController {
   @ApiOperation({ summary: '更新文章' })
   @ApiParam({ name: 'id', description: '文章id' })
   async update(
-    @Param('id') id: string,
+    @Param('id', new ParseIdPipe()) id: string,
     @Body() updateNewsDto: UpdateNewsDto,
   ): Promise<ApiSucceedResult<News>> {
     const res = await this.newsService.update(id, updateNewsDto);
@@ -84,7 +87,9 @@ export class NewsController {
   @Delete(':id')
   @ApiOperation({ summary: '删除文章' })
   @ApiParam({ name: 'id', description: '文章id' })
-  async remove(@Param('id') id: string): Promise<ApiSucceedResult<News>> {
+  async remove(
+    @Param('id', new ParseIdPipe()) id: string,
+  ): Promise<ApiSucceedResult<News>> {
     const res = await this.newsService.remove(id);
     return apiSucceed(res);
   }
