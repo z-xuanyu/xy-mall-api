@@ -4,13 +4,13 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 17:19:09
- * @LastEditTime: 2021-12-28 11:04:05
+ * @LastEditTime: 2022-01-06 10:48:02
  * @Description: 登录控制器
  */
-import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtService } from '@nestjs/jwt';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AdminLoginDto } from './dto/adminl.login.dto';
 import { WebLoginDto } from './dto/web.login.dto';
 import { apiSucceed, ApiSucceedResult } from '@app/common/ResponseResultModel';
@@ -18,6 +18,9 @@ import { LoginResultDto } from './dto/login.result.dto';
 import { User } from '@app/db/modules/user.model';
 import { WebRegisterDto } from './dto/web.register.dto';
 import { UserService } from 'src/user/user.service';
+import { AdminService } from 'src/admin/admin.service';
+import { CurrentUser } from './current-user.decorator';
+import { AdminDocument } from '@app/db/modules/admin.model';
 
 @ApiTags('登录')
 @Controller('auth')
@@ -26,6 +29,7 @@ export class AuthController {
   constructor(
     private jwtService: JwtService,
     private userService: UserService,
+    private adminService: AdminService,
   ) {}
 
   @ApiOperation({ summary: '管理站--登录' })
@@ -48,6 +52,21 @@ export class AuthController {
     return apiSucceed(data);
   }
 
+  @Get('admin/info')
+  @ApiOperation({ summary: '管理站--当前登录用户信息' })
+  @UseGuards(AuthGuard('admin-jwt'))
+  @ApiBearerAuth()
+  async currentLoginInfo(@CurrentUser() user: AdminDocument): Promise<any> {
+    const data = {
+      name: user.name,
+      avatar:
+        'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+      roles: ['super'],
+      email: user.email,
+    };
+
+    return apiSucceed(data);
+  }
   @ApiOperation({ summary: 'web站--会员登录' })
   @Post('web/login')
   @UseGuards(AuthGuard('web-local'))

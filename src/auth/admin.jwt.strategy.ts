@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 17:31:17
- * @LastEditTime: 2021-12-27 10:22:18
+ * @LastEditTime: 2022-01-06 10:56:01
  * @Description: 管理站 管理员jwt
  */
 import { Strategy, StrategyOptions, ExtractJwt } from 'passport-jwt';
@@ -12,6 +12,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { Admin } from '@app/db/modules/admin.model';
+import { jwtConfig } from '@app/common/config/jwt.config';
 
 export class AdminJwtStrategy extends PassportStrategy(Strategy, 'admin-jwt') {
   constructor(
@@ -19,7 +20,7 @@ export class AdminJwtStrategy extends PassportStrategy(Strategy, 'admin-jwt') {
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'xuanyu',
+      secretOrKey: jwtConfig.secret,
       ignoreExpiration: false,
     } as StrategyOptions);
   }

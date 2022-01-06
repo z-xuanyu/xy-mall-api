@@ -4,9 +4,10 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:53:53
- * @LastEditTime: 2022-01-04 10:45:43
+ * @LastEditTime: 2022-01-06 10:53:26
  * @Description: 数据库模块
  */
+import { dbConfig } from '@app/common/config/db.config';
 import { Global, Module } from '@nestjs/common';
 import { TypegooseConnectionOptions, TypegooseModule } from 'nestjs-typegoose';
 import { DbService } from './db.service';
@@ -32,7 +33,7 @@ const models = TypegooseModule.forFeature([
 @Global()
 @Module({
   imports: [
-    TypegooseModule.forRoot('mongodb://localhost/nest-jp', {
+    TypegooseModule.forRoot(dbConfig.url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     } as TypegooseConnectionOptions),
