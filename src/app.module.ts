@@ -22,6 +22,7 @@ import { BannerModule } from './banner/banner.module';
 import MAO = require('multer-aliyun-oss');
 import { MulterModule } from '@nestjs/platform-express';
 import { aliOssConfig } from '@app/common/config/alioss.config';
+import { LibraryCategoryModule } from './library-category/library-category.module';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { aliOssConfig } from '@app/common/config/alioss.config';
     ProductModule,
     ProductTopicModule,
     BannerModule,
+    LibraryCategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
