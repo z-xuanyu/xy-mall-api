@@ -23,6 +23,7 @@ import MAO = require('multer-aliyun-oss');
 import { MulterModule } from '@nestjs/platform-express';
 import { aliOssConfig } from '@app/common/config/alioss.config';
 import { LibraryCategoryModule } from './library-category/library-category.module';
+import { MediaLibraryModule } from './media-library/media-library.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { LibraryCategoryModule } from './library-category/library-category.modul
     ProductTopicModule,
     BannerModule,
     LibraryCategoryModule,
+    MediaLibraryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
