@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:14:49
- * @LastEditTime: 2022-01-13 10:29:25
+ * @LastEditTime: 2022-01-13 15:25:26
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -25,6 +25,7 @@ import { aliOssConfig } from '@app/common/config/alioss.config';
 import { LibraryCategoryModule } from './library-category/library-category.module';
 import { MediaLibraryModule } from './media-library/media-library.module';
 import { ProductParamModule } from './product-param/product-param.module';
+import { TagModule } from './tag/tag.module';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { ProductParamModule } from './product-param/product-param.module';
     UserModule,
     CategoryModule,
     NewsModule,
+    TagModule,
     ProductModule,
     ProductParamModule,
     ProductTopicModule,

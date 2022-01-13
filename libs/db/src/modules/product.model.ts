@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 14:45:35
- * @LastEditTime: 2022-01-13 11:15:37
+ * @LastEditTime: 2022-01-13 14:50:24
  * @Description: 产品模型
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -16,6 +16,13 @@ import { Category } from './category.model';
     timestamps: true,
   },
 })
+class SkuType {
+  @ApiProperty({ title: '规格id' })
+  id: string;
+
+  @ApiProperty({ title: '规格名称' })
+  name: string;
+}
 export class Product {
   @ApiProperty({ title: '产品名称' })
   @prop({ required: true })
@@ -55,7 +62,7 @@ export class Product {
 
   @ApiProperty({ title: '产品规格' })
   @prop({ type: Array })
-  sku: Array<{ id: number; name: string }>;
+  sku: Array<SkuType>;
 
   @ApiProperty({ title: '产品排序', description: '整数数字类型' })
   @prop({ default: 1 })

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:53:53
- * @LastEditTime: 2022-01-12 15:48:48
+ * @LastEditTime: 2022-01-13 14:58:12
  * @Description: 数据库模块
  */
 import { dbConfig } from '@app/common/config/db.config';
@@ -20,6 +20,7 @@ import { News } from './modules/news.model';
 import { ProductParam } from './modules/product-param.model';
 import { ProductTopic } from './modules/product-topic.model';
 import { Product } from './modules/product.model';
+import { Tag } from './modules/tag.model';
 import { User } from './modules/user.model';
 
 // 导入所有的Schema模块
@@ -27,6 +28,7 @@ const models = TypegooseModule.forFeature([
   Admin,
   User,
   Category,
+  Tag,
   News,
   Product,
   ProductParam,
