@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 14:45:35
- * @LastEditTime: 2021-12-28 15:42:52
+ * @LastEditTime: 2022-01-13 11:15:37
  * @Description: 产品模型
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -36,6 +36,22 @@ export class Product {
   @ApiProperty({ title: '产品标签' })
   @prop({ type: Array })
   tags: Array<string>;
+
+  @ApiProperty({ title: '产品价格' })
+  @prop({ default: 0, required: true })
+  price: number;
+
+  @ApiProperty({ title: '产品库存' })
+  @prop({ default: 0, required: true })
+  inventory: number;
+
+  @ApiProperty({ title: '产品销量' })
+  @prop({ default: 0, required: true })
+  sales: number;
+
+  @ApiProperty({ title: '产品浏览量' })
+  @prop({ default: 0, required: true })
+  views: number;
 
   @ApiProperty({ title: '产品规格' })
   @prop({ type: Array })
