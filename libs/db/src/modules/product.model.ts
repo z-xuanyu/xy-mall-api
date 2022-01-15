@@ -4,12 +4,13 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 14:45:35
- * @LastEditTime: 2022-01-13 14:50:24
+ * @LastEditTime: 2022-01-15 14:15:17
  * @Description: 产品模型
  */
 import { ApiProperty } from '@nestjs/swagger';
 import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
 import { Category } from './category.model';
+import { Tag } from './tag.model';
 // 添加创建时间、更新时间字段
 @ModelOptions({
   schemaOptions: {
@@ -41,8 +42,8 @@ export class Product {
   category: Ref<Category>;
 
   @ApiProperty({ title: '产品标签' })
-  @prop({ type: Array })
-  tags: Array<string>;
+  @prop({ type: [Tag], ref: () => Tag })
+  tags?: Ref<Tag>[];
 
   @ApiProperty({ title: '产品价格' })
   @prop({ default: 0, required: true })
@@ -61,8 +62,8 @@ export class Product {
   views: number;
 
   @ApiProperty({ title: '产品规格' })
-  @prop({ type: Array })
-  sku: Array<SkuType>;
+  @prop({ type: SkuType })
+  sku: SkuType[];
 
   @ApiProperty({ title: '产品排序', description: '整数数字类型' })
   @prop({ default: 1 })

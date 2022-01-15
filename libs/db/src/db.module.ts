@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:53:53
- * @LastEditTime: 2022-01-13 14:58:12
+ * @LastEditTime: 2022-01-15 11:35:36
  * @Description: 数据库模块
  */
 import { dbConfig } from '@app/common/config/db.config';
@@ -18,6 +18,7 @@ import { LibraryCategory } from './modules/library-category.model';
 import { MediaLibrary } from './modules/media-library.model';
 import { News } from './modules/news.model';
 import { ProductParam } from './modules/product-param.model';
+import { ProductSku } from './modules/product-sku.model';
 import { ProductTopic } from './modules/product-topic.model';
 import { Product } from './modules/product.model';
 import { Tag } from './modules/tag.model';
@@ -33,6 +34,7 @@ const models = TypegooseModule.forFeature([
   Product,
   ProductParam,
   ProductTopic,
+  ProductSku,
   Banner,
   LibraryCategory,
   MediaLibrary,

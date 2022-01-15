@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:14:49
- * @LastEditTime: 2022-01-13 15:25:26
+ * @LastEditTime: 2022-01-15 12:06:36
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -26,6 +26,7 @@ import { LibraryCategoryModule } from './library-category/library-category.modul
 import { MediaLibraryModule } from './media-library/media-library.module';
 import { ProductParamModule } from './product-param/product-param.module';
 import { TagModule } from './tag/tag.module';
+import { ProductSkuModule } from './product-sku/product-sku.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { TagModule } from './tag/tag.module';
     TagModule,
     ProductModule,
     ProductParamModule,
+    ProductSkuModule,
     ProductTopicModule,
     BannerModule,
     LibraryCategoryModule,
