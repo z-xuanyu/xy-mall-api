@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 17:19:09
- * @LastEditTime: 2022-01-06 10:48:02
+ * @LastEditTime: 2022-01-15 14:42:02
  * @Description: 登录控制器
  */
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
@@ -18,7 +18,6 @@ import { LoginResultDto } from './dto/login.result.dto';
 import { User } from '@app/db/modules/user.model';
 import { WebRegisterDto } from './dto/web.register.dto';
 import { UserService } from 'src/user/user.service';
-import { AdminService } from 'src/admin/admin.service';
 import { CurrentUser } from './current-user.decorator';
 import { AdminDocument } from '@app/db/modules/admin.model';
 
@@ -29,7 +28,6 @@ export class AuthController {
   constructor(
     private jwtService: JwtService,
     private userService: UserService,
-    private adminService: AdminService,
   ) {}
 
   @ApiOperation({ summary: '管理站--登录' })
