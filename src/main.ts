@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:14:49
- * @LastEditTime: 2021-12-28 10:07:55
+ * @LastEditTime: 2022-02-09 17:42:22
  * @Description: Modify here please
  */
 import { ValidationDtoPipe } from '@app/common/pipe/validate-dto.pipe';
@@ -15,6 +15,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationDtoPipe());
+  app.enableCors(); // 允许跨域
   const config = new DocumentBuilder()
     .setTitle('Api文档')
     .setDescription('The cats API description')
