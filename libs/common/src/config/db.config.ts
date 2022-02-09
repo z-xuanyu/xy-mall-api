@@ -9,5 +9,5 @@
  */
 
 export const dbConfig = {
-  url: 'mongodb://localhost/nest-jp',
+  url: 'mongodb://admin:Yushao,19970415.@175.178.107.120:27017/nest-jp?authSource=admin',
 };
