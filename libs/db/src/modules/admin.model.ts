@@ -4,9 +4,10 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:55:35
- * @LastEditTime: 2021-12-24 17:23:23
+ * @LastEditTime: 2022-02-11 16:11:09
  * @Description: Modify here please
  */
+import { Role } from '@app/common/enum/role';
 import { ApiProperty } from '@nestjs/swagger';
 import { prop, ModelOptions, DocumentType } from '@typegoose/typegoose';
 
@@ -39,6 +40,10 @@ export class Admin {
     },
   })
   password: string;
+
+  @ApiProperty({ title: '角色' })
+  @prop({ default: Role.TEST, type: Array })
+  roles: Array<string>;
 
   @ApiProperty({ title: '状态' })
   @prop({ default: true })

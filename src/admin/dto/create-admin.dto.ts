@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:39:34
- * @LastEditTime: 2021-12-27 10:13:15
+ * @LastEditTime: 2022-02-11 16:12:17
  * @Description: 添加管理员dto
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -22,4 +22,8 @@ export class CreateAdminDto {
   @ApiProperty()
   @IsNotEmpty({ message: '密码不能为空' })
   password: string;
+
+  @ApiProperty()
+  @IsNotEmpty({ message: '角色不能为空' })
+  roles: Array<string>;
 }
