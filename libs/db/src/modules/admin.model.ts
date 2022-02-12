@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:55:35
- * @LastEditTime: 2022-02-11 16:11:09
+ * @LastEditTime: 2022-02-12 16:08:37
  * @Description: Modify here please
  */
 import { Role } from '@app/common/enum/role';
@@ -42,8 +42,8 @@ export class Admin {
   password: string;
 
   @ApiProperty({ title: '角色' })
-  @prop({ default: Role.TEST, type: Array })
-  roles: Array<string>;
+  @prop({ default: Role.TEST, type: String, enum: Role })
+  roles: Array<Role>;
 
   @ApiProperty({ title: '状态' })
   @prop({ default: true })

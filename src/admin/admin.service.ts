@@ -4,9 +4,10 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:39:34
- * @LastEditTime: 2021-12-27 18:09:16
+ * @LastEditTime: 2022-02-12 16:17:57
  * @Description: 管理员Service
  */
+import { Role } from '@app/common/enum/role';
 import { ApiFail, PaginationResult } from '@app/common/ResponseResultModel';
 import { Admin } from '@app/db/modules/admin.model';
 import { Injectable } from '@nestjs/common';
@@ -31,6 +32,11 @@ export class AdminService {
    * @memberof AdminService
    */
   async create(createAdminDto: CreateAdminDto): Promise<Admin> {
+    createAdminDto.roles.forEach((item) => {
+      if (!Role[item.toLocaleUpperCase()])
+        throw new ApiFail(103, '角色不存在！');
+    });
+
     const isHasEmail = await this.adminModel.findOne({
       email: createAdminDto.email,
     });
