@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-02-14 09:58:18
+ * @LastEditTime: 2022-02-14 10:39:47
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -45,6 +45,10 @@ export class CreateProductDto {
   @ApiProperty({ title: '产品标题' })
   @IsNotEmpty({ message: '产品标题不能为空' })
   title: string;
+
+  @ApiProperty({ title: '副标题' })
+  @IsNotEmpty({ message: '副标题不能为空' })
+  subTitle: string;
 
   @ApiProperty({ title: '产品图片' })
   @IsNotEmpty({ message: '产品图片不能为空' })

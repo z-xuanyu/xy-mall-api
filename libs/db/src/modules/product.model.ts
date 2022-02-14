@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 14:45:35
- * @LastEditTime: 2022-02-12 16:43:44
+ * @LastEditTime: 2022-02-14 10:37:15
  * @Description: 产品模型
  */
 import { ProductSkuSelectType } from '@app/common/enum/product.enum';
@@ -49,9 +49,13 @@ class SkuDataType {
   artNo: number;
 }
 export class Product {
-  @ApiProperty({ title: '产品名称' })
+  @ApiProperty({ title: '产品标题' })
   @prop({ required: true })
   title: string;
+
+  @ApiProperty({ title: '副标题' })
+  @prop({ required: true })
+  subTitle: string;
 
   @ApiProperty({ title: '产品图片' })
   @prop({ required: true })
