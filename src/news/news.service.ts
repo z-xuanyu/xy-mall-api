@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 11:32:42
- * @LastEditTime: 2021-12-28 11:57:56
+ * @LastEditTime: 2022-02-14 17:39:08
  * @Description: Modify here please
  */
 import { PaginationResult } from '@app/common/ResponseResultModel';
@@ -48,6 +48,7 @@ export class NewsService {
     let total = 0;
     const result = await this.newsModel
       .find({ name: { $regex: new RegExp(parameters.title, 'i') } })
+      .populate('tags')
       .limit(~~parameters.pageSize)
       .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
       .then((doc) => {
