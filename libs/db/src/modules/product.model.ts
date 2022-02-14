@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 14:45:35
- * @LastEditTime: 2022-02-14 10:37:15
+ * @LastEditTime: 2022-02-14 15:35:46
  * @Description: 产品模型
  */
 import { ProductSkuSelectType } from '@app/common/enum/product.enum';
@@ -18,14 +18,6 @@ import { Tag } from './tag.model';
     timestamps: true,
   },
 })
-class SkuType {
-  @ApiProperty({ title: '规格名称' })
-  skuName: string;
-
-  @ApiProperty({ title: '规格值集合' })
-  skuValues: SkuDataType[];
-}
-
 class SkuDataType {
   @ApiProperty({ title: '规格值' })
   value: string;
@@ -48,6 +40,14 @@ class SkuDataType {
   @ApiProperty({ title: '货号' })
   artNo: number;
 }
+class SkuType {
+  @ApiProperty({ title: '规格名称' })
+  skuName: string;
+
+  @ApiProperty({ title: '规格值集合', type: [SkuDataType] })
+  skuValues: Array<SkuDataType>;
+}
+
 export class Product {
   @ApiProperty({ title: '产品标题' })
   @prop({ required: true })
@@ -81,6 +81,10 @@ export class Product {
   @prop({ default: 0, required: true })
   price: number;
 
+  @ApiProperty({ title: '折扣价' })
+  @prop({ type: Number, default: 0 })
+  costPrice: number;
+
   @ApiProperty({ title: '产品库存' })
   @prop({ default: 0, required: true })
   inventory: number;
@@ -102,8 +106,8 @@ export class Product {
   skuType: ProductSkuSelectType;
 
   @ApiProperty({ title: '产品规格' })
-  @prop({ type: SkuType })
-  sku: SkuType[];
+  @prop()
+  sku: Array<SkuType>;
 
   @ApiProperty({ title: '产品排序', description: '整数数字类型' })
   @prop({ default: 1 })

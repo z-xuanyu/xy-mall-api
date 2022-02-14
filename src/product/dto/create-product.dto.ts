@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-02-14 10:39:47
+ * @LastEditTime: 2022-02-14 15:36:39
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -72,6 +72,9 @@ export class CreateProductDto {
   @ApiProperty({ title: '产品价格' })
   price: number;
 
+  @ApiProperty({ title: '折扣价' })
+  costPrice: number;
+
   @ApiProperty({ title: '产品库存' })
   inventory: number;
 
@@ -84,7 +87,7 @@ export class CreateProductDto {
   @ApiProperty({
     title: '规格选择',
     default: 1,
-    description: '1: 单规格，2: 多规格，3: 无',
+    description: '1: 单规格，2: 多规格',
   })
   skuType: number;
 
