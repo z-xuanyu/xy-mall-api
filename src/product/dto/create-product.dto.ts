@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-02-12 16:45:28
+ * @LastEditTime: 2022-02-14 09:58:18
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -85,7 +85,6 @@ export class CreateProductDto {
   skuType: number;
 
   @ApiProperty({ title: '产品规格', type: [SkuType] })
-  @IsNotEmpty({ message: '产品规格不能为空' })
   sku: Array<SkuType>;
 
   @ApiProperty({ title: '产品排序' })
