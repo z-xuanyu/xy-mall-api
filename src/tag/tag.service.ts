@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-13 15:00:59
- * @LastEditTime: 2022-01-13 15:14:36
+ * @LastEditTime: 2022-02-14 18:03:39
  * @Description: Modify here please
  */
 import { PaginationResult } from '@app/common/ResponseResultModel';
@@ -46,7 +46,15 @@ export class TagService {
   ): Promise<PaginationResult<Array<Tag>>> {
     let total = 0;
     const result = await this.tagModel
-      .find({ name: { $regex: new RegExp(parameters.name, 'i') } })
+      .find({
+        $or: [
+          {
+            name: { $regex: new RegExp(parameters.name, 'i') },
+            type: parameters.type ?? { $ne: parameters.type },
+            status: parameters.status ?? { $ne: parameters.status },
+          },
+        ],
+      })
       .limit(~~parameters.pageSize)
       .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
       .then((doc) => {
