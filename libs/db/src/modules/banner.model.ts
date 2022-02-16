@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-04 10:23:58
- * @LastEditTime: 2022-01-04 14:56:54
+ * @LastEditTime: 2022-02-16 11:42:10
  * @Description: Modify here please
  */
 
@@ -46,5 +46,5 @@ export class Banner {
 
   @ApiProperty({ title: '关联产品id' })
   @prop({ ref: () => Product, default: null })
-  productId?: Ref<Product>;
+  product?: Ref<Product>;
 }

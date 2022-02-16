@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-04 10:46:45
- * @LastEditTime: 2022-01-04 15:13:09
+ * @LastEditTime: 2022-02-16 11:59:30
  * @Description: Modify here please
  */
 import { ApiFail, PaginationResult } from '@app/common/ResponseResultModel';
@@ -52,7 +52,15 @@ export class BannerService {
   ): Promise<PaginationResult<Array<Banner>>> {
     let total = 0;
     const result = await this.bannerModel
-      .find({ name: { $regex: new RegExp(parameters.name, 'i') } })
+      .find({
+        $or: [
+          {
+            name: { $regex: new RegExp(parameters.name, 'i') },
+            status: parameters.status ?? { $ne: parameters.status },
+          },
+        ],
+      })
+      .populate({ path: 'product', select: ['title', '_id'] })
       .limit(~~parameters.pageSize)
       .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
       .then((doc) => {

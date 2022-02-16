@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 14:45:35
- * @LastEditTime: 2022-02-14 15:35:46
+ * @LastEditTime: 2022-02-16 11:48:42
  * @Description: 产品模型
  */
 import { ProductSkuSelectType } from '@app/common/enum/product.enum';
