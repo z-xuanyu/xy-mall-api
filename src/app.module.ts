@@ -27,6 +27,7 @@ import { MediaLibraryModule } from './media-library/media-library.module';
 import { ProductParamModule } from './product-param/product-param.module';
 import { TagModule } from './tag/tag.module';
 import { ProductSkuModule } from './product-sku/product-sku.module';
+import { ClassifyNavigationModule } from './classify-navigation/classify-navigation.module';
 
 @Module({
   imports: [
@@ -58,6 +59,7 @@ import { ProductSkuModule } from './product-sku/product-sku.module';
     BannerModule,
     LibraryCategoryModule,
     MediaLibraryModule,
+    ClassifyNavigationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

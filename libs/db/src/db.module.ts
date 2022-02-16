@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:53:53
- * @LastEditTime: 2022-01-15 11:35:36
+ * @LastEditTime: 2022-02-16 17:19:20
  * @Description: 数据库模块
  */
 import { dbConfig } from '@app/common/config/db.config';
@@ -14,6 +14,7 @@ import { DbService } from './db.service';
 import { Admin } from './modules/admin.model';
 import { Banner } from './modules/banner.model';
 import { Category } from './modules/category.model';
+import { ClassifyNavigation } from './modules/classify-navigation.model';
 import { LibraryCategory } from './modules/library-category.model';
 import { MediaLibrary } from './modules/media-library.model';
 import { News } from './modules/news.model';
@@ -28,10 +29,11 @@ import { User } from './modules/user.model';
 const models = TypegooseModule.forFeature([
   Admin,
   User,
-  Category,
+  ClassifyNavigation,
   Tag,
   News,
   Product,
+  Category,
   ProductParam,
   ProductTopic,
   ProductSku,
