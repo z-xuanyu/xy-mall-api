@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-16 17:17:53
- * @LastEditTime: 2022-02-16 17:38:01
+ * @LastEditTime: 2022-02-18 11:26:50
  * @Description: Modify here please
  */
 import { ClassifyNavigation } from '@app/db/modules/classify-navigation.model';
@@ -41,7 +41,6 @@ export class ClassifyNavigationService {
           },
         ],
       })
-      .populate({ path: 'product', select: ['title', '_id'] })
       .limit(~~parameters.pageSize)
       .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
       .then((doc) => {

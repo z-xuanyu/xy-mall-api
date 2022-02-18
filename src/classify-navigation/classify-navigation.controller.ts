@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-16 17:17:53
- * @LastEditTime: 2022-02-16 17:45:40
+ * @LastEditTime: 2022-02-18 11:33:38
  * @Description: Modify here please
  */
 import { ParseIdPipe } from '@app/common/pipe/parse-id.pipe';
@@ -18,6 +18,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
@@ -53,7 +54,7 @@ export class ClassifyNavigationController {
 
   @Get()
   @ApiOperation({ summary: '分类导航列表' })
-  async findAll(parameters: QueryClassifyNavigationDto) {
+  async findAll(@Query() parameters: QueryClassifyNavigationDto) {
     const res = await this.classifyNavigationService.findAll(parameters);
     return apiSucceed(res);
   }
