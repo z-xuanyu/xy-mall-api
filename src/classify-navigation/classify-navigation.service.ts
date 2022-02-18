@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-16 17:17:53
- * @LastEditTime: 2022-02-18 11:26:50
+ * @LastEditTime: 2022-02-18 15:17:12
  * @Description: Modify here please
  */
 import { ClassifyNavigation } from '@app/db/modules/classify-navigation.model';
@@ -38,6 +38,7 @@ export class ClassifyNavigationService {
           {
             name: { $regex: new RegExp(parameters.name, 'i') },
             status: parameters.status ?? { $ne: parameters.status },
+            type: parameters.type ?? { $ne: parameters.type },
           },
         ],
       })
