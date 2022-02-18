@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 14:45:35
- * @LastEditTime: 2022-02-16 11:48:42
+ * @LastEditTime: 2022-02-18 15:51:05
  * @Description: 产品模型
  */
 import { ProductSkuSelectType } from '@app/common/enum/product.enum';
@@ -116,4 +116,12 @@ export class Product {
   @ApiProperty({ title: '分类状态', example: true })
   @prop({ default: true })
   status: boolean;
+
+  @ApiProperty({ title: '是否限时精选', example: false })
+  @prop({ default: false })
+  isTimeLimit: boolean;
+
+  @ApiProperty({ title: '是否热门推荐', example: false })
+  @prop({ default: false })
+  isHot: boolean;
 }

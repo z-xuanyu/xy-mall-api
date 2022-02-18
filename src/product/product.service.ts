@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-02-14 15:38:57
+ * @LastEditTime: 2022-02-18 17:43:08
  * @Description: 产品
  */
 import { ApiFail, PaginationResult } from '@app/common/ResponseResultModel';
@@ -50,7 +50,17 @@ export class ProductService {
   ): Promise<PaginationResult<Array<Product>>> {
     let total = 0;
     const result = await this.productModel
-      .find({ name: { $regex: new RegExp(parameters.title, 'i') } })
+      .find({
+        $or: [
+          {
+            name: { $regex: new RegExp(parameters.title, 'i') },
+            isTimeLimit: parameters.isTimeLimit ?? {
+              $ne: parameters.isTimeLimit,
+            },
+            isHot: parameters.isHot ?? { $ne: parameters.isHot },
+          },
+        ],
+      })
       .limit(~~parameters.pageSize)
       .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
       .populate('tags')
