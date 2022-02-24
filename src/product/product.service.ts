@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-02-18 17:43:08
+ * @LastEditTime: 2022-02-24 18:00:46
  * @Description: 产品
  */
 import { ApiFail, PaginationResult } from '@app/common/ResponseResultModel';
@@ -48,6 +48,7 @@ export class ProductService {
   async findAll(
     parameters: QueryProductDto,
   ): Promise<PaginationResult<Array<Product>>> {
+    console.log(parameters.isHot, 777878);
     let total = 0;
     const result = await this.productModel
       .find({
@@ -110,5 +111,75 @@ export class ProductService {
    */
   async remove(id: string): Promise<Product> {
     return await this.productModel.findOneAndDelete({ _id: id });
+  }
+
+  /**
+   * 更新商品上架或下架状态
+   *
+   * @param {string} id 商品id
+   * @param {boolean} status 上架或下架状态
+   * @return {*}
+   * @memberof ProductService
+   */
+  async updateStatus(id: string, status: boolean) {
+    return await this.productModel.findByIdAndUpdate(id, { status });
+  }
+
+  /**
+   * 更新商品热门推荐状态
+   *
+   * @param {string} id 商品id
+   * @param {boolean} status 热门推荐状态
+   * @return {*}
+   * @memberof ProductService
+   */
+  async updateHotStatus(id: string, status: boolean): Promise<Product> {
+    return await this.productModel.findByIdAndUpdate(id, { isHot: status });
+  }
+
+  /**
+   * 批量更新商品热门推荐状态
+   *
+   * @param {Array<string>} ids 商品id聚合
+   * @param {boolean} status 热门推荐状态
+   * @memberof ProductService
+   */
+  async batchUpdateHotStatus(
+    ids: Array<string>,
+    status: boolean,
+  ): Promise<void> {
+    for (const item of ids) {
+      await this.productModel.findByIdAndUpdate(item, { isHot: status });
+    }
+  }
+
+  /**
+   * 更新商品限时精选状态
+   *
+   * @param {string} id 商品id
+   * @param {boolean} status 限时精选状态
+   * @return {*}
+   * @memberof ProductService
+   */
+  async updateTimeLimitStatus(id: string, status: boolean): Promise<Product> {
+    return await this.productModel.findByIdAndUpdate(id, {
+      isTimeLimit: status,
+    });
+  }
+
+  /**
+   * 批量改变商品限时精选状态
+   *
+   * @param {Array<string>} ids 商品id聚合
+   * @param {boolean} status 限时精选状态
+   * @memberof ProductService
+   */
+  async batchUpdateTimeLimitStatus(
+    ids: Array<string>,
+    status: boolean,
+  ): Promise<void> {
+    for (const item of ids) {
+      await this.productModel.findByIdAndUpdate(item, { isTimeLimit: status });
+    }
   }
 }
