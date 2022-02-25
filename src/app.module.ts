@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:14:49
- * @LastEditTime: 2022-01-15 12:06:36
+ * @LastEditTime: 2022-02-25 16:29:30
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -29,6 +29,7 @@ import { TagModule } from './tag/tag.module';
 import { ProductSkuModule } from './product-sku/product-sku.module';
 import { ClassifyNavigationModule } from './classify-navigation/classify-navigation.module';
 import { UserAddressModule } from './user-address/user-address.module';
+import { UserCollectionModule } from './user-collection/user-collection.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { UserAddressModule } from './user-address/user-address.module';
     AuthModule,
     AdminModule,
     UserModule,
+    UserAddressModule,
     CategoryModule,
     NewsModule,
     TagModule,
@@ -61,7 +63,7 @@ import { UserAddressModule } from './user-address/user-address.module';
     LibraryCategoryModule,
     MediaLibraryModule,
     ClassifyNavigationModule,
-    UserAddressModule,
+    UserCollectionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
