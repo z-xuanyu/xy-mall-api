@@ -28,6 +28,7 @@ import { ProductParamModule } from './product-param/product-param.module';
 import { TagModule } from './tag/tag.module';
 import { ProductSkuModule } from './product-sku/product-sku.module';
 import { ClassifyNavigationModule } from './classify-navigation/classify-navigation.module';
+import { UserAddressModule } from './user-address/user-address.module';
 
 @Module({
   imports: [
@@ -60,6 +61,7 @@ import { ClassifyNavigationModule } from './classify-navigation/classify-navigat
     LibraryCategoryModule,
     MediaLibraryModule,
     ClassifyNavigationModule,
+    UserAddressModule,
   ],
   controllers: [AppController],
   providers: [AppService],
