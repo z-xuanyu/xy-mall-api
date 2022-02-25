@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:03:28
- * @LastEditTime: 2022-01-15 15:25:20
- * @Description: Modify here please
+ * @LastEditTime: 2022-02-25 10:45:30
+ * @Description: 会员模型
  */
 import { Gender } from '@app/common/enum/user.enum';
 import { ApiProperty } from '@nestjs/swagger';
@@ -29,7 +29,7 @@ export type UserDocument = DocumentType<User>;
 })
 export class User {
   @ApiProperty({ title: '名称' })
-  @prop({ required: true, trim: true })
+  @prop({ required: true })
   name: string;
 
   @ApiProperty({ title: '邮箱' })
