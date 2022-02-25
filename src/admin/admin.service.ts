@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:39:34
- * @LastEditTime: 2022-02-12 16:17:57
+ * @LastEditTime: 2022-02-25 10:03:01
  * @Description: 管理员Service
  */
 import { Role } from '@app/common/enum/role';
@@ -15,7 +15,7 @@ import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { QueryAdminDto } from './dto/query-admin.dto';
-import { UpdateAdminDto } from './dto/update-admin.dto';
+import { UpdateAdminDto, UpdateStatusDto } from './dto/update-admin.dto';
 
 @Injectable()
 export class AdminService {
@@ -68,9 +68,7 @@ export class AdminService {
         $or: [
           {
             name: { $regex: new RegExp(parameters.name, 'i') },
-            status: parameters.status
-              ? parameters.status
-              : { $ne: parameters.status },
+            status: parameters.status ?? { $ne: parameters.status },
           },
         ],
       })
@@ -106,7 +104,7 @@ export class AdminService {
    * @memberof AdminService
    */
   async update(id: string, updateAdminDto: UpdateAdminDto): Promise<Admin> {
-    return this.adminModel.findByIdAndUpdate(id, updateAdminDto);
+    return await this.adminModel.findByIdAndUpdate(id, updateAdminDto);
   }
 
   /**
@@ -117,6 +115,21 @@ export class AdminService {
    * @memberof AdminService
    */
   async remove(id: string): Promise<Admin> {
-    return this.adminModel.findOneAndDelete({ _id: id });
+    return await this.adminModel.findOneAndDelete({ _id: id });
+  }
+
+  /**
+   * 更新管理状态
+   *
+   * @param {string} id 管理员id
+   * @param {UpdateStatusDto} updateStatusDto
+   * @return {*}
+   * @memberof AdminService
+   */
+  async updateStatus(
+    id: string,
+    updateStatusDto: UpdateStatusDto,
+  ): Promise<Admin> {
+    return await this.adminModel.findByIdAndUpdate(id, updateStatusDto);
   }
 }
