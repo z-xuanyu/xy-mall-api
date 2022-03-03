@@ -4,13 +4,13 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-04 10:23:58
- * @LastEditTime: 2022-02-16 11:42:10
+ * @LastEditTime: 2022-03-03 10:14:05
  * @Description: Modify here please
  */
 
-import { BannerStatus, BannerType } from '@app/common/enum/banner.enum';
 import { ApiProperty } from '@nestjs/swagger';
 import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
+import { BannerStatus, BannerType } from 'libs/common/enum/banner.enum';
 import { Product } from './product.model';
 
 // 添加创建时间、更新时间字段

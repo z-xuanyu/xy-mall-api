@@ -4,10 +4,9 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:03:28
- * @LastEditTime: 2022-02-25 10:45:30
+ * @LastEditTime: 2022-03-03 10:15:16
  * @Description: 会员模型
  */
-import { Gender } from '@app/common/enum/user.enum';
 import { ApiProperty } from '@nestjs/swagger';
 import {
   prop,
@@ -17,6 +16,7 @@ import {
 } from '@typegoose/typegoose';
 
 import { hashSync } from 'bcryptjs';
+import { Gender } from 'libs/common/enum/user.enum';
 export type UserDocument = DocumentType<User>;
 // 添加创建时间、更新时间字段
 @ModelOptions({

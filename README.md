@@ -1,15 +1,3 @@
-<!--
- * @Author: xuanyu
- * @LastEditors: xuanyu
- * @email: 969718197@qq.com
- * @github: https://github.com/z-xuanyu
- * @Date: 2021-12-24 15:14:49
- * @LastEditTime: 2022-01-12 15:02:31
- * @Description: Modify here please
--->
-
-## 日本清酒酒庄官网+ 商城 Api
-
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>

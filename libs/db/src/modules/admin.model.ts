@@ -4,14 +4,14 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:55:35
- * @LastEditTime: 2022-02-12 16:08:37
+ * @LastEditTime: 2022-03-03 10:13:47
  * @Description: Modify here please
  */
-import { Role } from '@app/common/enum/role';
 import { ApiProperty } from '@nestjs/swagger';
 import { prop, ModelOptions, DocumentType } from '@typegoose/typegoose';
 
 import { hashSync } from 'bcryptjs';
+import { Role } from 'libs/common/enum/role';
 export type AdminDocument = DocumentType<Admin>;
 // 添加创建时间、更新时间字段
 @ModelOptions({
