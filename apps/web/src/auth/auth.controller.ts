@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:13:40
- * @LastEditTime: 2022-03-03 11:27:02
+ * @LastEditTime: 2022-03-03 14:32:23
  * @Description: Modify here please
  */
 import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
@@ -12,13 +12,15 @@ import { JwtService } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { apiSucceed, ApiSucceedResult } from 'libs/common/ResponseResultModel';
+import { AuthService } from './auth.service';
 import { LoginResultDto } from './dto/login.result.dto';
 import { WebLoginDto } from './dto/web.login.dto';
+import { WebRegisterDto } from './dto/web.register.dto';
 
 @ApiTags('登录')
 @Controller('auth')
 export class AuthController {
-  constructor(private jwtService: JwtService) {}
+  constructor(private jwtService: JwtService, private authServe: AuthService) {}
 
   @ApiOperation({ summary: 'web站--会员登录' })
   @Post('login')
@@ -38,5 +40,12 @@ export class AuthController {
       accessToken,
     };
     return apiSucceed(data);
+  }
+
+  @Post('register')
+  @ApiOperation({ summary: 'web站--会员注册' })
+  async register(@Body() registerDto: WebRegisterDto) {
+    const res = await this.authServe.register(registerDto);
+    apiSucceed(res);
   }
 }

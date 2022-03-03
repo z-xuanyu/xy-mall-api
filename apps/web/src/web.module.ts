@@ -12,9 +12,10 @@ import { WebController } from './web.controller';
 import { WebService } from './web.service';
 import { AuthModule } from './auth/auth.module';
 import { CommonModule } from 'libs/common';
+import { ProductModule } from './product/product.module';
 
 @Module({
-  imports: [AuthModule, CommonModule],
+  imports: [AuthModule, CommonModule, ProductModule],
   controllers: [WebController],
   providers: [WebService],
 })

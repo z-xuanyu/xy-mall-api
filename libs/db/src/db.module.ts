@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:57:10
- * @LastEditTime: 2022-03-03 10:20:14
+ * @LastEditTime: 2022-03-03 15:23:44
  * @Description: Modify here please
  */
 import { Global, Module } from '@nestjs/common';
@@ -25,6 +25,7 @@ import { Product } from './modules/product.model';
 import { Tag } from './modules/tag.model';
 import { UserAddress } from './modules/user-address.model';
 import { UserCollection } from './modules/user-collection.model';
+import { UserViewsHistory } from './modules/user-views-history.model';
 import { User } from './modules/user.model';
 
 // 导入所有的Schema模块
@@ -33,6 +34,7 @@ const models = TypegooseModule.forFeature([
   User,
   UserAddress,
   UserCollection,
+  UserViewsHistory,
   ClassifyNavigation,
   Tag,
   News,
