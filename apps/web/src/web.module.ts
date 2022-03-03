@@ -13,9 +13,10 @@ import { WebService } from './web.service';
 import { AuthModule } from './auth/auth.module';
 import { CommonModule } from 'libs/common';
 import { ProductModule } from './product/product.module';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [AuthModule, CommonModule, ProductModule],
+  imports: [AuthModule, CommonModule, ProductModule, UserModule],
   controllers: [WebController],
   providers: [WebService],
 })

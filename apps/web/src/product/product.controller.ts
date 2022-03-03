@@ -4,10 +4,17 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 14:42:51
- * @LastEditTime: 2022-03-03 16:03:11
+ * @LastEditTime: 2022-03-03 17:50:24
  * @Description: Modify here please
  */
-import { Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
   ApiBearerAuth,
@@ -57,6 +64,23 @@ export class ProductController {
       userId: user?._id,
       productId: id,
     });
+    return apiSucceed(res);
+  }
+
+  @Delete('collection/:id')
+  @UseGuards(AuthGuard('web-jwt'))
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '删除收藏改商品' })
+  @ApiParam({ name: 'id', description: '商品id' })
+  async delCollection(
+    @Param('id', new ParseIdPipe()) id: string,
+    @CurrentUser() user: UserDocument,
+  ) {
+    const res = await this.productService.removeCollection({
+      userId: user?._id,
+      productId: id,
+    });
+
     return apiSucceed(res);
   }
 }

@@ -4,11 +4,12 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 14:42:51
- * @LastEditTime: 2022-03-03 15:51:09
+ * @LastEditTime: 2022-03-03 17:37:38
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
+import { ApiFail } from 'libs/common/ResponseResultModel';
 import { Product } from 'libs/db/modules/product.model';
 import { UserCollection } from 'libs/db/modules/user-collection.model';
 import { UserViewsHistory } from 'libs/db/modules/user-views-history.model';
@@ -58,7 +59,6 @@ export class ProductService {
         userId,
         productId: id,
       });
-
       if (isCollectionProduct) {
         isCollection = true;
       }
@@ -73,6 +73,21 @@ export class ProductService {
 
   // 用户收藏商品
   async collection(userCollectionProductDto: UserCollectionProductDto) {
+    // 商品是否已经被收藏过
+    const isHas = await this.userCollectionModel.findOne({
+      userId: userCollectionProductDto.userId,
+      productId: userCollectionProductDto.productId,
+    });
+    if (isHas) throw new ApiFail(101, '已重复收藏');
     return await this.userCollectionModel.create(userCollectionProductDto);
   }
+
+  // 删除收藏商品
+  async removeCollection(userCollectionProductDto: UserCollectionProductDto) {
+    return await this.userCollectionModel.findOneAndDelete(
+      userCollectionProductDto,
+    );
+  }
+
+  // async removeCollection()
 }
