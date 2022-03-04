@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-04 09:50:34
- * @LastEditTime: 2022-03-04 13:55:15
+ * @LastEditTime: 2022-03-04 17:26:00
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -22,9 +22,9 @@ export class ChatMessages {
   @prop({ required: true, ref: () => User })
   userId: Ref<User>;
 
-  @ApiProperty({ title: '目标id' })
+  @ApiProperty({ title: '后台客服管理员id' })
   @prop({ required: true, ref: () => Admin })
-  targetId: Ref<Admin>;
+  adminId: Ref<Admin>;
 
   @ApiProperty({ title: '是否已读' })
   @prop()
