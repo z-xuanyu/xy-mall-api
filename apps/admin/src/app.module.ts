@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-03-03 11:04:49
+ * @LastEditTime: 2022-03-04 10:20:56
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -30,10 +30,12 @@ import { LibraryCategoryModule } from './library-category/library-category.modul
 import { MediaLibraryModule } from './media-library/media-library.module';
 import { ClassifyNavigationModule } from './classify-navigation/classify-navigation.module';
 import { UserCollectionModule } from './user-collection/user-collection.module';
+import { ChatMessageModule } from './chat/caht.module';
 
 @Module({
   imports: [
     CommonModule,
+    ChatMessageModule,
     MulterModule.registerAsync({
       useFactory() {
         return {
