@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 14:42:51
- * @LastEditTime: 2022-03-03 17:50:24
+ * @LastEditTime: 2022-03-07 15:38:44
  * @Description: Modify here please
  */
 import {
@@ -14,10 +14,13 @@ import {
   Param,
   Post,
   UseGuards,
+  Headers,
 } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
 import {
   ApiBearerAuth,
+  ApiHeader,
   ApiOperation,
   ApiParam,
   ApiTags,
@@ -31,7 +34,10 @@ import { ProductService } from './product.service';
 @ApiTags('商品相关')
 @Controller('product')
 export class ProductController {
-  constructor(private readonly productService: ProductService) {}
+  constructor(
+    private readonly productService: ProductService,
+    private jwtService: JwtService,
+  ) {}
 
   @Get()
   @ApiOperation({ summary: '获取全部商品信息' })
@@ -43,11 +49,23 @@ export class ProductController {
   @Get(':id')
   @ApiOperation({ summary: '获取商品信息' })
   @ApiParam({ name: 'id', description: '商品id' })
+  @ApiHeader({
+    name: 'Authorization',
+    description: '用户token: 格式 Bearer + Token',
+    required: false,
+  })
   async findOne(
     @Param('id', new ParseIdPipe()) id: string,
-    @CurrentUser() user: UserDocument,
+    @Headers('Authorization') authorization: string,
   ) {
-    const res = await this.productService.findOne(id, user?._id);
+    const token = authorization?.split('Bearer ').pop();
+    let userId = null;
+    // 解密token
+    if (token) {
+      const decodedJwtAccessToken: any = this.jwtService.decode(token);
+      userId = decodedJwtAccessToken.id;
+    }
+    const res = await this.productService.findOne(id, userId);
     return apiSucceed(res);
   }
 

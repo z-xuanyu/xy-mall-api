@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:55:35
- * @LastEditTime: 2022-03-03 10:13:47
+ * @LastEditTime: 2022-03-07 15:42:37
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -48,4 +48,8 @@ export class Admin {
   @ApiProperty({ title: '状态' })
   @prop({ default: true })
   status: boolean;
+
+  @ApiProperty({ title: '是否在线' })
+  @prop({ type: Boolean, default: false })
+  isOnline: boolean;
 }

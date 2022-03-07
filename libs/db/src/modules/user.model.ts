@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:03:28
- * @LastEditTime: 2022-03-03 10:15:16
+ * @LastEditTime: 2022-03-07 15:43:11
  * @Description: 会员模型
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -80,6 +80,10 @@ export class User {
   consumptionCount: number;
 
   @ApiProperty({ title: '状态' })
-  @prop({ default: true })
+  @prop({ default: true, type: Boolean })
   status: boolean;
+
+  @ApiProperty({ title: '是否在线' })
+  @prop({ type: Boolean, default: false })
+  isOnline: boolean;
 }
