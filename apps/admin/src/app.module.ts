@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-03-04 10:20:56
+ * @LastEditTime: 2022-03-07 17:01:30
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -36,20 +36,20 @@ import { ChatMessageModule } from './chat/caht.module';
   imports: [
     CommonModule,
     ChatMessageModule,
-    MulterModule.registerAsync({
-      useFactory() {
-        return {
-          storage: MAO({
-            config: {
-              region: aliOssConfig.region,
-              accessKeyId: aliOssConfig.accessKeyId,
-              accessKeySecret: aliOssConfig.accessKeySecret,
-              bucket: aliOssConfig.bucket,
-            },
-          }),
-        };
-      },
-    }),
+    // MulterModule.registerAsync({
+    //   useFactory() {
+    //     return {
+    //       storage: MAO({
+    //         config: {
+    //           region: aliOssConfig.region,
+    //           accessKeyId: aliOssConfig.accessKeyId,
+    //           accessKeySecret: aliOssConfig.accessKeySecret,
+    //           bucket: aliOssConfig.bucket,
+    //         },
+    //       }),
+    //     };
+    //   },
+    // }),
     AuthModule,
     AdminModule,
     UserModule,

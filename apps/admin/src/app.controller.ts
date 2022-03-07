@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-03-03 11:06:38
+ * @LastEditTime: 2022-03-07 17:55:34
  * @Description: Modify here please
  */
 import {
@@ -44,10 +44,10 @@ export class AppController {
   }
 
   // 管理端文件上传
-  @ApiOperation({ summary: '管理端--文件上传' })
   @Post('upload')
   @UseGuards(AuthGuard('admin-jwt'))
   @ApiBearerAuth()
+  @ApiOperation({ summary: '管理端--文件上传' })
   @UseInterceptors(FileInterceptor('file'))
   @ApiConsumes('multipart/form-data')
   @ApiBody({
@@ -55,6 +55,7 @@ export class AppController {
     type: FileUploadDto,
   })
   async upload(@UploadedFile('file') file): Promise<any> {
-    return apiSucceed(file.url);
+    const res = await this.appService.upload(file);
+    return apiSucceed(res.url);
   }
 }
