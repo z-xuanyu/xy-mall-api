@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 14:42:51
- * @LastEditTime: 2022-03-08 14:41:43
+ * @LastEditTime: 2022-03-08 14:49:24
  * @Description: Modify here please
  */
 import {
@@ -43,6 +43,13 @@ export class ProductController {
   @ApiOperation({ summary: '获取全部商品信息' })
   async findAll() {
     const res = await this.productService.findAll();
+    return apiSucceed(res);
+  }
+
+  @Get('hot')
+  @ApiOperation({ summary: '获取热门商品' })
+  async getHotProduct() {
+    const res = await this.productService.getHotProduct();
     return apiSucceed(res);
   }
 

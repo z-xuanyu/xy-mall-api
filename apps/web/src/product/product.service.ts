@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 14:42:51
- * @LastEditTime: 2022-03-03 17:37:38
+ * @LastEditTime: 2022-03-08 14:44:51
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -89,5 +89,8 @@ export class ProductService {
     );
   }
 
-  // async removeCollection()
+  // 获热门商品
+  async getHotProduct() {
+    return await this.productModel.find({ isHot: true });
+  }
 }

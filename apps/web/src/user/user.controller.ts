@@ -4,15 +4,17 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 16:09:06
- * @LastEditTime: 2022-03-03 18:19:38
+ * @LastEditTime: 2022-03-08 18:10:56
  * @Description: Modify here please
  */
 import {
+  Body,
   Controller,
   Delete,
   Get,
   Param,
-  Patch,
+  Post,
+  Put,
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
@@ -26,6 +28,7 @@ import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { UserDocument } from 'libs/db/modules/user.model';
 import { CurrentUser } from '../auth/current-user.decorator';
+import { CreateUserAddressDto } from './dto/create-user-address.dto';
 import { UpdateUserAddressDto } from './dto/update-user-address.dto';
 import { UserService } from './user.service';
 
@@ -50,6 +53,17 @@ export class UserController {
     return apiSucceed(res);
   }
 
+  @Post('address')
+  @ApiOperation({ summary: '添加用户地址' })
+  async createAddress(
+    @Body() createUserAddressDto: CreateUserAddressDto,
+    @CurrentUser() user: UserDocument,
+  ) {
+    const params = { ...createUserAddressDto, userId: user?._id };
+    const res = await this.userService.createAddress(params);
+    return apiSucceed(res);
+  }
+
   @Get('address')
   @ApiOperation({ summary: '获取用户地址列表' })
   async getUserAddress(@CurrentUser() user: UserDocument) {
@@ -65,12 +79,12 @@ export class UserController {
     return apiSucceed(res);
   }
 
-  @Patch('address/:id')
+  @Put('address/:id')
   @ApiOperation({ summary: '更新用户地址信息' })
   @ApiParam({ name: 'id', description: '地址id' })
   async updateUserAddressInfo(
     @Param('id', new ParseIdPipe()) id: string,
-    updateUserAddressDto: UpdateUserAddressDto,
+    @Body() updateUserAddressDto: UpdateUserAddressDto,
   ) {
     const res = await this.userService.updateUserAddress(
       id,
