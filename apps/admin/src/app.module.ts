@@ -31,6 +31,7 @@ import { MediaLibraryModule } from './media-library/media-library.module';
 import { ClassifyNavigationModule } from './classify-navigation/classify-navigation.module';
 import { UserCollectionModule } from './user-collection/user-collection.module';
 import { ChatMessageModule } from './chat/caht.module';
+import { SettingsModule } from './settings/settings.module';
 
 @Module({
   imports: [
@@ -66,6 +67,7 @@ import { ChatMessageModule } from './chat/caht.module';
     MediaLibraryModule,
     ClassifyNavigationModule,
     UserCollectionModule,
+    SettingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

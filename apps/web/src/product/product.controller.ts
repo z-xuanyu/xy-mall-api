@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 14:42:51
- * @LastEditTime: 2022-03-07 15:38:44
+ * @LastEditTime: 2022-03-08 14:41:43
  * @Description: Modify here please
  */
 import {
@@ -63,7 +63,7 @@ export class ProductController {
     // 解密token
     if (token) {
       const decodedJwtAccessToken: any = this.jwtService.decode(token);
-      userId = decodedJwtAccessToken.id;
+      userId = decodedJwtAccessToken?.id;
     }
     const res = await this.productService.findOne(id, userId);
     return apiSucceed(res);

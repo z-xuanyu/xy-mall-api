@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:57:10
- * @LastEditTime: 2022-03-04 09:54:24
+ * @LastEditTime: 2022-03-08 10:10:22
  * @Description: Modify here please
  */
 import { Global, Module } from '@nestjs/common';
@@ -23,6 +23,7 @@ import { ProductParam } from './modules/product-param.model';
 import { ProductSku } from './modules/product-sku.model';
 import { ProductTopic } from './modules/product-topic.model';
 import { Product } from './modules/product.model';
+import { SiteSettings } from './modules/site-setting.model';
 import { Tag } from './modules/tag.model';
 import { UserAddress } from './modules/user-address.model';
 import { UserCollection } from './modules/user-collection.model';
@@ -48,6 +49,7 @@ const models = TypegooseModule.forFeature([
   LibraryCategory,
   MediaLibrary,
   ChatMessages,
+  SiteSettings,
 ]);
 
 @Global()
