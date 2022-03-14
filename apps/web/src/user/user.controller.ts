@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 16:09:06
- * @LastEditTime: 2022-03-08 18:10:56
+ * @LastEditTime: 2022-03-14 14:56:05
  * @Description: Modify here please
  */
 import {
@@ -68,7 +68,7 @@ export class UserController {
   @ApiOperation({ summary: '获取用户地址列表' })
   async getUserAddress(@CurrentUser() user: UserDocument) {
     const res = await this.userService.findUserAddressAll(user?._id);
-    apiSucceed(res);
+    return apiSucceed(res);
   }
 
   @Get('address/:id')
@@ -99,5 +99,23 @@ export class UserController {
   async removeUserAddressInfo(@Param('id', new ParseIdPipe()) id: string) {
     const res = await this.userService.removeUserAddress(id);
     return apiSucceed(res);
+  }
+
+  @Put('address/updateDefault')
+  @ApiOperation({ summary: '更新用户地址默认' })
+  @ApiParam({ name: 'id', description: '地址id' })
+  @ApiParam({ name: 'isDefault', description: '是否默认' })
+  async updateAddressDefault(
+    @Param('id', new ParseIdPipe()) id: string,
+    @CurrentUser() user: UserDocument,
+    @Param('isDefault') isDefault: boolean,
+  ) {
+    await this.userService.updateAddressDefault({
+      id,
+      userId: user?._id,
+      isDefault,
+    });
+
+    return apiSucceed();
   }
 }

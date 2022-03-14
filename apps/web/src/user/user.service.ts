@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 16:09:06
- * @LastEditTime: 2022-03-08 18:04:26
+ * @LastEditTime: 2022-03-14 14:48:38
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -14,6 +14,7 @@ import { UserCollection } from 'libs/db/modules/user-collection.model';
 import { UserViewsHistory } from 'libs/db/modules/user-views-history.model';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateUserAddressDto } from './dto/create-user-address.dto';
+import { UpdateAddressDefaultDto } from './dto/update-address-default.dto';
 import { UpdateUserAddressDto } from './dto/update-user-address.dto';
 
 @Injectable()
@@ -109,5 +110,25 @@ export class UserService {
    */
   async removeUserAddress(id: string) {
     return await this.userAddressModel.findByIdAndDelete(id);
+  }
+
+  // 更新用户地址默认地址
+  async updateAddressDefault(
+    updateAddressDefaultDto: UpdateAddressDefaultDto,
+  ): Promise<void> {
+    //  把已有默认地址改为false
+    if (updateAddressDefaultDto.isDefault) {
+      await this.userAddressModel.findOneAndUpdate(
+        {
+          userId: updateAddressDefaultDto.userId,
+          isDefault: updateAddressDefaultDto.isDefault,
+        },
+        { isDefault: !updateAddressDefaultDto.isDefault },
+      );
+    }
+    // 更新默认地址状态
+    await this.userAddressModel.findByIdAndUpdate(updateAddressDefaultDto.id, {
+      isDefault: updateAddressDefaultDto.isDefault,
+    });
   }
 }

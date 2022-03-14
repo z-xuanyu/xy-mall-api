@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-08 18:01:22
- * @LastEditTime: 2022-03-08 18:01:23
+ * @LastEditTime: 2022-03-14 12:09:26
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -20,7 +20,6 @@ export class CreateUserAddressDto {
   phone: string;
 
   @ApiProperty({ title: '用户id' })
-  @IsNotEmpty({ message: '用户id不能为空' })
   userId: string;
 
   @ApiProperty({ title: '地址' })
