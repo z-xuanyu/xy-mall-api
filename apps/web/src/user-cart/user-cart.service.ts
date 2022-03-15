@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 11:02:01
- * @LastEditTime: 2022-03-15 11:14:42
+ * @LastEditTime: 2022-03-15 17:42:34
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -22,6 +22,21 @@ export class UserCartService {
 
   // 加入购物车
   async create(createUserCartDto: CreateUserCartDto) {
+    const has = await this.userCartModel.findOne({
+      userId: createUserCartDto.userId,
+      productId: createUserCartDto.productId,
+    });
+
+    // 如果购物车商品存在，数量追加一
+    if (has) {
+      return this.userCartModel.findOneAndUpdate(
+        {
+          userId: createUserCartDto.userId,
+          productId: createUserCartDto.productId,
+        },
+        { $inc: { num: 1 } },
+      );
+    }
     return await this.userCartModel.create(createUserCartDto);
   }
 
@@ -33,7 +48,18 @@ export class UserCartService {
    * @memberof UserCartService
    */
   async findAll(userId: string): Promise<any> {
-    return await this.userCartModel.find({ userId });
+    return await this.userCartModel
+      .find({ userId })
+      .populate({ path: 'userId', select: ['name'] })
+      .populate({ path: 'productId', select: ['title', 'pic'] });
+  }
+
+  // 获取购物车信息详细
+  async findOne(id: string) {
+    return await this.userCartModel
+      .findById(id)
+      .populate({ path: 'userId', select: ['name'] })
+      .populate({ path: 'productId', select: ['title', 'pic'] });
   }
 
   /**

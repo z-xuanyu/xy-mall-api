@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 11:02:01
- * @LastEditTime: 2022-03-15 11:23:45
+ * @LastEditTime: 2022-03-15 14:30:07
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -20,7 +20,7 @@ export class CreateUserCartDto {
   num: number;
 
   @ApiProperty({ title: '选购规格名称' })
-  skuName: string;
+  skuName?: string;
 
   @ApiProperty({ title: '选购金额' })
   price: number;

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 10:53:19
- * @LastEditTime: 2022-03-15 11:08:48
+ * @LastEditTime: 2022-03-15 14:30:26
  * @Description: Modify here please
  */
 
@@ -33,7 +33,7 @@ export class UserCart {
 
   @ApiProperty({ title: '选购规格名称' })
   @prop({ type: String })
-  skuName: string;
+  skuName?: string;
 
   @ApiProperty({ title: '选购规格价格' })
   @prop({ type: Number })

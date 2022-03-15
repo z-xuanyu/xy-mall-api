@@ -4,12 +4,11 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 14:42:51
- * @LastEditTime: 2022-03-15 10:18:52
+ * @LastEditTime: 2022-03-15 16:25:03
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
-import { ApiFail } from 'libs/common/ResponseResultModel';
 import { Product } from 'libs/db/modules/product.model';
 import { UserCollection } from 'libs/db/modules/user-collection.model';
 import { UserViewsHistory } from 'libs/db/modules/user-views-history.model';
