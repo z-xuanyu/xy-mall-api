@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 16:09:06
- * @LastEditTime: 2022-03-14 14:56:05
+ * @LastEditTime: 2022-03-14 15:50:54
  * @Description: Modify here please
  */
 import {
@@ -29,6 +29,7 @@ import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { UserDocument } from 'libs/db/modules/user.model';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { CreateUserAddressDto } from './dto/create-user-address.dto';
+import { UpdateAddressDefaultDto } from './dto/update-address-default.dto';
 import { UpdateUserAddressDto } from './dto/update-user-address.dto';
 import { UserService } from './user.service';
 
@@ -93,7 +94,7 @@ export class UserController {
     return apiSucceed(res);
   }
 
-  @Delete()
+  @Delete('address/:id')
   @ApiOperation({ summary: '删除用户地址信息' })
   @ApiParam({ name: 'id', description: '地址id' })
   async removeUserAddressInfo(@Param('id', new ParseIdPipe()) id: string) {
@@ -101,19 +102,16 @@ export class UserController {
     return apiSucceed(res);
   }
 
-  @Put('address/updateDefault')
+  @Put('updateDefaultAddress')
   @ApiOperation({ summary: '更新用户地址默认' })
-  @ApiParam({ name: 'id', description: '地址id' })
-  @ApiParam({ name: 'isDefault', description: '是否默认' })
   async updateAddressDefault(
-    @Param('id', new ParseIdPipe()) id: string,
     @CurrentUser() user: UserDocument,
-    @Param('isDefault') isDefault: boolean,
+    @Body() updateAddressDefaultDto: UpdateAddressDefaultDto,
   ) {
     await this.userService.updateAddressDefault({
-      id,
+      id: updateAddressDefaultDto.id,
       userId: user?._id,
-      isDefault,
+      isDefault: updateAddressDefaultDto.isDefault,
     });
 
     return apiSucceed();

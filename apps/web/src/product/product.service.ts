@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 14:42:51
- * @LastEditTime: 2022-03-08 14:44:51
+ * @LastEditTime: 2022-03-15 10:18:52
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -78,7 +78,13 @@ export class ProductService {
       userId: userCollectionProductDto.userId,
       productId: userCollectionProductDto.productId,
     });
-    if (isHas) throw new ApiFail(101, '已重复收藏');
+    // 存在就取消该收藏
+    if (isHas) {
+      return this.userCollectionModel.findOneAndDelete({
+        userId: userCollectionProductDto.userId,
+        productId: userCollectionProductDto.productId,
+      });
+    }
     return await this.userCollectionModel.create(userCollectionProductDto);
   }
 
