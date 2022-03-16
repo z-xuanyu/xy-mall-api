@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-03-16 12:50:43
+ * @LastEditTime: 2022-03-16 17:59:05
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -29,6 +29,7 @@ import { ClassifyNavigationModule } from './classify-navigation/classify-navigat
 import { UserCollectionModule } from './user-collection/user-collection.module';
 import { ChatMessageModule } from './chat/caht.module';
 import { SettingsModule } from './settings/settings.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { SettingsModule } from './settings/settings.module';
     AuthModule,
     AdminModule,
     UserModule,
+    OrderModule,
     UserAddressModule,
     CategoryModule,
     NewsModule,
