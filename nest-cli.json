@@ -4,7 +4,9 @@
   "monorepo": true,
   "root": "apps/admin",
   "compilerOptions": {
+    "assets": ["**/*.jpg", "**/*.png"],
     "webpack": true,
+    "watchAssets": true,
     "tsConfigPath": "apps/admin/tsconfig.app.json"
   },
   "projects": {

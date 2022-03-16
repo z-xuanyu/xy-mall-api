@@ -4,13 +4,14 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-03-07 17:55:34
+ * @LastEditTime: 2022-03-16 14:14:16
  * @Description: Modify here please
  */
 import {
   Controller,
   Get,
   Post,
+  Req,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -54,8 +55,9 @@ export class AppController {
     description: '文件上传',
     type: FileUploadDto,
   })
-  async upload(@UploadedFile('file') file): Promise<any> {
-    const res = await this.appService.upload(file);
-    return apiSucceed(res.url);
+  async upload(@UploadedFile('file') file: any, @Req() req): Promise<any> {
+    const domain = `${req.protocol}://${req.headers.host}`;
+    const res = await this.appService.upload(file, domain);
+    return apiSucceed(res?.url);
   }
 }
