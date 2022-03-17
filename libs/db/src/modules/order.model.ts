@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:18:29
- * @LastEditTime: 2022-03-16 17:32:17
+ * @LastEditTime: 2022-03-17 10:51:44
  * @Description: Modify here please
  */
 
@@ -14,6 +14,23 @@ import { Product } from './product.model';
 import { UserAddress } from './user-address.model';
 import { User } from './user.model';
 
+class BuyProduct {
+  @ApiProperty({ title: '商品id' })
+  @prop({ ref: () => Product })
+  productId: Ref<Product>;
+
+  @ApiProperty({ title: '商品选购数量' })
+  @prop()
+  num: number;
+
+  @ApiProperty({ title: '商品价格' })
+  @prop()
+  price: number;
+
+  @ApiProperty({ title: '商品规格名' })
+  @prop()
+  skuName: string;
+}
 // 添加创建时间、更新时间字段
 @ModelOptions({
   schemaOptions: {
@@ -23,11 +40,11 @@ import { User } from './user.model';
 export class Order {
   @ApiProperty({ title: '订单编号' })
   @prop()
-  orderNo: string | number;
+  orderNo: string;
 
-  @ApiProperty({ title: '订单商品信息' })
-  @prop({ ref: () => Product })
-  productId: Ref<Product>;
+  @ApiProperty({ title: '订单选购商品集合' })
+  @prop({ type: [BuyProduct] })
+  products: Array<BuyProduct>;
 
   @ApiProperty({ title: '下单人' })
   @prop({ ref: () => User })

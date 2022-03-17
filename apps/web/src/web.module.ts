@@ -15,9 +15,10 @@ import { CommonModule } from 'libs/common';
 import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
 import { UserCartModule } from './user-cart/user-cart.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
-  imports: [AuthModule, CommonModule, ProductModule, UserModule, UserCartModule],
+  imports: [AuthModule, CommonModule, ProductModule, UserModule, UserCartModule, OrderModule],
   controllers: [WebController],
   providers: [WebService],
 })
