@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-03-19 17:22:04
+ * @LastEditTime: 2022-03-19 18:01:40
  * @Description: Modify here please
  */
 import {
@@ -39,7 +39,11 @@ export class OrderController {
 
   @Post()
   @ApiOperation({ summary: '创建订单' })
-  async create(@Body() createOrderDto: CreateOrderDto) {
+  async create(
+    @Body() createOrderDto: CreateOrderDto,
+    @CurrentUser() user: UserDocument,
+  ) {
+    createOrderDto.userId = user?._id;
     const res = await this.orderService.create(createOrderDto);
     return apiSucceed(res);
   }
