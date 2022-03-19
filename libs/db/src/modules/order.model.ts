@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:18:29
- * @LastEditTime: 2022-03-17 10:51:44
+ * @LastEditTime: 2022-03-19 14:15:49
  * @Description: Modify here please
  */
 
@@ -77,4 +77,8 @@ export class Order {
   @ApiProperty({ title: '订单来源' })
   @prop({ type: String })
   source: string;
+
+  @ApiProperty({ title: '备注' })
+  @prop({ type: String })
+  remark: string;
 }
