@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-19 00:45:38
- * @LastEditTime: 2022-03-19 14:16:48
+ * @LastEditTime: 2022-03-19 16:54:58
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -26,7 +26,10 @@ class BuyProduct {
 
 export class CreateOrderDto {
   @ApiProperty({ title: '选购商品集合', type: [BuyProduct] })
-  products: Array<BuyProduct>;
+  products?: Array<BuyProduct>;
+
+  @ApiProperty({ title: '购物车记录id集合' })
+  cartIds: Array<string>;
 
   @ApiProperty({ title: '地址id' })
   addressId: string;

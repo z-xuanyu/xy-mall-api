@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:18:29
- * @LastEditTime: 2022-03-19 14:15:49
+ * @LastEditTime: 2022-03-19 17:27:41
  * @Description: Modify here please
  */
 
@@ -59,11 +59,11 @@ export class Order {
   payment: number;
 
   @ApiProperty({ title: '支付状态' })
-  @prop({ type: Number })
+  @prop({ type: Number, default: 1 })
   status: number;
 
   @ApiProperty({ title: '订单类型' })
-  @prop({ type: Number })
+  @prop({ type: Number, default: 1 })
   type: number;
 
   @ApiProperty({ title: '支付方式' })
