@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-03-19 18:01:40
+ * @LastEditTime: 2022-03-20 10:33:08
  * @Description: Modify here please
  */
 import {
@@ -64,7 +64,7 @@ export class OrderController {
   }
 
   @Delete(':id')
-  @ApiOperation({ summary: '删除订单' })
+  @ApiOperation({ summary: '取消订单' })
   @ApiParam({ name: 'id', description: '订单id' })
   async remove(@Param('id', new ParseIdPipe()) id: string) {
     const res = await this.orderService.remove(id);

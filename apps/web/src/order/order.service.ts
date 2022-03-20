@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-03-19 17:25:29
+ * @LastEditTime: 2022-03-20 10:32:30
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -58,7 +58,10 @@ export class OrderService {
    * @memberof OrderService
    */
   async findAll(userId: string): Promise<Array<Order>> {
-    return await this.orderModel.find({ userId });
+    return await this.orderModel.find({ userId, isDelete: false }).populate({
+      path: 'products.productId',
+      select: ['title', 'pic'],
+    });
   }
 
   /**
@@ -69,17 +72,23 @@ export class OrderService {
    * @memberof OrderService
    */
   async findOne(id: string): Promise<Order> {
-    return await this.orderModel.findById(id);
+    return await this.orderModel
+      .findById(id)
+      .populate('addressId')
+      .populate({
+        path: 'products.productId',
+        select: ['title', 'pic'],
+      });
   }
 
   /**
-   * 删除订单
+   * 取消订单
    *
    * @param {string} id 订单id
    * @return {*}
    * @memberof OrderService
    */
   async remove(id: string): Promise<Order> {
-    return await this.orderModel.findByIdAndDelete(id);
+    return await this.orderModel.findByIdAndUpdate(id, { isDelete: true });
   }
 }

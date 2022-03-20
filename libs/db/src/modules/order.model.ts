@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:18:29
- * @LastEditTime: 2022-03-19 17:27:41
+ * @LastEditTime: 2022-03-20 10:30:26
  * @Description: Modify here please
  */
 
@@ -81,4 +81,8 @@ export class Order {
   @ApiProperty({ title: '备注' })
   @prop({ type: String })
   remark: string;
+
+  @ApiProperty({ title: '是否已经删除' })
+  @prop({ type: Boolean, default: false })
+  isDelete: boolean;
 }
