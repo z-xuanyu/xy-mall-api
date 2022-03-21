@@ -16,9 +16,18 @@ import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
 import { UserCartModule } from './user-cart/user-cart.module';
 import { OrderModule } from './order/order.module';
+import { ProductCommentModule } from './product-comment/product-comment.module';
 
 @Module({
-  imports: [AuthModule, CommonModule, ProductModule, UserModule, UserCartModule, OrderModule],
+  imports: [
+    AuthModule,
+    CommonModule,
+    ProductModule,
+    UserModule,
+    UserCartModule,
+    OrderModule,
+    ProductCommentModule,
+  ],
   controllers: [WebController],
   providers: [WebService],
 })
