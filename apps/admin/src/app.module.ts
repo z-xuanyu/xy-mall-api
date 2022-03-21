@@ -30,6 +30,7 @@ import { UserCollectionModule } from './user-collection/user-collection.module';
 import { ChatMessageModule } from './chat/caht.module';
 import { SettingsModule } from './settings/settings.module';
 import { OrderModule } from './order/order.module';
+import { ProductCommentModule } from './product-comment/product-comment.module';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { OrderModule } from './order/order.module';
     ClassifyNavigationModule,
     UserCollectionModule,
     SettingsModule,
+    ProductCommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
