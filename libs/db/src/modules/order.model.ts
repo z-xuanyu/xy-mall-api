@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:18:29
- * @LastEditTime: 2022-03-22 15:43:18
+ * @LastEditTime: 2022-03-22 17:24:03
  * @Description: Modify here please
  */
 
@@ -39,7 +39,10 @@ class BuyProduct {
   },
 })
 export class Order {
-  @ApiProperty({ title: '订单编号' })
+  @ApiProperty({
+    title: '订单编号',
+    default: String(new Date().getFullYear) + String(new Date().getTime()),
+  })
   @prop()
   orderNo: string;
 

@@ -4,10 +4,17 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:35:40
- * @LastEditTime: 2022-03-16 17:53:09
+ * @LastEditTime: 2022-03-22 17:35:04
  * @Description: 订单模块控制器
  */
-import { Controller, Get, Param, Delete, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Delete,
+  UseGuards,
+  Patch,
+} from '@nestjs/common';
 import { OrderService } from './order.service';
 import {
   ApiBearerAuth,
@@ -46,6 +53,14 @@ export class OrderController {
   @ApiParam({ name: 'id', description: '订单id' })
   async remove(@Param('id', new ParseIdPipe()) id: string) {
     const res = await this.orderService.remove(id);
+    return apiSucceed(res);
+  }
+
+  @Patch(':id/delivery')
+  @ApiParam({ name: 'id', description: '订单id' })
+  @ApiOperation({ summary: '订单确认发货' })
+  async confirmDelivery(@Param('id', new ParseIdPipe()) id: string) {
+    const res = await this.orderService.confirmDelivery(id);
     return apiSucceed(res);
   }
 }

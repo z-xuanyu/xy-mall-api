@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-03-18 11:15:25
+ * @LastEditTime: 2022-03-22 17:37:24
  * @Description: Modify here please
  */
 import {
@@ -32,7 +32,6 @@ import { ApiConfig, ApiConfigKit, WeChat } from 'tnwx';
 import { AppService } from './app.service';
 import { HandMsgAdapter } from './handMsgAdapter';
 import { Request, Response } from 'express';
-import * as getRawBody from 'raw-body';
 
 class FileUploadDto {
   @ApiProperty({ type: 'string', format: 'binary' })
@@ -80,6 +79,7 @@ export class AppController {
   }
 
   @Get('weixin')
+  @ApiOperation({ summary: '微信公众号接口' })
   getMsg(@Req() request: Request) {
     const signature = request.query.signature.toString(), //微信加密签名
       timestamp = request.query.timestamp.toString(), //时间戳
@@ -89,6 +89,7 @@ export class AppController {
   }
 
   @Post('weixin')
+  @ApiOperation({ summary: '微信公众号接受' })
   async PostMsg(@Res() res: Response) {
     // const buffer: Buffer = await getRawBody(req);
     // const msgXml = buffer.toString('utf-8');
