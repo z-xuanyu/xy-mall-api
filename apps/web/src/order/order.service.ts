@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-03-20 10:32:30
+ * @LastEditTime: 2022-03-22 14:15:12
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -25,27 +25,30 @@ export class OrderService {
 
   // 创建订单
   async create(createOrderDto: CreateOrderDto) {
-    // 查找出购物车信息
-    const cartList: any = [];
-    for (const item of createOrderDto.cartIds) {
-      const cartInfo = await this.userCartModel.findById(item);
-      if (!cartInfo) return new ApiFail(101, '订单已提交!');
-      cartList.push(cartInfo);
-    }
+    // 购物车清算
+    if (!createOrderDto.way) {
+      // 查找出购物车信息
+      const cartList: any = [];
+      for (const item of createOrderDto.cartIds) {
+        const cartInfo = await this.userCartModel.findById(item);
+        if (!cartInfo) return new ApiFail(101, '订单已提交!');
+        cartList.push(cartInfo);
+      }
 
-    // 选购商品
-    const products = cartList.map((item) => {
-      return {
-        productId: item.productId,
-        num: item.num,
-        price: item.price,
-        skuName: item.skuName,
-      };
-    });
-    createOrderDto.products = products as any;
-    // 清除用户购物车记录
-    for (const item of createOrderDto.cartIds) {
-      await this.userCartModel.findByIdAndDelete(item);
+      // 选购商品
+      const products = cartList.map((item) => {
+        return {
+          productId: item.productId,
+          num: item.num,
+          price: item.price,
+          skuName: item.skuName,
+        };
+      });
+      createOrderDto.products = products as any;
+      // 清除用户购物车记录
+      for (const item of createOrderDto.cartIds) {
+        await this.userCartModel.findByIdAndDelete(item);
+      }
     }
     return await this.orderModel.create(createOrderDto);
   }
