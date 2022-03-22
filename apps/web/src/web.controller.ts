@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:56:14
- * @LastEditTime: 2022-03-22 15:47:11
+ * @LastEditTime: 2022-03-22 16:21:29
  * @Description: Modify here please
  */
 import {
@@ -73,6 +73,7 @@ export class WebController {
   @Post('pay/weixin')
   @ApiOperation({ summary: '微信支付' })
   async weixinPay(@Body() weixinPayDto: WeixinPayDto) {
-    return await this.webService.weixinPay(weixinPayDto.orderId);
+    const res = await this.webService.weixinPay(weixinPayDto.orderId);
+    return apiSucceed(res);
   }
 }

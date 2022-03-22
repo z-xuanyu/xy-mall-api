@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-03-22 14:15:12
+ * @LastEditTime: 2022-03-22 17:09:13
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -14,6 +14,7 @@ import { Order } from 'libs/db/modules/order.model';
 import { UserCart } from 'libs/db/modules/user-cart.model';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { QueryUserOrderDto } from './dto/query-user-oder.dto';
 
 @Injectable()
 export class OrderService {
@@ -57,14 +58,26 @@ export class OrderService {
    * 查询用户订单列表
    *
    * @param {string} userId 用户id
+   * @param {QueryUserOrderDto} queryUserOrderDto 查询参数对象
    * @return {*}
    * @memberof OrderService
    */
-  async findAll(userId: string): Promise<Array<Order>> {
-    return await this.orderModel.find({ userId, isDelete: false }).populate({
-      path: 'products.productId',
-      select: ['title', 'pic'],
-    });
+  async findAll(
+    userId: string,
+    queryUserOrderDto: QueryUserOrderDto,
+  ): Promise<Array<Order>> {
+    return await this.orderModel
+      .find({
+        userId,
+        isDelete: false,
+        status: ~~queryUserOrderDto.status
+          ? queryUserOrderDto.status
+          : { $ne: null },
+      })
+      .populate({
+        path: 'products.productId',
+        select: ['title', 'pic'],
+      });
   }
 
   /**

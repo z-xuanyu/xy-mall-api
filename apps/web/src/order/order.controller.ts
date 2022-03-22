@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-03-20 10:33:08
+ * @LastEditTime: 2022-03-22 16:29:20
  * @Description: Modify here please
  */
 import {
@@ -15,6 +15,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -29,6 +30,7 @@ import { CurrentUser } from '../auth/current-user.decorator';
 import { UserDocument } from 'libs/db/modules/user.model';
 import { AuthGuard } from '@nestjs/passport';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
+import { QueryUserOrderDto } from './dto/query-user-oder.dto';
 
 @ApiTags('用户订单')
 @UseGuards(AuthGuard('web-jwt'))
@@ -50,8 +52,11 @@ export class OrderController {
 
   @Get()
   @ApiOperation({ summary: '获取用户订单列表' })
-  async findAll(@CurrentUser() user: UserDocument) {
-    const res = await this.orderService.findAll(user?._id);
+  async findAll(
+    @CurrentUser() user: UserDocument,
+    @Query() queryUserOrderDto: QueryUserOrderDto,
+  ) {
+    const res = await this.orderService.findAll(user?._id, queryUserOrderDto);
     return apiSucceed(res);
   }
 
