@@ -4,11 +4,12 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-03-22 17:09:13
+ * @LastEditTime: 2022-03-22 17:55:18
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
+import { OrderStatus } from 'libs/common/enum/orderStatus.enum';
 import { ApiFail } from 'libs/common/ResponseResultModel';
 import { Order } from 'libs/db/modules/order.model';
 import { UserCart } from 'libs/db/modules/user-cart.model';
@@ -106,5 +107,22 @@ export class OrderService {
    */
   async remove(id: string): Promise<Order> {
     return await this.orderModel.findByIdAndUpdate(id, { isDelete: true });
+  }
+
+  /**
+   * 订单确认收货
+   *
+   * @param {string} orderId 订单id
+   * @return {*}
+   * @memberof OrderService
+   */
+  async confirmTake(orderId: string) {
+    const getStatus = await this.orderModel.findById(orderId);
+    if (getStatus.status !== 3) {
+      throw new ApiFail(101, '异常操作，订单未发货!');
+    }
+    return await this.orderModel.findByIdAndUpdate(orderId, {
+      status: OrderStatus.PENDING_COMMENT,
+    });
   }
 }

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-03-22 16:29:20
+ * @LastEditTime: 2022-03-22 18:15:04
  * @Description: Modify here please
  */
 import {
@@ -16,6 +16,7 @@ import {
   Delete,
   UseGuards,
   Query,
+  Put,
 } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -73,6 +74,14 @@ export class OrderController {
   @ApiParam({ name: 'id', description: '订单id' })
   async remove(@Param('id', new ParseIdPipe()) id: string) {
     const res = await this.orderService.remove(id);
+    return apiSucceed(res);
+  }
+
+  @Put(':id/take')
+  @ApiOperation({ summary: '确认收货' })
+  @ApiParam({ name: 'id', description: '订单id' })
+  async confirmTake(@Param('id', new ParseIdPipe()) id: string) {
+    const res = await this.orderService.confirmTake(id);
     return apiSucceed(res);
   }
 }
