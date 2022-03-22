@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:44:31
- * @LastEditTime: 2022-03-22 10:44:37
+ * @LastEditTime: 2022-03-22 15:44:47
  * @Description: Modify here please
  */
 import { Injectable, Logger } from '@nestjs/common';
@@ -18,6 +18,8 @@ import * as OSS from 'ali-oss';
 import * as fs from 'fs';
 import { join } from 'path';
 import { createMkdir, dirIsExist } from 'libs/common/utils/has';
+import { Order } from 'libs/db/modules/order.model';
+import { OrderStatus } from 'libs/common/enum/orderStatus.enum';
 
 @Injectable()
 export class WebService {
@@ -30,6 +32,7 @@ export class WebService {
     @InjectModel(Product) private productModel: ReturnModelType<typeof Product>,
     @InjectModel(SiteSettings)
     private settingModel: ReturnModelType<typeof SiteSettings>,
+    @InjectModel(Order) private orderModel: ReturnModelType<typeof Order>,
   ) {
     // 查询存储设置信息
     this.settingModel.find().then((res) => {
@@ -104,5 +107,18 @@ export class WebService {
     } catch (err) {
       Logger.log(err, '上传错误');
     }
+  }
+
+  /**
+   * 微信支付 : TODO
+   *
+   * @param {string} orderId 订单id
+   * @return {*}
+   * @memberof WebService
+   */
+  async weixinPay(orderId: string) {
+    return this.orderModel.findByIdAndUpdate(orderId, {
+      status: OrderStatus.PENDING_DELIVER,
+    });
   }
 }

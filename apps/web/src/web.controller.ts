@@ -4,10 +4,11 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:56:14
- * @LastEditTime: 2022-03-22 10:11:46
+ * @LastEditTime: 2022-03-22 15:47:11
  * @Description: Modify here please
  */
 import {
+  Body,
   Controller,
   Get,
   Post,
@@ -31,6 +32,10 @@ class multipleFileUploadDto {
   files: any[];
 }
 
+class WeixinPayDto {
+  @ApiProperty({ title: '订单id' })
+  orderId: string;
+}
 @ApiTags('首页')
 @Controller()
 export class WebController {
@@ -63,5 +68,11 @@ export class WebController {
     const domain = `${req.protocol}://${req.headers.host}`;
     const res = await this.webService.multipleUpload(files, domain);
     return apiSucceed(res);
+  }
+
+  @Post('pay/weixin')
+  @ApiOperation({ summary: '微信支付' })
+  async weixinPay(@Body() weixinPayDto: WeixinPayDto) {
+    return await this.webService.weixinPay(weixinPayDto.orderId);
   }
 }

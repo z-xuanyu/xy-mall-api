@@ -4,12 +4,13 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:18:29
- * @LastEditTime: 2022-03-20 10:30:26
+ * @LastEditTime: 2022-03-22 15:43:18
  * @Description: Modify here please
  */
 
 import { ApiProperty } from '@nestjs/swagger';
 import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
+import { OrderStatus } from 'libs/common/enum/orderStatus.enum';
 import { Product } from './product.model';
 import { UserAddress } from './user-address.model';
 import { User } from './user.model';
@@ -59,8 +60,8 @@ export class Order {
   payment: number;
 
   @ApiProperty({ title: '支付状态' })
-  @prop({ type: Number, default: 1 })
-  status: number;
+  @prop({ type: Number, default: OrderStatus.PENDING_PAY, enum: OrderStatus })
+  status: OrderStatus;
 
   @ApiProperty({ title: '订单类型' })
   @prop({ type: Number, default: 1 })
