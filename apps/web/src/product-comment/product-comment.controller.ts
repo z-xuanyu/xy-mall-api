@@ -4,14 +4,25 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-03-21 18:14:33
+ * @LastEditTime: 2022-03-22 11:13:07
  * @Description: Modify here please
  */
-import { Controller, Get, Post, Body, UseGuards, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  Param,
+  UseInterceptors,
+  UploadedFiles,
+  Req,
+} from '@nestjs/common';
 import { ProductCommentService } from './product-comment.service';
 import { CreateProductCommentDto } from './dto/create-product-comment.dto';
 import {
   ApiBearerAuth,
+  ApiConsumes,
   ApiOperation,
   ApiParam,
   ApiTags,
@@ -21,22 +32,37 @@ import { CurrentUser } from '../auth/current-user.decorator';
 import { UserDocument } from 'libs/db/modules/user.model';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
+import { FilesInterceptor } from '@nestjs/platform-express';
+import { WebService } from '../web.service';
 
 @ApiTags('商品评价')
 @Controller('product-comment')
 export class ProductCommentController {
-  constructor(private readonly productCommentService: ProductCommentService) {}
+  constructor(
+    private readonly productCommentService: ProductCommentService,
+    private readonly webService: WebService,
+  ) {}
 
   @Post()
   @UseGuards(AuthGuard('web-jwt'))
   @ApiBearerAuth()
   @ApiOperation({ summary: '创建商品评论' })
-  create(
+  @UseInterceptors(FilesInterceptor('images'))
+  @ApiConsumes('multipart/form-data')
+  async create(
     @Body() createProductCommentDto: CreateProductCommentDto,
     @CurrentUser() user: UserDocument,
+    @UploadedFiles() images: Array<any>,
+    @Req() req: any,
   ) {
     createProductCommentDto.userId = user?._id;
-    return this.productCommentService.create(createProductCommentDto);
+    const domain = `${req.protocol}://${req.headers.host}`;
+    const imgs = await this.webService.multipleUpload(images, domain);
+    createProductCommentDto.images = imgs;
+    const res = await this.productCommentService.create(
+      createProductCommentDto,
+    );
+    return apiSucceed(res);
   }
 
   @Get('user/comments')

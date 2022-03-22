@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:56:14
- * @LastEditTime: 2022-03-03 11:28:22
+ * @LastEditTime: 2022-03-22 10:51:08
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -30,5 +30,6 @@ import { ProductCommentModule } from './product-comment/product-comment.module';
   ],
   controllers: [WebController],
   providers: [WebService],
+  exports: [WebService],
 })
 export class WebModule {}

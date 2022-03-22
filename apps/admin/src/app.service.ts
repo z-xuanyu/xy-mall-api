@@ -4,13 +4,14 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:44:31
- * @LastEditTime: 2022-03-16 14:16:40
+ * @LastEditTime: 2022-03-22 10:50:21
  * @Description: Modify here please
  */
 import { Injectable, Logger } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import * as OSS from 'ali-oss';
 import * as fs from 'fs';
+import { createMkdir, dirIsExist } from 'libs/common/utils/has';
 import { SiteSettings } from 'libs/db/modules/site-setting.model';
 import { InjectModel } from 'nestjs-typegoose';
 import { join } from 'path';
@@ -50,6 +51,13 @@ export class AppService {
       switch (~~this.fileStorageInfo.mode) {
         // 本地上传
         case 1:
+          // 检查目录是否存在
+          const stat = await dirIsExist('uploads-images');
+          if (!stat) {
+            await createMkdir('uploads-images');
+          }
+
+          // 存储图片文件
           const writeImage = fs.createWriteStream(
             join(__dirname, './uploads-images', `${file.originalname}`),
           );
