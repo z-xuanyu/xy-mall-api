@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:46:30
- * @LastEditTime: 2022-03-23 14:53:29
+ * @LastEditTime: 2022-03-23 15:25:01
  * @Description: Modify here please
 -->
 
@@ -29,11 +29,31 @@ admin-api只要是管理Admin站接口开发，web-api只要是负责web站api�
 创建完成之后你会看到项目合并为 apps目下。apps目录下就是所有子目录。
 
 ### 项目目录结构
+```bash
+├── .husky                     # 项目Git提交规范
+├── apps                       # 项目容器
+│   │── admin                  # admin端
+│   └── web                    # web端
+├── libs                       # 公共模块与配置
+│   │── common                 # 公共模块
+│   └── db                     # 数据库相关
+├── .prettierrc                # prettierrc 配置项
+├── .eslintrc.js               # eslint 配置项
+├── tsconfig.json              # TypeScript配置
+├── commitlint.config          # 代码提交规范
+├── nest-cli                   # nest cli 配置
+└── package.json               # package.json
+```
+每个子项目都是相同的目录结构,这里是按官方脚手架（nest-cli）推荐生成的。
+例如开发user一个模块，使用官方nest-cli 生成Restful风格api，那么就执行下面命令(注意：记得全局安装 nest-cli)
 
-- apps 管理所有子项目
-- - - admin 管理站Api项目
+```bash
+$ nest g res user
+```
+生成如下：
+![user](https://www.zhouxuanyu.com/usr/uploads/2022/03/955512880.png)
 
-
+user模块的 serivice controller modules dto 还有一些单元测试。都归纳再user目录下。推荐使用此方式。
 ### 项目启动
 
 1、先克隆项目
