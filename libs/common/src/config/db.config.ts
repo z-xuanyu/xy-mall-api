@@ -4,11 +4,11 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-06 10:49:12
- * @LastEditTime: 2022-03-07 16:02:32
+ * @LastEditTime: 2022-03-23 11:05:56
  * @Description: 数据库链接字符串配置  175.178.107.120
  */
 
-const baseConfig = {
+export const baseDbConfig = {
   // 数据库地址
   host: '175.178.107.120',
   // 端口
@@ -22,5 +22,5 @@ const baseConfig = {
 };
 
 export const dbConfig = {
-  url: `mongodb://${baseConfig.userName}:${baseConfig.password}@${baseConfig.host}:${baseConfig.port}/${baseConfig.dbName}?authSource=admin`,
+  url: `mongodb://${baseDbConfig.userName}:${baseDbConfig.password}@${baseDbConfig.host}:${baseDbConfig.port}/${baseDbConfig.dbName}?authSource=admin`,
 };
