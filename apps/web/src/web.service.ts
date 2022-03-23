@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:44:31
- * @LastEditTime: 2022-03-22 15:44:47
+ * @LastEditTime: 2022-03-23 10:31:39
  * @Description: Modify here please
  */
 import { Injectable, Logger } from '@nestjs/common';
@@ -66,6 +66,44 @@ export class WebService {
       hotProducts,
       limitProducts,
     };
+  }
+
+  // 单文件上传
+  async upload(file: any, domain: string) {
+    try {
+      let data: any;
+      switch (~~this.fileStorageInfo.mode) {
+        // 本地上传
+        case 1:
+          // 检查目录是否存在
+          const stat = await dirIsExist('uploads-images');
+          if (!stat) {
+            await createMkdir('uploads-images');
+          }
+
+          // 存储图片文件
+          const writeImage = fs.createWriteStream(
+            join(__dirname, './uploads-images', `${file.originalname}`),
+          );
+          writeImage.write(file.buffer);
+          data = {
+            url: `${domain}/uploads-images/${file.originalname}`,
+          };
+          break;
+        //  阿里oss上传
+        case 2:
+          data = await this.aliOssClient.put(
+            `/images/${file.originalname}`,
+            file.buffer,
+          );
+          break;
+        default:
+          break;
+      }
+      return data;
+    } catch (err) {
+      Logger.log(err, '上传错误');
+    }
   }
 
   // 多图上传
