@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-03-25 12:02:47
+ * @LastEditTime: 2022-03-25 15:55:47
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -41,24 +41,24 @@ import { MenuModule } from './menu/menu.module';
     AuthModule,
     AdminModule,
     RoleModule,
+    MenuModule,
     UserModule,
-    OrderModule,
     UserAddressModule,
-    CategoryModule,
+    UserCollectionModule,
+    OrderModule,
     NewsModule,
     TagModule,
     ProductModule,
+    CategoryModule,
     ProductParamModule,
     ProductSkuModule,
     ProductTopicModule,
+    ProductCommentModule,
     BannerModule,
     LibraryCategoryModule,
     MediaLibraryModule,
     ClassifyNavigationModule,
-    UserCollectionModule,
     SettingsModule,
-    ProductCommentModule,
-    MenuModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-13 15:00:59
- * @LastEditTime: 2022-03-03 10:56:23
+ * @LastEditTime: 2022-03-25 15:52:38
  * @Description: 标签管理控制器
  */
 import {
@@ -32,7 +32,7 @@ import { QueryTagDto } from './dto/query-tag.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
-@ApiTags('管理站--标签')
+@ApiTags('标签管理')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('tag')

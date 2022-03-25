@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 16:17:19
- * @LastEditTime: 2022-03-03 10:37:16
+ * @LastEditTime: 2022-03-25 15:55:24
  * @Description: 分类模块控制器
  */
 import {
@@ -37,7 +37,7 @@ import { CreateCategoryDto } from './dto/create-category.dto';
 import { QueryCategoryDto } from './dto/query-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 
-@ApiTags('管理站--商品分类管理')
+@ApiTags('商品分类管理')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('category')

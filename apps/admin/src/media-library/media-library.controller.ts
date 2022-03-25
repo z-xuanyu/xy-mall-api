@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-07 11:20:51
- * @LastEditTime: 2022-03-03 10:42:05
+ * @LastEditTime: 2022-03-25 15:54:53
  * @Description: Modify here please
  */
 import {
@@ -32,7 +32,7 @@ import { QueryMediaLibraryDto } from './dto/query-media-library.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
-@ApiTags('管理站--媒体库文件管理')
+@ApiTags('媒体库文件管理')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('media-library')

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:07:52
- * @LastEditTime: 2022-03-03 10:58:21
+ * @LastEditTime: 2022-03-25 15:50:21
  * @Description: 会员控制器
  */
 import {
@@ -37,7 +37,7 @@ import {
 import { User } from 'libs/db/modules/user.model';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
-@ApiTags('管理站--会员')
+@ApiTags('会员管理')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('user')

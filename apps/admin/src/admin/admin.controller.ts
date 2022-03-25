@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:39:34
- * @LastEditTime: 2022-03-03 10:23:42
+ * @LastEditTime: 2022-03-25 15:50:01
  * @Description: 管理员控制器
  */
 import {
@@ -38,7 +38,7 @@ import { CreateAdminDto } from './dto/create-admin.dto';
 import { QueryAdminDto } from './dto/query-admin.dto';
 import { UpdateAdminDto, UpdateStatusDto } from './dto/update-admin.dto';
 
-@ApiTags('管理站--管理员')
+@ApiTags('管理员')
 @Controller('admin')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()

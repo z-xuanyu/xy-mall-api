@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-12 15:47:53
- * @LastEditTime: 2022-03-03 10:47:18
+ * @LastEditTime: 2022-03-25 15:53:34
  * @Description: Modify here please
  */
 import {
@@ -32,7 +32,7 @@ import { QueryProductParamDto } from './dto/query-product-param.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
-@ApiTags('管理站--产品参数模板')
+@ApiTags('商品参数模板')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('product-param')

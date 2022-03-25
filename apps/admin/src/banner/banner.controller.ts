@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-04 10:46:45
- * @LastEditTime: 2022-03-03 10:35:42
+ * @LastEditTime: 2022-03-25 15:56:07
  * @Description: Modify here please
  */
 import {
@@ -37,7 +37,7 @@ import { CreateBannerDto } from './dto/create-banner.dto';
 import { QueryBannerDto } from './dto/query-banner.dto';
 import { UpdateBannerDto } from './dto/update-banner.dto';
 
-@ApiTags('管理站--Banner管理')
+@ApiTags('Banner管理')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('banner')

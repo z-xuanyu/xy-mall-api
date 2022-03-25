@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-15 11:36:15
- * @LastEditTime: 2022-03-03 10:50:06
+ * @LastEditTime: 2022-03-25 15:53:09
  * @Description: Modify here please
  */
 import {
@@ -32,7 +32,7 @@ import { QueryProductSkuDto } from './dto/query-product-sku.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
-@ApiTags('管理站--产品规格模板')
+@ApiTags('商品规格模板')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('product-sku')

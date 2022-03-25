@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-07 10:52:56
- * @LastEditTime: 2022-03-03 10:40:51
+ * @LastEditTime: 2022-03-25 15:54:29
  * @Description: Modify here please
  */
 import {
@@ -30,7 +30,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
-@ApiTags('管理站--文件分类')
+@ApiTags('媒体库分类')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('library-category')

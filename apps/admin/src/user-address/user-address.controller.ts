@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-25 15:58:54
- * @LastEditTime: 2022-03-03 10:59:49
+ * @LastEditTime: 2022-03-25 15:51:14
  * @Description: Modify here please
  */
 import {
@@ -32,7 +32,7 @@ import { QueryUserAddressDto } from './dto/query-user-address.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
-@ApiTags('管理站--会员地址')
+@ApiTags('会员地址')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('user-address')

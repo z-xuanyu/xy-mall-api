@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-03-03 10:45:51
+ * @LastEditTime: 2022-03-25 15:53:55
  * @Description: 产品控制器
  */
 import {
@@ -42,7 +42,7 @@ import {
   PaginationResult,
 } from 'libs/common/ResponseResultModel';
 
-@ApiTags('管理站--商品')
+@ApiTags('商品管理')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('product')

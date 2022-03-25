@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:22:58
- * @LastEditTime: 2022-03-21 17:30:30
+ * @LastEditTime: 2022-03-25 15:53:44
  * @Description: Modify here please
  */
 import { Controller, Get, Param, Delete, UseGuards } from '@nestjs/common';
@@ -18,7 +18,7 @@ import {
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ProductCommentService } from './product-comment.service';
 
-@ApiTags('管理站--商品评价')
+@ApiTags('商品评价')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('product-comment')

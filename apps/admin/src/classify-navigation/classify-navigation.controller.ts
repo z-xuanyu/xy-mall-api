@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-16 17:17:53
- * @LastEditTime: 2022-03-03 10:39:23
+ * @LastEditTime: 2022-03-25 15:55:08
  * @Description: Modify here please
  */
 import {
@@ -32,7 +32,7 @@ import { CreateClassifyNavigationDto } from './dto/create-classify-navigation.dt
 import { QueryClassifyNavigationDto } from './dto/query-classify-navigation.dto';
 import { UpdateClassifyNavigationDto } from './dto/update-classify-navigation.dto';
 
-@ApiTags('管理站--分类导航')
+@ApiTags('分类导航管理')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('classify-navigation')

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 16:45:17
- * @LastEditTime: 2022-03-03 10:54:50
+ * @LastEditTime: 2022-03-25 15:52:59
  * @Description: Modify here please
  */
 import {
@@ -36,7 +36,7 @@ import {
 } from 'libs/common/ResponseResultModel';
 import { ProductTopic } from 'libs/db/modules/product-topic.model';
 
-@ApiTags('管理站--产品专题')
+@ApiTags('商品专题')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('product-topic')

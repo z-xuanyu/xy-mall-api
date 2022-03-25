@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 11:32:42
- * @LastEditTime: 2022-03-03 10:44:17
+ * @LastEditTime: 2022-03-25 15:54:13
  * @Description: 新闻文章控制器
  */
 import {
@@ -37,7 +37,7 @@ import {
 } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
-@ApiTags('管理站--新闻文章')
+@ApiTags('文章管理')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
 @Controller('news')
