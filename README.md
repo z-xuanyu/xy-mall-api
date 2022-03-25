@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:46:30
- * @LastEditTime: 2022-03-23 15:25:01
+ * @LastEditTime: 2022-03-25 11:05:52
  * @Description: Modify here please
 -->
 
@@ -54,6 +54,31 @@ $ nest g res user
 ![user](https://www.zhouxuanyu.com/usr/uploads/2022/03/955512880.png)
 
 user模块的 serivice controller modules dto 还有一些单元测试。都归纳再user目录下。推荐使用此方式。
+
+
+
+### 功能模块
+Admin端
+
+- [x] 管理员模块(已完成)
+- [x] 权限角色模块(已完成)
+- [x] 商品管理模块(已完成)
+- [x] 会员模块(已完成)
+- [x] Banner模块(已完成)
+- [x] 素材库模块(已完成)
+- [x] 分类模块(已完成)
+- [x] 标签模块(已完成)
+- [x] 新闻模块(已完成)
+- [x] 站点设置模块(已完成)
+- [ ] 优惠券模块(开发中...)
+
+Web(uniapp)端
+
+- [x] 首页数据接口(已完成)
+- [x] 商品相关接口(已完成)
+- [x] 用户相关接口(已完成)
+- [x] 购物车相关接口(已完成)
+- [x] 订单相关接口(已完成)
 ### 项目启动
 
 1、先克隆项目
