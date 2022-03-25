@@ -32,6 +32,7 @@ import { SettingsModule } from './settings/settings.module';
 import { OrderModule } from './order/order.module';
 import { ProductCommentModule } from './product-comment/product-comment.module';
 import { RoleModule } from './role/role.module';
+import { MenuModule } from './menu/menu.module';
 
 @Module({
   imports: [
@@ -57,6 +58,7 @@ import { RoleModule } from './role/role.module';
     UserCollectionModule,
     SettingsModule,
     ProductCommentModule,
+    MenuModule,
   ],
   controllers: [AppController],
   providers: [AppService],
