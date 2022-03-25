@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-03-22 11:13:07
+ * @LastEditTime: 2022-03-23 16:26:34
  * @Description: Modify here please
  */
 import {
@@ -59,10 +59,8 @@ export class ProductCommentController {
     const domain = `${req.protocol}://${req.headers.host}`;
     const imgs = await this.webService.multipleUpload(images, domain);
     createProductCommentDto.images = imgs;
-    const res = await this.productCommentService.create(
-      createProductCommentDto,
-    );
-    return apiSucceed(res);
+    await this.productCommentService.create(createProductCommentDto);
+    return apiSucceed();
   }
 
   @Get('user/comments')

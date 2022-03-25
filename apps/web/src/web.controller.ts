@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:56:14
- * @LastEditTime: 2022-03-22 16:21:29
+ * @LastEditTime: 2022-03-23 18:21:45
  * @Description: Modify here please
  */
 import {
@@ -13,11 +13,15 @@ import {
   Get,
   Post,
   Req,
+  UploadedFile,
   UploadedFiles,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { FilesInterceptor } from '@nestjs/platform-express';
+import { AuthGuard } from '@nestjs/passport';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import {
+  ApiBearerAuth,
   ApiBody,
   ApiConsumes,
   ApiOperation,
@@ -32,6 +36,10 @@ class multipleFileUploadDto {
   files: any[];
 }
 
+class FileUploadDto {
+  @ApiProperty({ type: 'string', format: 'binary' })
+  file: any;
+}
 class WeixinPayDto {
   @ApiProperty({ title: '订单id' })
   orderId: string;
@@ -54,6 +62,8 @@ export class WebController {
   }
 
   @Post('multiple/upload')
+  @UseGuards(AuthGuard('web-jwt'))
+  @ApiBearerAuth()
   @ApiOperation({ summary: '多图上传' })
   @ApiBody({
     description: '多图上传',
@@ -68,6 +78,20 @@ export class WebController {
     const domain = `${req.protocol}://${req.headers.host}`;
     const res = await this.webService.multipleUpload(files, domain);
     return apiSucceed(res);
+  }
+
+  @Post('upload')
+  @ApiOperation({ summary: '文件上传' })
+  @UseInterceptors(FileInterceptor('file'))
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    description: '文件上传',
+    type: FileUploadDto,
+  })
+  async upload(@UploadedFile('file') file: any, @Req() req): Promise<any> {
+    const domain = `${req.protocol}://${req.headers.host}`;
+    const res = await this.webService.upload(file, domain);
+    return apiSucceed(res?.url);
   }
 
   @Post('pay/weixin')

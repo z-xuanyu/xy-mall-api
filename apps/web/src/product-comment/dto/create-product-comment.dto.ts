@@ -4,12 +4,15 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-03-22 11:08:32
+ * @LastEditTime: 2022-03-23 16:24:02
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateProductCommentDto {
+  @ApiProperty({ title: '订单id' })
+  orderId: string;
+
   userId: string;
 
   @ApiProperty({ title: '商品id' })
