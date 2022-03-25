@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-03-16 17:59:05
+ * @LastEditTime: 2022-03-25 12:02:47
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -31,6 +31,7 @@ import { ChatMessageModule } from './chat/caht.module';
 import { SettingsModule } from './settings/settings.module';
 import { OrderModule } from './order/order.module';
 import { ProductCommentModule } from './product-comment/product-comment.module';
+import { RoleModule } from './role/role.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { ProductCommentModule } from './product-comment/product-comment.module';
     ChatMessageModule,
     AuthModule,
     AdminModule,
+    RoleModule,
     UserModule,
     OrderModule,
     UserAddressModule,
