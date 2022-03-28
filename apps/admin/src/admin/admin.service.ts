@@ -4,12 +4,11 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 15:39:34
- * @LastEditTime: 2022-03-03 10:24:27
+ * @LastEditTime: 2022-03-28 17:26:35
  * @Description: 管理员Service
  */
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
-import { Role } from 'libs/common/enum/role';
 import { ApiFail, PaginationResult } from 'libs/common/ResponseResultModel';
 import { Admin } from 'libs/db/modules/admin.model';
 import { InjectModel } from 'nestjs-typegoose';
@@ -32,11 +31,6 @@ export class AdminService {
    * @memberof AdminService
    */
   async create(createAdminDto: CreateAdminDto): Promise<Admin> {
-    createAdminDto.roles.forEach((item) => {
-      if (!Role[item.toLocaleUpperCase()])
-        throw new ApiFail(103, '角色不存在！');
-    });
-
     const isHasEmail = await this.adminModel.findOne({
       email: createAdminDto.email,
     });
@@ -72,6 +66,7 @@ export class AdminService {
           },
         ],
       })
+      .populate({ path: 'roleIds', select: ['name'] })
       .limit(~~parameters.pageSize)
       .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
       .then((doc) => {

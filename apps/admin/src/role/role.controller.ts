@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 11:46:36
- * @LastEditTime: 2022-03-25 12:01:48
+ * @LastEditTime: 2022-03-28 16:12:13
  * @Description: 角色控制器
  */
 import {
@@ -16,6 +16,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { RoleService } from './role.service';
 import { CreateRoleDto } from './dto/create-role.dto';
@@ -29,6 +30,7 @@ import {
 } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
+import { QueryRoleDto } from './dto/query-role.dto';
 
 @ApiTags('角色管理')
 @UseGuards(AuthGuard('admin-jwt'))
@@ -46,8 +48,8 @@ export class RoleController {
 
   @Get()
   @ApiOperation({ summary: '角色列表' })
-  async findAll() {
-    const res = await this.roleService.findAll();
+  async findAll(@Query() parameters: QueryRoleDto) {
+    const res = await this.roleService.findAll(parameters);
     return apiSucceed(res);
   }
 

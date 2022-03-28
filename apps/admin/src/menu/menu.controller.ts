@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-03-28 14:55:33
+ * @LastEditTime: 2022-03-28 16:36:29
  * @Description: Modify here please
  */
 import {
@@ -32,6 +32,8 @@ import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { QueryMenuDto } from './dto/query-menu.dto';
 import { upperCamelCase } from 'libs/common/utils/transform';
+import { CurrentUser } from '../auth/current-user.decorator';
+import { AdminDocument } from 'libs/db/modules/admin.model';
 
 @ApiTags('菜单管理')
 @UseGuards(AuthGuard('admin-jwt'))
@@ -53,6 +55,13 @@ export class MenuController {
   @ApiOperation({ summary: '菜单列表' })
   async findAll(@Query() parameters: QueryMenuDto) {
     const res = await this.menuService.findAll(parameters);
+    return apiSucceed(res);
+  }
+
+  @Get('permissions')
+  @ApiOperation({ summary: '管理员关联的角色的权限菜单列表' })
+  async getPermissionsMenus(@CurrentUser() user: AdminDocument) {
+    const res = await this.menuService.findPermissionsMenus(user?._id);
     return apiSucceed(res);
   }
 
