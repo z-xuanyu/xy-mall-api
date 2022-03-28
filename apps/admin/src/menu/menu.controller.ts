@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-03-25 14:24:07
+ * @LastEditTime: 2022-03-28 14:55:33
  * @Description: Modify here please
  */
 import {
@@ -16,6 +16,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { MenuService } from './menu.service';
 import { CreateMenuDto } from './dto/create-menu.dto';
@@ -29,6 +30,8 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
+import { QueryMenuDto } from './dto/query-menu.dto';
+import { upperCamelCase } from 'libs/common/utils/transform';
 
 @ApiTags('菜单管理')
 @UseGuards(AuthGuard('admin-jwt'))
@@ -40,14 +43,16 @@ export class MenuController {
   @Post()
   @ApiOperation({ summary: '添加菜单' })
   async create(@Body() createMenuDto: CreateMenuDto) {
+    const paths = createMenuDto.path?.split('/');
+    createMenuDto.name = upperCamelCase(paths[paths.length - 2]);
     const res = await this.menuService.create(createMenuDto);
     return apiSucceed(res);
   }
 
   @Get()
   @ApiOperation({ summary: '菜单列表' })
-  async findAll() {
-    const res = await this.menuService.findAll();
+  async findAll(@Query() parameters: QueryMenuDto) {
+    const res = await this.menuService.findAll(parameters);
     return apiSucceed(res);
   }
 

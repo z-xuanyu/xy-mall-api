@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-03-25 18:09:16
+ * @LastEditTime: 2022-03-28 14:43:47
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -55,8 +55,6 @@ class MetaItem {
   orderNo?: number;
 }
 export class CreateMenuDto {
-  @ApiProperty({ title: '路由名称' })
-  @IsNotEmpty({ message: '路由名称不能为空' })
   name: string;
 
   @ApiProperty({ title: '路由路径' })
