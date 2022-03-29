@@ -4,10 +4,17 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:22:58
- * @LastEditTime: 2022-03-25 15:53:44
+ * @LastEditTime: 2022-03-29 16:29:07
  * @Description: Modify here please
  */
-import { Controller, Get, Param, Delete, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Delete,
+  UseGuards,
+  Query,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
   ApiBearerAuth,
@@ -16,6 +23,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
+import { QueryProductCommentDto } from './dto/query-product-comment.dto';
 import { ProductCommentService } from './product-comment.service';
 
 @ApiTags('商品评价')
@@ -27,8 +35,8 @@ export class ProductCommentController {
 
   @Get()
   @ApiOperation({ summary: '获取商品评价列表' })
-  async findAll() {
-    const res = await this.productCommentService.findAll();
+  async findAll(@Query() parameters: QueryProductCommentDto) {
+    const res = await this.productCommentService.findAll(parameters);
     return apiSucceed(res);
   }
 
