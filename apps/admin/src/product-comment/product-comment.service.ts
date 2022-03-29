@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:22:58
- * @LastEditTime: 2022-03-29 17:24:32
+ * @LastEditTime: 2022-03-29 17:50:00
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -72,6 +72,20 @@ export class ProductCommentService {
       total,
       items: result,
     };
+  }
+
+  /**
+   * 回复商品内容
+   *
+   * @param {string} id 评论记录id
+   * @param {string} content 回复内容
+   * @return {*}
+   * @memberof ProductCommentService
+   */
+  async replyComment(id: string, content: string) {
+    return await this.productCommentModel.findByIdAndUpdate(id, {
+      replyContent: content,
+    });
   }
 
   /**

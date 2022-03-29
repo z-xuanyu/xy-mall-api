@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:22:58
- * @LastEditTime: 2022-03-29 16:29:07
+ * @LastEditTime: 2022-03-29 17:58:48
  * @Description: Modify here please
  */
 import {
@@ -14,6 +14,8 @@ import {
   Delete,
   UseGuards,
   Query,
+  Patch,
+  Body,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
@@ -24,6 +26,7 @@ import {
 } from '@nestjs/swagger';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { QueryProductCommentDto } from './dto/query-product-comment.dto';
+import { ReplyProductCommentDto } from './dto/reply-product-comment.dto';
 import { ProductCommentService } from './product-comment.service';
 
 @ApiTags('商品评价')
@@ -37,6 +40,20 @@ export class ProductCommentController {
   @ApiOperation({ summary: '获取商品评价列表' })
   async findAll(@Query() parameters: QueryProductCommentDto) {
     const res = await this.productCommentService.findAll(parameters);
+    return apiSucceed(res);
+  }
+
+  @Patch(':id/reply')
+  @ApiParam({ name: 'id', description: '评论记录id' })
+  @ApiOperation({ summary: '回复商品评价' })
+  async replyComment(
+    @Param('id') id: string,
+    @Body() replyProductCommentDto: ReplyProductCommentDto,
+  ) {
+    const res = await this.productCommentService.replyComment(
+      id,
+      replyProductCommentDto.content,
+    );
     return apiSucceed(res);
   }
 

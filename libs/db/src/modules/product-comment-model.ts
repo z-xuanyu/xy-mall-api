@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-20 10:56:11
- * @LastEditTime: 2022-03-20 11:03:49
+ * @LastEditTime: 2022-03-29 17:47:23
  * @Description: 商品评价
  */
 
@@ -39,4 +39,8 @@ export class ProductComment {
   @ApiProperty({ title: '评论商品图片' })
   @prop({ type: [String] })
   images: Array<string>;
+
+  @ApiProperty({ title: '回复内容' })
+  @prop({ type: String })
+  replyContent?: string;
 }
