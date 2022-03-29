@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-03-28 14:43:47
+ * @LastEditTime: 2022-03-29 11:00:56
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -39,7 +39,7 @@ class MetaItem {
   @IsNotEmpty({ message: '菜单名称不能为空' })
   title: string;
 
-  @ApiProperty({ title: '是否固定标签', default: true })
+  @ApiProperty({ title: '是否固定标签', default: false })
   affix?: boolean;
 
   @ApiProperty({ title: '是否忽略KeepAlive缓存', default: false })

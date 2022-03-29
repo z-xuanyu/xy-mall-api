@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 11:29:25
- * @LastEditTime: 2022-03-25 18:12:29
+ * @LastEditTime: 2022-03-29 11:00:38
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -47,7 +47,7 @@ class MetaItem {
   title: string;
 
   @ApiProperty({ title: '是否固定标签' })
-  @prop({ default: true, type: Boolean })
+  @prop({ default: false, type: Boolean })
   affix?: boolean;
 
   @ApiProperty({ title: '是否忽略KeepAlive缓存' })

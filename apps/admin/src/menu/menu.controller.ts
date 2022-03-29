@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-03-28 16:36:29
+ * @LastEditTime: 2022-03-29 09:54:01
  * @Description: Modify here please
  */
 import {
@@ -45,8 +45,19 @@ export class MenuController {
   @Post()
   @ApiOperation({ summary: '添加菜单' })
   async create(@Body() createMenuDto: CreateMenuDto) {
-    const paths = createMenuDto.path?.split('/');
-    createMenuDto.name = upperCamelCase(paths[paths.length - 2]);
+    // 处理组件名问题
+    if (createMenuDto.component === 'LAYOUT') {
+      createMenuDto.name = upperCamelCase(
+        createMenuDto.path.split('/')[1] + 'Page',
+      );
+    } else {
+      const paths = createMenuDto.component?.split('/');
+      paths.shift();
+      paths.pop();
+      const pathName = paths.join('-');
+      createMenuDto.name = upperCamelCase(pathName);
+    }
+
     const res = await this.menuService.create(createMenuDto);
     return apiSucceed(res);
   }
@@ -80,6 +91,18 @@ export class MenuController {
     @Param('id', new ParseIdPipe()) id: string,
     @Body() updateMenuDto: UpdateMenuDto,
   ) {
+    // 处理组件名问题
+    if (updateMenuDto.component === 'LAYOUT') {
+      updateMenuDto.name = upperCamelCase(
+        updateMenuDto.path.split('/')[1] + 'Page',
+      );
+    } else {
+      const paths = updateMenuDto.component?.split('/');
+      paths.shift();
+      paths.pop();
+      const pathName = paths.join('-');
+      updateMenuDto.name = upperCamelCase(pathName);
+    }
     const res = await this.menuService.update(id, updateMenuDto);
     return apiSucceed(res);
   }
