@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-03-29 10:06:59
+ * @LastEditTime: 2022-03-29 12:05:08
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -41,13 +41,15 @@ export class MenuService {
 
   // 菜单列表
   async findAll(parameters: QueryMenuDto) {
-    const result = await this.menuModel.find({
-      $or: [
-        {
-          'meta.title': { $regex: new RegExp(parameters.title, 'i') },
-        },
-      ],
-    });
+    const result = await this.menuModel
+      .find({
+        $or: [
+          {
+            'meta.title': { $regex: new RegExp(parameters.title, 'i') },
+          },
+        ],
+      })
+      .sort({ 'meta.orderNo': 1 });
     return result;
   }
 
@@ -71,7 +73,7 @@ export class MenuService {
       MenuObj[next._id] ? '' : (MenuObj[next._id] = true && cur.push(next));
       return cur;
     }, []);
-    return allMenus;
+    return allMenus.sort((a: any, b: any) => a.meta.orderNo - b.meta.orderNo);
   }
   // 菜单详情
   async findOne(id: string) {
