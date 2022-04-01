@@ -4,17 +4,14 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-02-14 15:36:39
+ * @LastEditTime: 2022-04-01 15:46:25
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
 class SkuDataType {
-  @ApiProperty({ title: '规格值' })
-  value: string;
-
-  @ApiProperty({ title: '规格值' })
+  @ApiProperty({ title: '规格价格' })
   price: number;
 
   @ApiProperty({ title: '库存' })
@@ -31,16 +28,18 @@ class SkuDataType {
 
   @ApiProperty({ title: '货号' })
   artNo: number;
+
+  @ApiProperty({ title: '规格名称集合', type: [String] })
+  skuNames: string[];
 }
 
-class SkuType {
-  @ApiProperty({ title: '规格名称' })
-  skuName: string;
+class SkuAttrType {
+  @ApiProperty({ title: '规格属性名称' })
+  name: string;
 
-  @ApiProperty({ title: '规格值集合', type: [SkuDataType] })
-  skuValues: SkuDataType[];
+  @ApiProperty({ title: '规格属性名称', type: [String] })
+  values: string[];
 }
-
 export class CreateProductDto {
   @ApiProperty({ title: '产品标题' })
   @IsNotEmpty({ message: '产品标题不能为空' })
@@ -91,8 +90,11 @@ export class CreateProductDto {
   })
   skuType: number;
 
-  @ApiProperty({ title: '产品规格', type: [SkuType] })
-  sku: Array<SkuType>;
+  @ApiProperty({ title: '商品规格', type: [SkuDataType] })
+  skus: SkuDataType[];
+
+  @ApiProperty({ title: '规格属性', type: [SkuAttrType] })
+  skuAttrs: SkuAttrType[];
 
   @ApiProperty({ title: '产品排序' })
   sort: number;

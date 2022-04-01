@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-03-03 10:46:32
+ * @LastEditTime: 2022-04-01 16:06:09
  * @Description: 产品
  */
 
@@ -14,9 +14,8 @@ import { InjectModel } from 'nestjs-typegoose';
 import { CreateProductDto } from './dto/create-product.dto';
 import { QueryProductDto } from './dto/query-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { isValidObjectId } from 'mongoose';
 import { Product } from 'libs/db/modules/product.model';
-import { ApiFail, PaginationResult } from 'libs/common/ResponseResultModel';
+import { PaginationResult } from 'libs/common/ResponseResultModel';
 
 @Injectable()
 export class ProductService {
@@ -34,8 +33,13 @@ export class ProductService {
    * @memberof ProductService
    */
   async create(createProductDto: CreateProductDto): Promise<Product> {
-    const isObjID = isValidObjectId(createProductDto.category);
-    if (!isObjID) throw new ApiFail(101, '分类id不存在');
+    // 如果多规格。给默认最低价
+    if (createProductDto.skuType == 2) {
+      const mins = createProductDto.skus.find((item) => Math.min(item.price));
+      createProductDto.price = mins.price;
+      createProductDto.inventory = mins.inventory;
+    }
+
     return await this.productModel.create(createProductDto);
   }
 
@@ -51,21 +55,38 @@ export class ProductService {
   ): Promise<PaginationResult<Array<Product>>> {
     let total = 0;
     const result = await this.productModel
-      .find({
-        $or: [
-          {
-            name: { $regex: new RegExp(parameters.title, 'i') },
-            isTimeLimit: parameters.isTimeLimit ?? {
-              $ne: parameters.isTimeLimit,
-            },
-            isHot: parameters.isHot ?? { $ne: parameters.isHot },
+      .aggregate([
+        {
+          $match: {
+            title: { $regex: new RegExp(parameters.title, 'i') },
           },
-        ],
-      })
-      .limit(~~parameters.pageSize)
-      .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
-      .populate('tags')
-      .populate('category')
+        },
+        {
+          $lookup: {
+            from: 'tags',
+            foreignField: '_id',
+            localField: 'tags',
+            as: 'tags',
+          },
+        },
+        {
+          $lookup: {
+            from: 'categories',
+            foreignField: '_id',
+            localField: 'category',
+            as: 'category',
+          },
+        },
+        {
+          $unwind: '$category',
+        },
+        {
+          $skip: ~~((parameters.pageNumber - 1) * parameters.pageSize),
+        },
+        {
+          $limit: ~~parameters.pageSize,
+        },
+      ])
       .then((doc) => {
         total = doc.length;
         return doc;
@@ -99,6 +120,13 @@ export class ProductService {
     id: string,
     updateProductDto: UpdateProductDto,
   ): Promise<Product> {
+    // 如果多规格。给默认最低价
+    if (updateProductDto.skuType == 2) {
+      const mins = updateProductDto.skus.find((item) => Math.min(item.price));
+      updateProductDto.price = mins.price;
+      updateProductDto.inventory = mins.inventory;
+    }
+
     return await this.productModel.findByIdAndUpdate(id, updateProductDto);
   }
 

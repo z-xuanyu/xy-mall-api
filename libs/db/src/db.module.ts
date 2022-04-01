@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:57:10
- * @LastEditTime: 2022-03-25 11:49:15
+ * @LastEditTime: 2022-03-31 17:22:32
  * @Description: 数据库模型
  */
 import { Global, Module } from '@nestjs/common';
@@ -23,6 +23,7 @@ import { News } from './modules/news.model';
 import { Order } from './modules/order.model';
 import { ProductComment } from './modules/product-comment-model';
 import { ProductParam } from './modules/product-param.model';
+import { ProductSkuAttr } from './modules/product-sku-attr.model';
 import { ProductSku } from './modules/product-sku.model';
 import { ProductTopic } from './modules/product-topic.model';
 import { Product } from './modules/product.model';
@@ -53,6 +54,7 @@ const models = TypegooseModule.forFeature([
   ProductParam,
   ProductTopic,
   ProductSku,
+  ProductSkuAttr,
   ProductComment,
   Order,
   Banner,
