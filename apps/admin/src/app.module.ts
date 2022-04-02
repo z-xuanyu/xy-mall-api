@@ -33,6 +33,7 @@ import { OrderModule } from './order/order.module';
 import { ProductCommentModule } from './product-comment/product-comment.module';
 import { RoleModule } from './role/role.module';
 import { MenuModule } from './menu/menu.module';
+import { ProductUnitModule } from './product-unit/product-unit.module';
 
 @Module({
   imports: [
@@ -59,6 +60,7 @@ import { MenuModule } from './menu/menu.module';
     MediaLibraryModule,
     ClassifyNavigationModule,
     SettingsModule,
+    ProductUnitModule,
   ],
   controllers: [AppController],
   providers: [AppService],
