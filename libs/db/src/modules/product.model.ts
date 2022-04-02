@@ -4,11 +4,11 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 14:45:35
- * @LastEditTime: 2022-04-01 15:47:25
+ * @LastEditTime: 2022-04-02 11:55:41
  * @Description: 产品模型
  */
 import { ApiProperty } from '@nestjs/swagger';
-import { ModelOptions, prop, Ref, Severity } from '@typegoose/typegoose';
+import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
 import { ProductSkuSelectType } from 'libs/common/enum/product.enum';
 import { Category } from './category.model';
 import { Tag } from './tag.model';
@@ -17,9 +17,6 @@ import { Tag } from './tag.model';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
-  },
-  options: {
-    allowMixed: Severity.ALLOW,
   },
 })
 class SkuDataType {
@@ -41,7 +38,7 @@ class SkuDataType {
 
   @ApiProperty({ title: '规格图片' })
   @prop()
-  image: number;
+  image: string;
 
   @ApiProperty({ title: '货号' })
   @prop()

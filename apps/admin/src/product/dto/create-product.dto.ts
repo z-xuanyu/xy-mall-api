@@ -4,13 +4,14 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-04-01 15:46:25
+ * @LastEditTime: 2022-04-02 12:06:11
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, Min } from 'class-validator';
 
 class SkuDataType {
+  @Min(0, { message: '商品价格必须大于' })
   @ApiProperty({ title: '规格价格' })
   price: number;
 
@@ -69,6 +70,7 @@ export class CreateProductDto {
   tags: Array<string>;
 
   @ApiProperty({ title: '产品价格' })
+  @Min(0, { message: '商品价格必须大于' })
   price: number;
 
   @ApiProperty({ title: '折扣价' })
