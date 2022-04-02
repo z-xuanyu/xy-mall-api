@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-03-29 09:54:01
+ * @LastEditTime: 2022-04-02 15:15:32
  * @Description: Modify here please
  */
 import {
@@ -47,9 +47,8 @@ export class MenuController {
   async create(@Body() createMenuDto: CreateMenuDto) {
     // 处理组件名问题
     if (createMenuDto.component === 'LAYOUT') {
-      createMenuDto.name = upperCamelCase(
-        createMenuDto.path.split('/')[1] + 'Page',
-      );
+      const paths = createMenuDto.path.split('/');
+      createMenuDto.name = upperCamelCase(paths.join('-'));
     } else {
       const paths = createMenuDto.component?.split('/');
       paths.shift();
@@ -93,9 +92,8 @@ export class MenuController {
   ) {
     // 处理组件名问题
     if (updateMenuDto.component === 'LAYOUT') {
-      updateMenuDto.name = upperCamelCase(
-        updateMenuDto.path.split('/')[1] + 'Page',
-      );
+      const paths = updateMenuDto.path.split('/');
+      updateMenuDto.name = upperCamelCase(paths.join('-'));
     } else {
       const paths = updateMenuDto.component?.split('/');
       paths.shift();

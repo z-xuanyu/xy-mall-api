@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-03-29 12:05:08
+ * @LastEditTime: 2022-04-02 15:27:55
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -29,8 +29,11 @@ export class MenuService {
   // 添加菜单
   async create(createMenuDto: CreateMenuDto) {
     // 如果父级存在，更新父级name component
-    if (createMenuDto.parentId) {
-      const name = upperCamelCase(createMenuDto.path.split('/')[1] + 'Page');
+    if (createMenuDto.parentId && createMenuDto.component !== 'LAYOUT') {
+      const paths = createMenuDto.component.split('/');
+      paths.pop();
+      paths.pop();
+      const name = upperCamelCase(paths.join('-'));
       await this.menuModel.findByIdAndUpdate(createMenuDto.parentId, {
         component: 'LAYOUT',
         name,
@@ -83,8 +86,11 @@ export class MenuService {
   // 更新菜单
   async update(id: string, updateMenuDto: UpdateMenuDto) {
     // 如果父级存在，更新父级name component
-    if (updateMenuDto.parentId) {
-      const name = upperCamelCase(updateMenuDto.path.split('/')[1] + 'Page');
+    if (updateMenuDto.parentId && updateMenuDto.component !== 'LAYOUT') {
+      const paths = updateMenuDto.component.split('/');
+      paths.pop();
+      paths.pop();
+      const name = upperCamelCase(paths.join('-'));
       await this.menuModel.findByIdAndUpdate(updateMenuDto.parentId, {
         component: 'LAYOUT',
         name,
