@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:07:52
- * @LastEditTime: 2022-03-25 15:50:21
+ * @LastEditTime: 2022-04-07 16:42:22
  * @Description: 会员控制器
  */
 import {
@@ -36,6 +36,8 @@ import {
 } from 'libs/common/ResponseResultModel';
 import { User } from 'libs/db/modules/user.model';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
+import { QueryUserViewHistoryDto } from './dto/query-user-view-history.dto';
+import { QueryUserCollectionDto } from './dto/query-user-collection.dto';
 
 @ApiTags('会员管理')
 @UseGuards(AuthGuard('admin-jwt'))
@@ -90,6 +92,35 @@ export class UserController {
     @Param('id', new ParseIdPipe()) id: string,
   ): Promise<ApiSucceedResult<User>> {
     const res = await this.userService.remove(id);
+    return apiSucceed(res);
+  }
+
+  @Get(':id/viewHistories')
+  @ApiOperation({ summary: '获取会员商品浏览记录列表' })
+  @ApiParam({ name: 'id', description: '会员id' })
+  async getUserViewHistories(
+    @Param('id', new ParseIdPipe()) id: string,
+    @Query() queryUserViewHistoryDto: QueryUserViewHistoryDto,
+  ) {
+    const res = await this.userService.getUserViewHistories(
+      id,
+      queryUserViewHistoryDto,
+    );
+
+    return apiSucceed(res);
+  }
+
+  @Get(':id/collections')
+  @ApiOperation({ summary: '获取会员商品收藏列表' })
+  @ApiParam({ name: 'id', description: '会员id' })
+  async getUserCollections(
+    @Param('id', new ParseIdPipe()) id: string,
+    @Query() queryUserCollectionDto: QueryUserCollectionDto,
+  ) {
+    const res = await this.userService.getUserCollections(
+      id,
+      queryUserCollectionDto,
+    );
     return apiSucceed(res);
   }
 }
