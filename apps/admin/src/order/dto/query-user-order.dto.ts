@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-07 12:00:38
- * @LastEditTime: 2022-04-07 12:17:59
+ * @LastEditTime: 2022-04-07 14:58:06
  * @Description: Modify here please
  */
 
@@ -17,4 +17,7 @@ export class QueryUserOrdersDto extends PaginationParametersDto {
 
   @ApiProperty({ name: '订单id' })
   orderId: string;
+
+  @ApiProperty({ name: '收货人名称' })
+  addressName: string;
 }

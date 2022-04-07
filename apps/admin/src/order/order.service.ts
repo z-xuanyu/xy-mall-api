@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:35:40
- * @LastEditTime: 2022-04-07 14:50:33
+ * @LastEditTime: 2022-04-07 15:01:48
  * @Description: 订单模块 service
  */
 import { Injectable } from '@nestjs/common';
@@ -104,6 +104,9 @@ export class OrderService {
         {
           $match: {
             userId: new ObjectId(parameters.userId),
+            _id: parameters.orderId
+              ? new ObjectId(parameters.orderId)
+              : { $ne: null },
           },
         },
         {
@@ -132,6 +135,12 @@ export class OrderService {
             payment: 1,
             createdAt: 1,
             products: '$info',
+            skus: '$products',
+          },
+        },
+        {
+          $match: {
+            addressName: { $regex: new RegExp(parameters.addressName, 'i') },
           },
         },
         {
