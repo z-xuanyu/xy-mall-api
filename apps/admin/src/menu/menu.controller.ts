@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-04-02 15:15:32
+ * @LastEditTime: 2022-04-07 14:40:45
  * @Description: Modify here please
  */
 import {
@@ -76,7 +76,7 @@ export class MenuController {
   }
 
   @Get(':id')
-  @ApiOperation({ summary: '菜单列表' })
+  @ApiOperation({ summary: '菜单详情' })
   @ApiParam({ name: 'id', description: '菜单id' })
   async findOne(@Param('id', new ParseIdPipe()) id: string) {
     const res = await this.menuService.findOne(id);

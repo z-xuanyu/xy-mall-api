@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:35:40
- * @LastEditTime: 2022-03-30 14:22:55
+ * @LastEditTime: 2022-04-07 14:45:07
  * @Description: 订单模块控制器
  */
 import {
@@ -27,6 +27,7 @@ import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { AuthGuard } from '@nestjs/passport';
 import { QueryOrderDto } from './dto/query-order.dto';
+import { QueryUserOrdersDto } from './dto/query-user-order.dto';
 
 @ApiTags('订单模块')
 @UseGuards(AuthGuard('admin-jwt'))
@@ -39,6 +40,13 @@ export class OrderController {
   @ApiOperation({ summary: '获取订单列表' })
   async findAll(@Query() parameters: QueryOrderDto) {
     const res = await this.orderService.findAll(parameters);
+    return apiSucceed(res);
+  }
+
+  @Get('/by-user')
+  @ApiOperation({ summary: '获取用户订单列表' })
+  async getUserOders(@Query() queryUserOrdersDto: QueryUserOrdersDto) {
+    const res = await this.orderService.getUserOrders(queryUserOrdersDto);
     return apiSucceed(res);
   }
 

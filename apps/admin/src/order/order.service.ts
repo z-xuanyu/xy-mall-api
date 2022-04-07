@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:35:40
- * @LastEditTime: 2022-03-30 16:31:58
+ * @LastEditTime: 2022-04-07 14:50:33
  * @Description: 订单模块 service
  */
 import { Injectable } from '@nestjs/common';
@@ -14,6 +14,8 @@ import { ApiFail } from 'libs/common/ResponseResultModel';
 import { Order } from 'libs/db/modules/order.model';
 import { InjectModel } from 'nestjs-typegoose';
 import { QueryOrderDto } from './dto/query-order.dto';
+import { QueryUserOrdersDto } from './dto/query-user-order.dto';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class OrderService {
@@ -94,6 +96,61 @@ export class OrderService {
     };
   }
 
+  // 获取指定会员订单列表
+  async getUserOrders(parameters: QueryUserOrdersDto) {
+    let total = 0;
+    const result = await this.orderModel
+      .aggregate([
+        {
+          $match: {
+            userId: new ObjectId(parameters.userId),
+          },
+        },
+        {
+          $lookup: {
+            from: 'useraddresses',
+            foreignField: '_id',
+            localField: 'addressId',
+            as: 'address',
+          },
+        },
+        {
+          $unwind: '$address',
+        },
+        {
+          $lookup: {
+            from: 'products',
+            foreignField: '_id',
+            localField: 'products.productId',
+            as: 'info',
+          },
+        },
+        {
+          $project: {
+            addressName: '$address.name',
+            totalPrice: 1,
+            payment: 1,
+            createdAt: 1,
+            products: '$info',
+          },
+        },
+        {
+          $skip: ~~((parameters.pageNumber - 1) * parameters.pageSize),
+        },
+        {
+          $limit: ~~parameters.pageSize,
+        },
+      ])
+      .then((doc) => {
+        total = doc.length;
+        return doc;
+      });
+
+    return {
+      total,
+      items: result,
+    };
+  }
   /**
    * 查询订单详细信息
    *
