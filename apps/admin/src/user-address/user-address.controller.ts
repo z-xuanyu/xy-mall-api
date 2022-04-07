@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-25 15:58:54
- * @LastEditTime: 2022-03-25 15:51:14
+ * @LastEditTime: 2022-04-07 11:14:58
  * @Description: Modify here please
  */
 import {
@@ -49,7 +49,7 @@ export class UserAddressController {
   @Get()
   @ApiOperation({ summary: '获取会员地址列表' })
   async findAll(@Query() queryUserAddressDto: QueryUserAddressDto) {
-    const res = this.userAddressService.findAll(queryUserAddressDto);
+    const res = await this.userAddressService.findAll(queryUserAddressDto);
     return apiSucceed(res);
   }
 
