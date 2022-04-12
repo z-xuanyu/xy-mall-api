@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-16 17:06:37
- * @LastEditTime: 2022-02-18 15:14:47
+ * @LastEditTime: 2022-04-12 14:57:46
  * @Description: Modify here please
  */
 
@@ -41,6 +41,10 @@ export class ClassifyNavigation {
   @ApiProperty({ title: '状态' })
   @prop({ default: true })
   status: boolean;
+
+  @ApiProperty({ title: '排序' })
+  @prop({ type: Number, default: 1 })
+  sort: number;
 
   @ApiProperty({ title: '备注' })
   @prop()

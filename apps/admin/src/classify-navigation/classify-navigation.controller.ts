@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-16 17:17:53
- * @LastEditTime: 2022-03-25 15:55:08
+ * @LastEditTime: 2022-04-12 15:24:04
  * @Description: Modify here please
  */
 import {
@@ -17,6 +17,7 @@ import {
   Delete,
   UseGuards,
   Query,
+  Put,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
@@ -28,6 +29,7 @@ import {
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ClassifyNavigationService } from './classify-navigation.service';
+import { ChangeClassifyNavigationStatusDto } from './dto/change-classify-navigation-status.dto';
 import { CreateClassifyNavigationDto } from './dto/create-classify-navigation.dto';
 import { QueryClassifyNavigationDto } from './dto/query-classify-navigation.dto';
 import { UpdateClassifyNavigationDto } from './dto/update-classify-navigation.dto';
@@ -35,7 +37,7 @@ import { UpdateClassifyNavigationDto } from './dto/update-classify-navigation.dt
 @ApiTags('分类导航管理')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
-@Controller('classify-navigation')
+@Controller('classifyNavigation')
 export class ClassifyNavigationController {
   constructor(
     private readonly classifyNavigationService: ClassifyNavigationService,
@@ -86,6 +88,22 @@ export class ClassifyNavigationController {
   @ApiParam({ name: 'id', description: '分类导航id' })
   async remove(@Param('id', new ParseIdPipe()) id: string) {
     const res = await this.classifyNavigationService.remove(id);
+    return apiSucceed(res);
+  }
+
+  @Put(':id/changeStatus')
+  @ApiOperation({ summary: '改变状态' })
+  @ApiParam({ name: 'id', description: '分类导航id' })
+  async changeStatus(
+    @Param('id', new ParseIdPipe()) id: string,
+    @Body()
+    changeClassifyNavigationStatusDto: ChangeClassifyNavigationStatusDto,
+  ) {
+    const res = await this.classifyNavigationService.changeStatus(
+      id,
+      changeClassifyNavigationStatusDto.status,
+    );
+
     return apiSucceed(res);
   }
 }

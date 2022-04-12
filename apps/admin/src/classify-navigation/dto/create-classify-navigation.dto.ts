@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-16 17:17:53
- * @LastEditTime: 2022-02-16 17:46:30
+ * @LastEditTime: 2022-04-12 14:58:32
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -28,6 +28,9 @@ export class CreateClassifyNavigationDto {
 
   @ApiProperty({ title: '网页地址' })
   url: string;
+
+  @ApiProperty({ title: '排序', default: 1 })
+  sort: number;
 
   @ApiProperty({ title: '备注' })
   remark: string;

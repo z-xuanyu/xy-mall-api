@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-16 17:17:53
- * @LastEditTime: 2022-03-03 10:40:01
+ * @LastEditTime: 2022-04-12 15:16:58
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -44,6 +44,7 @@ export class ClassifyNavigationService {
       })
       .limit(~~parameters.pageSize)
       .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
+      .sort({ sort: 1 })
       .then((doc) => {
         total = doc.length;
         return doc;
@@ -70,8 +71,26 @@ export class ClassifyNavigationService {
     );
   }
 
-  // 删除分类导航信息
+  /**
+   * 删除分类导航信息
+   *
+   * @param {string} id 导航id
+   * @return {*}
+   * @memberof ClassifyNavigationService
+   */
   async remove(id: string) {
     return await this.classifyNavigationModel.findByIdAndDelete(id);
+  }
+
+  /**
+   * 更新状态
+   *
+   * @param {string} id 导航id
+   * @param {boolean} status 状态
+   * @return {*}
+   * @memberof ClassifyNavigationService
+   */
+  async changeStatus(id: string, status: boolean) {
+    return await this.classifyNavigationModel.findByIdAndUpdate(id, { status });
   }
 }
