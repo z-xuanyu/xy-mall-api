@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-04 10:46:45
- * @LastEditTime: 2022-03-25 15:56:07
+ * @LastEditTime: 2022-04-12 16:19:52
  * @Description: Modify here please
  */
 import {
@@ -17,6 +17,7 @@ import {
   Delete,
   UseGuards,
   Query,
+  Put,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
@@ -33,6 +34,7 @@ import {
 } from 'libs/common/ResponseResultModel';
 import { Banner } from 'libs/db/modules/banner.model';
 import { BannerService } from './banner.service';
+import { ChangeBannerStatusDto } from './dto/change-banner-status.dto';
 import { CreateBannerDto } from './dto/create-banner.dto';
 import { QueryBannerDto } from './dto/query-banner.dto';
 import { UpdateBannerDto } from './dto/update-banner.dto';
@@ -90,6 +92,20 @@ export class BannerController {
     @Param('id', new ParseIdPipe()) id: string,
   ): Promise<ApiSucceedResult<Banner>> {
     const res = await this.bannerService.remove(id);
+    return apiSucceed(res);
+  }
+
+  @Put(':id/changeStatus')
+  @ApiOperation({ summary: '改变banner状态' })
+  @ApiParam({ name: 'id', description: 'BannerId' })
+  async changeStatus(
+    @Param('id', new ParseIdPipe()) id: string,
+    @Body() changeBannerStatusDto: ChangeBannerStatusDto,
+  ) {
+    const res = await this.bannerService.changeStatus(
+      id,
+      changeBannerStatusDto.status,
+    );
     return apiSucceed(res);
   }
 }

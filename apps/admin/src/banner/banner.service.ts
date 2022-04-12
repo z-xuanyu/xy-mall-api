@@ -4,11 +4,12 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-04 10:46:45
- * @LastEditTime: 2022-03-03 10:36:29
+ * @LastEditTime: 2022-04-12 16:27:37
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
+import { BannerStatus } from 'libs/common/enum/banner.enum';
 import { ApiFail, PaginationResult } from 'libs/common/ResponseResultModel';
 import { Banner } from 'libs/db/modules/banner.model';
 import { isValidObjectId } from 'mongoose';
@@ -105,5 +106,17 @@ export class BannerService {
    */
   async remove(id: string): Promise<Banner> {
     return await this.bannerModel.findByIdAndDelete(id);
+  }
+
+  /**
+   * 改变banner状态
+   *
+   * @param {string} id
+   * @param {boolean} status
+   * @return {*}
+   * @memberof BannerService
+   */
+  async changeStatus(id: string, status: BannerStatus) {
+    return await this.bannerModel.findByIdAndUpdate(id, { status });
   }
 }
