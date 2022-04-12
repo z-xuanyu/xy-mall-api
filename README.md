@@ -4,12 +4,12 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:46:30
- * @LastEditTime: 2022-03-25 11:05:52
+ * @LastEditTime: 2022-04-12 11:26:27
  * @Description: Modify here please
 -->
 
-## YuYu-清酒零售商城-NestJs-Api
-一个开源YuYu-清酒零售商城Api服务端，项目集成Nestjs+Mongodb+Jwt等。
+## YuYu-零售商城-NestJs-Api
+一个开源YuYu-零售商城Api服务端，项目集成Nestjs+Mongodb+Jwt等。
 项目是前后端分离，分为三端：Api服务端，Admin管理端，Web前端(uniapp),
 
 Admin端仓库：<a href="https://github.com/z-xuanyu/fukucho-admin">点击跳转</a>
@@ -20,6 +20,13 @@ admin-api只要是管理Admin站接口开发，web-api只要是负责web站api�
 
 在Nestjs中创建多个子项目也非常简单。首先全局安装一下 Nest-cil,详细cli使用，可以去阅读官网文档。
 
+### 演示：
+
+swagger文档 <a href="https://fukucho-api.zhouxuanyu.com/api-docs/">（点击跳转）</a>
+![swagger](docs/images/20220412111830.png)
+Admin 端演示地址：<a href="http://fukucho-admin.zhouxuanyu.com">（点击跳转）</a>
+
+![admin](docs/images/20220412111927.png)
 #### 如何创建Nestjs子项目
 ```bash
  $ nest g app [project-name]
@@ -95,11 +102,8 @@ $ yarn 或者 npm install 或者pnpm install
 
 5、修改项目jwt秘钥与失效时间。文件目录在：<span style="color: red">libs/common/config/src/jwt.config.ts</span>, 默认jwt 失效时间 1 天。
 
-6、初始化数据库，执行一下命令
-```bash
-$ yarn initDb
-```
-###### 初始化完成之后Admin端的默认管理员账号：admnin@qq.com 密码：123456
+6、初始化数据库，脚本未写好，请先导入备份数据库文件 backup/nest-js.sql, 导入数据库可以用个 Navicat Premium 工具等
+###### 初始化完成之后Admin端的默认最高权限管理员账号：xuanyu@qq.com 密码：123456
 
 7、运行项目
 
