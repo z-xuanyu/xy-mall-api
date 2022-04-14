@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:44:31
- * @LastEditTime: 2022-03-22 10:50:21
+ * @LastEditTime: 2022-04-14 18:24:24
  * @Description: Modify here please
  */
 import { Injectable, Logger } from '@nestjs/common';
@@ -24,21 +24,7 @@ export class AppService {
   public constructor(
     @InjectModel(SiteSettings)
     private settingModel: ReturnModelType<typeof SiteSettings>,
-  ) {
-    // 查询存储设置信息
-    this.settingModel.find().then((res) => {
-      this.fileStorageInfo = res[0].fileStorage;
-      // 初始化aliOss
-      this.aliOssClient = new OSS({
-        region: this.fileStorageInfo.aliOss.region,
-        accessKeyId: this.fileStorageInfo.aliOss.accessKeyId,
-        accessKeySecret: this.fileStorageInfo.aliOss.accessKeySecret,
-        bucket: this.fileStorageInfo.aliOss.bucket,
-      });
-      // 默认 bucket
-      this.aliOssClient.useBucket(this.fileStorageInfo.aliOss.bucket);
-    });
-  }
+  ) {}
 
   getHello(): string {
     return 'hello xuanyu';
@@ -47,6 +33,20 @@ export class AppService {
   // 上传文件
   async upload(file: any, domain: string) {
     try {
+      // 查询存储设置信息
+      const settingRes = await this.settingModel.find();
+      this.fileStorageInfo = settingRes[0].fileStorage;
+      if (this.fileStorageInfo.mode == 2) {
+        // 初始化aliOss
+        this.aliOssClient = new OSS({
+          region: this.fileStorageInfo.aliOss.region,
+          accessKeyId: this.fileStorageInfo.aliOss.accessKeyId,
+          accessKeySecret: this.fileStorageInfo.aliOss.accessKeySecret,
+          bucket: this.fileStorageInfo.aliOss.bucket,
+        });
+        // 默认 bucket
+        this.aliOssClient.useBucket(this.fileStorageInfo.aliOss.bucket);
+      }
       let data: any;
       switch (~~this.fileStorageInfo.mode) {
         // 本地上传

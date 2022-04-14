@@ -4,12 +4,14 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-23 10:38:54
- * @LastEditTime: 2022-03-23 14:18:27
+ * @LastEditTime: 2022-04-14 17:26:04
  * @Description: 初始使用数据脚本
  */
 import * as mongodb from 'mongodb';
 import { hashSync } from 'bcryptjs';
 import { baseDbConfig, dbConfig } from '../../common/src/config/db.config';
+
+// 权限菜单
 
 // 初始化数据
 const mongoClient = mongodb.MongoClient;
