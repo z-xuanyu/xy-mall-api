@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 10:53:19
- * @LastEditTime: 2022-03-15 14:30:26
+ * @LastEditTime: 2022-04-14 17:20:05
  * @Description: Modify here please
  */
 
@@ -26,6 +26,14 @@ export class UserCart {
   @ApiProperty({ title: '商品id' })
   @prop({ ref: () => Product })
   productId: Ref<Product>;
+
+  @ApiProperty({ title: '商品名称' })
+  @prop({ type: String })
+  productName?: string;
+
+  @ApiProperty({ title: '商品封面图' })
+  @prop({ type: String })
+  productPic?: string;
 
   @ApiProperty({ title: '选购数量' })
   @prop({ type: Number })
