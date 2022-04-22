@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-03-25 15:55:47
+ * @LastEditTime: 2022-04-22 10:17:55
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -34,6 +34,7 @@ import { ProductCommentModule } from './product-comment/product-comment.module';
 import { RoleModule } from './role/role.module';
 import { MenuModule } from './menu/menu.module';
 import { ProductUnitModule } from './product-unit/product-unit.module';
+import { CustomerServiceModule } from './customer-service/customer-service.module';
 
 @Module({
   imports: [
@@ -59,8 +60,9 @@ import { ProductUnitModule } from './product-unit/product-unit.module';
     LibraryCategoryModule,
     MediaLibraryModule,
     ClassifyNavigationModule,
-    SettingsModule,
     ProductUnitModule,
+    CustomerServiceModule,
+    SettingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

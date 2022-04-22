@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-21 18:15:07
- * @LastEditTime: 2022-04-21 18:24:21
+ * @LastEditTime: 2022-04-22 09:58:25
  * @Description: 客服实体模型
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -43,7 +43,11 @@ export class CustomerService {
   @prop({ type: String })
   avatar: string;
 
-  @ApiProperty({ title: '状态' })
+  @ApiProperty({ title: '是否在线' })
   @prop({ type: Boolean })
+  isOnline: boolean;
+
+  @ApiProperty({ title: '状态' })
+  @prop({ type: Boolean, default: true })
   status: boolean;
 }
