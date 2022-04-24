@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-04 10:01:38
- * @LastEditTime: 2022-03-04 17:56:21
+ * @LastEditTime: 2022-04-24 15:24:57
  * @Description: Modify here please
  */
 import {
@@ -23,6 +23,7 @@ import { Server } from 'ws';
 import { ChatMessages } from 'libs/db/modules/chat-messages.model';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
+import { CustomerService } from 'libs/db/modules/customer-service.model';
 
 @WebSocketGateway({
   namespace: '/chat',
@@ -38,6 +39,10 @@ export class MessageGateway
 {
   // 注入
   constructor(
+    // 客服
+    @InjectModel(CustomerService)
+    private customerServiceModel: ReturnModelType<typeof CustomerService>,
+    // 聊天记录
     @InjectModel(ChatMessages)
     private chatMessagesModel: ReturnModelType<typeof ChatMessages>,
   ) {}
@@ -60,27 +65,6 @@ export class MessageGateway
         // client.emit('onMessage', payload);
       });
   }
-
-  // 获取目标用户聊天记录
-  @SubscribeMessage('getUserChatData')
-  public async getUserChatDate(
-    @ConnectedSocket() client: Socket,
-    @MessageBody() payload: any,
-  ) {
-    if (!payload.adminId || !payload.userId) {
-      return client.emit('onUserChatData', {
-        code: 101,
-        message: 'id不能为空',
-      });
-    }
-
-    const res = await this.chatMessagesModel.find({
-      userId: payload.userId,
-      adminId: payload.adminId,
-    });
-    client.emit('onUserChatData', res);
-  }
-
   // /**
   //  * 房间单聊
   //  *
@@ -119,13 +103,15 @@ export class MessageGateway
 
   // 初始化
   public afterInit(server: Server): void {
-    return this.logger.log('Init');
+    return this.logger.log(`Init: ${server}`);
   }
 
+  // 断开连接
   public handleDisconnect(client: Socket): void {
     return this.logger.log(`Client disconnected: ${client.id}`);
   }
 
+  // 连接
   public handleConnection(client: Socket): void {
     return this.logger.log(`Client connected: ${client.id}`);
   }

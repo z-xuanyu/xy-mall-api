@@ -1,0 +1,66 @@
+/*
+ * @Author: xuanyu
+ * @LastEditors: xuanyu
+ * @email: 969718197@qq.com
+ * @github: https://github.com/z-xuanyu
+ * @Date: 2022-04-24 14:46:55
+ * @LastEditTime: 2022-04-24 15:06:49
+ * @Description: 客服聊天会话列表
+ */
+import { ApiProperty } from '@nestjs/swagger';
+import { ModelOptions, prop } from '@typegoose/typegoose';
+import { ObjectId } from 'mongodb';
+
+// 添加创建时间、更新时间字段
+@ModelOptions({
+  schemaOptions: {
+    timestamps: true,
+  },
+})
+export class ChatConversationRecord {
+  @ApiProperty({ title: '发送人id' })
+  @prop({ required: true, type: ObjectId })
+  userId: ObjectId;
+
+  @ApiProperty({ title: '接收人id' })
+  @prop({ required: true, type: ObjectId })
+  targetId: ObjectId;
+
+  @ApiProperty({ title: '用户昵称' })
+  @prop({ type: String })
+  nickname: string;
+
+  @ApiProperty({ title: '用户头像' })
+  @prop({ type: String })
+  avatar: string;
+
+  @ApiProperty({ title: '是否为游客' })
+  @prop({ type: Boolean })
+  isTourist: boolean;
+
+  @ApiProperty({ title: '是否在线' })
+  @prop({ type: String })
+  isOnline: string;
+
+  @ApiProperty({
+    title: '信息来源设备',
+    description: '1: pc, 2: 微信(公众号), 3: 小程序 4: h5',
+  })
+  @prop({ type: Number, default: 4 })
+  source: number;
+
+  @ApiProperty({ title: '消息未读数' })
+  @prop({ type: Number, default: 0 })
+  unreadNum: number;
+
+  @ApiProperty({ title: '最新一条消息内容' })
+  @prop({ type: String })
+  messageContent: string;
+
+  @ApiProperty({
+    type: '消息类型',
+    description: '1: 文本，2: 表情，3: 图片, 4: 语音，5：商品推送',
+  })
+  @prop({ type: Number, default: 1 })
+  messageType: number;
+}
