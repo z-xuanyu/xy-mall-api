@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:57:10
- * @LastEditTime: 2022-04-22 10:16:54
+ * @LastEditTime: 2022-04-26 10:36:51
  * @Description: 数据库模型
  */
 import { Global, Module } from '@nestjs/common';
@@ -14,6 +14,7 @@ import { DbService } from './db.service';
 import { Admin } from './modules/admin.model';
 import { Banner } from './modules/banner.model';
 import { Category } from './modules/category.model';
+import { ChatConversationRecord } from './modules/chat-conversation-record.model';
 import { ChatMessages } from './modules/chat-messages.model';
 import { ClassifyNavigation } from './modules/classify-navigation.model';
 import { CustomerService } from './modules/customer-service.model';
@@ -63,8 +64,9 @@ const models = TypegooseModule.forFeature([
   Banner,
   LibraryCategory,
   MediaLibrary,
-  ChatMessages,
   CustomerService,
+  ChatConversationRecord,
+  ChatMessages,
   SiteSettings,
 ]);
 

@@ -17,6 +17,7 @@ import { UserModule } from './user/user.module';
 import { UserCartModule } from './user-cart/user-cart.module';
 import { OrderModule } from './order/order.module';
 import { ProductCommentModule } from './product-comment/product-comment.module';
+import { ChatNessageModule } from './chat-nessage/chat-nessage.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ProductCommentModule } from './product-comment/product-comment.module';
     UserCartModule,
     OrderModule,
     ProductCommentModule,
+    ChatNessageModule,
   ],
   controllers: [WebController],
   providers: [WebService],

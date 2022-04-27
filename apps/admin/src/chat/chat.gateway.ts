@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-04 10:01:38
- * @LastEditTime: 2022-04-24 15:24:57
+ * @LastEditTime: 2022-04-27 10:23:34
  * @Description: Modify here please
  */
 import {
@@ -24,6 +24,7 @@ import { ChatMessages } from 'libs/db/modules/chat-messages.model';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { CustomerService } from 'libs/db/modules/customer-service.model';
+import { ChatConversationRecord } from 'libs/db/modules/chat-conversation-record.model';
 
 @WebSocketGateway({
   namespace: '/chat',
@@ -45,25 +46,80 @@ export class MessageGateway
     // 聊天记录
     @InjectModel(ChatMessages)
     private chatMessagesModel: ReturnModelType<typeof ChatMessages>,
+    @InjectModel(ChatConversationRecord)
+    private chatConversationRecordModel: ReturnModelType<
+      typeof ChatConversationRecord
+    >,
   ) {}
 
   @WebSocketServer() server: Server;
 
   private logger: Logger = new Logger('MessageGateway');
 
+  @SubscribeMessage('connectedCustomerService')
+  public async handleConnectedCustomerService(
+    @MessageBody() payload: any,
+  ): Promise<any> {
+    // 建立会话关系
+    const hasRecord = await this.chatConversationRecordModel.findOne({
+      userId: payload.userId,
+      customerServiceId: payload.customerServiceId,
+    });
+    // 是否有会话记录
+    if (!hasRecord) {
+      this.chatConversationRecordModel.create({
+        userId: payload.userId,
+        customerServiceId: payload.customerServiceId,
+      });
+    }
+  }
+
   // 发送信息
   @SubscribeMessage('sendMessage')
-  public handleMessage(client: Socket, @MessageBody() payload: any): any {
-    this.chatMessagesModel
-      .create({
-        userId: payload.userId,
-        adminId: payload.adminId,
-        content: payload.content,
-      })
-      .then(() => {
-        this.server.emit('onMessage', payload);
-        // client.emit('onMessage', payload);
-      });
+  public async handleMessage(
+    client: Socket,
+    @MessageBody() payload: any,
+  ): Promise<any> {
+    // 目标用户是否为客服
+    const hasCuservice = await this.customerServiceModel.findById(
+      payload.targetId,
+    );
+    // 存储聊天记录
+    const res = await this.chatMessagesModel.create({
+      user: payload.userId,
+      target: payload.targetId,
+      content: payload.content,
+      messageType: payload.messageType,
+      userRef: hasCuservice ? 'User' : 'CustomerService',
+      targetRef: hasCuservice ? 'CustomerService' : 'User',
+    });
+
+    // 获取存储成功的信息
+    const messageContent = await this.chatMessagesModel
+      .findById(res._id)
+      .populate({ path: 'user', select: ['name', 'avatar'] })
+      .populate({ path: 'target', select: ['name', 'avatar'] });
+    // 更新目标用户会话最后一条消息
+    await this.chatConversationRecordModel.findOneAndUpdate(
+      {
+        $or: [
+          {
+            userId: payload.userId,
+            customerServiceId: payload.targetId,
+          },
+          {
+            userId: payload.targetId,
+            customerServiceId: payload.userId,
+          },
+        ],
+      },
+      { messageContent: messageContent.content },
+    );
+    // 消息监听
+    this.server.emit('onMessage', messageContent);
+    // 发送成功
+    this.server.emit('sendSuccess', messageContent);
+    // client.emit('onMessage', payload);
   }
   // /**
   //  * 房间单聊

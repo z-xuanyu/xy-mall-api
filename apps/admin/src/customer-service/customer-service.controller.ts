@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-22 09:56:57
- * @LastEditTime: 2022-04-22 10:14:27
+ * @LastEditTime: 2022-04-26 10:31:22
  * @Description: 客服管理接口控制器
  */
 import {
@@ -23,6 +23,7 @@ import {
   ApiBearerAuth,
   ApiOperation,
   ApiParam,
+  ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
@@ -86,6 +87,29 @@ export class CustomerServiceController {
   @ApiParam({ name: 'id', description: '客服id' })
   async remove(@Param('id', new ParseIdPipe()) id: string) {
     const res = await this.customerServiceService.remove(id);
+    return apiSucceed(res);
+  }
+
+  @Get(':id/getConversationRecord')
+  @ApiOperation({ summary: '获取客服会话列表' })
+  @ApiParam({ name: 'id', description: '客服id' })
+  async getChatConversationRecord(@Param('id', new ParseIdPipe()) id: string) {
+    const res = await this.customerServiceService.getChatConversationRecord(id);
+    return apiSucceed(res);
+  }
+
+  @Get(':id/getChatMessageList')
+  @ApiOperation({ summary: '获取客服聊天记录列表' })
+  @ApiParam({ name: 'id', description: '客服id' })
+  @ApiQuery({ name: 'targetId', description: '目标用户id' })
+  async getChatMessageList(
+    @Param('id', new ParseIdPipe()) id: string,
+    @Query('targetId') targetId: string,
+  ) {
+    const res = await this.customerServiceService.getChatMessageList(
+      id,
+      targetId,
+    );
     return apiSucceed(res);
   }
 }

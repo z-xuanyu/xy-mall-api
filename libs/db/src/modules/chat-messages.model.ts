@@ -4,12 +4,13 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-04 09:50:34
- * @LastEditTime: 2022-04-24 14:41:14
+ * @LastEditTime: 2022-04-26 18:01:06
  * @Description: 聊天对话记录模型
  */
 import { ApiProperty } from '@nestjs/swagger';
-import { ModelOptions, prop } from '@typegoose/typegoose';
-import { ObjectId } from 'mongodb';
+import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
+import { CustomerService } from './customer-service.model';
+import { User } from './user.model';
 // 添加创建时间、更新时间字段
 @ModelOptions({
   schemaOptions: {
@@ -17,13 +18,21 @@ import { ObjectId } from 'mongodb';
   },
 })
 export class ChatMessages {
+  @ApiProperty({ title: '发送人关联表' })
+  @prop({ enum: ['User', 'CustomerService'], required: true })
+  userRef: string;
+
+  @ApiProperty({ title: '接受人关联表' })
+  @prop({ enum: ['User', 'CustomerService'], required: true })
+  targetRef: string;
+
   @ApiProperty({ title: '发送人id' })
-  @prop({ required: true, type: ObjectId })
-  userId: ObjectId;
+  @prop({ required: true, refPath: 'userRef' })
+  user: Ref<User | CustomerService>;
 
   @ApiProperty({ title: '接收人id' })
-  @prop({ required: true, type: ObjectId })
-  targetId: ObjectId;
+  @prop({ required: true, refPath: 'targetRef' })
+  target: Ref<User | CustomerService>;
 
   @ApiProperty({ title: '是否已读' })
   @prop({ type: Boolean, default: false })

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 11:02:01
- * @LastEditTime: 2022-03-15 17:45:40
+ * @LastEditTime: 2022-04-27 11:25:52
  * @Description: Modify here please
  */
 import {
@@ -31,7 +31,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
 @ApiTags('购物车相关')
-@Controller('user-cart')
+@Controller('userCart')
 @UseGuards(AuthGuard('web-jwt'))
 @ApiBearerAuth()
 export class UserCartController {
