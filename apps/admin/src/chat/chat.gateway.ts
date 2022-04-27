@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-04 10:01:38
- * @LastEditTime: 2022-04-27 10:23:34
+ * @LastEditTime: 2022-04-27 16:52:05
  * @Description: Modify here please
  */
 import {
@@ -113,12 +113,10 @@ export class MessageGateway
           },
         ],
       },
-      { messageContent: messageContent.content },
+      { messageContent: messageContent.content, $inc: { unreadNum: 1 } },
     );
     // 消息监听
-    this.server.emit('onMessage', messageContent);
-    // 发送成功
-    this.server.emit('sendSuccess', messageContent);
+    await this.server.emit('onMessage', messageContent);
     // client.emit('onMessage', payload);
   }
   // /**

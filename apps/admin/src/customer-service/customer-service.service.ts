@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-22 09:56:57
- * @LastEditTime: 2022-04-26 17:57:26
+ * @LastEditTime: 2022-04-27 16:05:30
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -149,5 +149,13 @@ export class CustomerServiceService {
       })
       .populate({ path: 'user', select: ['name', 'avatar'] })
       .populate({ path: 'target', select: ['name', 'avatar'] });
+  }
+
+  // 清空会话列表未读数
+  async emptyConversationRecordUnreadkNum(userId: string, cuServiceId: string) {
+    return this.chatConversationRecordModel.findOneAndUpdate(
+      { userId, customerServiceId: cuServiceId },
+      { unreadNum: 0 },
+    );
   }
 }
