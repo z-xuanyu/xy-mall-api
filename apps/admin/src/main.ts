@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-03-16 11:51:21
+ * @LastEditTime: 2022-04-28 11:10:52
  * @Description: Modify here please
  */
 import { NestFactory } from '@nestjs/core';
@@ -21,7 +21,13 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   // Web漏洞的
-  app.use(helmet());
+  app.use(
+    helmet({
+      crossOriginResourcePolicy: {
+        policy: 'cross-origin',
+      },
+    }),
+  );
   // 访问频率限制
   app.use(
     rateLimit({
@@ -34,8 +40,8 @@ async function bootstrap() {
   // 允许跨域
   app.enableCors();
   // 静态文件管理
-  app.useStaticAssets(join(__dirname, './uploads-images/'), {
-    prefix: '/uploads-images/',
+  app.useStaticAssets(join(__dirname, 'uploads-images'), {
+    prefix: '/uploads-images',
   });
   // 全局注册错误的过滤器(错误异常)
   app.useGlobalFilters(new HttpExceptionFilter());

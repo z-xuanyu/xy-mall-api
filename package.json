@@ -50,6 +50,7 @@
     "mongoose": "^6.2.4",
     "multer-aliyun-oss": "^2.1.0",
     "nestjs-typegoose": "^7.1.38",
+    "nuid": "^1.1.6",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
