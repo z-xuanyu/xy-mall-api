@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-04 10:01:38
- * @LastEditTime: 2022-04-27 16:52:05
+ * @LastEditTime: 2022-04-28 14:29:48
  * @Description: Modify here please
  */
 import {
@@ -88,10 +88,11 @@ export class MessageGateway
     const res = await this.chatMessagesModel.create({
       user: payload.userId,
       target: payload.targetId,
-      content: payload.content,
+      content: payload?.content ?? '',
       messageType: payload.messageType,
       userRef: hasCuservice ? 'User' : 'CustomerService',
       targetRef: hasCuservice ? 'CustomerService' : 'User',
+      product: payload?.product,
     });
 
     // 获取存储成功的信息
@@ -116,7 +117,7 @@ export class MessageGateway
       { messageContent: messageContent.content, $inc: { unreadNum: 1 } },
     );
     // 消息监听
-    await this.server.emit('onMessage', messageContent);
+    this.server.emit('onMessage', messageContent);
     // client.emit('onMessage', payload);
   }
   // /**

@@ -4,13 +4,39 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-04 09:50:34
- * @LastEditTime: 2022-04-26 18:01:06
+ * @LastEditTime: 2022-04-28 14:28:42
  * @Description: 聊天对话记录模型
  */
 import { ApiProperty } from '@nestjs/swagger';
 import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
 import { CustomerService } from './customer-service.model';
 import { User } from './user.model';
+
+class PushProductType {
+  @ApiProperty({ title: '商品标题' })
+  @prop()
+  title: string;
+
+  @ApiProperty({ title: '商品id' })
+  @prop()
+  id: string;
+
+  @ApiProperty({ title: '商品封面图' })
+  @prop()
+  pic: string;
+
+  @ApiProperty({ title: '商品价格' })
+  @prop()
+  price: number;
+
+  @ApiProperty({ title: '商品库存' })
+  @prop()
+  inventory: number;
+
+  @ApiProperty({ title: '商品销量' })
+  @prop()
+  sales: number;
+}
 // 添加创建时间、更新时间字段
 @ModelOptions({
   schemaOptions: {
@@ -40,7 +66,7 @@ export class ChatMessages {
 
   @ApiProperty({ title: '信息内容' })
   @prop({ type: String })
-  content: string;
+  content?: string;
 
   @ApiProperty({ title: '是否为游客' })
   @prop({ type: Boolean, default: false })
@@ -52,4 +78,8 @@ export class ChatMessages {
   })
   @prop({ text: Number, default: 1 })
   messageType: number;
+
+  @ApiProperty({ title: '推送商品信息' })
+  @prop({ type: PushProductType })
+  product?: PushProductType;
 }

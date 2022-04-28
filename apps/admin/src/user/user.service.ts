@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:07:52
- * @LastEditTime: 2022-04-07 17:17:43
- * @Description: Modify here please
+ * @LastEditTime: 2022-04-28 14:49:03
+ * @Description: 会员service 模块
  */
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
@@ -24,9 +24,12 @@ import { ObjectId } from 'mongodb';
 @Injectable()
 export class UserService {
   constructor(
+    // 用户
     @InjectModel(User) private userModel: ReturnModelType<typeof User>,
+    // 用户浏览记录
     @InjectModel(UserViewsHistory)
     private userViewsHistoryModel: ReturnModelType<typeof UserViewsHistory>,
+    // 用户收藏
     @InjectModel(UserCollection)
     private userCollectionModel: ReturnModelType<typeof UserCollection>,
   ) {}
@@ -108,6 +111,8 @@ export class UserService {
             productId: '$info._id',
             pic: '$info.pic',
             price: '$info.price',
+            inventory: '$info.inventory',
+            sales: '$info.sales',
           },
         },
         {
@@ -120,7 +125,6 @@ export class UserService {
         total = doc.length;
         return doc;
       });
-
     return {
       items: result,
       total,
@@ -177,6 +181,7 @@ export class UserService {
       total,
     };
   }
+
   /**
    * 会员信息
    *

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:35:40
- * @LastEditTime: 2022-04-07 15:01:48
+ * @LastEditTime: 2022-04-28 15:15:24
  * @Description: 订单模块 service
  */
 import { Injectable } from '@nestjs/common';
@@ -98,6 +98,12 @@ export class OrderService {
 
   // 获取指定会员订单列表
   async getUserOrders(parameters: QueryUserOrdersDto) {
+    if (!parameters.pageNumber) {
+      parameters.pageNumber = 1;
+    }
+    if (!parameters.pageSize) {
+      parameters.pageSize = 10;
+    }
     let total = 0;
     const result = await this.orderModel
       .aggregate([
@@ -107,6 +113,9 @@ export class OrderService {
             _id: parameters.orderId
               ? new ObjectId(parameters.orderId)
               : { $ne: null },
+            status: parameters.status
+              ? ~~parameters.status
+              : { $ne: parameters.status },
           },
         },
         {
