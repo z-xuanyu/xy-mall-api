@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:18:29
- * @LastEditTime: 2022-03-30 16:19:06
+ * @LastEditTime: 2022-04-28 16:22:44
  * @Description: Modify here please
  */
 
@@ -74,9 +74,33 @@ export class Order {
   @prop({ type: Number, default: 0 })
   paymentType: number;
 
+  @ApiProperty({ title: '支付编号' })
+  @prop({ type: String })
+  payNumber: string;
+
   @ApiProperty({ title: '订单收货人地址' })
   @prop({ ref: () => UserAddress })
   addressId: Ref<UserAddress>;
+
+  @ApiProperty({ title: '支付时间' })
+  @prop({ type: Date })
+  payTime: Date;
+
+  @ApiProperty({ title: '发货时间' })
+  @prop({ type: Date })
+  sendTime: Date;
+
+  @ApiProperty({ title: '收货时间' })
+  @prop({ type: Date })
+  receivedTime: Date;
+
+  @ApiProperty({ title: '评价时间' })
+  @prop({ type: Date })
+  evaluateTime: Date;
+
+  @ApiProperty({ title: '完成时间' })
+  @prop({ type: Date })
+  finishTime: Date;
 
   @ApiProperty({ title: '订单来源' })
   @prop({ type: String })

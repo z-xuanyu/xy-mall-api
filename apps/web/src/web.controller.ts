@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:56:14
- * @LastEditTime: 2022-03-23 18:21:45
+ * @LastEditTime: 2022-04-29 10:01:22
  * @Description: Modify here please
  */
 import {
@@ -29,7 +29,9 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
+import { TestDto } from './test.dto';
 import { WebService } from './web.service';
+
 // 多图上传
 class multipleFileUploadDto {
   @ApiProperty({ type: 'array', items: { type: 'string', format: 'binary' } })
@@ -92,6 +94,14 @@ export class WebController {
     const domain = `${req.protocol}://${req.headers.host}`;
     const res = await this.webService.upload(file, domain);
     return apiSucceed(res?.url);
+  }
+
+  @Post('minUpload')
+  @ApiOperation({ summary: '小程序文件上传' })
+  @ApiConsumes('multipart/form-data')
+  async minUpload(@Body() dto: TestDto) {
+    console.log(dto);
+    return dto;
   }
 
   @Post('pay/weixin')

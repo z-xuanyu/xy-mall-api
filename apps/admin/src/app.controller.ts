@@ -4,12 +4,13 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-04-27 18:10:26
+ * @LastEditTime: 2022-04-29 10:59:47
  * @Description: Modify here please
  */
 import {
   Controller,
   Get,
+  HttpStatus,
   Post,
   Req,
   Res,
@@ -32,6 +33,7 @@ import { ApiConfig, ApiConfigKit, WeChat } from 'tnwx';
 import { AppService } from './app.service';
 import { HandMsgAdapter } from './handMsgAdapter';
 import { Request, Response } from 'express';
+import * as getRawBody from 'raw-body';
 
 class FileUploadDto {
   @ApiProperty({ type: 'string', format: 'binary' })
@@ -47,13 +49,12 @@ export class AppController {
     // 初始化公众号配置
     const devApiConfig = new ApiConfig(
       'wxb1bcb0988520b14a',
-      '56e9a2ea5ffed507b3cbb8f9167ce516',
+      '980af11444c025acf3aabf81f8f20371',
       'xuanyutest',
       false,
       'Zw9VFJ2DtojjkuXlSheo9Qv3bGPLK9GrpcKNC3WTuM7',
     );
     ApiConfigKit.putApiConfig(devApiConfig);
-    ApiConfigKit.devMode = true;
   }
 
   @Get()
@@ -98,21 +99,26 @@ export class AppController {
       timestamp = request.query.timestamp.toString(), //时间戳
       nonce = request.query.nonce.toString(), //随机数
       echostr = request.query.echostr.toString(); //随机字符串
+    console.log(signature, 777);
     return WeChat.checkSignature(signature, timestamp, nonce, echostr);
   }
 
   @Post('weixin')
   @ApiOperation({ summary: '微信公众号接受' })
-  async PostMsg(@Res() res: Response) {
-    // const buffer: Buffer = await getRawBody(req);
-    // const msgXml = buffer.toString('utf-8');
-    // const data = await WeChat.handleMsg(this.msgAdapter, msgXml);
-    res.send(`<xml>
-    <ToUserName><![CDATA[o-bHRs8SmQTWQqBi2n1vatcrTAw8]]></ToUserName>
-    <FromUserName><![CDATA[gh_cfd61f5e4587]]></FromUserName>
-    <CreateTime>${new Date().getTime()}</CreateTime>
-    <MsgType><![CDATA[text]]></MsgType>
-    <Content><![CDATA[你好]]></Content>
-  </xml>`);
+  async PostMsg(
+    @Res({ passthrough: true }) res: Response,
+    @Req() request: Request,
+  ) {
+    const buffer: Buffer = await getRawBody(request);
+    const msgXml = buffer.toString('utf-8');
+    const data = await WeChat.handleMsg(this.msgAdapter, msgXml);
+    res.status(HttpStatus.OK).send(data);
+  }
+
+  @Get('weixin/auth')
+  @ApiOperation({ summary: '微信公众号登录授权回调' })
+  async weixinAuth(@Req() request: Request) {
+    console.log(request);
+    console.log('回调成功');
   }
 }

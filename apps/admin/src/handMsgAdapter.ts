@@ -59,7 +59,7 @@ export class HandMsgAdapter implements MsgAdapter {
     let outMsg: any;
     let content = 'IJPay 让支付触手可及 \n\nhttps://gitee.com/javen205/IJPay';
     if ('1' === inTextMsg.getContent) {
-      content = '极速开发微信公众号 \n\nhttps://github.com/javen205/TNWX';
+      content = '轩钰博客 \n\nhttps://www.zhouxuanyu.com';
       outMsg = new OutTextMsg(inTextMsg);
       outMsg.setContent(content);
     } else if ('2' === inTextMsg.getContent) {
@@ -153,9 +153,10 @@ export class HandMsgAdapter implements MsgAdapter {
 
   async processInFollowEvent(inFollowEvent: InFollowEvent): Promise<OutMsg> {
     if (InFollowEvent.EVENT_INFOLLOW_SUBSCRIBE == inFollowEvent.getEvent) {
+      console.log(inFollowEvent, '关注信息');
       return this.renderOutTextMsg(
         inFollowEvent,
-        '感谢你的关注 么么哒 \n\n交流群：114196246',
+        '感谢你的关注 么么哒 \n\nQQ：969718197',
       );
     } else if (
       InFollowEvent.EVENT_INFOLLOW_UNSUBSCRIBE == inFollowEvent.getEvent
