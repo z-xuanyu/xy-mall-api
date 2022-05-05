@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-25 16:57:52
- * @LastEditTime: 2022-03-25 15:52:27
+ * @LastEditTime: 2022-05-05 11:10:00
  * @Description: Modify here please
  */
 import {
@@ -33,7 +33,7 @@ import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 @ApiTags('会员收藏')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
-@Controller('user-collection')
+@Controller('userCollection')
 export class UserCollectionController {
   constructor(private readonly userCollectionService: UserCollectionService) {}
 

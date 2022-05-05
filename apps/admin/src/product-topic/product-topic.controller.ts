@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 16:45:17
- * @LastEditTime: 2022-03-25 15:52:59
+ * @LastEditTime: 2022-05-05 11:14:42
  * @Description: Modify here please
  */
 import {
@@ -39,7 +39,7 @@ import { ProductTopic } from 'libs/db/modules/product-topic.model';
 @ApiTags('商品专题')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
-@Controller('product-topic')
+@Controller('productTopic')
 export class ProductTopicController {
   constructor(private readonly productTopicService: ProductTopicService) {}
 

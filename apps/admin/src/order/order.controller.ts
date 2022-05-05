@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:35:40
- * @LastEditTime: 2022-04-28 15:05:50
+ * @LastEditTime: 2022-05-05 11:12:20
  * @Description: 订单模块控制器
  */
 import {
@@ -43,7 +43,7 @@ export class OrderController {
     return apiSucceed(res);
   }
 
-  @Get('/by-user')
+  @Get('/byUser')
   @ApiOperation({ summary: '获取用户订单列表' })
   async getUserOders(@Query() queryUserOrdersDto: QueryUserOrdersDto) {
     const res = await this.orderService.getUserOrders(queryUserOrdersDto);

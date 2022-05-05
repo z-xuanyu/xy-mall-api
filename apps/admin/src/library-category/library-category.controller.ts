@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-07 10:52:56
- * @LastEditTime: 2022-03-25 15:54:29
+ * @LastEditTime: 2022-05-05 11:16:21
  * @Description: Modify here please
  */
 import {
@@ -33,7 +33,7 @@ import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 @ApiTags('媒体库分类')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
-@Controller('library-category')
+@Controller('libraryCategory')
 export class LibraryCategoryController {
   constructor(
     private readonly libraryCategoryService: LibraryCategoryService,

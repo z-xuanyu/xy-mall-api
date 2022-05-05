@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-02 17:02:45
- * @LastEditTime: 2022-04-02 17:17:26
+ * @LastEditTime: 2022-05-05 11:17:44
  * @Description: Modify here please
  */
 import {
@@ -35,7 +35,7 @@ import { QueryProductUnitDto } from './dto/query-product-unit.dto';
 @ApiTags('商品单位')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
-@Controller('product-unit')
+@Controller('productUnit')
 export class ProductUnitController {
   constructor(private readonly productUnitService: ProductUnitService) {}
 

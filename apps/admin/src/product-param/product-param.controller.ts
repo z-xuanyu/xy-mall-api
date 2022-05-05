@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-12 15:47:53
- * @LastEditTime: 2022-03-25 15:53:34
+ * @LastEditTime: 2022-05-05 11:12:53
  * @Description: Modify here please
  */
 import {
@@ -35,7 +35,7 @@ import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 @ApiTags('商品参数模板')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
-@Controller('product-param')
+@Controller('productParam')
 export class ProductParamController {
   constructor(private readonly productParamService: ProductParamService) {}
 

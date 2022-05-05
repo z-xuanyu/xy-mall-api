@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:22:58
- * @LastEditTime: 2022-03-29 17:58:48
+ * @LastEditTime: 2022-05-05 11:15:31
  * @Description: Modify here please
  */
 import {
@@ -32,7 +32,7 @@ import { ProductCommentService } from './product-comment.service';
 @ApiTags('商品评价')
 @UseGuards(AuthGuard('admin-jwt'))
 @ApiBearerAuth()
-@Controller('product-comment')
+@Controller('productComment')
 export class ProductCommentController {
   constructor(private readonly productCommentService: ProductCommentService) {}
 
