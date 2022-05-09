@@ -1648,7 +1648,7 @@
               decorator(target, key, paramIndex);
             };
           };
-        var _a, _b, _c, _d, _e;
+        var _a, _b, _c, _d, _e, _f;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AuthController = void 0;
         const common_1 = __webpack_require__(
@@ -1673,11 +1673,27 @@
         const current_user_decorator_1 = __webpack_require__(
           /*! ./current-user.decorator */ './apps/admin/src/auth/current-user.decorator.ts',
         );
+        const cache_manager_1 = __webpack_require__(
+          /*! cache-manager */ 'cache-manager',
+        );
+        const svgCaptcha = __webpack_require__(
+          /*! svg-captcha */ 'svg-captcha',
+        );
         let AuthController = class AuthController {
-          constructor(jwtService) {
+          constructor(jwtService, cacheManager) {
             this.jwtService = jwtService;
+            this.cacheManager = cacheManager;
           }
           async adminLogin(dto, req) {
+            const captcha = await this.cacheManager.get(
+              `captcha_${dto.captcha.toLocaleUpperCase()}`,
+            );
+            if (!captcha) {
+              return {
+                code: 101,
+                message: '验证码错误!',
+              };
+            }
             const accessToken = this.jwtService.sign({
               email: req.user.email,
               id: String(req.user._id),
@@ -1699,10 +1715,27 @@
             };
             return (0, ResponseResultModel_1.apiSucceed)(data);
           }
+          async getCaptcha() {
+            const captcha = svgCaptcha.create({
+              size: 4,
+              fontSize: 50,
+              width: 100,
+              height: 40,
+              background: '#cc9966',
+            });
+            await this.cacheManager.set(
+              `captcha_${captcha.text.toLocaleUpperCase()}`,
+              captcha.text,
+              {
+                ttl: 300,
+              },
+            );
+            return captcha.data;
+          }
         };
         __decorate(
           [
-            (0, swagger_1.ApiOperation)({ summary: '管理站--登录' }),
+            (0, swagger_1.ApiOperation)({ summary: '登录' }),
             (0, common_1.Post)('admin/login'),
             (0, common_1.UseGuards)((0, passport_1.AuthGuard)('admin-local')),
             __param(0, (0, common_1.Body)()),
@@ -1731,9 +1764,7 @@
         __decorate(
           [
             (0, common_1.Get)('admin/info'),
-            (0, swagger_1.ApiOperation)({
-              summary: '管理站--当前登录用户信息',
-            }),
+            (0, swagger_1.ApiOperation)({ summary: '当前登录用户信息' }),
             (0, common_1.UseGuards)((0, passport_1.AuthGuard)('admin-jwt')),
             (0, swagger_1.ApiBearerAuth)(),
             __param(0, (0, current_user_decorator_1.CurrentUser)()),
@@ -1757,15 +1788,33 @@
           'currentLoginInfo',
           null,
         );
+        __decorate(
+          [
+            (0, common_1.Get)('admin/getCaptcha'),
+            (0, swagger_1.ApiOperation)({ summary: '获取验证码' }),
+            __metadata('design:type', Function),
+            __metadata('design:paramtypes', []),
+            __metadata('design:returntype', Promise),
+          ],
+          AuthController.prototype,
+          'getCaptcha',
+          null,
+        );
         AuthController = __decorate(
           [
             (0, swagger_1.ApiTags)('登录'),
             (0, common_1.Controller)('auth'),
+            __param(1, (0, common_1.Inject)(common_1.CACHE_MANAGER)),
             __metadata('design:paramtypes', [
               typeof (_e =
                 typeof jwt_1.JwtService !== 'undefined' && jwt_1.JwtService) ===
               'function'
                 ? _e
+                : Object,
+              typeof (_f =
+                typeof cache_manager_1.Cache !== 'undefined' &&
+                cache_manager_1.Cache) === 'function'
+                ? _f
                 : Object,
             ]),
           ],
@@ -1834,6 +1883,7 @@
           [
             (0, common_1.Module)({
               imports: [
+                common_1.CacheModule.register(),
                 passport_1.PassportModule,
                 jwt_1.JwtModule.register({
                   secret: jwt_config_1.adminJwtConfig.secret,
@@ -1939,6 +1989,15 @@
           ],
           AdminLoginDto.prototype,
           'password',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '验证码' }),
+            __metadata('design:type', String),
+          ],
+          AdminLoginDto.prototype,
+          'captcha',
           void 0,
         );
         exports.AdminLoginDto = AdminLoginDto;
@@ -21896,6 +21955,16 @@
         /***/
       },
 
+    /***/ 'cache-manager':
+      /*!********************************!*\
+  !*** external "cache-manager" ***!
+  \********************************/
+      /***/ (module) => {
+        module.exports = require('cache-manager');
+
+        /***/
+      },
+
     /***/ 'class-transformer':
       /*!************************************!*\
   !*** external "class-transformer" ***!
@@ -22032,6 +22101,16 @@
   \****************************/
       /***/ (module) => {
         module.exports = require('socket.io');
+
+        /***/
+      },
+
+    /***/ 'svg-captcha':
+      /*!******************************!*\
+  !*** external "svg-captcha" ***!
+  \******************************/
+      /***/ (module) => {
+        module.exports = require('svg-captcha');
 
         /***/
       },
