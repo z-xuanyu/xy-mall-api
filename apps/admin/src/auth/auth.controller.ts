@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 17:19:09
- * @LastEditTime: 2022-05-09 16:08:22
+ * @LastEditTime: 2022-05-09 16:32:14
  * @Description: 登录控制器
  */
 import {
@@ -100,6 +100,6 @@ export class AuthController {
         ttl: 300, // 5分钟失效
       },
     );
-    return captcha.data;
+    return apiSucceed(captcha.data);
   }
 }

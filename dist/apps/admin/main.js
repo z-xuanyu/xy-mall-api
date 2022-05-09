@@ -1730,7 +1730,7 @@
                 ttl: 300,
               },
             );
-            return captcha.data;
+            return (0, ResponseResultModel_1.apiSucceed)(captcha.data);
           }
         };
         __decorate(
