@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:57:10
- * @LastEditTime: 2022-05-20 17:46:48
+ * @LastEditTime: 2022-05-20 17:52:49
  * @Description: 数据库模型
  */
 import { Global, Module } from '@nestjs/common';
