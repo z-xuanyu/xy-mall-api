@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:57:10
- * @LastEditTime: 2022-05-07 15:26:46
+ * @LastEditTime: 2022-05-20 17:46:48
  * @Description: 数据库模型
  */
 import { Global, Module } from '@nestjs/common';
@@ -69,7 +69,7 @@ const models = TypegooseModule.forFeature([
   CustomerService,
   ChatConversationRecord,
   ChatMessages,
-  SiteSettings,
+  SiteSettings
 ]);
 
 @Global()
@@ -77,12 +77,12 @@ const models = TypegooseModule.forFeature([
   imports: [
     TypegooseModule.forRoot(dbConfig.url, {
       useNewUrlParser: true,
-      useUnifiedTopology: true,
+      useUnifiedTopology: true
     } as TypegooseConnectionOptions),
 
-    models,
+    models
   ],
   providers: [DbService],
-  exports: [DbService, models],
+  exports: [DbService, models]
 })
 export class DbModule {}
