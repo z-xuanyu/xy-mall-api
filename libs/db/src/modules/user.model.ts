@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:03:28
- * @LastEditTime: 2022-03-07 15:43:11
+ * @LastEditTime: 2022-05-25 15:13:27
  * @Description: 会员模型
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -23,22 +23,21 @@ export type UserDocument = DocumentType<User>;
   },
 })
 export class User {
-  @ApiProperty({ title: '名称' })
-  @prop({ required: true })
-  name: string;
+  @ApiProperty({ title: '用户昵称' })
+  @prop()
+  nickName?: string;
 
   @ApiProperty({ title: '邮箱' })
   @prop({
     index: true,
-    required: true,
     unique: true,
     trim: true,
   })
-  email: string;
+  email?: string;
 
   @ApiProperty({ title: '头像' })
   @prop()
-  avatar: string;
+  avatar?: string;
 
   @ApiProperty({ title: '性别', enum: Gender, type: Number })
   @prop()
@@ -50,11 +49,10 @@ export class User {
 
   @ApiProperty({ title: '登录次数' })
   @prop({ default: 0 })
-  loginCount: number;
+  loginCount?: number;
 
   @ApiProperty({ title: '密码' })
   @prop({
-    required: true,
     select: false,
     trim: true,
     get(val) {
@@ -66,13 +64,25 @@ export class User {
   })
   password: string;
 
+  @ApiProperty({ title: '小程序用户openid' })
+  @prop({
+    type: String,
+  })
+  openid?: string;
+
+  @ApiProperty({ title: '小程序sessionkey' })
+  @prop({
+    type: String,
+  })
+  sessionKey?: string;
+
   @ApiProperty({ title: '消费金额' })
   @prop({ default: 0 })
-  consumptionAmount: number;
+  consumptionAmount?: number;
 
   @ApiProperty({ title: '消费次数' })
   @prop({ default: 0 })
-  consumptionCount: number;
+  consumptionCount?: number;
 
   @ApiProperty({ title: '状态' })
   @prop({ default: true, type: Boolean })
