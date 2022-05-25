@@ -19,9 +19,7 @@ import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class OrderService {
-  constructor(
-    @InjectModel(Order) private orderModel: ReturnModelType<typeof Order>,
-  ) {}
+  constructor(@InjectModel(Order) private orderModel: ReturnModelType<typeof Order>) {}
 
   // 查询订单列表
   async findAll(parameters: QueryOrderDto) {
@@ -66,12 +64,8 @@ export class OrderService {
         {
           $match: {
             userName: { $regex: new RegExp(parameters.userName, 'i') },
-            type: parameters.type
-              ? ~~parameters.type
-              : { $ne: parameters.type },
-            status: parameters.status
-              ? ~~parameters.status
-              : { $ne: parameters.status },
+            type: parameters.type ? ~~parameters.type : { $ne: parameters.type },
+            status: parameters.status ? ~~parameters.status : { $ne: parameters.status },
             source: { $regex: new RegExp(parameters.source, 'i') },
             'products.title': {
               $regex: new RegExp(parameters.productName, 'i'),
@@ -110,12 +104,8 @@ export class OrderService {
         {
           $match: {
             userId: new ObjectId(parameters.userId),
-            _id: parameters.orderId
-              ? new ObjectId(parameters.orderId)
-              : { $ne: null },
-            status: parameters.status
-              ? ~~parameters.status
-              : { $ne: parameters.status },
+            _id: parameters.orderId ? new ObjectId(parameters.orderId) : { $ne: null },
+            status: parameters.status ? ~~parameters.status : { $ne: parameters.status },
           },
         },
         {

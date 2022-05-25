@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:44:31
- * @LastEditTime: 2022-04-14 18:24:24
+ * @LastEditTime: 2022-05-25 11:30:21
  * @Description: Modify here please
  */
 import { Injectable, Logger } from '@nestjs/common';
@@ -68,10 +68,7 @@ export class AppService {
           break;
         //  阿里oss上传
         case 2:
-          data = await this.aliOssClient.put(
-            `/images/${file.originalname}`,
-            file.buffer,
-          );
+          data = await this.aliOssClient.put(`/images/${file.originalname}`, file.buffer);
           break;
         default:
           break;

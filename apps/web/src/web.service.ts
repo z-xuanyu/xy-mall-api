@@ -92,10 +92,7 @@ export class WebService {
           break;
         //  阿里oss上传
         case 2:
-          data = await this.aliOssClient.put(
-            `/images/${file.originalname}`,
-            file.buffer,
-          );
+          data = await this.aliOssClient.put(`/images/${file.originalname}`, file.buffer);
           break;
         default:
           break;
@@ -131,10 +128,7 @@ export class WebService {
         //  阿里oss上传
         case 2:
           for (const file of files) {
-            const res = await this.aliOssClient.put(
-              `/images/${file.originalname}`,
-              file.buffer,
-            );
+            const res = await this.aliOssClient.put(`/images/${file.originalname}`, file.buffer);
             data.push(res.url);
           }
           break;

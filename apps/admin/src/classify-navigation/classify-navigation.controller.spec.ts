@@ -20,9 +20,7 @@ describe('ClassifyNavigationController', () => {
       providers: [ClassifyNavigationService],
     }).compile();
 
-    controller = module.get<ClassifyNavigationController>(
-      ClassifyNavigationController,
-    );
+    controller = module.get<ClassifyNavigationController>(ClassifyNavigationController);
   });
 
   it('should be defined', () => {

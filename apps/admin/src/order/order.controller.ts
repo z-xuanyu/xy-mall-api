@@ -7,22 +7,9 @@
  * @LastEditTime: 2022-05-05 11:12:20
  * @Description: 订单模块控制器
  */
-import {
-  Controller,
-  Get,
-  Param,
-  Delete,
-  UseGuards,
-  Patch,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, Param, Delete, UseGuards, Patch, Query } from '@nestjs/common';
 import { OrderService } from './order.service';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { AuthGuard } from '@nestjs/passport';

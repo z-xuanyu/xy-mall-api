@@ -20,13 +20,7 @@ import {
 } from '@nestjs/common';
 import { ProductCommentService } from './product-comment.service';
 import { CreateProductCommentDto } from './dto/create-product-comment.dto';
-import {
-  ApiBearerAuth,
-  ApiConsumes,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiConsumes, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { UserDocument } from 'libs/db/modules/user.model';

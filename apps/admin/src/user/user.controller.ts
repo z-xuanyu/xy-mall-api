@@ -21,19 +21,10 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { QueryUserDto } from './dto/query-user.dto';
-import {
-  apiSucceed,
-  ApiSucceedResult,
-  PaginationResult,
-} from 'libs/common/ResponseResultModel';
+import { apiSucceed, ApiSucceedResult, PaginationResult } from 'libs/common/ResponseResultModel';
 import { User } from 'libs/db/modules/user.model';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { QueryUserViewHistoryDto } from './dto/query-user-view-history.dto';
@@ -48,9 +39,7 @@ export class UserController {
 
   @Post()
   @ApiOperation({ summary: '添加会员' })
-  async create(
-    @Body() createUserDto: CreateUserDto,
-  ): Promise<ApiSucceedResult<User>> {
+  async create(@Body() createUserDto: CreateUserDto): Promise<ApiSucceedResult<User>> {
     const res = await this.userService.create(createUserDto);
     return apiSucceed(res);
   }
@@ -67,9 +56,7 @@ export class UserController {
   @Get(':id')
   @ApiOperation({ summary: '会员信息' })
   @ApiParam({ name: 'id', description: '会员id' })
-  async findOne(
-    @Param('id', new ParseIdPipe()) id: string,
-  ): Promise<ApiSucceedResult<User>> {
+  async findOne(@Param('id', new ParseIdPipe()) id: string): Promise<ApiSucceedResult<User>> {
     const res = await this.userService.findOne(id);
     return apiSucceed(res);
   }
@@ -88,9 +75,7 @@ export class UserController {
   @Delete(':id')
   @ApiOperation({ summary: '删除会员' })
   @ApiParam({ name: 'id', description: '会员id' })
-  async remove(
-    @Param('id', new ParseIdPipe()) id: string,
-  ): Promise<ApiSucceedResult<User>> {
+  async remove(@Param('id', new ParseIdPipe()) id: string): Promise<ApiSucceedResult<User>> {
     const res = await this.userService.remove(id);
     return apiSucceed(res);
   }
@@ -102,10 +87,7 @@ export class UserController {
     @Param('id', new ParseIdPipe()) id: string,
     @Query() queryUserViewHistoryDto: QueryUserViewHistoryDto,
   ) {
-    const res = await this.userService.getUserViewHistories(
-      id,
-      queryUserViewHistoryDto,
-    );
+    const res = await this.userService.getUserViewHistories(id, queryUserViewHistoryDto);
 
     return apiSucceed(res);
   }
@@ -117,10 +99,7 @@ export class UserController {
     @Param('id', new ParseIdPipe()) id: string,
     @Query() queryUserCollectionDto: QueryUserCollectionDto,
   ) {
-    const res = await this.userService.getUserCollections(
-      id,
-      queryUserCollectionDto,
-    );
+    const res = await this.userService.getUserCollections(id, queryUserCollectionDto);
     return apiSucceed(res);
   }
 }

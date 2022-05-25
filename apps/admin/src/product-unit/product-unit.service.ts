@@ -51,10 +51,7 @@ export class ProductUnitService {
 
   // 更新商品单位
   async update(id: string, updateProductUnitDto: UpdateProductUnitDto) {
-    return await this.productUnitModel.findByIdAndUpdate(
-      id,
-      updateProductUnitDto,
-    );
+    return await this.productUnitModel.findByIdAndUpdate(id, updateProductUnitDto);
   }
 
   // 删除商品单位

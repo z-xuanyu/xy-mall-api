@@ -19,9 +19,7 @@ import { UpdateAdminDto, UpdateStatusDto } from './dto/update-admin.dto';
 @Injectable()
 export class AdminService {
   // 注入模型
-  constructor(
-    @InjectModel(Admin) private adminModel: ReturnModelType<typeof Admin>,
-  ) {}
+  constructor(@InjectModel(Admin) private adminModel: ReturnModelType<typeof Admin>) {}
 
   /**
    *  添加管理员
@@ -53,9 +51,7 @@ export class AdminService {
    * @return {*}
    * @memberof AdminService
    */
-  async findAll(
-    parameters: QueryAdminDto,
-  ): Promise<PaginationResult<Array<Admin>>> {
+  async findAll(parameters: QueryAdminDto): Promise<PaginationResult<Array<Admin>>> {
     let total = 0;
     const result = await this.adminModel
       .find({
@@ -121,10 +117,7 @@ export class AdminService {
    * @return {*}
    * @memberof AdminService
    */
-  async updateStatus(
-    id: string,
-    updateStatusDto: UpdateStatusDto,
-  ): Promise<Admin> {
+  async updateStatus(id: string, updateStatusDto: UpdateStatusDto): Promise<Admin> {
     return await this.adminModel.findByIdAndUpdate(id, updateStatusDto);
   }
 }

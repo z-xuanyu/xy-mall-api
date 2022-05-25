@@ -7,23 +7,9 @@
  * @LastEditTime: 2022-03-14 15:50:54
  * @Description: Modify here please
  */
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { UserDocument } from 'libs/db/modules/user.model';
@@ -87,10 +73,7 @@ export class UserController {
     @Param('id', new ParseIdPipe()) id: string,
     @Body() updateUserAddressDto: UpdateUserAddressDto,
   ) {
-    const res = await this.userService.updateUserAddress(
-      id,
-      updateUserAddressDto,
-    );
+    const res = await this.userService.updateUserAddress(id, updateUserAddressDto);
     return apiSucceed(res);
   }
 

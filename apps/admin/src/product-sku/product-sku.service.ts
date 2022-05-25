@@ -30,9 +30,7 @@ export class ProductSkuService {
    * @return {*}  {Promise<ProductSku>}
    * @memberof ProductSkuService
    */
-  async create(
-    createProductSkuDto: CreateProductSkuDto,
-  ): Promise<ProductSkuAttr> {
+  async create(createProductSkuDto: CreateProductSkuDto): Promise<ProductSkuAttr> {
     return await this.productSkuAttrModel.create(createProductSkuDto);
   }
 
@@ -43,9 +41,7 @@ export class ProductSkuService {
    * @return {*}  {Promise<PaginationResult<Array<ProductSku>>>}
    * @memberof ProductSkuService
    */
-  async findAll(
-    parameters: QueryProductSkuDto,
-  ): Promise<PaginationResult<Array<ProductSkuAttr>>> {
+  async findAll(parameters: QueryProductSkuDto): Promise<PaginationResult<Array<ProductSkuAttr>>> {
     let total = 0;
     const result = await this.productSkuAttrModel
       .find({ name: { $regex: new RegExp(parameters.name, 'i') } })
@@ -80,14 +76,8 @@ export class ProductSkuService {
    * @return {*}  {Promise<ProductSku>}
    * @memberof ProductSkuService
    */
-  async update(
-    id: string,
-    updateProductSkuDto: UpdateProductSkuDto,
-  ): Promise<ProductSkuAttr> {
-    return await this.productSkuAttrModel.findByIdAndUpdate(
-      id,
-      updateProductSkuDto,
-    );
+  async update(id: string, updateProductSkuDto: UpdateProductSkuDto): Promise<ProductSkuAttr> {
+    return await this.productSkuAttrModel.findByIdAndUpdate(id, updateProductSkuDto);
   }
 
   /**

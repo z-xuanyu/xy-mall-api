@@ -21,12 +21,7 @@ import {
 import { UserAddressService } from './user-address.service';
 import { CreateUserAddressDto } from './dto/create-user-address.dto';
 import { UpdateUserAddressDto } from './dto/update-user-address.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { QueryUserAddressDto } from './dto/query-user-address.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';

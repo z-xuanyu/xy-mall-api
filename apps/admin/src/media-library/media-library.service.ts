@@ -31,9 +31,7 @@ export class MediaLibraryService {
    * @return {*}  {Promise<MediaLibrary>}
    * @memberof MediaLibraryService
    */
-  async create(
-    createMediaLibraryDto: CreateMediaLibraryDto,
-  ): Promise<MediaLibrary> {
+  async create(createMediaLibraryDto: CreateMediaLibraryDto): Promise<MediaLibrary> {
     return await this.mediaLibraryModel.create(createMediaLibraryDto);
   }
 
@@ -44,9 +42,7 @@ export class MediaLibraryService {
    * @return {*}
    * @memberof MediaLibraryService
    */
-  async findAll(
-    parameters: QueryMediaLibraryDto,
-  ): Promise<PaginationResult<Array<MediaLibrary>>> {
+  async findAll(parameters: QueryMediaLibraryDto): Promise<PaginationResult<Array<MediaLibrary>>> {
     let total = 0;
     const result = await this.mediaLibraryModel
       .find({
@@ -84,14 +80,8 @@ export class MediaLibraryService {
    * @return {*}  {Promise<MediaLibrary>}
    * @memberof MediaLibraryService
    */
-  async update(
-    id: string,
-    updateMediaLibraryDto: UpdateMediaLibraryDto,
-  ): Promise<MediaLibrary> {
-    return await this.mediaLibraryModel.findByIdAndUpdate(
-      id,
-      updateMediaLibraryDto,
-    );
+  async update(id: string, updateMediaLibraryDto: UpdateMediaLibraryDto): Promise<MediaLibrary> {
+    return await this.mediaLibraryModel.findByIdAndUpdate(id, updateMediaLibraryDto);
   }
 
   /**

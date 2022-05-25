@@ -27,10 +27,7 @@ export class ChatNessageController {
     @CurrentUser() user: UserDocument,
     @Query('cuServiceId') cuServiceId: string,
   ) {
-    const res = await this.chatNessageService.getChatMessageList(
-      cuServiceId,
-      user._id,
-    );
+    const res = await this.chatNessageService.getChatMessageList(cuServiceId, user._id);
     return apiSucceed(res);
   }
 }

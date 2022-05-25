@@ -7,23 +7,9 @@
  * @LastEditTime: 2022-05-05 11:15:31
  * @Description: Modify here please
  */
-import {
-  Controller,
-  Get,
-  Param,
-  Delete,
-  UseGuards,
-  Query,
-  Patch,
-  Body,
-} from '@nestjs/common';
+import { Controller, Get, Param, Delete, UseGuards, Query, Patch, Body } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { QueryProductCommentDto } from './dto/query-product-comment.dto';
 import { ReplyProductCommentDto } from './dto/reply-product-comment.dto';
@@ -50,10 +36,7 @@ export class ProductCommentController {
     @Param('id') id: string,
     @Body() replyProductCommentDto: ReplyProductCommentDto,
   ) {
-    const res = await this.productCommentService.replyComment(
-      id,
-      replyProductCommentDto.content,
-    );
+    const res = await this.productCommentService.replyComment(id, replyProductCommentDto.content);
     return apiSucceed(res);
   }
 

@@ -17,9 +17,7 @@ import { UpdateRoleDto } from './dto/update-role.dto';
 
 @Injectable()
 export class RoleService {
-  constructor(
-    @InjectModel(Role) private roleModel: ReturnModelType<typeof Role>,
-  ) {}
+  constructor(@InjectModel(Role) private roleModel: ReturnModelType<typeof Role>) {}
 
   // 新建角色
   async create(createRoleDto: CreateRoleDto) {

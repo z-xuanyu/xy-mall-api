@@ -105,10 +105,7 @@ export class AppController {
 
   @Post('weixin')
   @ApiOperation({ summary: '微信公众号接受' })
-  async PostMsg(
-    @Res({ passthrough: true }) res: Response,
-    @Req() request: Request,
-  ) {
+  async PostMsg(@Res({ passthrough: true }) res: Response, @Req() request: Request) {
     const buffer: Buffer = await getRawBody(request);
     const msgXml = buffer.toString('utf-8');
     const data = await WeChat.handleMsg(this.msgAdapter, msgXml);

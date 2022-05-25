@@ -20,9 +20,7 @@ import { UpdateBannerDto } from './dto/update-banner.dto';
 
 @Injectable()
 export class BannerService {
-  constructor(
-    @InjectModel(Banner) private bannerModel: ReturnModelType<typeof Banner>,
-  ) {}
+  constructor(@InjectModel(Banner) private bannerModel: ReturnModelType<typeof Banner>) {}
 
   /**
    * 添加banner
@@ -33,10 +31,7 @@ export class BannerService {
    */
   async create(createBannerDto: CreateBannerDto): Promise<Banner> {
     // 关联的产品id是否存在
-    if (
-      !isValidObjectId(createBannerDto.productId) &&
-      createBannerDto.productId
-    )
+    if (!isValidObjectId(createBannerDto.productId) && createBannerDto.productId)
       throw new ApiFail(101, '产品id不存在');
     return await this.bannerModel.create(createBannerDto);
   }
@@ -48,9 +43,7 @@ export class BannerService {
    * @return {*}  {Promise<PaginationResult<Array<Banner>>>}
    * @memberof BannerService
    */
-  async findAll(
-    parameters: QueryBannerDto,
-  ): Promise<PaginationResult<Array<Banner>>> {
+  async findAll(parameters: QueryBannerDto): Promise<PaginationResult<Array<Banner>>> {
     let total = 0;
     const result = await this.bannerModel
       .find({

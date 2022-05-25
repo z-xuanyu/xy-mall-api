@@ -15,9 +15,7 @@ import { User } from 'libs/db/modules/user.model';
 import { webJwtConfig } from 'libs/common/config/jwt.config';
 
 export class WebJwtStrategy extends PassportStrategy(Strategy, 'web-jwt') {
-  constructor(
-    @InjectModel(User) private userModel: ReturnModelType<typeof User>,
-  ) {
+  constructor(@InjectModel(User) private userModel: ReturnModelType<typeof User>) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: webJwtConfig.secret,

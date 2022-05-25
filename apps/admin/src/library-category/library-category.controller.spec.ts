@@ -20,9 +20,7 @@ describe('LibraryCategoryController', () => {
       providers: [LibraryCategoryService],
     }).compile();
 
-    controller = module.get<LibraryCategoryController>(
-      LibraryCategoryController,
-    );
+    controller = module.get<LibraryCategoryController>(LibraryCategoryController);
   });
 
   it('should be defined', () => {

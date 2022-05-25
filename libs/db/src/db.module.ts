@@ -69,7 +69,7 @@ const models = TypegooseModule.forFeature([
   CustomerService,
   ChatConversationRecord,
   ChatMessages,
-  SiteSettings
+  SiteSettings,
 ]);
 
 @Global()
@@ -77,12 +77,12 @@ const models = TypegooseModule.forFeature([
   imports: [
     TypegooseModule.forRoot(dbConfig.url, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     } as TypegooseConnectionOptions),
 
-    models
+    models,
   ],
   providers: [DbService],
-  exports: [DbService, models]
+  exports: [DbService, models],
 })
 export class DbModule {}

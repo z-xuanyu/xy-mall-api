@@ -10,6 +10,4 @@
 import { PartialType } from '@nestjs/swagger';
 import { CreateClassifyNavigationDto } from './create-classify-navigation.dto';
 
-export class UpdateClassifyNavigationDto extends PartialType(
-  CreateClassifyNavigationDto,
-) {}
+export class UpdateClassifyNavigationDto extends PartialType(CreateClassifyNavigationDto) {}

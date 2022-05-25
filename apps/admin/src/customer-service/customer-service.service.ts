@@ -26,9 +26,7 @@ export class CustomerServiceService {
     private customerServiceModel: ReturnModelType<typeof CustomerService>,
     // 会话列表
     @InjectModel(ChatConversationRecord)
-    private chatConversationRecordModel: ReturnModelType<
-      typeof ChatConversationRecord
-    >,
+    private chatConversationRecordModel: ReturnModelType<typeof ChatConversationRecord>,
     // 聊天记录
     @InjectModel(ChatMessages)
     private chatMessagesModel: ReturnModelType<typeof ChatMessages>,
@@ -53,10 +51,7 @@ export class CustomerServiceService {
 
   // 更新客服信息
   async update(id: string, updateCustomerServiceDto: UpdateCustomerServiceDto) {
-    return await this.customerServiceModel.findByIdAndUpdate(
-      id,
-      updateCustomerServiceDto,
-    );
+    return await this.customerServiceModel.findByIdAndUpdate(id, updateCustomerServiceDto);
   }
 
   // 删除客服
@@ -71,9 +66,7 @@ export class CustomerServiceService {
    * @return {*}
    * @memberof CustomerServiceService
    */
-  async getChatConversationRecord(
-    id: string,
-  ): Promise<Array<ChatConversationRecord>> {
+  async getChatConversationRecord(id: string): Promise<Array<ChatConversationRecord>> {
     return await this.chatConversationRecordModel.aggregate([
       {
         $match: {
@@ -130,10 +123,7 @@ export class CustomerServiceService {
    * @return {*}
    * @memberof CustomerServiceService
    */
-  async getChatMessageList(
-    id: string,
-    targetId: string,
-  ): Promise<Array<ChatMessages>> {
+  async getChatMessageList(id: string, targetId: string): Promise<Array<ChatMessages>> {
     return await this.chatMessagesModel
       .find({
         $or: [

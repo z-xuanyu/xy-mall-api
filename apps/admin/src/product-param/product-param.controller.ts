@@ -21,12 +21,7 @@ import {
 import { ProductParamService } from './product-param.service';
 import { CreateProductParamDto } from './dto/create-product-param.dto';
 import { UpdateProductParamDto } from './dto/update-product-param.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { QueryProductParamDto } from './dto/query-product-param.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';

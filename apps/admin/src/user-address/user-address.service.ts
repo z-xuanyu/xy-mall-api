@@ -23,9 +23,7 @@ export class UserAddressService {
   ) {}
 
   // 新增用户地址
-  async create(
-    createUserAddressDto: CreateUserAddressDto,
-  ): Promise<UserAddress> {
+  async create(createUserAddressDto: CreateUserAddressDto): Promise<UserAddress> {
     return await this.userAddressModel.create(createUserAddressDto);
   }
 
@@ -56,10 +54,7 @@ export class UserAddressService {
 
   // 更新用户地址信息
   async update(id: string, updateUserAddressDto: UpdateUserAddressDto) {
-    return await this.userAddressModel.findByIdAndUpdate(
-      id,
-      updateUserAddressDto,
-    );
+    return await this.userAddressModel.findByIdAndUpdate(id, updateUserAddressDto);
   }
 
   // 删除用户地址

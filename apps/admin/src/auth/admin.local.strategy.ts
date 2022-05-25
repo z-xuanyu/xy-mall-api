@@ -15,13 +15,8 @@ import { compareSync } from 'bcryptjs';
 import { Admin } from 'libs/db/modules/admin.model';
 import { ApiFail } from 'libs/common/ResponseResultModel';
 
-export class AdminLocalStrategy extends PassportStrategy(
-  Strategy,
-  'admin-local',
-) {
-  constructor(
-    @InjectModel(Admin) private adminModel: ReturnModelType<typeof Admin>,
-  ) {
+export class AdminLocalStrategy extends PassportStrategy(Strategy, 'admin-local') {
+  constructor(@InjectModel(Admin) private adminModel: ReturnModelType<typeof Admin>) {
     super({
       usernameField: 'email',
       passwordField: 'password',
@@ -30,9 +25,7 @@ export class AdminLocalStrategy extends PassportStrategy(
 
   // 校验管理端 用户和密码
   async validate(email: string, password: string): Promise<Admin> {
-    const adminInfo = await this.adminModel
-      .findOne({ email })
-      .select('+password');
+    const adminInfo = await this.adminModel.findOne({ email }).select('+password');
     if (!adminInfo) {
       throw new ApiFail(101, '用户名不正确');
     }

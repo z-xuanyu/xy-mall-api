@@ -22,12 +22,7 @@ import { MediaLibraryService } from './media-library.service';
 import { CreateMediaLibraryDto } from './dto/create-media-library.dto';
 import { UpdateMediaLibraryDto } from './dto/update-media-library.dto';
 import { AuthGuard } from '@nestjs/passport';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { QueryMediaLibraryDto } from './dto/query-media-library.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
@@ -68,10 +63,7 @@ export class MediaLibraryController {
     @Param('id', new ParseIdPipe()) id: string,
     @Body() updateMediaLibraryDto: UpdateMediaLibraryDto,
   ) {
-    const res = await this.mediaLibraryService.update(
-      id,
-      updateMediaLibraryDto,
-    );
+    const res = await this.mediaLibraryService.update(id, updateMediaLibraryDto);
     return apiSucceed(res);
   }
 

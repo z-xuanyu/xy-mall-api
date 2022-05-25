@@ -42,9 +42,7 @@ export class NewsService {
    * @return {*}  {Promise<PaginationResult<Array<News>>>}
    * @memberof NewsService
    */
-  async findAll(
-    parameters: QueryNewsDto,
-  ): Promise<PaginationResult<Array<News>>> {
+  async findAll(parameters: QueryNewsDto): Promise<PaginationResult<Array<News>>> {
     let total = 0;
     const result = await this.newsModel
       .find({ name: { $regex: new RegExp(parameters.title, 'i') } })

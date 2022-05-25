@@ -63,17 +63,12 @@ export class OrderService {
    * @return {*}
    * @memberof OrderService
    */
-  async findAll(
-    userId: string,
-    queryUserOrderDto: QueryUserOrderDto,
-  ): Promise<Array<Order>> {
+  async findAll(userId: string, queryUserOrderDto: QueryUserOrderDto): Promise<Array<Order>> {
     return await this.orderModel
       .find({
         userId,
         isDelete: false,
-        status: ~~queryUserOrderDto.status
-          ? queryUserOrderDto.status
-          : { $ne: null },
+        status: ~~queryUserOrderDto.status ? queryUserOrderDto.status : { $ne: null },
       })
       .populate({
         path: 'products.productId',

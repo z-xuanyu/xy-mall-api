@@ -8,12 +8,7 @@
  * @Description: 会员模型
  */
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  prop,
-  ModelOptions,
-  DocumentType,
-  Severity,
-} from '@typegoose/typegoose';
+import { prop, ModelOptions, DocumentType, Severity } from '@typegoose/typegoose';
 
 import { hashSync } from 'bcryptjs';
 import { Gender } from 'libs/common/enum/user.enum';

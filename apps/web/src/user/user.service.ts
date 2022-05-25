@@ -91,14 +91,8 @@ export class UserService {
    * @return {*}
    * @memberof UserService
    */
-  async updateUserAddress(
-    id: string,
-    updateUserAddressDto: UpdateUserAddressDto,
-  ) {
-    return await this.userAddressModel.findByIdAndUpdate(
-      id,
-      updateUserAddressDto,
-    );
+  async updateUserAddress(id: string, updateUserAddressDto: UpdateUserAddressDto) {
+    return await this.userAddressModel.findByIdAndUpdate(id, updateUserAddressDto);
   }
 
   /**
@@ -113,9 +107,7 @@ export class UserService {
   }
 
   // 更新用户地址默认地址
-  async updateAddressDefault(
-    updateAddressDefaultDto: UpdateAddressDefaultDto,
-  ): Promise<void> {
+  async updateAddressDefault(updateAddressDefaultDto: UpdateAddressDefaultDto): Promise<void> {
     //  把已有默认地址改为false
     if (updateAddressDefaultDto.isDefault) {
       await this.userAddressModel.findOneAndUpdate(

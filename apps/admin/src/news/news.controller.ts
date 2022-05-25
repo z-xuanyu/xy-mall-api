@@ -21,20 +21,11 @@ import {
 import { NewsService } from './news.service';
 import { CreateNewsDto } from './dto/create-news.dto';
 import { UpdateNewsDto } from './dto/update-news.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { QueryNewsDto } from './dto/query-news.dto';
 import { News } from 'libs/db/modules/news.model';
-import {
-  apiSucceed,
-  ApiSucceedResult,
-  PaginationResult,
-} from 'libs/common/ResponseResultModel';
+import { apiSucceed, ApiSucceedResult, PaginationResult } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
 @ApiTags('文章管理')
@@ -46,9 +37,7 @@ export class NewsController {
 
   @Post()
   @ApiOperation({ summary: '新增文章' })
-  async create(
-    @Body() createNewsDto: CreateNewsDto,
-  ): Promise<ApiSucceedResult<News>> {
+  async create(@Body() createNewsDto: CreateNewsDto): Promise<ApiSucceedResult<News>> {
     const res = await this.newsService.create(createNewsDto);
     return apiSucceed(res);
   }
@@ -66,9 +55,7 @@ export class NewsController {
   @Get(':id')
   @ApiOperation({ summary: '文章详情' })
   @ApiParam({ name: 'id', description: '文章id' })
-  async findOne(
-    @Param('id', new ParseIdPipe()) id: string,
-  ): Promise<ApiSucceedResult<News>> {
+  async findOne(@Param('id', new ParseIdPipe()) id: string): Promise<ApiSucceedResult<News>> {
     const res = await this.newsService.findOne(id);
     return apiSucceed(res);
   }
@@ -87,9 +74,7 @@ export class NewsController {
   @Delete(':id')
   @ApiOperation({ summary: '删除文章' })
   @ApiParam({ name: 'id', description: '文章id' })
-  async remove(
-    @Param('id', new ParseIdPipe()) id: string,
-  ): Promise<ApiSucceedResult<News>> {
+  async remove(@Param('id', new ParseIdPipe()) id: string): Promise<ApiSucceedResult<News>> {
     const res = await this.newsService.remove(id);
     return apiSucceed(res);
   }

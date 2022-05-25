@@ -5,7 +5,7 @@
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-04 10:01:38
  * @LastEditTime: 2022-04-28 14:29:48
- * @Description: Modify here please
+ * @Description: Modify here please ConnectedSocket
  */
 import {
   SubscribeMessage,
@@ -14,7 +14,7 @@ import {
   WebSocketServer,
   OnGatewayConnection,
   OnGatewayDisconnect,
-  ConnectedSocket,
+  // ConnectedSocket,
   MessageBody,
 } from '@nestjs/websockets';
 import { Logger } from '@nestjs/common';
@@ -35,9 +35,7 @@ import { ChatConversationRecord } from 'libs/db/modules/chat-conversation-record
     credentials: true,
   },
 })
-export class MessageGateway
-  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
-{
+export class MessageGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
   // 注入
   constructor(
     // 客服
@@ -47,9 +45,7 @@ export class MessageGateway
     @InjectModel(ChatMessages)
     private chatMessagesModel: ReturnModelType<typeof ChatMessages>,
     @InjectModel(ChatConversationRecord)
-    private chatConversationRecordModel: ReturnModelType<
-      typeof ChatConversationRecord
-    >,
+    private chatConversationRecordModel: ReturnModelType<typeof ChatConversationRecord>,
   ) {}
 
   @WebSocketServer() server: Server;
@@ -57,9 +53,7 @@ export class MessageGateway
   private logger: Logger = new Logger('MessageGateway');
 
   @SubscribeMessage('connectedCustomerService')
-  public async handleConnectedCustomerService(
-    @MessageBody() payload: any,
-  ): Promise<any> {
+  public async handleConnectedCustomerService(@MessageBody() payload: any): Promise<any> {
     // 建立会话关系
     const hasRecord = await this.chatConversationRecordModel.findOne({
       userId: payload.userId,
@@ -76,14 +70,9 @@ export class MessageGateway
 
   // 发送信息
   @SubscribeMessage('sendMessage')
-  public async handleMessage(
-    client: Socket,
-    @MessageBody() payload: any,
-  ): Promise<any> {
+  public async handleMessage(client: Socket, @MessageBody() payload: any): Promise<any> {
     // 目标用户是否为客服
-    const hasCuservice = await this.customerServiceModel.findById(
-      payload.targetId,
-    );
+    const hasCuservice = await this.customerServiceModel.findById(payload.targetId);
     // 存储聊天记录
     const res = await this.chatMessagesModel.create({
       user: payload.userId,

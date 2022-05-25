@@ -73,10 +73,7 @@ export class WebController {
   })
   @UseInterceptors(FilesInterceptor('files'))
   @ApiConsumes('multipart/form-data')
-  async multipleUpload(
-    @UploadedFiles() files: Array<any>,
-    @Req() req: any,
-  ): Promise<any> {
+  async multipleUpload(@UploadedFiles() files: Array<any>, @Req() req: any): Promise<any> {
     const domain = `${req.protocol}://${req.headers.host}`;
     const res = await this.webService.multipleUpload(files, domain);
     return apiSucceed(res);

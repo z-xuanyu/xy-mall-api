@@ -7,24 +7,10 @@
  * @LastEditTime: 2022-03-08 14:49:24
  * @Description: Modify here please
  */
-import {
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  UseGuards,
-  Headers,
-} from '@nestjs/common';
+import { Controller, Delete, Get, Param, Post, UseGuards, Headers } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
-import {
-  ApiBearerAuth,
-  ApiHeader,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiHeader, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { UserDocument } from 'libs/db/modules/user.model';
@@ -34,10 +20,7 @@ import { ProductService } from './product.service';
 @ApiTags('商品相关')
 @Controller('product')
 export class ProductController {
-  constructor(
-    private readonly productService: ProductService,
-    private jwtService: JwtService,
-  ) {}
+  constructor(private readonly productService: ProductService, private jwtService: JwtService) {}
 
   @Get()
   @ApiOperation({ summary: '获取全部商品信息' })
@@ -81,10 +64,7 @@ export class ProductController {
   @ApiBearerAuth()
   @ApiOperation({ summary: '用户收藏改商品' })
   @ApiParam({ name: 'id', description: '商品id' })
-  async collection(
-    @Param('id', new ParseIdPipe()) id: string,
-    @CurrentUser() user: UserDocument,
-  ) {
+  async collection(@Param('id', new ParseIdPipe()) id: string, @CurrentUser() user: UserDocument) {
     const res = await this.productService.collection({
       userId: user?._id,
       productId: id,

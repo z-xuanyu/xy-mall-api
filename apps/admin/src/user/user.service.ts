@@ -58,9 +58,7 @@ export class UserService {
    * @return {*}  {Promise<PaginationResult<Array<User>>>}
    * @memberof UserService
    */
-  async findAll(
-    parameters: QueryUserDto,
-  ): Promise<PaginationResult<Array<User>>> {
+  async findAll(parameters: QueryUserDto): Promise<PaginationResult<Array<User>>> {
     let total = 0;
     const result = await this.userModel
       .find({ name: { $regex: new RegExp(parameters.name, 'i') } })
@@ -82,10 +80,7 @@ export class UserService {
    * @param {string} userId 用户id
    * @memberof UserService
    */
-  async getUserViewHistories(
-    userId: string,
-    parameters: QueryUserViewHistoryDto,
-  ) {
+  async getUserViewHistories(userId: string, parameters: QueryUserViewHistoryDto) {
     let total = 0;
     const result = await this.userViewsHistoryModel
       .aggregate([

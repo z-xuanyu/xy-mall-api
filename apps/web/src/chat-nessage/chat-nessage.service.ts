@@ -27,10 +27,7 @@ export class ChatNessageService {
    * @return {*}
    * @memberof CustomerServiceService
    */
-  async getChatMessageList(
-    id: string,
-    userId: string,
-  ): Promise<Array<ChatMessages>> {
+  async getChatMessageList(id: string, userId: string): Promise<Array<ChatMessages>> {
     return await this.chatMessageModel
       .find({
         $or: [

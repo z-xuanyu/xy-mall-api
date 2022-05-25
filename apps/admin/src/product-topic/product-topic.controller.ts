@@ -21,19 +21,10 @@ import {
 import { ProductTopicService } from './product-topic.service';
 import { CreateProductTopicDto } from './dto/create-product-topic.dto';
 import { UpdateProductTopicDto } from './dto/update-product-topic.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { QueryProductTopicDto } from './dto/query-product-topic.dto';
-import {
-  apiSucceed,
-  ApiSucceedResult,
-  PaginationResult,
-} from 'libs/common/ResponseResultModel';
+import { apiSucceed, ApiSucceedResult, PaginationResult } from 'libs/common/ResponseResultModel';
 import { ProductTopic } from 'libs/db/modules/product-topic.model';
 
 @ApiTags('商品专题')
@@ -72,10 +63,7 @@ export class ProductTopicController {
   @Patch(':id')
   @ApiOperation({ summary: '更新产品专题信息' })
   @ApiParam({ name: 'id', description: '产品专题id' })
-  async update(
-    @Param('id') id: string,
-    @Body() updateProductTopicDto: UpdateProductTopicDto,
-  ) {
+  async update(@Param('id') id: string, @Body() updateProductTopicDto: UpdateProductTopicDto) {
     return this.productTopicService.update(id, updateProductTopicDto);
   }
 

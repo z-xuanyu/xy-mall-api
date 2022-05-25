@@ -21,12 +21,7 @@ import {
 import { TagService } from './tag.service';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { UpdateTagDto } from './dto/update-tag.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { QueryTagDto } from './dto/query-tag.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
@@ -64,10 +59,7 @@ export class TagController {
   @Patch(':id')
   @ApiOperation({ summary: '更新标签' })
   @ApiParam({ name: 'id', description: '标签id' })
-  async update(
-    @Param('id', new ParseIdPipe()) id: string,
-    @Body() updateTagDto: UpdateTagDto,
-  ) {
+  async update(@Param('id', new ParseIdPipe()) id: string, @Body() updateTagDto: UpdateTagDto) {
     const res = await this.tagService.update(id, updateTagDto);
     return apiSucceed(res);
   }

@@ -19,9 +19,7 @@ import { UpdateTagDto } from './dto/update-tag.dto';
 @Injectable()
 export class TagService {
   // 注入
-  constructor(
-    @InjectModel(Tag) private tagModel: ReturnModelType<typeof Tag>,
-  ) {}
+  constructor(@InjectModel(Tag) private tagModel: ReturnModelType<typeof Tag>) {}
 
   /**
    * 添加标签
@@ -41,9 +39,7 @@ export class TagService {
    * @return {*}  {Promise<PaginationResult<Array<Tag>>>}
    * @memberof TagService
    */
-  async findAll(
-    parameters: QueryTagDto,
-  ): Promise<PaginationResult<Array<Tag>>> {
+  async findAll(parameters: QueryTagDto): Promise<PaginationResult<Array<Tag>>> {
     let total = 0;
     const result = await this.tagModel
       .find({

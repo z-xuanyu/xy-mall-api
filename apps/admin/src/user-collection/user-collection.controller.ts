@@ -7,24 +7,10 @@
  * @LastEditTime: 2022-05-05 11:10:00
  * @Description: Modify here please
  */
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  UseGuards,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseGuards, Query } from '@nestjs/common';
 import { UserCollectionService } from './user-collection.service';
 import { CreateUserCollectionDto } from './dto/create-user-collection.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { QueryUserCollectionDto } from './dto/query-user-collection.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
@@ -40,9 +26,7 @@ export class UserCollectionController {
   @Post()
   @ApiOperation({ summary: '添加会员收藏' })
   async create(@Body() createUserCollectionDto: CreateUserCollectionDto) {
-    const res = await this.userCollectionService.create(
-      createUserCollectionDto,
-    );
+    const res = await this.userCollectionService.create(createUserCollectionDto);
     return apiSucceed(res);
   }
 

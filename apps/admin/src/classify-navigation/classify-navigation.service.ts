@@ -24,9 +24,7 @@ export class ClassifyNavigationService {
 
   // 添加导航分类
   async create(createClassifyNavigationDto: CreateClassifyNavigationDto) {
-    return await this.classifyNavigationModel.create(
-      createClassifyNavigationDto,
-    );
+    return await this.classifyNavigationModel.create(createClassifyNavigationDto);
   }
 
   // 分类导航列表
@@ -61,14 +59,8 @@ export class ClassifyNavigationService {
   }
 
   // 更新分类导航信息
-  async update(
-    id: string,
-    updateClassifyNavigationDto: UpdateClassifyNavigationDto,
-  ) {
-    return await this.classifyNavigationModel.findByIdAndUpdate(
-      id,
-      updateClassifyNavigationDto,
-    );
+  async update(id: string, updateClassifyNavigationDto: UpdateClassifyNavigationDto) {
+    return await this.classifyNavigationModel.findByIdAndUpdate(id, updateClassifyNavigationDto);
   }
 
   /**

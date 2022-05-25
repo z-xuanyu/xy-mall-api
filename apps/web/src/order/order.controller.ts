@@ -7,25 +7,10 @@
  * @LastEditTime: 2022-03-22 18:15:04
  * @Description: Modify here please
  */
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  UseGuards,
-  Query,
-  Put,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseGuards, Query, Put } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { CreateOrderDto } from './dto/create-order.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { UserDocument } from 'libs/db/modules/user.model';
@@ -42,10 +27,7 @@ export class OrderController {
 
   @Post()
   @ApiOperation({ summary: '创建订单' })
-  async create(
-    @Body() createOrderDto: CreateOrderDto,
-    @CurrentUser() user: UserDocument,
-  ) {
+  async create(@Body() createOrderDto: CreateOrderDto, @CurrentUser() user: UserDocument) {
     createOrderDto.userId = user?._id;
     const res = await this.orderService.create(createOrderDto);
     return apiSucceed(res);
@@ -53,10 +35,7 @@ export class OrderController {
 
   @Get()
   @ApiOperation({ summary: '获取用户订单列表' })
-  async findAll(
-    @CurrentUser() user: UserDocument,
-    @Query() queryUserOrderDto: QueryUserOrderDto,
-  ) {
+  async findAll(@CurrentUser() user: UserDocument, @Query() queryUserOrderDto: QueryUserOrderDto) {
     const res = await this.orderService.findAll(user?._id, queryUserOrderDto);
     return apiSucceed(res);
   }

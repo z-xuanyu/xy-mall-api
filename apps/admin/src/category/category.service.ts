@@ -41,9 +41,7 @@ export class CategoryService {
    * @return {*}  {Promise<PaginationResult<Array<Category>>>}
    * @memberof CategoryService
    */
-  async findAll(
-    parameters: QueryCategoryDto,
-  ): Promise<PaginationResult<Array<Category>>> {
+  async findAll(parameters: QueryCategoryDto): Promise<PaginationResult<Array<Category>>> {
     let total = 0;
     const result = await this.categoryModel
       .find({ name: { $regex: new RegExp(parameters.name, 'i') } })
@@ -78,10 +76,7 @@ export class CategoryService {
    * @return {*}  {Promise<Category>} 更新分类信息
    * @memberof CategoryService
    */
-  async update(
-    id: string,
-    updateCategoryDto: UpdateCategoryDto,
-  ): Promise<Category> {
+  async update(id: string, updateCategoryDto: UpdateCategoryDto): Promise<Category> {
     return this.categoryModel.findByIdAndUpdate(id, updateCategoryDto);
   }
 

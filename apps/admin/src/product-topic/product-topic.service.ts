@@ -32,9 +32,7 @@ export class ProductTopicService {
    * @return {*}  {Promise<ProductTopic>}
    * @memberof ProductTopicService
    */
-  async create(
-    createProductTopicDto: CreateProductTopicDto,
-  ): Promise<ProductTopic> {
+  async create(createProductTopicDto: CreateProductTopicDto): Promise<ProductTopic> {
     const isObjID = isValidObjectId(createProductTopicDto.category);
     if (!isObjID) throw new ApiFail(101, '分类id不存在');
     return await this.productTopicModel.create(createProductTopicDto);
@@ -47,9 +45,7 @@ export class ProductTopicService {
    * @return {*}  {Promise<PaginationResult<Array<ProductTopic>>>}
    * @memberof ProductTopicService
    */
-  async findAll(
-    parameters: QueryProductTopicDto,
-  ): Promise<PaginationResult<Array<ProductTopic>>> {
+  async findAll(parameters: QueryProductTopicDto): Promise<PaginationResult<Array<ProductTopic>>> {
     let total = 0;
     const result = await this.productTopicModel
       .find({ name: { $regex: new RegExp(parameters.title, 'i') } })
@@ -84,14 +80,8 @@ export class ProductTopicService {
    * @return {*}  {Promise<ProductTopic>}
    * @memberof ProductTopicService
    */
-  async update(
-    id: string,
-    updateProductTopicDto: UpdateProductTopicDto,
-  ): Promise<ProductTopic> {
-    return await this.productTopicModel.findByIdAndUpdate(
-      id,
-      updateProductTopicDto,
-    );
+  async update(id: string, updateProductTopicDto: UpdateProductTopicDto): Promise<ProductTopic> {
+    return await this.productTopicModel.findByIdAndUpdate(id, updateProductTopicDto);
   }
 
   /**

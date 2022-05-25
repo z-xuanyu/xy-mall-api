@@ -7,23 +7,10 @@
  * @LastEditTime: 2022-04-27 11:25:52
  * @Description: Modify here please
  */
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseGuards } from '@nestjs/common';
 import { UserCartService } from './user-cart.service';
 import { CreateUserCartDto } from './dto/create-user-cart.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { UserDocument } from 'libs/db/modules/user.model';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
@@ -39,10 +26,7 @@ export class UserCartController {
 
   @Post()
   @ApiOperation({ summary: '加入购物车' })
-  async create(
-    @Body() createUserCartDto: CreateUserCartDto,
-    @CurrentUser() user: UserDocument,
-  ) {
+  async create(@Body() createUserCartDto: CreateUserCartDto, @CurrentUser() user: UserDocument) {
     createUserCartDto.userId = user?._id;
     const res = await this.userCartService.create(createUserCartDto);
     return apiSucceed(res);

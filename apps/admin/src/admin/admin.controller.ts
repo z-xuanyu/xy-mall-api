@@ -20,18 +20,9 @@ import {
   Put,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
-import {
-  apiSucceed,
-  ApiSucceedResult,
-  PaginationResult,
-} from 'libs/common/ResponseResultModel';
+import { apiSucceed, ApiSucceedResult, PaginationResult } from 'libs/common/ResponseResultModel';
 import { Admin } from 'libs/db/modules/admin.model';
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
@@ -47,9 +38,7 @@ export class AdminController {
 
   @Post()
   @ApiOperation({ summary: '新增管理员' })
-  async create(
-    @Body() createAdminDto: CreateAdminDto,
-  ): Promise<ApiSucceedResult<Admin>> {
+  async create(@Body() createAdminDto: CreateAdminDto): Promise<ApiSucceedResult<Admin>> {
     const res = await this.adminService.create(createAdminDto);
     return apiSucceed(res);
   }
@@ -66,9 +55,7 @@ export class AdminController {
   @Get(':id')
   @ApiOperation({ summary: '管理员信息' })
   @ApiParam({ name: 'id', description: '管理员id' })
-  async findOne(
-    @Param('id', new ParseIdPipe()) id: string,
-  ): Promise<ApiSucceedResult<Admin>> {
+  async findOne(@Param('id', new ParseIdPipe()) id: string): Promise<ApiSucceedResult<Admin>> {
     const res = await this.adminService.findOne(id);
     return apiSucceed(res);
   }
@@ -87,9 +74,7 @@ export class AdminController {
   @Delete(':id')
   @ApiOperation({ summary: '删除管理员' })
   @ApiParam({ name: 'id', description: '管理员id' })
-  async remove(
-    @Param('id', new ParseIdPipe()) id: string,
-  ): Promise<ApiSucceedResult<Admin>> {
+  async remove(@Param('id', new ParseIdPipe()) id: string): Promise<ApiSucceedResult<Admin>> {
     const res = await this.adminService.remove(id);
     return apiSucceed(res);
   }

@@ -7,16 +7,7 @@
  * @LastEditTime: 2022-05-09 16:32:14
  * @Description: 登录控制器
  */
-import {
-  Body,
-  CACHE_MANAGER,
-  Controller,
-  Get,
-  Inject,
-  Post,
-  Req,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, CACHE_MANAGER, Controller, Get, Inject, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtService } from '@nestjs/jwt';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -32,10 +23,7 @@ import * as svgCaptcha from 'svg-captcha';
 @Controller('auth')
 export class AuthController {
   // 注入
-  constructor(
-    private jwtService: JwtService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
-  ) {}
+  constructor(private jwtService: JwtService, @Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
   @ApiOperation({ summary: '登录' })
   @Post('admin/login')
@@ -45,9 +33,7 @@ export class AuthController {
     @Req() req: any,
   ): Promise<ApiSucceedResult<LoginResultDto>> {
     // 校验验证码
-    const captcha = await this.cacheManager.get(
-      `captcha_${dto.captcha.toLocaleUpperCase()}`,
-    );
+    const captcha = await this.cacheManager.get(`captcha_${dto.captcha.toLocaleUpperCase()}`);
     if (!captcha) {
       return {
         code: 101,
@@ -74,8 +60,7 @@ export class AuthController {
   async currentLoginInfo(@CurrentUser() user: AdminDocument): Promise<any> {
     const data = {
       name: user.name,
-      avatar:
-        'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+      avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
       roles: ['super'],
       email: user.email,
     };
@@ -93,13 +78,9 @@ export class AuthController {
       height: 40,
       background: '#cc9966',
     });
-    await this.cacheManager.set(
-      `captcha_${captcha.text.toLocaleUpperCase()}`,
-      captcha.text,
-      {
-        ttl: 300, // 5分钟失效
-      },
-    );
+    await this.cacheManager.set(`captcha_${captcha.text.toLocaleUpperCase()}`, captcha.text, {
+      ttl: 300, // 5分钟失效
+    });
     return apiSucceed(captcha.data);
   }
 }

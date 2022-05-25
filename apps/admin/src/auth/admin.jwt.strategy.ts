@@ -15,9 +15,7 @@ import { Strategy, StrategyOptions, ExtractJwt } from 'passport-jwt';
 import { adminJwtConfig } from 'libs/common/config/jwt.config';
 
 export class AdminJwtStrategy extends PassportStrategy(Strategy, 'admin-jwt') {
-  constructor(
-    @InjectModel(Admin) private adminModel: ReturnModelType<typeof Admin>,
-  ) {
+  constructor(@InjectModel(Admin) private adminModel: ReturnModelType<typeof Admin>) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: adminJwtConfig.secret,

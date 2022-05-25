@@ -20,12 +20,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ClassifyNavigationService } from './classify-navigation.service';
@@ -39,18 +34,12 @@ import { UpdateClassifyNavigationDto } from './dto/update-classify-navigation.dt
 @ApiBearerAuth()
 @Controller('classifyNavigation')
 export class ClassifyNavigationController {
-  constructor(
-    private readonly classifyNavigationService: ClassifyNavigationService,
-  ) {}
+  constructor(private readonly classifyNavigationService: ClassifyNavigationService) {}
 
   @Post()
   @ApiOperation({ summary: '新增分类导航' })
-  async create(
-    @Body() createClassifyNavigationDto: CreateClassifyNavigationDto,
-  ) {
-    const res = await this.classifyNavigationService.create(
-      createClassifyNavigationDto,
-    );
+  async create(@Body() createClassifyNavigationDto: CreateClassifyNavigationDto) {
+    const res = await this.classifyNavigationService.create(createClassifyNavigationDto);
     return apiSucceed(res);
   }
 
@@ -76,10 +65,7 @@ export class ClassifyNavigationController {
     @Param('id', new ParseIdPipe()) id: string,
     @Body() updateClassifyNavigationDto: UpdateClassifyNavigationDto,
   ) {
-    const res = await this.classifyNavigationService.update(
-      id,
-      updateClassifyNavigationDto,
-    );
+    const res = await this.classifyNavigationService.update(id, updateClassifyNavigationDto);
     return apiSucceed(res);
   }
 

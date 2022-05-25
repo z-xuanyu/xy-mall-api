@@ -22,12 +22,7 @@ import { RoleService } from './role.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { QueryRoleDto } from './dto/query-role.dto';
@@ -64,10 +59,7 @@ export class RoleController {
   @Patch(':id')
   @ApiOperation({ summary: '更新角色' })
   @ApiParam({ name: 'id', description: '角色id' })
-  async update(
-    @Param('id', new ParseIdPipe()) id: string,
-    @Body() updateRoleDto: UpdateRoleDto,
-  ) {
+  async update(@Param('id', new ParseIdPipe()) id: string, @Body() updateRoleDto: UpdateRoleDto) {
     const res = await this.roleService.update(id, updateRoleDto);
     return apiSucceed(res);
   }

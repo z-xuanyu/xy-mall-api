@@ -21,12 +21,7 @@ import {
 import { MenuService } from './menu.service';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
@@ -86,10 +81,7 @@ export class MenuController {
   @Patch(':id')
   @ApiOperation({ summary: '更新菜单' })
   @ApiParam({ name: 'id', description: '菜单id' })
-  async update(
-    @Param('id', new ParseIdPipe()) id: string,
-    @Body() updateMenuDto: UpdateMenuDto,
-  ) {
+  async update(@Param('id', new ParseIdPipe()) id: string, @Body() updateMenuDto: UpdateMenuDto) {
     // 处理组件名问题
     if (updateMenuDto.component === 'LAYOUT') {
       const paths = updateMenuDto.path.split('/');

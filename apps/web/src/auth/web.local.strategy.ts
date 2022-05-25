@@ -16,9 +16,7 @@ import { User } from 'libs/db/modules/user.model';
 import { ApiFail } from 'libs/common/ResponseResultModel';
 
 export class WebLocalStrategy extends PassportStrategy(Strategy, 'web-local') {
-  constructor(
-    @InjectModel(User) private userModel: ReturnModelType<typeof User>,
-  ) {
+  constructor(@InjectModel(User) private userModel: ReturnModelType<typeof User>) {
     super({
       usernameField: 'email',
       passwordField: 'password',

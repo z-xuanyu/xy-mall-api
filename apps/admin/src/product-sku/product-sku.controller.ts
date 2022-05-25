@@ -21,12 +21,7 @@ import {
 import { ProductSkuService } from './product-sku.service';
 import { CreateProductSkuDto } from './dto/create-product-sku.dto';
 import { UpdateProductSkuDto } from './dto/update-product-sku.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { QueryProductSkuDto } from './dto/query-product-sku.dto';
 import { apiSucceed } from 'libs/common/ResponseResultModel';

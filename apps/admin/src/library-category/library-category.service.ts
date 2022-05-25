@@ -29,9 +29,7 @@ export class LibraryCategoryService {
    * @return {*}
    * @memberof LibraryCategoryService
    */
-  async create(
-    createLibraryCategoryDto: CreateLibraryCategoryDto,
-  ): Promise<LibraryCategory> {
+  async create(createLibraryCategoryDto: CreateLibraryCategoryDto): Promise<LibraryCategory> {
     return this.libraryCategoryModel.create(createLibraryCategoryDto);
   }
 
@@ -68,10 +66,7 @@ export class LibraryCategoryService {
     id: string,
     updateLibraryCategoryDto: UpdateLibraryCategoryDto,
   ): Promise<LibraryCategory> {
-    return this.libraryCategoryModel.findByIdAndUpdate(
-      id,
-      updateLibraryCategoryDto,
-    );
+    return this.libraryCategoryModel.findByIdAndUpdate(id, updateLibraryCategoryDto);
   }
 
   /**

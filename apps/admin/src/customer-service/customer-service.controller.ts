@@ -19,13 +19,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiQuery,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { CustomerServiceService } from './customer-service.service';
@@ -38,25 +32,19 @@ import { UpdateCustomerServiceDto } from './dto/update-customer-service.dto';
 @ApiBearerAuth()
 @Controller('customerService')
 export class CustomerServiceController {
-  constructor(
-    private readonly customerServiceService: CustomerServiceService,
-  ) {}
+  constructor(private readonly customerServiceService: CustomerServiceService) {}
 
   @Post()
   @ApiOperation({ summary: '新增客服' })
   async create(@Body() createCustomerServiceDto: CreateCustomerServiceDto) {
-    const res = await this.customerServiceService.create(
-      createCustomerServiceDto,
-    );
+    const res = await this.customerServiceService.create(createCustomerServiceDto);
     return apiSucceed(res);
   }
 
   @Get()
   @ApiOperation({ summary: '客服列表' })
   async findAll(@Query() queryCustomerServiceDto: QueryCustomerServiceDto) {
-    const res = await this.customerServiceService.findAll(
-      queryCustomerServiceDto,
-    );
+    const res = await this.customerServiceService.findAll(queryCustomerServiceDto);
     return apiSucceed(res);
   }
 
@@ -75,10 +63,7 @@ export class CustomerServiceController {
     @Param('id', new ParseIdPipe()) id: string,
     @Body() updateCustomerServiceDto: UpdateCustomerServiceDto,
   ) {
-    const res = await this.customerServiceService.update(
-      id,
-      updateCustomerServiceDto,
-    );
+    const res = await this.customerServiceService.update(id, updateCustomerServiceDto);
     return apiSucceed(res);
   }
 
@@ -106,10 +91,7 @@ export class CustomerServiceController {
     @Param('id', new ParseIdPipe()) id: string,
     @Query('targetId') targetId: string,
   ) {
-    const res = await this.customerServiceService.getChatMessageList(
-      id,
-      targetId,
-    );
+    const res = await this.customerServiceService.getChatMessageList(id, targetId);
     return apiSucceed(res);
   }
 }

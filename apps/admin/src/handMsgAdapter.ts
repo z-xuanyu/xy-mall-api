@@ -67,8 +67,7 @@ export class HandMsgAdapter implements MsgAdapter {
     } else if ('3' === inTextMsg.getContent) {
       // 多公众号支持 分别给不同的公众号发送不同的消息
       if (ApiConfigKit.getApiConfig.getAppId == 'wx614c453e0d1dcd12') {
-        content =
-          '极速开发微信公众号 \n\nhttps://github.com/javen205/weixin_guide';
+        content = '极速开发微信公众号 \n\nhttps://github.com/javen205/weixin_guide';
         outMsg = new OutTextMsg(inTextMsg);
         outMsg.setContent(content);
       } else {
@@ -114,9 +113,7 @@ export class HandMsgAdapter implements MsgAdapter {
     return outMsg;
   }
 
-  async processInShortVideoMsg(
-    inShortVideoMsg: InShortVideoMsg,
-  ): Promise<OutMsg> {
+  async processInShortVideoMsg(inShortVideoMsg: InShortVideoMsg): Promise<OutMsg> {
     const outMsg = new OutVideoMsg(inShortVideoMsg);
     outMsg.setMediaId = inShortVideoMsg.getMediaId;
     outMsg.setDescription = 'TypeScript + Node.js 开发微信公众号';
@@ -145,22 +142,15 @@ export class HandMsgAdapter implements MsgAdapter {
     inSpeechRecognitionResults: InSpeechRecognitionResults,
   ): Promise<OutMsg> {
     const text = new OutTextMsg(inSpeechRecognitionResults);
-    text.setContent(
-      '语音识别消息...' + inSpeechRecognitionResults.getRecognition,
-    );
+    text.setContent('语音识别消息...' + inSpeechRecognitionResults.getRecognition);
     return text;
   }
 
   async processInFollowEvent(inFollowEvent: InFollowEvent): Promise<OutMsg> {
     if (InFollowEvent.EVENT_INFOLLOW_SUBSCRIBE == inFollowEvent.getEvent) {
       console.log(inFollowEvent, '关注信息');
-      return this.renderOutTextMsg(
-        inFollowEvent,
-        '感谢你的关注 么么哒 \n\nQQ：969718197',
-      );
-    } else if (
-      InFollowEvent.EVENT_INFOLLOW_UNSUBSCRIBE == inFollowEvent.getEvent
-    ) {
+      return this.renderOutTextMsg(inFollowEvent, '感谢你的关注 么么哒 \n\nQQ：969718197');
+    } else if (InFollowEvent.EVENT_INFOLLOW_UNSUBSCRIBE == inFollowEvent.getEvent) {
       console.error('取消关注：' + inFollowEvent.getFromUserName);
       return this.renderOutTextMsg(inFollowEvent);
     } else {
@@ -182,32 +172,19 @@ export class HandMsgAdapter implements MsgAdapter {
       return this.renderOutTextMsg(inQrCodeEvent);
     }
   }
-  async processInLocationEvent(
-    inLocationEvent: InLocationEvent,
-  ): Promise<OutMsg> {
+  async processInLocationEvent(inLocationEvent: InLocationEvent): Promise<OutMsg> {
     console.debug('发送地理位置事件：' + inLocationEvent.getFromUserName);
 
-    return this.renderOutTextMsg(
-      inLocationEvent,
-      '地理位置是：' + inLocationEvent.getLatitude,
-    );
+    return this.renderOutTextMsg(inLocationEvent, '地理位置是：' + inLocationEvent.getLatitude);
   }
   async processInMenuEvent(inMenuEvent: InMenuEvent): Promise<OutMsg> {
     console.debug('菜单事件：' + inMenuEvent.getFromUserName);
 
-    return this.renderOutTextMsg(
-      inMenuEvent,
-      '菜单事件内容是：' + inMenuEvent.getEventKey,
-    );
+    return this.renderOutTextMsg(inMenuEvent, '菜单事件内容是：' + inMenuEvent.getEventKey);
   }
-  async processInTemplateMsgEvent(
-    inTemplateMsgEvent: InTemplateMsgEvent,
-  ): Promise<OutMsg> {
+  async processInTemplateMsgEvent(inTemplateMsgEvent: InTemplateMsgEvent): Promise<OutMsg> {
     console.debug(
-      '模板消息事件：' +
-        inTemplateMsgEvent.getFromUserName +
-        ' ' +
-        inTemplateMsgEvent.getStatus,
+      '模板消息事件：' + inTemplateMsgEvent.getFromUserName + ' ' + inTemplateMsgEvent.getStatus,
     );
     return this.renderOutTextMsg(
       inTemplateMsgEvent,
@@ -232,9 +209,7 @@ export class HandMsgAdapter implements MsgAdapter {
     console.log('进入应用事件');
     return this.renderOutTextMsg(
       inEnterAgentEvent,
-      inEnterAgentEvent.getFromUserName +
-        ' 进入应用 ' +
-        inEnterAgentEvent.getAgentId,
+      inEnterAgentEvent.getFromUserName + ' 进入应用 ' + inEnterAgentEvent.getAgentId,
     );
   }
 
@@ -255,40 +230,22 @@ export class HandMsgAdapter implements MsgAdapter {
     inBatchJobResultEvent: InBatchJobResultEvent,
   ): Promise<OutMsg> {
     console.log(inBatchJobResultEvent);
-    return this.renderOutTextMsg(
-      inBatchJobResultEvent,
-      inBatchJobResultEvent.getJobId,
-    );
+    return this.renderOutTextMsg(inBatchJobResultEvent, inBatchJobResultEvent.getJobId);
   }
 
-  async processInUpdateUserEvent(
-    inUpdateUserEvent: InUpdateUserEvent,
-  ): Promise<OutMsg> {
+  async processInUpdateUserEvent(inUpdateUserEvent: InUpdateUserEvent): Promise<OutMsg> {
     console.log(inUpdateUserEvent);
-    return this.renderOutTextMsg(
-      inUpdateUserEvent,
-      inUpdateUserEvent.getUserId,
-    );
+    return this.renderOutTextMsg(inUpdateUserEvent, inUpdateUserEvent.getUserId);
   }
 
-  async processInUpdatePartyEvent(
-    inUpdatePartyEvent: InUpdatePartyEvent,
-  ): Promise<OutMsg> {
+  async processInUpdatePartyEvent(inUpdatePartyEvent: InUpdatePartyEvent): Promise<OutMsg> {
     console.log(inUpdatePartyEvent);
-    return this.renderOutTextMsg(
-      inUpdatePartyEvent,
-      inUpdatePartyEvent.getParentId,
-    );
+    return this.renderOutTextMsg(inUpdatePartyEvent, inUpdatePartyEvent.getParentId);
   }
 
-  async processInUpdateTagEvent(
-    inUpdateTagEvent: InUpdateTagEvent,
-  ): Promise<OutMsg> {
+  async processInUpdateTagEvent(inUpdateTagEvent: InUpdateTagEvent): Promise<OutMsg> {
     console.log(inUpdateTagEvent);
-    return this.renderOutTextMsg(
-      inUpdateTagEvent,
-      inUpdateTagEvent.getTagId + '',
-    );
+    return this.renderOutTextMsg(inUpdateTagEvent, inUpdateTagEvent.getTagId + '');
   }
 
   async processInSuiteTicket(inSuiteTicket: InSuiteTicket): Promise<string> {
@@ -306,9 +263,7 @@ export class HandMsgAdapter implements MsgAdapter {
   async processInComponentVerifyTicket(
     inComponentVerifyTicket: InComponentVerifyTicket,
   ): Promise<string> {
-    console.log(
-      `inComponentVerifyTicket:${JSON.stringify(inComponentVerifyTicket)}`,
-    );
+    console.log(`inComponentVerifyTicket:${JSON.stringify(inComponentVerifyTicket)}`);
     const appId = inComponentVerifyTicket.appId;
     const config: ApiConfig = ApiConfigKit.getApiConfigByAppId(appId);
     config.setTicket = inComponentVerifyTicket.getTicket;
@@ -331,28 +286,20 @@ export class HandMsgAdapter implements MsgAdapter {
   async processInExternalContactEvent(
     inExternalContactEvent: InExternalContactEvent,
   ): Promise<string> {
-    console.log(
-      `inExternalContactEvent:${JSON.stringify(inExternalContactEvent)}`,
-    );
+    console.log(`inExternalContactEvent:${JSON.stringify(inExternalContactEvent)}`);
     return 'success';
   }
 
-  async processIsNotDefinedMsg(
-    inNotDefinedMsg: InNotDefinedMsg,
-  ): Promise<OutMsg> {
+  async processIsNotDefinedMsg(inNotDefinedMsg: InNotDefinedMsg): Promise<OutMsg> {
     return this.renderOutTextMsg(inNotDefinedMsg, '未知消息');
   }
 
-  async processInBatchJobResult(
-    inBatchJobResult: InBatchJobResult,
-  ): Promise<string> {
+  async processInBatchJobResult(inBatchJobResult: InBatchJobResult): Promise<string> {
     console.log(inBatchJobResult.jobId);
     return 'success';
   }
 
-  async processInExternalContact(
-    inExternalContact: InExternalContact,
-  ): Promise<string> {
+  async processInExternalContact(inExternalContact: InExternalContact): Promise<string> {
     console.log(inExternalContact.authCorpId);
     return 'success';
   }
@@ -367,10 +314,7 @@ export class HandMsgAdapter implements MsgAdapter {
     return this.renderOutTextMsg(inMassEvent, inMassEvent.getToUserName);
   }
 
-  async renderOutTextMsg(
-    inMsg: InMsg,
-    content?: string | undefined,
-  ): Promise<OutTextMsg> {
+  async renderOutTextMsg(inMsg: InMsg, content?: string | undefined): Promise<OutTextMsg> {
     const OutMsg = new OutTextMsg(inMsg);
     OutMsg.setContent(content ? content : ' ');
     return OutMsg;

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-04-26 15:20:17
+ * @LastEditTime: 2022-05-25 11:27:16
  * @Description: 产品
  */
 
@@ -50,9 +50,7 @@ export class ProductService {
    * @return {*}  {Promise<PaginationResult<Array<Product>>>}
    * @memberof ProductService
    */
-  async findAll(
-    parameters: QueryProductDto,
-  ): Promise<PaginationResult<Array<Product>>> {
+  async findAll(parameters: QueryProductDto): Promise<PaginationResult<Array<Product>>> {
     let total = 0;
     const result = await this.productModel
       .aggregate([
@@ -60,9 +58,7 @@ export class ProductService {
           $match: {
             title: { $regex: new RegExp(parameters.title, 'i') },
             isHot: parameters.isHot ? true : { $ne: parameters.isHot },
-            isTimeLimit: parameters.isTimeLimit
-              ? true
-              : { $ne: parameters.isTimeLimit },
+            isTimeLimit: parameters.isTimeLimit ? true : { $ne: parameters.isTimeLimit },
           },
         },
         {
@@ -120,10 +116,7 @@ export class ProductService {
    * @return {*}  {Promise<Product>}
    * @memberof ProductService
    */
-  async update(
-    id: string,
-    updateProductDto: UpdateProductDto,
-  ): Promise<Product> {
+  async update(id: string, updateProductDto: UpdateProductDto): Promise<Product> {
     // 如果多规格。给默认最低价
     if (updateProductDto.skuType == 2) {
       const mins = updateProductDto.skus.find((item) => Math.min(item.price));
@@ -176,10 +169,7 @@ export class ProductService {
    * @param {boolean} status 热门推荐状态
    * @memberof ProductService
    */
-  async batchUpdateHotStatus(
-    ids: Array<string>,
-    status: boolean,
-  ): Promise<void> {
+  async batchUpdateHotStatus(ids: Array<string>, status: boolean): Promise<void> {
     for (const item of ids) {
       await this.productModel.findByIdAndUpdate(item, { isHot: status });
     }
@@ -206,10 +196,7 @@ export class ProductService {
    * @param {boolean} status 限时精选状态
    * @memberof ProductService
    */
-  async batchUpdateTimeLimitStatus(
-    ids: Array<string>,
-    status: boolean,
-  ): Promise<void> {
+  async batchUpdateTimeLimitStatus(ids: Array<string>, status: boolean): Promise<void> {
     for (const item of ids) {
       await this.productModel.findByIdAndUpdate(item, { isTimeLimit: status });
     }

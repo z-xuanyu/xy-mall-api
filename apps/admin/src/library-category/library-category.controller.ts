@@ -7,25 +7,11 @@
  * @LastEditTime: 2022-05-05 11:16:21
  * @Description: Modify here please
  */
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { LibraryCategoryService } from './library-category.service';
 import { CreateLibraryCategoryDto } from './dto/create-library-category.dto';
 import { UpdateLibraryCategoryDto } from './dto/update-library-category.dto';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
@@ -35,16 +21,12 @@ import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 @ApiBearerAuth()
 @Controller('libraryCategory')
 export class LibraryCategoryController {
-  constructor(
-    private readonly libraryCategoryService: LibraryCategoryService,
-  ) {}
+  constructor(private readonly libraryCategoryService: LibraryCategoryService) {}
 
   @Post()
   @ApiOperation({ summary: '新增文件分类' })
   async create(@Body() createLibraryCategoryDto: CreateLibraryCategoryDto) {
-    const res = await this.libraryCategoryService.create(
-      createLibraryCategoryDto,
-    );
+    const res = await this.libraryCategoryService.create(createLibraryCategoryDto);
     return apiSucceed(res);
   }
 
@@ -70,10 +52,7 @@ export class LibraryCategoryController {
     @Param('id', new ParseIdPipe()) id: string,
     @Body() updateLibraryCategoryDto: UpdateLibraryCategoryDto,
   ) {
-    const res = this.libraryCategoryService.update(
-      id,
-      updateLibraryCategoryDto,
-    );
+    const res = this.libraryCategoryService.update(id, updateLibraryCategoryDto);
     return apiSucceed(res);
   }
 

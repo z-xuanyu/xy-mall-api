@@ -19,18 +19,9 @@ import {
   Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
-import {
-  apiSucceed,
-  ApiSucceedResult,
-  PaginationResult,
-} from 'libs/common/ResponseResultModel';
+import { apiSucceed, ApiSucceedResult, PaginationResult } from 'libs/common/ResponseResultModel';
 import { Category } from 'libs/db/modules/category.model';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
@@ -46,9 +37,7 @@ export class CategoryController {
 
   @Post()
   @ApiOperation({ summary: '新增分类' })
-  async create(
-    @Body() createCategoryDto: CreateCategoryDto,
-  ): Promise<ApiSucceedResult<Category>> {
+  async create(@Body() createCategoryDto: CreateCategoryDto): Promise<ApiSucceedResult<Category>> {
     const res = await this.categoryService.create(createCategoryDto);
     return apiSucceed(res);
   }
@@ -65,9 +54,7 @@ export class CategoryController {
   @Get(':id')
   @ApiOperation({ summary: '分类信息' })
   @ApiParam({ name: 'id', description: '分类id' })
-  async findOne(
-    @Param('id', new ParseIdPipe()) id: string,
-  ): Promise<ApiSucceedResult<Category>> {
+  async findOne(@Param('id', new ParseIdPipe()) id: string): Promise<ApiSucceedResult<Category>> {
     const res = await this.categoryService.findOne(id);
     return apiSucceed(res);
   }
@@ -86,9 +73,7 @@ export class CategoryController {
   @Delete(':id')
   @ApiOperation({ summary: '删除分类' })
   @ApiParam({ name: 'id', description: '分类id' })
-  async remove(
-    @Param('id', new ParseIdPipe()) id: string,
-  ): Promise<ApiSucceedResult<Category>> {
+  async remove(@Param('id', new ParseIdPipe()) id: string): Promise<ApiSucceedResult<Category>> {
     const res = await this.categoryService.remove(id);
     return apiSucceed(res);
   }

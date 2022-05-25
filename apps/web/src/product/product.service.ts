@@ -50,8 +50,7 @@ export class ProductService {
         userId,
       });
       // 不存在创建记录
-      if (!isHasProduct)
-        await this.userViewsHistory.create({ userId, productId: id });
+      if (!isHasProduct) await this.userViewsHistory.create({ userId, productId: id });
 
       // 用户是否收藏改商品
       const isCollectionProduct = await this.userCollectionModel.findOne({
@@ -89,9 +88,7 @@ export class ProductService {
 
   // 删除收藏商品
   async removeCollection(userCollectionProductDto: UserCollectionProductDto) {
-    return await this.userCollectionModel.findOneAndDelete(
-      userCollectionProductDto,
-    );
+    return await this.userCollectionModel.findOneAndDelete(userCollectionProductDto);
   }
 
   // 获热门商品

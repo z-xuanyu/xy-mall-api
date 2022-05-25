@@ -31,9 +31,7 @@ export class ProductParamService {
    * @return {*}  {Promise<ProductParam>}
    * @memberof ProductParamService
    */
-  async create(
-    createProductParamDto: CreateProductParamDto,
-  ): Promise<ProductParam> {
+  async create(createProductParamDto: CreateProductParamDto): Promise<ProductParam> {
     return await this.productParmMobanModel.create(createProductParamDto);
   }
 
@@ -44,9 +42,7 @@ export class ProductParamService {
    * @return {*}  {Promise<PaginationResult<Array<ProductParam>>>}
    * @memberof ProductParamService
    */
-  async findAll(
-    parameters: QueryProductParamDto,
-  ): Promise<PaginationResult<Array<ProductParam>>> {
+  async findAll(parameters: QueryProductParamDto): Promise<PaginationResult<Array<ProductParam>>> {
     let total = 0;
     const result = await this.productParmMobanModel
       .find({ name: { $regex: new RegExp(parameters.name, 'i') } })
@@ -81,14 +77,8 @@ export class ProductParamService {
    * @return {*}  {Promise<ProductParam>}
    * @memberof ProductParamService
    */
-  async update(
-    id: string,
-    updateProductParamDto: UpdateProductParamDto,
-  ): Promise<ProductParam> {
-    return this.productParmMobanModel.findByIdAndUpdate(
-      id,
-      updateProductParamDto,
-    );
+  async update(id: string, updateProductParamDto: UpdateProductParamDto): Promise<ProductParam> {
+    return this.productParmMobanModel.findByIdAndUpdate(id, updateProductParamDto);
   }
 
   /**
