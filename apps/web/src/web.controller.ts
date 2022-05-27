@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:56:14
- * @LastEditTime: 2022-04-29 10:01:22
+ * @LastEditTime: 2022-05-26 11:03:13
  * @Description: Modify here please
  */
 import {
@@ -49,7 +49,9 @@ class WeixinPayDto {
 @ApiTags('首页')
 @Controller()
 export class WebController {
-  constructor(private readonly webService: WebService) {}
+  constructor(private readonly webService: WebService) {
+    console.log('webController');
+  }
 
   @Get()
   getHello(): string {
@@ -106,5 +108,11 @@ export class WebController {
   async weixinPay(@Body() weixinPayDto: WeixinPayDto) {
     const res = await this.webService.weixinPay(weixinPayDto.orderId);
     return apiSucceed(res);
+  }
+
+  @Get('generatePoster')
+  @ApiOperation({ summary: '生成海报' })
+  async generatePoster() {
+    return '1';
   }
 }

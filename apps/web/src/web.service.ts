@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:44:31
- * @LastEditTime: 2022-03-23 10:31:39
+ * @LastEditTime: 2022-05-26 11:04:48
  * @Description: Modify here please
  */
 import { Injectable, Logger } from '@nestjs/common';
@@ -152,5 +152,10 @@ export class WebService {
     return this.orderModel.findByIdAndUpdate(orderId, {
       status: OrderStatus.PENDING_DELIVER,
     });
+  }
+
+  // 海报生成
+  async generatePoster() {
+    return 'ok';
   }
 }
