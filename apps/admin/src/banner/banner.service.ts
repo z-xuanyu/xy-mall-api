@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-04 10:46:45
- * @LastEditTime: 2022-04-12 16:27:37
+ * @LastEditTime: 2022-06-10 16:55:29
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -31,8 +31,10 @@ export class BannerService {
    */
   async create(createBannerDto: CreateBannerDto): Promise<Banner> {
     // 关联的产品id是否存在
-    if (!isValidObjectId(createBannerDto.productId) && createBannerDto.productId)
-      throw new ApiFail(101, '产品id不存在');
+    if (createBannerDto.productId && createBannerDto.type == 2) {
+      if (!isValidObjectId(createBannerDto.productId)) throw new ApiFail(101, '产品id不存在');
+    }
+
     return await this.bannerModel.create(createBannerDto);
   }
 

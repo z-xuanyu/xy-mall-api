@@ -1991,11 +1991,10 @@
             this.bannerModel = bannerModel;
           }
           async create(createBannerDto) {
-            if (
-              !(0, mongoose_1.isValidObjectId)(createBannerDto.productId) &&
-              createBannerDto.productId
-            )
-              throw new ResponseResultModel_1.ApiFail(101, '产品id不存在');
+            if (createBannerDto.productId && createBannerDto.type == 2) {
+              if (!(0, mongoose_1.isValidObjectId)(createBannerDto.productId))
+                throw new ResponseResultModel_1.ApiFail(101, '产品id不存在');
+            }
             return await this.bannerModel.create(createBannerDto);
           }
           async findAll(parameters) {
