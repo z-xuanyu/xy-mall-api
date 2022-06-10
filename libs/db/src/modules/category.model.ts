@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 16:13:19
- * @LastEditTime: 2021-12-27 16:15:55
- * @Description: Modify here please
+ * @LastEditTime: 2022-06-10 17:43:58
+ * @Description: 商品分类模型
  */
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -32,4 +32,8 @@ export class Category {
   @ApiProperty({ title: '上级分类', default: null })
   @prop({ ref: () => Category, default: null })
   parentId: Ref<Category> | null;
+
+  @ApiProperty({ title: '缩略图' })
+  @prop()
+  thumbnail?: string;
 }

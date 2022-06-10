@@ -1679,6 +1679,16 @@
         'parentId',
         void 0,
       );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '缩略图' }),
+          (0, typegoose_1.prop)(),
+          __metadata('design:type', String),
+        ],
+        Category.prototype,
+        'thumbnail',
+        void 0,
+      );
       Category = Category_1 = __decorate(
         [
           (0, typegoose_1.ModelOptions)({
@@ -7917,6 +7927,12 @@
         'parentId',
         void 0,
       );
+      __decorate(
+        [(0, swagger_1.ApiProperty)({ title: '缩略图' }), __metadata('design:type', String)],
+        CreateCategoryDto.prototype,
+        'thumbnail',
+        void 0,
+      );
       exports.CreateCategoryDto = CreateCategoryDto;
 
       /***/
@@ -7955,7 +7971,7 @@
       class QueryCategoryDto extends PaginationParametersDto_1.PaginationParametersDto {}
       __decorate(
         [
-          (0, swagger_1.ApiProperty)({ title: '分类名称', required: false }),
+          (0, swagger_1.ApiProperty)({ name: '分类名称', required: false }),
           __metadata('design:type', String),
         ],
         QueryCategoryDto.prototype,
