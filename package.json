@@ -48,6 +48,7 @@
     "class-validator": "^0.13.2",
     "express-rate-limit": "^6.3.0",
     "helmet": "^5.0.2",
+    "mongodb": "^4.7.0",
     "mongoose": "^6.2.4",
     "multer-aliyun-oss": "^2.1.0",
     "nestjs-typegoose": "^7.1.38",

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:44:31
- * @LastEditTime: 2022-05-25 11:30:21
+ * @LastEditTime: 2022-06-10 12:20:39
  * @Description: Modify here please
  */
 import { Injectable, Logger } from '@nestjs/common';
@@ -61,21 +61,21 @@ export class AppService {
           const writeImage = fs.createWriteStream(
             join(__dirname, './uploads-images', `${file.originalname}`),
           );
-          writeImage.write(file.buffer);
+          writeImage.write(file.path);
           data = {
             url: `${domain}/uploads-images/${file.originalname}`,
           };
           break;
         //  阿里oss上传
         case 2:
-          data = await this.aliOssClient.put(`/images/${file.originalname}`, file.buffer);
+          console.log(file, 1451464);
+          data = await this.aliOssClient.put(`/images/${file.originalname}`, file.path);
           break;
         default:
           break;
       }
       return data;
     } catch (err) {
-      console.log(err, 4444);
       Logger.log(err, '上传错误');
     }
   }

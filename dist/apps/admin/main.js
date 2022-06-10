@@ -18,29 +18,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -53,15 +42,9 @@
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AdminController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const parse_id_pipe_1 = __webpack_require__(
           /*! libs/common/pipe/parse-id.pipe */ './libs/common/src/pipe/parse-id.pipe.ts',
         );
@@ -105,10 +88,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async updateStatus(id, updateStatusDto) {
-            const res = await this.adminService.updateStatus(
-              id,
-              updateStatusDto,
-            );
+            const res = await this.adminService.updateStatus(id, updateStatusDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
         };
@@ -127,10 +107,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_b = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Promise !== 'undefined' && Promise) === 'function' ? _b : Object,
             ),
           ],
           AdminController.prototype,
@@ -152,10 +129,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_d = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _d
-                : Object,
+              typeof (_d = typeof Promise !== 'undefined' && Promise) === 'function' ? _d : Object,
             ),
           ],
           AdminController.prototype,
@@ -167,18 +141,12 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '管理员信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '管理员id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_e = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _e
-                : Object,
+              typeof (_e = typeof Promise !== 'undefined' && Promise) === 'function' ? _e : Object,
             ),
           ],
           AdminController.prototype,
@@ -190,10 +158,7 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新管理员' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '管理员id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
@@ -206,10 +171,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_g = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _g
-                : Object,
+              typeof (_g = typeof Promise !== 'undefined' && Promise) === 'function' ? _g : Object,
             ),
           ],
           AdminController.prototype,
@@ -221,18 +183,12 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除管理员' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '管理员id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_h = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _h
-                : Object,
+              typeof (_h = typeof Promise !== 'undefined' && Promise) === 'function' ? _h : Object,
             ),
           ],
           AdminController.prototype,
@@ -244,10 +200,7 @@
             (0, common_1.Put)('updateStatus/:id'),
             (0, swagger_1.ApiOperation)({ summary: '更新管理员状态' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '管理员id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
@@ -260,10 +213,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_k = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _k
-                : Object,
+              typeof (_k = typeof Promise !== 'undefined' && Promise) === 'function' ? _k : Object,
             ),
           ],
           AdminController.prototype,
@@ -307,27 +257,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AdminModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const admin_service_1 = __webpack_require__(
           /*! ./admin.service */ './apps/admin/src/admin/admin.service.ts',
         );
@@ -366,29 +306,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -401,21 +330,15 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AdminService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
         const admin_model_1 = __webpack_require__(
           /*! libs/db/modules/admin.model */ './libs/db/src/modules/admin.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let AdminService = class AdminService {
           constructor(adminModel) {
             this.adminModel = adminModel;
@@ -429,10 +352,7 @@
             }
             const result = await this.adminModel.create(createAdminDto);
             if (!result) {
-              throw new ResponseResultModel_1.ApiFail(
-                400,
-                '系统异常，请联系管理员',
-              );
+              throw new ResponseResultModel_1.ApiFail(400, '系统异常，请联系管理员');
             }
             return result;
           }
@@ -479,10 +399,7 @@
         AdminService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(admin_model_1.Admin),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(admin_model_1.Admin)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -514,40 +431,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateAdminDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class CreateAdminDto {}
         __decorate(
           [
@@ -589,9 +491,7 @@
             (0, class_validator_1.IsNotEmpty)({ message: '角色不能为空' }),
             __metadata(
               'design:type',
-              typeof (_a = typeof Array !== 'undefined' && Array) === 'function'
-                ? _a
-                : Object,
+              typeof (_a = typeof Array !== 'undefined' && Array) === 'function' ? _a : Object,
             ),
           ],
           CreateAdminDto.prototype,
@@ -619,36 +519,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryAdminDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -664,11 +551,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '状态',
-              default: true,
-              required: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '状态', default: true, required: false }),
             __metadata('design:type', Boolean),
           ],
           QueryAdminDto.prototype,
@@ -696,43 +579,27 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateStatusDto = exports.UpdateAdminDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         class UpdateAdminDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '名称' }), __metadata('design:type', String)],
           UpdateAdminDto.prototype,
           'name',
           void 0,
@@ -742,9 +609,7 @@
             (0, swagger_1.ApiProperty)({ title: '角色标识' }),
             __metadata(
               'design:type',
-              typeof (_a = typeof Array !== 'undefined' && Array) === 'function'
-                ? _a
-                : Object,
+              typeof (_a = typeof Array !== 'undefined' && Array) === 'function' ? _a : Object,
             ),
           ],
           UpdateAdminDto.prototype,
@@ -754,10 +619,7 @@
         exports.UpdateAdminDto = UpdateAdminDto;
         class UpdateStatusDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '名称' }),
-            __metadata('design:type', Boolean),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '名称' }), __metadata('design:type', Boolean)],
           UpdateStatusDto.prototype,
           'status',
           void 0,
@@ -783,29 +645,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -815,21 +666,15 @@
               decorator(target, key, paramIndex);
             };
           };
-        var _a, _b, _c, _d, _e, _f, _g, _h;
+        var _a, _b, _c, _d, _e, _f;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AppController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const platform_express_1 = __webpack_require__(
           /*! @nestjs/platform-express */ '@nestjs/platform-express',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
@@ -875,22 +720,13 @@
               res === null || res === void 0 ? void 0 : res.url,
             );
           }
-          uploadFile(file) {
-            console.log(file);
-            return file;
-          }
           getMsg(request) {
             const signature = request.query.signature.toString(),
               timestamp = request.query.timestamp.toString(),
               nonce = request.query.nonce.toString(),
               echostr = request.query.echostr.toString();
             console.log(signature, 777);
-            return tnwx_1.WeChat.checkSignature(
-              signature,
-              timestamp,
-              nonce,
-              echostr,
-            );
+            return tnwx_1.WeChat.checkSignature(signature, timestamp, nonce, echostr);
           }
           async PostMsg(res, request) {
             const buffer = await getRawBody(request);
@@ -920,9 +756,7 @@
             (0, common_1.UseGuards)((0, passport_1.AuthGuard)('admin-jwt')),
             (0, swagger_1.ApiBearerAuth)(),
             (0, swagger_1.ApiOperation)({ summary: '管理端--文件上传' }),
-            (0, common_1.UseInterceptors)(
-              (0, platform_express_1.FileInterceptor)('file'),
-            ),
+            (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file')),
             (0, swagger_1.ApiConsumes)('multipart/form-data'),
             (0, swagger_1.ApiBody)({
               description: '文件上传',
@@ -934,42 +768,11 @@
             __metadata('design:paramtypes', [Object, Object]),
             __metadata(
               'design:returntype',
-              typeof (_a = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _a
-                : Object,
+              typeof (_a = typeof Promise !== 'undefined' && Promise) === 'function' ? _a : Object,
             ),
           ],
           AppController.prototype,
           'upload',
-          null,
-        );
-        __decorate(
-          [
-            (0, common_1.Post)('uploadTest'),
-            (0, swagger_1.ApiBody)({
-              description: '文件上传',
-              type: FileUploadDto,
-            }),
-            (0, common_1.UseInterceptors)(
-              (0, platform_express_1.FileInterceptor)('file'),
-            ),
-            (0, swagger_1.ApiOperation)({ summary: '文件上传测试' }),
-            (0, swagger_1.ApiConsumes)('multipart/form-data'),
-            __param(0, (0, common_1.UploadedFile)()),
-            __metadata('design:type', Function),
-            __metadata('design:paramtypes', [
-              typeof (_c =
-                typeof Express !== 'undefined' &&
-                (_b = Express.Multer) !== void 0 &&
-                _b.File) === 'function'
-                ? _c
-                : Object,
-            ]),
-            __metadata('design:returntype', void 0),
-          ],
-          AppController.prototype,
-          'uploadFile',
           null,
         );
         __decorate(
@@ -979,10 +782,9 @@
             __param(0, (0, common_1.Req)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
-              typeof (_d =
-                typeof express_1.Request !== 'undefined' &&
-                express_1.Request) === 'function'
-                ? _d
+              typeof (_b = typeof express_1.Request !== 'undefined' && express_1.Request) ===
+              'function'
+                ? _b
                 : Object,
             ]),
             __metadata('design:returntype', void 0),
@@ -999,15 +801,13 @@
             __param(1, (0, common_1.Req)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
-              typeof (_e =
-                typeof express_1.Response !== 'undefined' &&
-                express_1.Response) === 'function'
-                ? _e
+              typeof (_c = typeof express_1.Response !== 'undefined' && express_1.Response) ===
+              'function'
+                ? _c
                 : Object,
-              typeof (_f =
-                typeof express_1.Request !== 'undefined' &&
-                express_1.Request) === 'function'
-                ? _f
+              typeof (_d = typeof express_1.Request !== 'undefined' && express_1.Request) ===
+              'function'
+                ? _d
                 : Object,
             ]),
             __metadata('design:returntype', Promise),
@@ -1023,10 +823,9 @@
             __param(0, (0, common_1.Req)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
-              typeof (_g =
-                typeof express_1.Request !== 'undefined' &&
-                express_1.Request) === 'function'
-                ? _g
+              typeof (_e = typeof express_1.Request !== 'undefined' && express_1.Request) ===
+              'function'
+                ? _e
                 : Object,
             ]),
             __metadata('design:returntype', Promise),
@@ -1040,10 +839,10 @@
             (0, swagger_1.ApiTags)('首页'),
             (0, common_1.Controller)(),
             __metadata('design:paramtypes', [
-              typeof (_h =
-                typeof app_service_1.AppService !== 'undefined' &&
-                app_service_1.AppService) === 'function'
-                ? _h
+              typeof (_f =
+                typeof app_service_1.AppService !== 'undefined' && app_service_1.AppService) ===
+              'function'
+                ? _f
                 : Object,
             ]),
           ],
@@ -1070,30 +869,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AppModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const common_2 = __webpack_require__(
-          /*! libs/common */ './libs/common/src/index.ts',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const common_2 = __webpack_require__(/*! libs/common */ './libs/common/src/index.ts');
         const app_controller_1 = __webpack_require__(
           /*! ./app.controller */ './apps/admin/src/app.controller.ts',
         );
@@ -1190,9 +977,7 @@
                   storage: (0, multer_1.diskStorage)({
                     destination: (0, path_1.join)(__dirname, 'uploads-images'),
                     filename: (req, file, cb) => {
-                      const filename = `${nuid.next()}.${
-                        file.mimetype.split('/')[1]
-                      }`;
+                      const filename = `${nuid.next()}.${file.mimetype.split('/')[1]}`;
                       return cb(null, filename);
                     },
                   }),
@@ -1247,29 +1032,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -1282,12 +1056,8 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AppService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const OSS = __webpack_require__(/*! ali-oss */ 'ali-oss');
         const fs = __webpack_require__(/*! fs */ 'fs');
         const has_1 = __webpack_require__(
@@ -1296,9 +1066,7 @@
         const site_setting_model_1 = __webpack_require__(
           /*! libs/db/modules/site-setting.model */ './libs/db/src/modules/site-setting.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         const path_1 = __webpack_require__(/*! path */ 'path');
         let AppService = class AppService {
           constructor(settingModel) {
@@ -1328,29 +1096,22 @@
                     await (0, has_1.createMkdir)('uploads-images');
                   }
                   const writeImage = fs.createWriteStream(
-                    (0, path_1.join)(
-                      __dirname,
-                      './uploads-images',
-                      `${file.originalname}`,
-                    ),
+                    (0, path_1.join)(__dirname, './uploads-images', `${file.originalname}`),
                   );
-                  writeImage.write(file.buffer);
+                  writeImage.write(file.path);
                   data = {
                     url: `${domain}/uploads-images/${file.originalname}`,
                   };
                   break;
                 case 2:
-                  data = await this.aliOssClient.put(
-                    `/images/${file.originalname}`,
-                    file.buffer,
-                  );
+                  console.log(file, 1451464);
+                  data = await this.aliOssClient.put(`/images/${file.originalname}`, file.path);
                   break;
                 default:
                   break;
               }
               return data;
             } catch (err) {
-              console.log(err, 4444);
               common_1.Logger.log(err, '上传错误');
             }
           }
@@ -1358,12 +1119,7 @@
         AppService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                site_setting_model_1.SiteSettings,
-              ),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(site_setting_model_1.SiteSettings)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -1395,29 +1151,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -1430,30 +1175,23 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AdminJwtStrategy = void 0;
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const admin_model_1 = __webpack_require__(
           /*! libs/db/modules/admin.model */ './libs/db/src/modules/admin.model.ts',
         );
-        const passport_jwt_1 = __webpack_require__(
-          /*! passport-jwt */ 'passport-jwt',
-        );
+        const passport_jwt_1 = __webpack_require__(/*! passport-jwt */ 'passport-jwt');
         const jwt_config_1 = __webpack_require__(
           /*! libs/common/config/jwt.config */ './libs/common/src/config/jwt.config.ts',
         );
-        let AdminJwtStrategy = class AdminJwtStrategy extends (0,
-        passport_1.PassportStrategy)(passport_jwt_1.Strategy, 'admin-jwt') {
+        let AdminJwtStrategy = class AdminJwtStrategy extends (0, passport_1.PassportStrategy)(
+          passport_jwt_1.Strategy,
+          'admin-jwt',
+        ) {
           constructor(adminModel) {
             super({
-              jwtFromRequest:
-                passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken(),
+              jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken(),
               secretOrKey: jwt_config_1.adminJwtConfig.secret,
               ignoreExpiration: false,
             });
@@ -1465,10 +1203,7 @@
         };
         AdminJwtStrategy = __decorate(
           [
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(admin_model_1.Admin),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(admin_model_1.Admin)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -1500,29 +1235,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -1535,18 +1259,10 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AdminLocalStrategy = void 0;
-        const passport_local_1 = __webpack_require__(
-          /*! passport-local */ 'passport-local',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const passport_local_1 = __webpack_require__(/*! passport-local */ 'passport-local');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const bcryptjs_1 = __webpack_require__(/*! bcryptjs */ 'bcryptjs');
         const admin_model_1 = __webpack_require__(
           /*! libs/db/modules/admin.model */ './libs/db/src/modules/admin.model.ts',
@@ -1554,8 +1270,10 @@
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
-        let AdminLocalStrategy = class AdminLocalStrategy extends (0,
-        passport_1.PassportStrategy)(passport_local_1.Strategy, 'admin-local') {
+        let AdminLocalStrategy = class AdminLocalStrategy extends (0, passport_1.PassportStrategy)(
+          passport_local_1.Strategy,
+          'admin-local',
+        ) {
           constructor(adminModel) {
             super({
               usernameField: 'email',
@@ -1564,9 +1282,7 @@
             this.adminModel = adminModel;
           }
           async validate(email, password) {
-            const adminInfo = await this.adminModel
-              .findOne({ email })
-              .select('+password');
+            const adminInfo = await this.adminModel.findOne({ email }).select('+password');
             if (!adminInfo) {
               throw new ResponseResultModel_1.ApiFail(101, '用户名不正确');
             }
@@ -1581,10 +1297,7 @@
         };
         AdminLocalStrategy = __decorate(
           [
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(admin_model_1.Admin),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(admin_model_1.Admin)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -1616,29 +1329,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -1651,16 +1353,10 @@
         var _a, _b, _c, _d, _e, _f;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AuthController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const jwt_1 = __webpack_require__(/*! @nestjs/jwt */ '@nestjs/jwt');
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const adminl_login_dto_1 = __webpack_require__(
           /*! ./dto/adminl.login.dto */ './apps/admin/src/auth/dto/adminl.login.dto.ts',
         );
@@ -1673,12 +1369,8 @@
         const current_user_decorator_1 = __webpack_require__(
           /*! ./current-user.decorator */ './apps/admin/src/auth/current-user.decorator.ts',
         );
-        const cache_manager_1 = __webpack_require__(
-          /*! cache-manager */ 'cache-manager',
-        );
-        const svgCaptcha = __webpack_require__(
-          /*! svg-captcha */ 'svg-captcha',
-        );
+        const cache_manager_1 = __webpack_require__(/*! cache-manager */ 'cache-manager');
+        const svgCaptcha = __webpack_require__(/*! svg-captcha */ 'svg-captcha');
         let AuthController = class AuthController {
           constructor(jwtService, cacheManager) {
             this.jwtService = jwtService;
@@ -1708,8 +1400,7 @@
           async currentLoginInfo(user) {
             const data = {
               name: user.name,
-              avatar:
-                'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+              avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
               roles: ['super'],
               email: user.email,
             };
@@ -1751,10 +1442,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_b = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Promise !== 'undefined' && Promise) === 'function' ? _b : Object,
             ),
           ],
           AuthController.prototype,
@@ -1778,10 +1466,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_d = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _d
-                : Object,
+              typeof (_d = typeof Promise !== 'undefined' && Promise) === 'function' ? _d : Object,
             ),
           ],
           AuthController.prototype,
@@ -1806,14 +1491,13 @@
             (0, common_1.Controller)('auth'),
             __param(1, (0, common_1.Inject)(common_1.CACHE_MANAGER)),
             __metadata('design:paramtypes', [
-              typeof (_e =
-                typeof jwt_1.JwtService !== 'undefined' && jwt_1.JwtService) ===
+              typeof (_e = typeof jwt_1.JwtService !== 'undefined' && jwt_1.JwtService) ===
               'function'
                 ? _e
                 : Object,
               typeof (_f =
-                typeof cache_manager_1.Cache !== 'undefined' &&
-                cache_manager_1.Cache) === 'function'
+                typeof cache_manager_1.Cache !== 'undefined' && cache_manager_1.Cache) ===
+              'function'
                 ? _f
                 : Object,
             ]),
@@ -1841,31 +1525,19 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AuthModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const jwt_1 = __webpack_require__(/*! @nestjs/jwt */ '@nestjs/jwt');
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const jwt_config_1 = __webpack_require__(
           /*! libs/common/config/jwt.config */ './libs/common/src/config/jwt.config.ts',
         );
@@ -1887,9 +1559,7 @@
                 passport_1.PassportModule,
                 jwt_1.JwtModule.register({
                   secret: jwt_config_1.adminJwtConfig.secret,
-                  signOptions: {
-                    expiresIn: jwt_config_1.adminJwtConfig.expiresIn,
-                  },
+                  signOptions: { expiresIn: jwt_config_1.adminJwtConfig.expiresIn },
                 }),
               ],
               controllers: [auth_controller_1.AuthController],
@@ -1913,15 +1583,11 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CurrentUser = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        exports.CurrentUser = (0, common_1.createParamDecorator)(
-          (data, ctx) => {
-            const req = ctx.switchToHttp().getRequest();
-            return req.user;
-          },
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        exports.CurrentUser = (0, common_1.createParamDecorator)((data, ctx) => {
+          const req = ctx.switchToHttp().getRequest();
+          return req.user;
+        });
 
         /***/
       },
@@ -1942,60 +1608,38 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AdminLoginDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         class AdminLoginDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '邮箱' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '邮箱' }), __metadata('design:type', String)],
           AdminLoginDto.prototype,
           'email',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '密码' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '密码' }), __metadata('design:type', String)],
           AdminLoginDto.prototype,
           'password',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '验证码' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '验证码' }), __metadata('design:type', String)],
           AdminLoginDto.prototype,
           'captcha',
           void 0,
@@ -2021,29 +1665,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -2056,15 +1689,9 @@
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.BannerController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const parse_id_pipe_1 = __webpack_require__(
           /*! libs/common/pipe/parse-id.pipe */ './libs/common/src/pipe/parse-id.pipe.ts',
         );
@@ -2111,10 +1738,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async changeStatus(id, changeBannerStatusDto) {
-            const res = await this.bannerService.changeStatus(
-              id,
-              changeBannerStatusDto.status,
-            );
+            const res = await this.bannerService.changeStatus(id, changeBannerStatusDto.status);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
         };
@@ -2133,10 +1757,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_b = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Promise !== 'undefined' && Promise) === 'function' ? _b : Object,
             ),
           ],
           BannerController.prototype,
@@ -2158,10 +1779,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_d = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _d
-                : Object,
+              typeof (_d = typeof Promise !== 'undefined' && Promise) === 'function' ? _d : Object,
             ),
           ],
           BannerController.prototype,
@@ -2173,18 +1791,12 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: 'Banner详情' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: 'BannerId' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_e = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _e
-                : Object,
+              typeof (_e = typeof Promise !== 'undefined' && Promise) === 'function' ? _e : Object,
             ),
           ],
           BannerController.prototype,
@@ -2196,10 +1808,7 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新Banner信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: 'BannerId' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
@@ -2212,10 +1821,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_g = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _g
-                : Object,
+              typeof (_g = typeof Promise !== 'undefined' && Promise) === 'function' ? _g : Object,
             ),
           ],
           BannerController.prototype,
@@ -2227,18 +1833,12 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除Banner' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: 'BannerId' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_h = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _h
-                : Object,
+              typeof (_h = typeof Promise !== 'undefined' && Promise) === 'function' ? _h : Object,
             ),
           ],
           BannerController.prototype,
@@ -2250,17 +1850,13 @@
             (0, common_1.Put)(':id/changeStatus'),
             (0, swagger_1.ApiOperation)({ summary: '改变banner状态' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: 'BannerId' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_j =
-                typeof change_banner_status_dto_1.ChangeBannerStatusDto !==
-                  'undefined' &&
+                typeof change_banner_status_dto_1.ChangeBannerStatusDto !== 'undefined' &&
                 change_banner_status_dto_1.ChangeBannerStatusDto) === 'function'
                 ? _j
                 : Object,
@@ -2308,27 +1904,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.BannerModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const banner_service_1 = __webpack_require__(
           /*! ./banner.service */ './apps/admin/src/banner/banner.service.ts',
         );
@@ -2366,29 +1952,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -2401,12 +1976,8 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.BannerService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
@@ -2414,9 +1985,7 @@
           /*! libs/db/modules/banner.model */ './libs/db/src/modules/banner.model.ts',
         );
         const mongoose_1 = __webpack_require__(/*! mongoose */ 'mongoose');
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let BannerService = class BannerService {
           constructor(bannerModel) {
             this.bannerModel = bannerModel;
@@ -2460,10 +2029,7 @@
             return await this.bannerModel.findById(id);
           }
           async update(id, updateBannerDto) {
-            return await this.bannerModel.findByIdAndUpdate(
-              id,
-              updateBannerDto,
-            );
+            return await this.bannerModel.findByIdAndUpdate(id, updateBannerDto);
           }
           async remove(id) {
             return await this.bannerModel.findByIdAndDelete(id);
@@ -2475,10 +2041,7 @@
         BannerService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(banner_model_1.Banner),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(banner_model_1.Banner)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -2510,52 +2073,36 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ChangeBannerStatusDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const banner_enum_1 = __webpack_require__(
           /*! libs/common/enum/banner.enum */ './libs/common/src/enum/banner.enum.ts',
         );
         class ChangeBannerStatusDto {}
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '状态',
-              enum: banner_enum_1.BannerStatus,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '状态', enum: banner_enum_1.BannerStatus }),
             __metadata(
               'design:type',
               typeof (_a =
-                typeof banner_enum_1.BannerStatus !== 'undefined' &&
-                banner_enum_1.BannerStatus) === 'function'
+                typeof banner_enum_1.BannerStatus !== 'undefined' && banner_enum_1.BannerStatus) ===
+                'function'
                 ? _a
                 : Object,
             ),
@@ -2585,40 +2132,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateBannerDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         const banner_enum_1 = __webpack_require__(
           /*! libs/common/enum/banner.enum */ './libs/common/src/enum/banner.enum.ts',
         );
@@ -2640,8 +2172,8 @@
             __metadata(
               'design:type',
               typeof (_a =
-                typeof banner_enum_1.BannerType !== 'undefined' &&
-                banner_enum_1.BannerType) === 'function'
+                typeof banner_enum_1.BannerType !== 'undefined' && banner_enum_1.BannerType) ===
+                'function'
                 ? _a
                 : Object,
             ),
@@ -2661,10 +2193,7 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '链接' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '链接' }), __metadata('design:type', String)],
           CreateBannerDto.prototype,
           'url',
           void 0,
@@ -2699,37 +2228,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryBannerDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const banner_enum_1 = __webpack_require__(
           /*! libs/common/enum/banner.enum */ './libs/common/src/enum/banner.enum.ts',
         );
@@ -2756,8 +2272,8 @@
             __metadata(
               'design:type',
               typeof (_a =
-                typeof banner_enum_1.BannerStatus !== 'undefined' &&
-                banner_enum_1.BannerStatus) === 'function'
+                typeof banner_enum_1.BannerStatus !== 'undefined' && banner_enum_1.BannerStatus) ===
+                'function'
                 ? _a
                 : Object,
             ),
@@ -2778,9 +2294,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateBannerDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_banner_dto_1 = __webpack_require__(
           /*! ./create-banner.dto */ './apps/admin/src/banner/dto/create-banner.dto.ts',
         );
@@ -2808,29 +2322,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -2843,15 +2346,9 @@
         var _a, _b, _c, _d, _e, _f, _g, _h, _j;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CategoryController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const parse_id_pipe_1 = __webpack_require__(
           /*! libs/common/pipe/parse-id.pipe */ './libs/common/src/pipe/parse-id.pipe.ts',
         );
@@ -2887,10 +2384,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async update(id, updateCategoryDto) {
-            const res = await this.categoryService.update(
-              id,
-              updateCategoryDto,
-            );
+            const res = await this.categoryService.update(id, updateCategoryDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async remove(id) {
@@ -2906,18 +2400,14 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof create_category_dto_1.CreateCategoryDto !==
-                  'undefined' && create_category_dto_1.CreateCategoryDto) ===
-              'function'
+                typeof create_category_dto_1.CreateCategoryDto !== 'undefined' &&
+                create_category_dto_1.CreateCategoryDto) === 'function'
                 ? _a
                 : Object,
             ]),
             __metadata(
               'design:returntype',
-              typeof (_b = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Promise !== 'undefined' && Promise) === 'function' ? _b : Object,
             ),
           ],
           CategoryController.prototype,
@@ -2939,10 +2429,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_d = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _d
-                : Object,
+              typeof (_d = typeof Promise !== 'undefined' && Promise) === 'function' ? _d : Object,
             ),
           ],
           CategoryController.prototype,
@@ -2954,18 +2441,12 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '分类信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '分类id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_e = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _e
-                : Object,
+              typeof (_e = typeof Promise !== 'undefined' && Promise) === 'function' ? _e : Object,
             ),
           ],
           CategoryController.prototype,
@@ -2977,27 +2458,20 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新分类' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '分类id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_f =
-                typeof update_category_dto_1.UpdateCategoryDto !==
-                  'undefined' && update_category_dto_1.UpdateCategoryDto) ===
-              'function'
+                typeof update_category_dto_1.UpdateCategoryDto !== 'undefined' &&
+                update_category_dto_1.UpdateCategoryDto) === 'function'
                 ? _f
                 : Object,
             ]),
             __metadata(
               'design:returntype',
-              typeof (_g = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _g
-                : Object,
+              typeof (_g = typeof Promise !== 'undefined' && Promise) === 'function' ? _g : Object,
             ),
           ],
           CategoryController.prototype,
@@ -3009,18 +2483,12 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除分类' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '分类id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_h = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _h
-                : Object,
+              typeof (_h = typeof Promise !== 'undefined' && Promise) === 'function' ? _h : Object,
             ),
           ],
           CategoryController.prototype,
@@ -3064,27 +2532,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CategoryModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const category_service_1 = __webpack_require__(
           /*! ./category.service */ './apps/admin/src/category/category.service.ts',
         );
@@ -3122,29 +2580,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -3157,18 +2604,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CategoryService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const category_model_1 = __webpack_require__(
           /*! libs/db/modules/category.model */ './libs/db/src/modules/category.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let CategoryService = class CategoryService {
           constructor(categoryModel) {
             this.categoryModel = categoryModel;
@@ -3204,10 +2645,7 @@
         CategoryService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(category_model_1.Category),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(category_model_1.Category)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -3239,39 +2677,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateCategoryDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class CreateCategoryDto {}
         __decorate(
           [
@@ -3284,19 +2707,13 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '排序' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '排序' }), __metadata('design:type', Number)],
           CreateCategoryDto.prototype,
           'sort',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '上级分类' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '上级分类' }), __metadata('design:type', String)],
           CreateCategoryDto.prototype,
           'parentId',
           void 0,
@@ -3322,36 +2739,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryCategoryDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -3377,9 +2781,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateCategoryDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_category_dto_1 = __webpack_require__(
           /*! ./create-category.dto */ './apps/admin/src/category/dto/create-category.dto.ts',
         );
@@ -3407,27 +2809,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ChatMessageModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const chat_gateway_1 = __webpack_require__(
           /*! ./chat.gateway */ './apps/admin/src/chat/chat.gateway.ts',
         );
@@ -3463,29 +2855,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -3498,23 +2879,15 @@
         var _a, _b, _c, _d, _e, _f, _g;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.MessageGateway = void 0;
-        const websockets_1 = __webpack_require__(
-          /*! @nestjs/websockets */ '@nestjs/websockets',
-        );
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const websockets_1 = __webpack_require__(/*! @nestjs/websockets */ '@nestjs/websockets');
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const socket_io_1 = __webpack_require__(/*! socket.io */ 'socket.io');
         const ws_1 = __webpack_require__(/*! ws */ 'ws');
         const chat_messages_model_1 = __webpack_require__(
           /*! libs/db/modules/chat-messages.model */ './libs/db/src/modules/chat-messages.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const customer_service_model_1 = __webpack_require__(
           /*! libs/db/modules/customer-service.model */ './libs/db/src/modules/customer-service.model.ts',
         );
@@ -3522,11 +2895,7 @@
           /*! libs/db/modules/chat-conversation-record.model */ './libs/db/src/modules/chat-conversation-record.model.ts',
         );
         let MessageGateway = class MessageGateway {
-          constructor(
-            customerServiceModel,
-            chatMessagesModel,
-            chatConversationRecordModel,
-          ) {
+          constructor(customerServiceModel, chatMessagesModel, chatConversationRecordModel) {
             this.customerServiceModel = customerServiceModel;
             this.chatMessagesModel = chatMessagesModel;
             this.chatConversationRecordModel = chatConversationRecordModel;
@@ -3546,26 +2915,19 @@
           }
           async handleMessage(client, payload) {
             var _a;
-            const hasCuservice = await this.customerServiceModel.findById(
-              payload.targetId,
-            );
+            const hasCuservice = await this.customerServiceModel.findById(payload.targetId);
             const res = await this.chatMessagesModel.create({
               user: payload.userId,
               target: payload.targetId,
               content:
-                (_a =
-                  payload === null || payload === void 0
-                    ? void 0
-                    : payload.content) !== null && _a !== void 0
+                (_a = payload === null || payload === void 0 ? void 0 : payload.content) !== null &&
+                _a !== void 0
                   ? _a
                   : '',
               messageType: payload.messageType,
               userRef: hasCuservice ? 'User' : 'CustomerService',
               targetRef: hasCuservice ? 'CustomerService' : 'User',
-              product:
-                payload === null || payload === void 0
-                  ? void 0
-                  : payload.product,
+              product: payload === null || payload === void 0 ? void 0 : payload.product,
             });
             const messageContent = await this.chatMessagesModel
               .findById(res._id)
@@ -3584,10 +2946,7 @@
                   },
                 ],
               },
-              {
-                messageContent: messageContent.content,
-                $inc: { unreadNum: 1 },
-              },
+              { messageContent: messageContent.content, $inc: { unreadNum: 1 } },
             );
             this.server.emit('onMessage', messageContent);
           }
@@ -3606,9 +2965,7 @@
             (0, websockets_1.WebSocketServer)(),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof ws_1.Server !== 'undefined' && ws_1.Server) ===
-                'function'
+              typeof (_a = typeof ws_1.Server !== 'undefined' && ws_1.Server) === 'function'
                 ? _a
                 : Object,
             ),
@@ -3625,10 +2982,7 @@
             __metadata('design:paramtypes', [Object]),
             __metadata(
               'design:returntype',
-              typeof (_b = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Promise !== 'undefined' && Promise) === 'function' ? _b : Object,
             ),
           ],
           MessageGateway.prototype,
@@ -3641,19 +2995,15 @@
             __param(1, (0, websockets_1.MessageBody)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
-              typeof (_c =
-                typeof socket_io_1.Socket !== 'undefined' &&
-                socket_io_1.Socket) === 'function'
+              typeof (_c = typeof socket_io_1.Socket !== 'undefined' && socket_io_1.Socket) ===
+              'function'
                 ? _c
                 : Object,
               Object,
             ]),
             __metadata(
               'design:returntype',
-              typeof (_d = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _d
-                : Object,
+              typeof (_d = typeof Promise !== 'undefined' && Promise) === 'function' ? _d : Object,
             ),
           ],
           MessageGateway.prototype,
@@ -3672,16 +3022,9 @@
             }),
             __param(
               0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                customer_service_model_1.CustomerService,
-              ),
+              (0, nestjs_typegoose_1.InjectModel)(customer_service_model_1.CustomerService),
             ),
-            __param(
-              1,
-              (0, nestjs_typegoose_1.InjectModel)(
-                chat_messages_model_1.ChatMessages,
-              ),
-            ),
+            __param(1, (0, nestjs_typegoose_1.InjectModel)(chat_messages_model_1.ChatMessages)),
             __param(
               2,
               (0, nestjs_typegoose_1.InjectModel)(
@@ -3729,29 +3072,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -3764,15 +3096,9 @@
         var _a, _b, _c, _d, _e;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ClassifyNavigationController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const parse_id_pipe_1 = __webpack_require__(
           /*! libs/common/pipe/parse-id.pipe */ './libs/common/src/pipe/parse-id.pipe.ts',
         );
@@ -3799,15 +3125,11 @@
             this.classifyNavigationService = classifyNavigationService;
           }
           async create(createClassifyNavigationDto) {
-            const res = await this.classifyNavigationService.create(
-              createClassifyNavigationDto,
-            );
+            const res = await this.classifyNavigationService.create(createClassifyNavigationDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findAll(parameters) {
-            const res = await this.classifyNavigationService.findAll(
-              parameters,
-            );
+            const res = await this.classifyNavigationService.findAll(parameters);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findOne(id) {
@@ -3842,8 +3164,7 @@
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof create_classify_navigation_dto_1.CreateClassifyNavigationDto !==
-                  'undefined' &&
-                create_classify_navigation_dto_1.CreateClassifyNavigationDto) ===
+                  'undefined' && create_classify_navigation_dto_1.CreateClassifyNavigationDto) ===
               'function'
                 ? _a
                 : Object,
@@ -3862,10 +3183,8 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_b =
-                typeof query_classify_navigation_dto_1.QueryClassifyNavigationDto !==
-                  'undefined' &&
-                query_classify_navigation_dto_1.QueryClassifyNavigationDto) ===
-              'function'
+                typeof query_classify_navigation_dto_1.QueryClassifyNavigationDto !== 'undefined' &&
+                query_classify_navigation_dto_1.QueryClassifyNavigationDto) === 'function'
                 ? _b
                 : Object,
             ]),
@@ -3880,10 +3199,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '分类导航信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '分类导航id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -3897,18 +3213,14 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新导航信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '分类导航id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_c =
                 typeof update_classify_navigation_dto_1.UpdateClassifyNavigationDto !==
-                  'undefined' &&
-                update_classify_navigation_dto_1.UpdateClassifyNavigationDto) ===
+                  'undefined' && update_classify_navigation_dto_1.UpdateClassifyNavigationDto) ===
               'function'
                 ? _c
                 : Object,
@@ -3924,10 +3236,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除导航信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '分类导航id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -3941,10 +3250,7 @@
             (0, common_1.Put)(':id/changeStatus'),
             (0, swagger_1.ApiOperation)({ summary: '改变状态' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '分类导航id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
@@ -3971,10 +3277,8 @@
             (0, common_1.Controller)('classifyNavigation'),
             __metadata('design:paramtypes', [
               typeof (_e =
-                typeof classify_navigation_service_1.ClassifyNavigationService !==
-                  'undefined' &&
-                classify_navigation_service_1.ClassifyNavigationService) ===
-              'function'
+                typeof classify_navigation_service_1.ClassifyNavigationService !== 'undefined' &&
+                classify_navigation_service_1.ClassifyNavigationService) === 'function'
                 ? _e
                 : Object,
             ]),
@@ -4002,27 +3306,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ClassifyNavigationModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const classify_navigation_service_1 = __webpack_require__(
           /*! ./classify-navigation.service */ './apps/admin/src/classify-navigation/classify-navigation.service.ts',
         );
@@ -4033,12 +3327,8 @@
         ClassifyNavigationModule = __decorate(
           [
             (0, common_1.Module)({
-              controllers: [
-                classify_navigation_controller_1.ClassifyNavigationController,
-              ],
-              providers: [
-                classify_navigation_service_1.ClassifyNavigationService,
-              ],
+              controllers: [classify_navigation_controller_1.ClassifyNavigationController],
+              providers: [classify_navigation_service_1.ClassifyNavigationService],
             }),
           ],
           ClassifyNavigationModule,
@@ -4064,29 +3354,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -4099,26 +3378,18 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ClassifyNavigationService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const classify_navigation_model_1 = __webpack_require__(
           /*! libs/db/modules/classify-navigation.model */ './libs/db/src/modules/classify-navigation.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let ClassifyNavigationService = class ClassifyNavigationService {
           constructor(classifyNavigationModel) {
             this.classifyNavigationModel = classifyNavigationModel;
           }
           async create(createClassifyNavigationDto) {
-            return await this.classifyNavigationModel.create(
-              createClassifyNavigationDto,
-            );
+            return await this.classifyNavigationModel.create(createClassifyNavigationDto);
           }
           async findAll(parameters) {
             var _a, _b;
@@ -4164,9 +3435,7 @@
             return await this.classifyNavigationModel.findByIdAndDelete(id);
           }
           async changeStatus(id, status) {
-            return await this.classifyNavigationModel.findByIdAndUpdate(id, {
-              status,
-            });
+            return await this.classifyNavigationModel.findByIdAndUpdate(id, { status });
           }
         };
         ClassifyNavigationService = __decorate(
@@ -4174,9 +3443,7 @@
             (0, common_1.Injectable)(),
             __param(
               0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                classify_navigation_model_1.ClassifyNavigation,
-              ),
+              (0, nestjs_typegoose_1.InjectModel)(classify_navigation_model_1.ClassifyNavigation),
             ),
             __metadata('design:paramtypes', [
               typeof (_a =
@@ -4209,48 +3476,31 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ChangeClassifyNavigationStatusDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         class ChangeClassifyNavigationStatusDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '状态' }),
-            __metadata('design:type', Boolean),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '状态' }), __metadata('design:type', Boolean)],
           ChangeClassifyNavigationStatusDto.prototype,
           'status',
           void 0,
         );
-        exports.ChangeClassifyNavigationStatusDto =
-          ChangeClassifyNavigationStatusDto;
+        exports.ChangeClassifyNavigationStatusDto = ChangeClassifyNavigationStatusDto;
 
         /***/
       },
@@ -4271,51 +3521,32 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateClassifyNavigationDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         class CreateClassifyNavigationDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '名称' }), __metadata('design:type', String)],
           CreateClassifyNavigationDto.prototype,
           'name',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '导航图片' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '导航图片' }), __metadata('design:type', String)],
           CreateClassifyNavigationDto.prototype,
           'pic',
           void 0,
@@ -4334,19 +3565,13 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '页面路劲' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '页面路劲' }), __metadata('design:type', String)],
           CreateClassifyNavigationDto.prototype,
           'pagePath',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '网页地址' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '网页地址' }), __metadata('design:type', String)],
           CreateClassifyNavigationDto.prototype,
           'url',
           void 0,
@@ -4361,10 +3586,7 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '备注' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '备注' }), __metadata('design:type', String)],
           CreateClassifyNavigationDto.prototype,
           'remark',
           void 0,
@@ -4390,36 +3612,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryClassifyNavigationDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -4467,9 +3676,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateClassifyNavigationDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_classify_navigation_dto_1 = __webpack_require__(
           /*! ./create-classify-navigation.dto */ './apps/admin/src/classify-navigation/dto/create-classify-navigation.dto.ts',
         );
@@ -4497,29 +3704,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -4532,15 +3728,9 @@
         var _a, _b, _c, _d;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CustomerServiceController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const parse_id_pipe_1 = __webpack_require__(
           /*! libs/common/pipe/parse-id.pipe */ './libs/common/src/pipe/parse-id.pipe.ts',
         );
@@ -4564,15 +3754,11 @@
             this.customerServiceService = customerServiceService;
           }
           async create(createCustomerServiceDto) {
-            const res = await this.customerServiceService.create(
-              createCustomerServiceDto,
-            );
+            const res = await this.customerServiceService.create(createCustomerServiceDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findAll(queryCustomerServiceDto) {
-            const res = await this.customerServiceService.findAll(
-              queryCustomerServiceDto,
-            );
+            const res = await this.customerServiceService.findAll(queryCustomerServiceDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findOne(id) {
@@ -4580,10 +3766,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async update(id, updateCustomerServiceDto) {
-            const res = await this.customerServiceService.update(
-              id,
-              updateCustomerServiceDto,
-            );
+            const res = await this.customerServiceService.update(id, updateCustomerServiceDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async remove(id) {
@@ -4591,15 +3774,11 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async getChatConversationRecord(id) {
-            const res =
-              await this.customerServiceService.getChatConversationRecord(id);
+            const res = await this.customerServiceService.getChatConversationRecord(id);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async getChatMessageList(id, targetId) {
-            const res = await this.customerServiceService.getChatMessageList(
-              id,
-              targetId,
-            );
+            const res = await this.customerServiceService.getChatMessageList(id, targetId);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
         };
@@ -4611,10 +3790,8 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof create_customer_service_dto_1.CreateCustomerServiceDto !==
-                  'undefined' &&
-                create_customer_service_dto_1.CreateCustomerServiceDto) ===
-              'function'
+                typeof create_customer_service_dto_1.CreateCustomerServiceDto !== 'undefined' &&
+                create_customer_service_dto_1.CreateCustomerServiceDto) === 'function'
                 ? _a
                 : Object,
             ]),
@@ -4632,10 +3809,8 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_b =
-                typeof query_customer_service_dto_1.QueryCustomerServiceDto !==
-                  'undefined' &&
-                query_customer_service_dto_1.QueryCustomerServiceDto) ===
-              'function'
+                typeof query_customer_service_dto_1.QueryCustomerServiceDto !== 'undefined' &&
+                query_customer_service_dto_1.QueryCustomerServiceDto) === 'function'
                 ? _b
                 : Object,
             ]),
@@ -4650,10 +3825,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '客服信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '客服id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -4667,19 +3839,14 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新客服' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '客服id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_c =
-                typeof update_customer_service_dto_1.UpdateCustomerServiceDto !==
-                  'undefined' &&
-                update_customer_service_dto_1.UpdateCustomerServiceDto) ===
-              'function'
+                typeof update_customer_service_dto_1.UpdateCustomerServiceDto !== 'undefined' &&
+                update_customer_service_dto_1.UpdateCustomerServiceDto) === 'function'
                 ? _c
                 : Object,
             ]),
@@ -4694,10 +3861,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除客服' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '客服id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -4711,10 +3875,7 @@
             (0, common_1.Get)(':id/getConversationRecord'),
             (0, swagger_1.ApiOperation)({ summary: '获取客服会话列表' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '客服id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -4728,14 +3889,8 @@
             (0, common_1.Get)(':id/getChatMessageList'),
             (0, swagger_1.ApiOperation)({ summary: '获取客服聊天记录列表' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '客服id' }),
-            (0, swagger_1.ApiQuery)({
-              name: 'targetId',
-              description: '目标用户id',
-            }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            (0, swagger_1.ApiQuery)({ name: 'targetId', description: '目标用户id' }),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Query)('targetId')),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String, String]),
@@ -4753,10 +3908,8 @@
             (0, common_1.Controller)('customerService'),
             __metadata('design:paramtypes', [
               typeof (_d =
-                typeof customer_service_service_1.CustomerServiceService !==
-                  'undefined' &&
-                customer_service_service_1.CustomerServiceService) ===
-              'function'
+                typeof customer_service_service_1.CustomerServiceService !== 'undefined' &&
+                customer_service_service_1.CustomerServiceService) === 'function'
                 ? _d
                 : Object,
             ]),
@@ -4784,27 +3937,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CustomerServiceModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const customer_service_service_1 = __webpack_require__(
           /*! ./customer-service.service */ './apps/admin/src/customer-service/customer-service.service.ts',
         );
@@ -4815,9 +3958,7 @@
         CustomerServiceModule = __decorate(
           [
             (0, common_1.Module)({
-              controllers: [
-                customer_service_controller_1.CustomerServiceController,
-              ],
+              controllers: [customer_service_controller_1.CustomerServiceController],
               providers: [customer_service_service_1.CustomerServiceService],
             }),
           ],
@@ -4844,29 +3985,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -4879,9 +4009,7 @@
         var _a, _b, _c;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CustomerServiceService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const types_1 = __webpack_require__(
           /*! @typegoose/typegoose/lib/types */ '@typegoose/typegoose/lib/types',
         );
@@ -4894,24 +4022,16 @@
         const customer_service_model_1 = __webpack_require__(
           /*! libs/db/modules/customer-service.model */ './libs/db/src/modules/customer-service.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         const mongodb_1 = __webpack_require__(/*! mongodb */ 'mongodb');
         let CustomerServiceService = class CustomerServiceService {
-          constructor(
-            customerServiceModel,
-            chatConversationRecordModel,
-            chatMessagesModel,
-          ) {
+          constructor(customerServiceModel, chatConversationRecordModel, chatMessagesModel) {
             this.customerServiceModel = customerServiceModel;
             this.chatConversationRecordModel = chatConversationRecordModel;
             this.chatMessagesModel = chatMessagesModel;
           }
           async create(createCustomerServiceDto) {
-            return await this.customerServiceModel.create(
-              createCustomerServiceDto,
-            );
+            return await this.customerServiceModel.create(createCustomerServiceDto);
           }
           async findAll(parameters) {
             return await this.customerServiceModel.find({
@@ -4922,10 +4042,7 @@
             return await this.customerServiceModel.findById(id);
           }
           async update(id, updateCustomerServiceDto) {
-            return await this.customerServiceModel.findByIdAndUpdate(
-              id,
-              updateCustomerServiceDto,
-            );
+            return await this.customerServiceModel.findByIdAndUpdate(id, updateCustomerServiceDto);
           }
           async remove(id) {
             return await this.customerServiceModel.findByIdAndDelete(id);
@@ -5007,9 +4124,7 @@
             (0, common_1.Injectable)(),
             __param(
               0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                customer_service_model_1.CustomerService,
-              ),
+              (0, nestjs_typegoose_1.InjectModel)(customer_service_model_1.CustomerService),
             ),
             __param(
               1,
@@ -5017,26 +4132,21 @@
                 chat_conversation_record_model_1.ChatConversationRecord,
               ),
             ),
-            __param(
-              2,
-              (0, nestjs_typegoose_1.InjectModel)(
-                chat_messages_model_1.ChatMessages,
-              ),
-            ),
+            __param(2, (0, nestjs_typegoose_1.InjectModel)(chat_messages_model_1.ChatMessages)),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof types_1.ReturnModelType !== 'undefined' &&
-                types_1.ReturnModelType) === 'function'
+                typeof types_1.ReturnModelType !== 'undefined' && types_1.ReturnModelType) ===
+              'function'
                 ? _a
                 : Object,
               typeof (_b =
-                typeof types_1.ReturnModelType !== 'undefined' &&
-                types_1.ReturnModelType) === 'function'
+                typeof types_1.ReturnModelType !== 'undefined' && types_1.ReturnModelType) ===
+              'function'
                 ? _b
                 : Object,
               typeof (_c =
-                typeof types_1.ReturnModelType !== 'undefined' &&
-                types_1.ReturnModelType) === 'function'
+                typeof types_1.ReturnModelType !== 'undefined' && types_1.ReturnModelType) ===
+              'function'
                 ? _c
                 : Object,
             ]),
@@ -5064,69 +4174,44 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateCustomerServiceDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         class CreateCustomerServiceDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '客服名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '客服名称' }), __metadata('design:type', String)],
           CreateCustomerServiceDto.prototype,
           'name',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '手机号' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '手机号' }), __metadata('design:type', String)],
           CreateCustomerServiceDto.prototype,
           'phone',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '密码' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '密码' }), __metadata('design:type', String)],
           CreateCustomerServiceDto.prototype,
           'password',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '头像' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '头像' }), __metadata('design:type', String)],
           CreateCustomerServiceDto.prototype,
           'avatar',
           void 0,
@@ -5152,36 +4237,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryCustomerServiceDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -5207,9 +4279,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateCustomerServiceDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_customer_service_dto_1 = __webpack_require__(
           /*! ./create-customer-service.dto */ './apps/admin/src/customer-service/dto/create-customer-service.dto.ts',
         );
@@ -5236,8 +4306,7 @@
           }
           async processInTextMsg(inTextMsg) {
             let outMsg;
-            let content =
-              'IJPay 让支付触手可及 \n\nhttps://gitee.com/javen205/IJPay';
+            let content = 'IJPay 让支付触手可及 \n\nhttps://gitee.com/javen205/IJPay';
             if ('1' === inTextMsg.getContent) {
               content = '轩钰博客 \n\nhttps://www.zhouxuanyu.com';
               outMsg = new tnwx_1.OutTextMsg(inTextMsg);
@@ -5245,17 +4314,12 @@
             } else if ('2' === inTextMsg.getContent) {
               return this.renderOutTextMsg(inTextMsg, '');
             } else if ('3' === inTextMsg.getContent) {
-              if (
-                tnwx_1.ApiConfigKit.getApiConfig.getAppId ==
-                'wx614c453e0d1dcd12'
-              ) {
-                content =
-                  '极速开发微信公众号 \n\nhttps://github.com/javen205/weixin_guide';
+              if (tnwx_1.ApiConfigKit.getApiConfig.getAppId == 'wx614c453e0d1dcd12') {
+                content = '极速开发微信公众号 \n\nhttps://github.com/javen205/weixin_guide';
                 outMsg = new tnwx_1.OutTextMsg(inTextMsg);
                 outMsg.setContent(content);
               } else {
-                content =
-                  '极速开发微信公众号 \n\nhttps://github.com/javen205/TNWX';
+                content = '极速开发微信公众号 \n\nhttps://github.com/javen205/TNWX';
                 outMsg = new tnwx_1.OutTextMsg(inTextMsg);
                 outMsg.setContent(content);
               }
@@ -5315,25 +4379,14 @@
           }
           async processInSpeechRecognitionResults(inSpeechRecognitionResults) {
             const text = new tnwx_1.OutTextMsg(inSpeechRecognitionResults);
-            text.setContent(
-              '语音识别消息...' + inSpeechRecognitionResults.getRecognition,
-            );
+            text.setContent('语音识别消息...' + inSpeechRecognitionResults.getRecognition);
             return text;
           }
           async processInFollowEvent(inFollowEvent) {
-            if (
-              tnwx_1.InFollowEvent.EVENT_INFOLLOW_SUBSCRIBE ==
-              inFollowEvent.getEvent
-            ) {
+            if (tnwx_1.InFollowEvent.EVENT_INFOLLOW_SUBSCRIBE == inFollowEvent.getEvent) {
               console.log(inFollowEvent, '关注信息');
-              return this.renderOutTextMsg(
-                inFollowEvent,
-                '感谢你的关注 么么哒 \n\nQQ：969718197',
-              );
-            } else if (
-              tnwx_1.InFollowEvent.EVENT_INFOLLOW_UNSUBSCRIBE ==
-              inFollowEvent.getEvent
-            ) {
+              return this.renderOutTextMsg(inFollowEvent, '感谢你的关注 么么哒 \n\nQQ：969718197');
+            } else if (tnwx_1.InFollowEvent.EVENT_INFOLLOW_UNSUBSCRIBE == inFollowEvent.getEvent) {
               console.error('取消关注：' + inFollowEvent.getFromUserName);
               return this.renderOutTextMsg(inFollowEvent);
             } else {
@@ -5341,18 +4394,13 @@
             }
           }
           async processInQrCodeEvent(inQrCodeEvent) {
-            if (
-              tnwx_1.InQrCodeEvent.EVENT_INQRCODE_SUBSCRIBE ==
-              inQrCodeEvent.getEvent
-            ) {
+            if (tnwx_1.InQrCodeEvent.EVENT_INQRCODE_SUBSCRIBE == inQrCodeEvent.getEvent) {
               console.debug('扫码未关注：' + inQrCodeEvent.getFromUserName);
               return this.renderOutTextMsg(
                 inQrCodeEvent,
                 '感谢您的关注，二维码内容：' + inQrCodeEvent.getEventKey,
               );
-            } else if (
-              tnwx_1.InQrCodeEvent.EVENT_INQRCODE_SCAN == inQrCodeEvent.getEvent
-            ) {
+            } else if (tnwx_1.InQrCodeEvent.EVENT_INQRCODE_SCAN == inQrCodeEvent.getEvent) {
               console.debug('扫码已关注：' + inQrCodeEvent.getFromUserName);
               return this.renderOutTextMsg(inQrCodeEvent);
             } else {
@@ -5360,9 +4408,7 @@
             }
           }
           async processInLocationEvent(inLocationEvent) {
-            console.debug(
-              '发送地理位置事件：' + inLocationEvent.getFromUserName,
-            );
+            console.debug('发送地理位置事件：' + inLocationEvent.getFromUserName);
             return this.renderOutTextMsg(
               inLocationEvent,
               '地理位置是：' + inLocationEvent.getLatitude,
@@ -5370,10 +4416,7 @@
           }
           async processInMenuEvent(inMenuEvent) {
             console.debug('菜单事件：' + inMenuEvent.getFromUserName);
-            return this.renderOutTextMsg(
-              inMenuEvent,
-              '菜单事件内容是：' + inMenuEvent.getEventKey,
-            );
+            return this.renderOutTextMsg(inMenuEvent, '菜单事件内容是：' + inMenuEvent.getEventKey);
           }
           async processInTemplateMsgEvent(inTemplateMsgEvent) {
             console.debug(
@@ -5387,9 +4430,7 @@
               '消息发送状态：' + inTemplateMsgEvent.getStatus,
             );
           }
-          async processInShakearoundUserShakeEvent(
-            inShakearoundUserShakeEvent,
-          ) {
+          async processInShakearoundUserShakeEvent(inShakearoundUserShakeEvent) {
             console.debug(
               '摇一摇事件：' +
                 inShakearoundUserShakeEvent.getFromUserName +
@@ -5405,9 +4446,7 @@
             console.log('进入应用事件');
             return this.renderOutTextMsg(
               inEnterAgentEvent,
-              inEnterAgentEvent.getFromUserName +
-                ' 进入应用 ' +
-                inEnterAgentEvent.getAgentId,
+              inEnterAgentEvent.getFromUserName + ' 进入应用 ' + inEnterAgentEvent.getAgentId,
             );
           }
           async processInTaskEvent(inTaskEvent) {
@@ -5424,31 +4463,19 @@
           }
           async processInBatchJobResultEvent(inBatchJobResultEvent) {
             console.log(inBatchJobResultEvent);
-            return this.renderOutTextMsg(
-              inBatchJobResultEvent,
-              inBatchJobResultEvent.getJobId,
-            );
+            return this.renderOutTextMsg(inBatchJobResultEvent, inBatchJobResultEvent.getJobId);
           }
           async processInUpdateUserEvent(inUpdateUserEvent) {
             console.log(inUpdateUserEvent);
-            return this.renderOutTextMsg(
-              inUpdateUserEvent,
-              inUpdateUserEvent.getUserId,
-            );
+            return this.renderOutTextMsg(inUpdateUserEvent, inUpdateUserEvent.getUserId);
           }
           async processInUpdatePartyEvent(inUpdatePartyEvent) {
             console.log(inUpdatePartyEvent);
-            return this.renderOutTextMsg(
-              inUpdatePartyEvent,
-              inUpdatePartyEvent.getParentId,
-            );
+            return this.renderOutTextMsg(inUpdatePartyEvent, inUpdatePartyEvent.getParentId);
           }
           async processInUpdateTagEvent(inUpdateTagEvent) {
             console.log(inUpdateTagEvent);
-            return this.renderOutTextMsg(
-              inUpdateTagEvent,
-              inUpdateTagEvent.getTagId + '',
-            );
+            return this.renderOutTextMsg(inUpdateTagEvent, inUpdateTagEvent.getTagId + '');
           }
           async processInSuiteTicket(inSuiteTicket) {
             console.log(`inSuiteTicket:${JSON.stringify(inSuiteTicket)}`);
@@ -5462,11 +4489,7 @@
             return 'success';
           }
           async processInComponentVerifyTicket(inComponentVerifyTicket) {
-            console.log(
-              `inComponentVerifyTicket:${JSON.stringify(
-                inComponentVerifyTicket,
-              )}`,
-            );
+            console.log(`inComponentVerifyTicket:${JSON.stringify(inComponentVerifyTicket)}`);
             const appId = inComponentVerifyTicket.appId;
             const config = tnwx_1.ApiConfigKit.getApiConfigByAppId(appId);
             config.setTicket = inComponentVerifyTicket.getTicket;
@@ -5484,11 +4507,7 @@
             return 'success';
           }
           async processInExternalContactEvent(inExternalContactEvent) {
-            console.log(
-              `inExternalContactEvent:${JSON.stringify(
-                inExternalContactEvent,
-              )}`,
-            );
+            console.log(`inExternalContactEvent:${JSON.stringify(inExternalContactEvent)}`);
             return 'success';
           }
           async processIsNotDefinedMsg(inNotDefinedMsg) {
@@ -5508,10 +4527,7 @@
           }
           processInMassEvent(inMassEvent) {
             console.log(inMassEvent);
-            return this.renderOutTextMsg(
-              inMassEvent,
-              inMassEvent.getToUserName,
-            );
+            return this.renderOutTextMsg(inMassEvent, inMassEvent.getToUserName);
           }
           async renderOutTextMsg(inMsg, content) {
             const OutMsg = new tnwx_1.OutTextMsg(inMsg);
@@ -5540,42 +4556,26 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateLibraryCategoryDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         class CreateLibraryCategoryDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '文件名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '文件名称' }), __metadata('design:type', String)],
           CreateLibraryCategoryDto.prototype,
           'name',
           void 0,
@@ -5601,9 +4601,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateLibraryCategoryDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_library_category_dto_1 = __webpack_require__(
           /*! ./create-library-category.dto */ './apps/admin/src/library-category/dto/create-library-category.dto.ts',
         );
@@ -5631,29 +4629,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -5666,9 +4653,7 @@
         var _a, _b, _c;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.LibraryCategoryController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const library_category_service_1 = __webpack_require__(
           /*! ./library-category.service */ './apps/admin/src/library-category/library-category.service.ts',
         );
@@ -5678,12 +4663,8 @@
         const update_library_category_dto_1 = __webpack_require__(
           /*! ./dto/update-library-category.dto */ './apps/admin/src/library-category/dto/update-library-category.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
@@ -5695,9 +4676,7 @@
             this.libraryCategoryService = libraryCategoryService;
           }
           async create(createLibraryCategoryDto) {
-            const res = await this.libraryCategoryService.create(
-              createLibraryCategoryDto,
-            );
+            const res = await this.libraryCategoryService.create(createLibraryCategoryDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findAll() {
@@ -5709,10 +4688,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           update(id, updateLibraryCategoryDto) {
-            const res = this.libraryCategoryService.update(
-              id,
-              updateLibraryCategoryDto,
-            );
+            const res = this.libraryCategoryService.update(id, updateLibraryCategoryDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async remove(id) {
@@ -5728,10 +4704,8 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof create_library_category_dto_1.CreateLibraryCategoryDto !==
-                  'undefined' &&
-                create_library_category_dto_1.CreateLibraryCategoryDto) ===
-              'function'
+                typeof create_library_category_dto_1.CreateLibraryCategoryDto !== 'undefined' &&
+                create_library_category_dto_1.CreateLibraryCategoryDto) === 'function'
                 ? _a
                 : Object,
             ]),
@@ -5758,10 +4732,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '文件分类信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '文件分类id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -5775,19 +4746,14 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新文件分类' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '文件分类id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_b =
-                typeof update_library_category_dto_1.UpdateLibraryCategoryDto !==
-                  'undefined' &&
-                update_library_category_dto_1.UpdateLibraryCategoryDto) ===
-              'function'
+                typeof update_library_category_dto_1.UpdateLibraryCategoryDto !== 'undefined' &&
+                update_library_category_dto_1.UpdateLibraryCategoryDto) === 'function'
                 ? _b
                 : Object,
             ]),
@@ -5802,10 +4768,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除文件分类' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '文件分类id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -5822,10 +4785,8 @@
             (0, common_1.Controller)('libraryCategory'),
             __metadata('design:paramtypes', [
               typeof (_c =
-                typeof library_category_service_1.LibraryCategoryService !==
-                  'undefined' &&
-                library_category_service_1.LibraryCategoryService) ===
-              'function'
+                typeof library_category_service_1.LibraryCategoryService !== 'undefined' &&
+                library_category_service_1.LibraryCategoryService) === 'function'
                 ? _c
                 : Object,
             ]),
@@ -5853,27 +4814,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.LibraryCategoryModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const library_category_service_1 = __webpack_require__(
           /*! ./library-category.service */ './apps/admin/src/library-category/library-category.service.ts',
         );
@@ -5884,9 +4835,7 @@
         LibraryCategoryModule = __decorate(
           [
             (0, common_1.Module)({
-              controllers: [
-                library_category_controller_1.LibraryCategoryController,
-              ],
+              controllers: [library_category_controller_1.LibraryCategoryController],
               providers: [library_category_service_1.LibraryCategoryService],
             }),
           ],
@@ -5913,29 +4862,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -5948,18 +4886,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.LibraryCategoryService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const library_category_model_1 = __webpack_require__(
           /*! libs/db/modules/library-category.model */ './libs/db/src/modules/library-category.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let LibraryCategoryService = class LibraryCategoryService {
           constructor(libraryCategoryModel) {
             this.libraryCategoryModel = libraryCategoryModel;
@@ -5974,10 +4906,7 @@
             return this.libraryCategoryModel.findById(id);
           }
           async update(id, updateLibraryCategoryDto) {
-            return this.libraryCategoryModel.findByIdAndUpdate(
-              id,
-              updateLibraryCategoryDto,
-            );
+            return this.libraryCategoryModel.findByIdAndUpdate(id, updateLibraryCategoryDto);
           }
           async remove(id) {
             return this.libraryCategoryModel.findByIdAndDelete(id);
@@ -5988,9 +4917,7 @@
             (0, common_1.Injectable)(),
             __param(
               0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                library_category_model_1.LibraryCategory,
-              ),
+              (0, nestjs_typegoose_1.InjectModel)(library_category_model_1.LibraryCategory),
             ),
             __metadata('design:paramtypes', [
               typeof (_a =
@@ -6023,60 +4950,38 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateMediaLibraryDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         class CreateMediaLibraryDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '文件名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '文件名称' }), __metadata('design:type', String)],
           CreateMediaLibraryDto.prototype,
           'name',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '文件分类' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '文件分类' }), __metadata('design:type', String)],
           CreateMediaLibraryDto.prototype,
           'categoryId',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '文件地址' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '文件地址' }), __metadata('design:type', String)],
           CreateMediaLibraryDto.prototype,
           'url',
           void 0,
@@ -6102,36 +5007,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryMediaLibraryDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -6147,11 +5039,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '文件分类id',
-              required: false,
-              default: null,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '文件分类id', required: false, default: null }),
             __metadata('design:type', String),
           ],
           QueryMediaLibraryDto.prototype,
@@ -6170,9 +5058,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateMediaLibraryDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_media_library_dto_1 = __webpack_require__(
           /*! ./create-media-library.dto */ './apps/admin/src/media-library/dto/create-media-library.dto.ts',
         );
@@ -6200,29 +5086,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -6235,9 +5110,7 @@
         var _a, _b, _c, _d;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.MediaLibraryController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const media_library_service_1 = __webpack_require__(
           /*! ./media-library.service */ './apps/admin/src/media-library/media-library.service.ts',
         );
@@ -6247,12 +5120,8 @@
         const update_media_library_dto_1 = __webpack_require__(
           /*! ./dto/update-media-library.dto */ './apps/admin/src/media-library/dto/update-media-library.dto.ts',
         );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const query_media_library_dto_1 = __webpack_require__(
           /*! ./dto/query-media-library.dto */ './apps/admin/src/media-library/dto/query-media-library.dto.ts',
         );
@@ -6267,9 +5136,7 @@
             this.mediaLibraryService = mediaLibraryService;
           }
           async create(createMediaLibraryDto) {
-            const res = await this.mediaLibraryService.create(
-              createMediaLibraryDto,
-            );
+            const res = await this.mediaLibraryService.create(createMediaLibraryDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findAll(parameters) {
@@ -6281,10 +5148,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async update(id, updateMediaLibraryDto) {
-            const res = await this.mediaLibraryService.update(
-              id,
-              updateMediaLibraryDto,
-            );
+            const res = await this.mediaLibraryService.update(id, updateMediaLibraryDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async remove(id) {
@@ -6300,8 +5164,7 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof create_media_library_dto_1.CreateMediaLibraryDto !==
-                  'undefined' &&
+                typeof create_media_library_dto_1.CreateMediaLibraryDto !== 'undefined' &&
                 create_media_library_dto_1.CreateMediaLibraryDto) === 'function'
                 ? _a
                 : Object,
@@ -6320,8 +5183,7 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_b =
-                typeof query_media_library_dto_1.QueryMediaLibraryDto !==
-                  'undefined' &&
+                typeof query_media_library_dto_1.QueryMediaLibraryDto !== 'undefined' &&
                 query_media_library_dto_1.QueryMediaLibraryDto) === 'function'
                 ? _b
                 : Object,
@@ -6337,10 +5199,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '媒体文件信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '媒体文件id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -6354,17 +5213,13 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '媒体文件信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '媒体文件id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_c =
-                typeof update_media_library_dto_1.UpdateMediaLibraryDto !==
-                  'undefined' &&
+                typeof update_media_library_dto_1.UpdateMediaLibraryDto !== 'undefined' &&
                 update_media_library_dto_1.UpdateMediaLibraryDto) === 'function'
                 ? _c
                 : Object,
@@ -6380,10 +5235,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '媒体文件信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '媒体文件id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -6400,8 +5252,7 @@
             (0, common_1.Controller)('mediaLibrary'),
             __metadata('design:paramtypes', [
               typeof (_d =
-                typeof media_library_service_1.MediaLibraryService !==
-                  'undefined' &&
+                typeof media_library_service_1.MediaLibraryService !== 'undefined' &&
                 media_library_service_1.MediaLibraryService) === 'function'
                 ? _d
                 : Object,
@@ -6430,27 +5281,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.MediaLibraryModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const media_library_service_1 = __webpack_require__(
           /*! ./media-library.service */ './apps/admin/src/media-library/media-library.service.ts',
         );
@@ -6488,29 +5329,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -6523,18 +5353,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.MediaLibraryService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const media_library_model_1 = __webpack_require__(
           /*! libs/db/modules/media-library.model */ './libs/db/src/modules/media-library.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let MediaLibraryService = class MediaLibraryService {
           constructor(mediaLibraryModel) {
             this.mediaLibraryModel = mediaLibraryModel;
@@ -6564,10 +5388,7 @@
             return this.mediaLibraryModel.findById(id);
           }
           async update(id, updateMediaLibraryDto) {
-            return await this.mediaLibraryModel.findByIdAndUpdate(
-              id,
-              updateMediaLibraryDto,
-            );
+            return await this.mediaLibraryModel.findByIdAndUpdate(id, updateMediaLibraryDto);
           }
           async remove(id) {
             return await this.mediaLibraryModel.findByIdAndDelete(id);
@@ -6576,12 +5397,7 @@
         MediaLibraryService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                media_library_model_1.MediaLibrary,
-              ),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(media_library_model_1.MediaLibrary)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -6613,46 +5429,28 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateMenuDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class TagItem {}
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '是否显示小圆点',
-              default: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '是否显示小圆点', default: false }),
             __metadata('design:type', Boolean),
           ],
           TagItem.prototype,
@@ -6660,29 +5458,20 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '内容' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '内容' }), __metadata('design:type', String)],
           TagItem.prototype,
           'content',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '类型' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '类型' }), __metadata('design:type', String)],
           TagItem.prototype,
           'type',
           void 0,
         );
         class MetaItem {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '菜单栏icon' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '菜单栏icon' }), __metadata('design:type', String)],
           MetaItem.prototype,
           'icon',
           void 0,
@@ -6707,10 +5496,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '是否隐藏菜单',
-              default: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '是否隐藏菜单', default: false }),
             __metadata('design:type', Boolean),
           ],
           MetaItem.prototype,
@@ -6729,10 +5515,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '是否固定标签',
-              default: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '是否固定标签', default: false }),
             __metadata('design:type', Boolean),
           ],
           MetaItem.prototype,
@@ -6741,10 +5524,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '是否忽略KeepAlive缓存',
-              default: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '是否忽略KeepAlive缓存', default: false }),
             __metadata('design:type', Boolean),
           ],
           MetaItem.prototype,
@@ -6753,10 +5533,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '隐藏所有子菜单',
-              default: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '隐藏所有子菜单', default: false }),
             __metadata('design:type', Boolean),
           ],
           MetaItem.prototype,
@@ -6776,10 +5553,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '菜单排序，只对第一级有效',
-              default: 1,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '菜单排序，只对第一级有效', default: 1 }),
             __metadata('design:type', Number),
           ],
           MetaItem.prototype,
@@ -6846,45 +5620,29 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryMenuDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
         class QueryMenuDto extends PaginationParametersDto_1.PaginationParametersDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '菜单名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '菜单名称' }), __metadata('design:type', String)],
           QueryMenuDto.prototype,
           'title',
           void 0,
@@ -6901,15 +5659,11 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateMenuDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_menu_dto_1 = __webpack_require__(
           /*! ./create-menu.dto */ './apps/admin/src/menu/dto/create-menu.dto.ts',
         );
-        class UpdateMenuDto extends (0, swagger_1.PartialType)(
-          create_menu_dto_1.CreateMenuDto,
-        ) {}
+        class UpdateMenuDto extends (0, swagger_1.PartialType)(create_menu_dto_1.CreateMenuDto) {}
         exports.UpdateMenuDto = UpdateMenuDto;
 
         /***/
@@ -6931,29 +5685,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -6966,9 +5709,7 @@
         var _a, _b, _c, _d, _e;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.MenuController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const menu_service_1 = __webpack_require__(
           /*! ./menu.service */ './apps/admin/src/menu/menu.service.ts',
         );
@@ -6978,12 +5719,8 @@
         const update_menu_dto_1 = __webpack_require__(
           /*! ./dto/update-menu.dto */ './apps/admin/src/menu/dto/update-menu.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
@@ -7010,14 +5747,10 @@
             var _a;
             if (createMenuDto.component === 'LAYOUT') {
               const paths = createMenuDto.path.split('/');
-              createMenuDto.name = (0, transform_1.upperCamelCase)(
-                paths.join('-'),
-              );
+              createMenuDto.name = (0, transform_1.upperCamelCase)(paths.join('-'));
             } else {
               const paths =
-                (_a = createMenuDto.component) === null || _a === void 0
-                  ? void 0
-                  : _a.split('/');
+                (_a = createMenuDto.component) === null || _a === void 0 ? void 0 : _a.split('/');
               paths.shift();
               paths.pop();
               const pathName = paths.join('-');
@@ -7044,14 +5777,10 @@
             var _a;
             if (updateMenuDto.component === 'LAYOUT') {
               const paths = updateMenuDto.path.split('/');
-              updateMenuDto.name = (0, transform_1.upperCamelCase)(
-                paths.join('-'),
-              );
+              updateMenuDto.name = (0, transform_1.upperCamelCase)(paths.join('-'));
             } else {
               const paths =
-                (_a = updateMenuDto.component) === null || _a === void 0
-                  ? void 0
-                  : _a.split('/');
+                (_a = updateMenuDto.component) === null || _a === void 0 ? void 0 : _a.split('/');
               paths.shift();
               paths.pop();
               const pathName = paths.join('-');
@@ -7106,9 +5835,7 @@
         __decorate(
           [
             (0, common_1.Get)('permissions'),
-            (0, swagger_1.ApiOperation)({
-              summary: '管理员关联的角色的权限菜单列表',
-            }),
+            (0, swagger_1.ApiOperation)({ summary: '管理员关联的角色的权限菜单列表' }),
             __param(0, (0, current_user_decorator_1.CurrentUser)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
@@ -7129,10 +5856,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '菜单详情' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '菜单id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -7146,10 +5870,7 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新菜单' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '菜单id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
@@ -7171,10 +5892,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除菜单' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '菜单id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -7191,8 +5909,8 @@
             (0, common_1.Controller)('menu'),
             __metadata('design:paramtypes', [
               typeof (_e =
-                typeof menu_service_1.MenuService !== 'undefined' &&
-                menu_service_1.MenuService) === 'function'
+                typeof menu_service_1.MenuService !== 'undefined' && menu_service_1.MenuService) ===
+              'function'
                 ? _e
                 : Object,
             ]),
@@ -7220,27 +5938,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.MenuModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const menu_service_1 = __webpack_require__(
           /*! ./menu.service */ './apps/admin/src/menu/menu.service.ts',
         );
@@ -7278,29 +5986,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -7313,12 +6010,8 @@
         var _a, _b, _c;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.MenuService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const transform_1 = __webpack_require__(
           /*! libs/common/utils/transform */ './libs/common/src/utils/transform.ts',
         );
@@ -7331,9 +6024,7 @@
         const role_model_1 = __webpack_require__(
           /*! libs/db/modules/role.model */ './libs/db/src/modules/role.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let MenuService = class MenuService {
           constructor(menuModel, adminModel, roleModel) {
             this.menuModel = menuModel;
@@ -7341,10 +6032,7 @@
             this.roleModel = roleModel;
           }
           async create(createMenuDto) {
-            if (
-              createMenuDto.parentId &&
-              createMenuDto.component !== 'LAYOUT'
-            ) {
+            if (createMenuDto.parentId && createMenuDto.component !== 'LAYOUT') {
               const paths = createMenuDto.component.split('/');
               paths.pop();
               paths.pop();
@@ -7381,9 +6069,7 @@
             }
             const MenuObj = {};
             const allMenus = menus.reduce((cur, next) => {
-              MenuObj[next._id]
-                ? ''
-                : (MenuObj[next._id] = true && cur.push(next));
+              MenuObj[next._id] ? '' : (MenuObj[next._id] = true && cur.push(next));
               return cur;
             }, []);
             return allMenus.sort((a, b) => a.meta.orderNo - b.meta.orderNo);
@@ -7392,10 +6078,7 @@
             return await this.menuModel.findById(id);
           }
           async update(id, updateMenuDto) {
-            if (
-              updateMenuDto.parentId &&
-              updateMenuDto.component !== 'LAYOUT'
-            ) {
+            if (updateMenuDto.parentId && updateMenuDto.component !== 'LAYOUT') {
               const paths = updateMenuDto.component.split('/');
               paths.pop();
               paths.pop();
@@ -7415,10 +6098,7 @@
           [
             (0, common_1.Injectable)(),
             __param(0, (0, nestjs_typegoose_1.InjectModel)(menu_model_1.Menu)),
-            __param(
-              1,
-              (0, nestjs_typegoose_1.InjectModel)(admin_model_1.Admin),
-            ),
+            __param(1, (0, nestjs_typegoose_1.InjectModel)(admin_model_1.Admin)),
             __param(2, (0, nestjs_typegoose_1.InjectModel)(role_model_1.Role)),
             __metadata('design:paramtypes', [
               typeof (_a =
@@ -7461,40 +6141,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateNewsDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class CreateNewsDto {}
         __decorate(
           [
@@ -7512,9 +6177,7 @@
             (0, class_validator_1.IsNotEmpty)({ message: '标签不能为空' }),
             __metadata(
               'design:type',
-              typeof (_a = typeof Array !== 'undefined' && Array) === 'function'
-                ? _a
-                : Object,
+              typeof (_a = typeof Array !== 'undefined' && Array) === 'function' ? _a : Object,
             ),
           ],
           CreateNewsDto.prototype,
@@ -7552,36 +6215,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryNewsDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -7607,15 +6257,11 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateNewsDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_news_dto_1 = __webpack_require__(
           /*! ./create-news.dto */ './apps/admin/src/news/dto/create-news.dto.ts',
         );
-        class UpdateNewsDto extends (0, swagger_1.PartialType)(
-          create_news_dto_1.CreateNewsDto,
-        ) {}
+        class UpdateNewsDto extends (0, swagger_1.PartialType)(create_news_dto_1.CreateNewsDto) {}
         exports.UpdateNewsDto = UpdateNewsDto;
 
         /***/
@@ -7637,29 +6283,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -7672,9 +6307,7 @@
         var _a, _b, _c, _d, _e, _f, _g, _h, _j;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.NewsController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const news_service_1 = __webpack_require__(
           /*! ./news.service */ './apps/admin/src/news/news.service.ts',
         );
@@ -7684,12 +6317,8 @@
         const update_news_dto_1 = __webpack_require__(
           /*! ./dto/update-news.dto */ './apps/admin/src/news/dto/update-news.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const query_news_dto_1 = __webpack_require__(
           /*! ./dto/query-news.dto */ './apps/admin/src/news/dto/query-news.dto.ts',
         );
@@ -7739,10 +6368,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_b = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Promise !== 'undefined' && Promise) === 'function' ? _b : Object,
             ),
           ],
           NewsController.prototype,
@@ -7764,10 +6390,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_d = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _d
-                : Object,
+              typeof (_d = typeof Promise !== 'undefined' && Promise) === 'function' ? _d : Object,
             ),
           ],
           NewsController.prototype,
@@ -7779,18 +6402,12 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '文章详情' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '文章id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_e = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _e
-                : Object,
+              typeof (_e = typeof Promise !== 'undefined' && Promise) === 'function' ? _e : Object,
             ),
           ],
           NewsController.prototype,
@@ -7802,10 +6419,7 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新文章' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '文章id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
@@ -7818,10 +6432,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_g = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _g
-                : Object,
+              typeof (_g = typeof Promise !== 'undefined' && Promise) === 'function' ? _g : Object,
             ),
           ],
           NewsController.prototype,
@@ -7833,18 +6444,12 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除文章' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '文章id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_h = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _h
-                : Object,
+              typeof (_h = typeof Promise !== 'undefined' && Promise) === 'function' ? _h : Object,
             ),
           ],
           NewsController.prototype,
@@ -7859,8 +6464,8 @@
             (0, common_1.Controller)('news'),
             __metadata('design:paramtypes', [
               typeof (_j =
-                typeof news_service_1.NewsService !== 'undefined' &&
-                news_service_1.NewsService) === 'function'
+                typeof news_service_1.NewsService !== 'undefined' && news_service_1.NewsService) ===
+              'function'
                 ? _j
                 : Object,
             ]),
@@ -7888,27 +6493,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.NewsModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const news_service_1 = __webpack_require__(
           /*! ./news.service */ './apps/admin/src/news/news.service.ts',
         );
@@ -7946,29 +6541,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -7981,18 +6565,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.NewsService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const news_model_1 = __webpack_require__(
           /*! libs/db/modules/news.model */ './libs/db/src/modules/news.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let NewsService = class NewsService {
           constructor(newsModel) {
             this.newsModel = newsModel;
@@ -8061,36 +6639,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryOrderDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -8182,72 +6747,47 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryUserOrdersDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
         class QueryUserOrdersDto extends PaginationParametersDto_1.PaginationParametersDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ name: '会员id' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ name: '会员id' }), __metadata('design:type', String)],
           QueryUserOrdersDto.prototype,
           'userId',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ name: '订单id' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ name: '订单id' }), __metadata('design:type', String)],
           QueryUserOrdersDto.prototype,
           'orderId',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ name: '收货人名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ name: '收货人名称' }), __metadata('design:type', String)],
           QueryUserOrdersDto.prototype,
           'addressName',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ name: '订单状态' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ name: '订单状态' }), __metadata('design:type', Number)],
           QueryUserOrdersDto.prototype,
           'status',
           void 0,
@@ -8273,29 +6813,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -8308,24 +6837,18 @@
         var _a, _b, _c;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.OrderController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const order_service_1 = __webpack_require__(
           /*! ./order.service */ './apps/admin/src/order/order.service.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
         const parse_id_pipe_1 = __webpack_require__(
           /*! libs/common/pipe/parse-id.pipe */ './libs/common/src/pipe/parse-id.pipe.ts',
         );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const query_order_dto_1 = __webpack_require__(
           /*! ./dto/query-order.dto */ './apps/admin/src/order/dto/query-order.dto.ts',
         );
@@ -8341,9 +6864,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async getUserOders(queryUserOrdersDto) {
-            const res = await this.orderService.getUserOrders(
-              queryUserOrdersDto,
-            );
+            const res = await this.orderService.getUserOrders(queryUserOrdersDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findOne(id) {
@@ -8386,9 +6907,8 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_b =
-                typeof query_user_order_dto_1.QueryUserOrdersDto !==
-                  'undefined' && query_user_order_dto_1.QueryUserOrdersDto) ===
-              'function'
+                typeof query_user_order_dto_1.QueryUserOrdersDto !== 'undefined' &&
+                query_user_order_dto_1.QueryUserOrdersDto) === 'function'
                 ? _b
                 : Object,
             ]),
@@ -8403,10 +6923,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '获取订单详信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '订单id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -8420,10 +6937,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除订单' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '订单id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -8437,10 +6951,7 @@
             (0, common_1.Patch)(':id/delivery'),
             (0, swagger_1.ApiParam)({ name: 'id', description: '订单id' }),
             (0, swagger_1.ApiOperation)({ summary: '订单确认发货' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -8486,27 +6997,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.OrderModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const order_service_1 = __webpack_require__(
           /*! ./order.service */ './apps/admin/src/order/order.service.ts',
         );
@@ -8544,29 +7045,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -8579,12 +7069,8 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.OrderService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const orderStatus_enum_1 = __webpack_require__(
           /*! libs/common/enum/orderStatus.enum */ './libs/common/src/enum/orderStatus.enum.ts',
         );
@@ -8594,9 +7080,7 @@
         const order_model_1 = __webpack_require__(
           /*! libs/db/modules/order.model */ './libs/db/src/modules/order.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         const mongodb_1 = __webpack_require__(/*! mongodb */ 'mongodb');
         let OrderService = class OrderService {
           constructor(orderModel) {
@@ -8644,12 +7128,8 @@
                 {
                   $match: {
                     userName: { $regex: new RegExp(parameters.userName, 'i') },
-                    type: parameters.type
-                      ? ~~parameters.type
-                      : { $ne: parameters.type },
-                    status: parameters.status
-                      ? ~~parameters.status
-                      : { $ne: parameters.status },
+                    type: parameters.type ? ~~parameters.type : { $ne: parameters.type },
+                    status: parameters.status ? ~~parameters.status : { $ne: parameters.status },
                     source: { $regex: new RegExp(parameters.source, 'i') },
                     'products.title': {
                       $regex: new RegExp(parameters.productName, 'i'),
@@ -8688,9 +7168,7 @@
                     _id: parameters.orderId
                       ? new mongodb_1.ObjectId(parameters.orderId)
                       : { $ne: null },
-                    status: parameters.status
-                      ? ~~parameters.status
-                      : { $ne: parameters.status },
+                    status: parameters.status ? ~~parameters.status : { $ne: parameters.status },
                   },
                 },
                 {
@@ -8724,9 +7202,7 @@
                 },
                 {
                   $match: {
-                    addressName: {
-                      $regex: new RegExp(parameters.addressName, 'i'),
-                    },
+                    addressName: { $regex: new RegExp(parameters.addressName, 'i') },
                   },
                 },
                 {
@@ -8764,10 +7240,7 @@
         OrderService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(order_model_1.Order),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(order_model_1.Order)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -8799,54 +7272,35 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryProductCommentDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
         class QueryProductCommentDto extends PaginationParametersDto_1.PaginationParametersDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '用户名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '用户名称' }), __metadata('design:type', String)],
           QueryProductCommentDto.prototype,
           'userName',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '商品名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '商品名称' }), __metadata('design:type', String)],
           QueryProductCommentDto.prototype,
           'productName',
           void 0,
@@ -8872,36 +7326,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ReplyProductCommentDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         class ReplyProductCommentDto {}
         __decorate(
           [
@@ -8933,29 +7374,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -8968,15 +7398,9 @@
         var _a, _b, _c;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductCommentController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
@@ -9017,10 +7441,8 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof query_product_comment_dto_1.QueryProductCommentDto !==
-                  'undefined' &&
-                query_product_comment_dto_1.QueryProductCommentDto) ===
-              'function'
+                typeof query_product_comment_dto_1.QueryProductCommentDto !== 'undefined' &&
+                query_product_comment_dto_1.QueryProductCommentDto) === 'function'
                 ? _a
                 : Object,
             ]),
@@ -9041,10 +7463,8 @@
             __metadata('design:paramtypes', [
               String,
               typeof (_b =
-                typeof reply_product_comment_dto_1.ReplyProductCommentDto !==
-                  'undefined' &&
-                reply_product_comment_dto_1.ReplyProductCommentDto) ===
-              'function'
+                typeof reply_product_comment_dto_1.ReplyProductCommentDto !== 'undefined' &&
+                reply_product_comment_dto_1.ReplyProductCommentDto) === 'function'
                 ? _b
                 : Object,
             ]),
@@ -9076,8 +7496,7 @@
             (0, common_1.Controller)('productComment'),
             __metadata('design:paramtypes', [
               typeof (_c =
-                typeof product_comment_service_1.ProductCommentService !==
-                  'undefined' &&
+                typeof product_comment_service_1.ProductCommentService !== 'undefined' &&
                 product_comment_service_1.ProductCommentService) === 'function'
                 ? _c
                 : Object,
@@ -9106,27 +7525,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductCommentModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_comment_service_1 = __webpack_require__(
           /*! ./product-comment.service */ './apps/admin/src/product-comment/product-comment.service.ts',
         );
@@ -9137,9 +7546,7 @@
         ProductCommentModule = __decorate(
           [
             (0, common_1.Module)({
-              controllers: [
-                product_comment_controller_1.ProductCommentController,
-              ],
+              controllers: [product_comment_controller_1.ProductCommentController],
               providers: [product_comment_service_1.ProductCommentService],
             }),
           ],
@@ -9166,29 +7573,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -9201,18 +7597,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductCommentService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_comment_model_1 = __webpack_require__(
           /*! libs/db/modules/product-comment-model */ './libs/db/src/modules/product-comment-model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let ProductCommentService = class ProductCommentService {
           constructor(productCommentModel) {
             this.productCommentModel = productCommentModel;
@@ -9281,12 +7671,7 @@
         ProductCommentService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                product_comment_model_1.ProductComment,
-              ),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(product_comment_model_1.ProductComment)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -9318,54 +7703,33 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateProductParamDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class ParamTpye {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '参数名' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '参数名' }), __metadata('design:type', String)],
           ParamTpye.prototype,
           'name',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '参数值' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '参数值' }), __metadata('design:type', String)],
           ParamTpye.prototype,
           'value',
           void 0,
@@ -9412,36 +7776,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryProductParamDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -9467,9 +7818,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateProductParamDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_product_param_dto_1 = __webpack_require__(
           /*! ./create-product-param.dto */ './apps/admin/src/product-param/dto/create-product-param.dto.ts',
         );
@@ -9497,29 +7846,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -9532,9 +7870,7 @@
         var _a, _b, _c, _d;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductParamController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_param_service_1 = __webpack_require__(
           /*! ./product-param.service */ './apps/admin/src/product-param/product-param.service.ts',
         );
@@ -9544,12 +7880,8 @@
         const update_product_param_dto_1 = __webpack_require__(
           /*! ./dto/update-product-param.dto */ './apps/admin/src/product-param/dto/update-product-param.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const query_product_param_dto_1 = __webpack_require__(
           /*! ./dto/query-product-param.dto */ './apps/admin/src/product-param/dto/query-product-param.dto.ts',
         );
@@ -9564,9 +7896,7 @@
             this.productParamService = productParamService;
           }
           async create(createProductParamDto) {
-            const res = await this.productParamService.create(
-              createProductParamDto,
-            );
+            const res = await this.productParamService.create(createProductParamDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findAll(parameters) {
@@ -9578,10 +7908,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async update(id, updateProductParamDto) {
-            const res = this.productParamService.update(
-              id,
-              updateProductParamDto,
-            );
+            const res = this.productParamService.update(id, updateProductParamDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async remove(id) {
@@ -9597,8 +7924,7 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof create_product_param_dto_1.CreateProductParamDto !==
-                  'undefined' &&
+                typeof create_product_param_dto_1.CreateProductParamDto !== 'undefined' &&
                 create_product_param_dto_1.CreateProductParamDto) === 'function'
                 ? _a
                 : Object,
@@ -9617,8 +7943,7 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_b =
-                typeof query_product_param_dto_1.QueryProductParamDto !==
-                  'undefined' &&
+                typeof query_product_param_dto_1.QueryProductParamDto !== 'undefined' &&
                 query_product_param_dto_1.QueryProductParamDto) === 'function'
                 ? _b
                 : Object,
@@ -9634,10 +7959,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '参数模板信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '参数模板id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -9651,17 +7973,13 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新参数模板' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '参数模板id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_c =
-                typeof update_product_param_dto_1.UpdateProductParamDto !==
-                  'undefined' &&
+                typeof update_product_param_dto_1.UpdateProductParamDto !== 'undefined' &&
                 update_product_param_dto_1.UpdateProductParamDto) === 'function'
                 ? _c
                 : Object,
@@ -9677,10 +7995,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除参数模板' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '参数模板id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -9697,8 +8012,7 @@
             (0, common_1.Controller)('productParam'),
             __metadata('design:paramtypes', [
               typeof (_d =
-                typeof product_param_service_1.ProductParamService !==
-                  'undefined' &&
+                typeof product_param_service_1.ProductParamService !== 'undefined' &&
                 product_param_service_1.ProductParamService) === 'function'
                 ? _d
                 : Object,
@@ -9727,27 +8041,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductParamModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_param_service_1 = __webpack_require__(
           /*! ./product-param.service */ './apps/admin/src/product-param/product-param.service.ts',
         );
@@ -9785,29 +8089,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -9820,26 +8113,18 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductParamService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_param_model_1 = __webpack_require__(
           /*! libs/db/modules/product-param.model */ './libs/db/src/modules/product-param.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let ProductParamService = class ProductParamService {
           constructor(productParmMobanModel) {
             this.productParmMobanModel = productParmMobanModel;
           }
           async create(createProductParamDto) {
-            return await this.productParmMobanModel.create(
-              createProductParamDto,
-            );
+            return await this.productParmMobanModel.create(createProductParamDto);
           }
           async findAll(parameters) {
             let total = 0;
@@ -9860,10 +8145,7 @@
             return this.productParmMobanModel.findById(id);
           }
           async update(id, updateProductParamDto) {
-            return this.productParmMobanModel.findByIdAndUpdate(
-              id,
-              updateProductParamDto,
-            );
+            return this.productParmMobanModel.findByIdAndUpdate(id, updateProductParamDto);
           }
           async remove(id) {
             return this.productParmMobanModel.findByIdAndDelete(id);
@@ -9872,12 +8154,7 @@
         ProductParamService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                product_param_model_1.ProductParam,
-              ),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(product_param_model_1.ProductParam)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -9909,39 +8186,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateProductSkuDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class CreateProductSkuDto {}
         __decorate(
           [
@@ -9984,36 +8246,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryProductSkuDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -10039,9 +8288,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateProductSkuDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_product_sku_dto_1 = __webpack_require__(
           /*! ./create-product-sku.dto */ './apps/admin/src/product-sku/dto/create-product-sku.dto.ts',
         );
@@ -10069,29 +8316,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -10104,9 +8340,7 @@
         var _a, _b, _c, _d;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductSkuController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_sku_service_1 = __webpack_require__(
           /*! ./product-sku.service */ './apps/admin/src/product-sku/product-sku.service.ts',
         );
@@ -10116,12 +8350,8 @@
         const update_product_sku_dto_1 = __webpack_require__(
           /*! ./dto/update-product-sku.dto */ './apps/admin/src/product-sku/dto/update-product-sku.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const query_product_sku_dto_1 = __webpack_require__(
           /*! ./dto/query-product-sku.dto */ './apps/admin/src/product-sku/dto/query-product-sku.dto.ts',
         );
@@ -10136,9 +8366,7 @@
             this.productSkuService = productSkuService;
           }
           async create(createProductSkuDto) {
-            const res = await this.productSkuService.create(
-              createProductSkuDto,
-            );
+            const res = await this.productSkuService.create(createProductSkuDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findAll(parameters) {
@@ -10150,10 +8378,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async update(id, updateProductSkuDto) {
-            const res = await this.productSkuService.update(
-              id,
-              updateProductSkuDto,
-            );
+            const res = await this.productSkuService.update(id, updateProductSkuDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async remove(id) {
@@ -10169,8 +8394,7 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof create_product_sku_dto_1.CreateProductSkuDto !==
-                  'undefined' &&
+                typeof create_product_sku_dto_1.CreateProductSkuDto !== 'undefined' &&
                 create_product_sku_dto_1.CreateProductSkuDto) === 'function'
                 ? _a
                 : Object,
@@ -10189,9 +8413,8 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_b =
-                typeof query_product_sku_dto_1.QueryProductSkuDto !==
-                  'undefined' && query_product_sku_dto_1.QueryProductSkuDto) ===
-              'function'
+                typeof query_product_sku_dto_1.QueryProductSkuDto !== 'undefined' &&
+                query_product_sku_dto_1.QueryProductSkuDto) === 'function'
                 ? _b
                 : Object,
             ]),
@@ -10206,10 +8429,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiParam)({ name: 'id', description: '模板id' }),
             (0, swagger_1.ApiOperation)({ summary: '产品规格模板详情' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -10223,17 +8443,13 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiParam)({ name: 'id', description: '模板id' }),
             (0, swagger_1.ApiOperation)({ summary: '更新产品规格模板' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_c =
-                typeof update_product_sku_dto_1.UpdateProductSkuDto !==
-                  'undefined' &&
+                typeof update_product_sku_dto_1.UpdateProductSkuDto !== 'undefined' &&
                 update_product_sku_dto_1.UpdateProductSkuDto) === 'function'
                 ? _c
                 : Object,
@@ -10266,9 +8482,8 @@
             (0, common_1.Controller)('productSku'),
             __metadata('design:paramtypes', [
               typeof (_d =
-                typeof product_sku_service_1.ProductSkuService !==
-                  'undefined' && product_sku_service_1.ProductSkuService) ===
-              'function'
+                typeof product_sku_service_1.ProductSkuService !== 'undefined' &&
+                product_sku_service_1.ProductSkuService) === 'function'
                 ? _d
                 : Object,
             ]),
@@ -10296,27 +8511,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductSkuModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_sku_service_1 = __webpack_require__(
           /*! ./product-sku.service */ './apps/admin/src/product-sku/product-sku.service.ts',
         );
@@ -10354,29 +8559,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -10389,18 +8583,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductSkuService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_sku_attr_model_1 = __webpack_require__(
           /*! libs/db/modules/product-sku-attr.model */ './libs/db/src/modules/product-sku-attr.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let ProductSkuService = class ProductSkuService {
           constructor(productSkuAttrModel) {
             this.productSkuAttrModel = productSkuAttrModel;
@@ -10427,10 +8615,7 @@
             return await this.productSkuAttrModel.findById(id);
           }
           async update(id, updateProductSkuDto) {
-            return await this.productSkuAttrModel.findByIdAndUpdate(
-              id,
-              updateProductSkuDto,
-            );
+            return await this.productSkuAttrModel.findByIdAndUpdate(id, updateProductSkuDto);
           }
           async remove(id) {
             return await this.productSkuAttrModel.findByIdAndDelete(id);
@@ -10441,9 +8626,7 @@
             (0, common_1.Injectable)(),
             __param(
               0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                product_sku_attr_model_1.ProductSkuAttr,
-              ),
+              (0, nestjs_typegoose_1.InjectModel)(product_sku_attr_model_1.ProductSkuAttr),
             ),
             __metadata('design:paramtypes', [
               typeof (_a =
@@ -10476,39 +8659,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateProductTopicDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class CreateProductTopicDto {}
         __decorate(
           [
@@ -10581,36 +8749,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryProductTopicDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -10636,9 +8791,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateProductTopicDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_product_topic_dto_1 = __webpack_require__(
           /*! ./create-product-topic.dto */ './apps/admin/src/product-topic/dto/create-product-topic.dto.ts',
         );
@@ -10666,29 +8819,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -10701,9 +8843,7 @@
         var _a, _b, _c, _d, _e, _f;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductTopicController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_topic_service_1 = __webpack_require__(
           /*! ./product-topic.service */ './apps/admin/src/product-topic/product-topic.service.ts',
         );
@@ -10713,12 +8853,8 @@
         const update_product_topic_dto_1 = __webpack_require__(
           /*! ./dto/update-product-topic.dto */ './apps/admin/src/product-topic/dto/update-product-topic.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const query_product_topic_dto_1 = __webpack_require__(
           /*! ./dto/query-product-topic.dto */ './apps/admin/src/product-topic/dto/query-product-topic.dto.ts',
         );
@@ -10730,9 +8866,7 @@
             this.productTopicService = productTopicService;
           }
           async create(createProductTopicDto) {
-            const res = await this.productTopicService.create(
-              createProductTopicDto,
-            );
+            const res = await this.productTopicService.create(createProductTopicDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findAll(parameters) {
@@ -10757,18 +8891,14 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof create_product_topic_dto_1.CreateProductTopicDto !==
-                  'undefined' &&
+                typeof create_product_topic_dto_1.CreateProductTopicDto !== 'undefined' &&
                 create_product_topic_dto_1.CreateProductTopicDto) === 'function'
                 ? _a
                 : Object,
             ]),
             __metadata(
               'design:returntype',
-              typeof (_b = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Promise !== 'undefined' && Promise) === 'function' ? _b : Object,
             ),
           ],
           ProductTopicController.prototype,
@@ -10783,18 +8913,14 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_c =
-                typeof query_product_topic_dto_1.QueryProductTopicDto !==
-                  'undefined' &&
+                typeof query_product_topic_dto_1.QueryProductTopicDto !== 'undefined' &&
                 query_product_topic_dto_1.QueryProductTopicDto) === 'function'
                 ? _c
                 : Object,
             ]),
             __metadata(
               'design:returntype',
-              typeof (_d = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _d
-                : Object,
+              typeof (_d = typeof Promise !== 'undefined' && Promise) === 'function' ? _d : Object,
             ),
           ],
           ProductTopicController.prototype,
@@ -10826,8 +8952,7 @@
             __metadata('design:paramtypes', [
               String,
               typeof (_e =
-                typeof update_product_topic_dto_1.UpdateProductTopicDto !==
-                  'undefined' &&
+                typeof update_product_topic_dto_1.UpdateProductTopicDto !== 'undefined' &&
                 update_product_topic_dto_1.UpdateProductTopicDto) === 'function'
                 ? _e
                 : Object,
@@ -10860,8 +8985,7 @@
             (0, common_1.Controller)('productTopic'),
             __metadata('design:paramtypes', [
               typeof (_f =
-                typeof product_topic_service_1.ProductTopicService !==
-                  'undefined' &&
+                typeof product_topic_service_1.ProductTopicService !== 'undefined' &&
                 product_topic_service_1.ProductTopicService) === 'function'
                 ? _f
                 : Object,
@@ -10890,27 +9014,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductTopicModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_topic_service_1 = __webpack_require__(
           /*! ./product-topic.service */ './apps/admin/src/product-topic/product-topic.service.ts',
         );
@@ -10948,29 +9062,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -10983,12 +9086,8 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductTopicService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
@@ -10996,19 +9095,14 @@
           /*! libs/db/modules/product-topic.model */ './libs/db/src/modules/product-topic.model.ts',
         );
         const mongoose_1 = __webpack_require__(/*! mongoose */ 'mongoose');
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let ProductTopicService = class ProductTopicService {
           constructor(productTopicModel) {
             this.productTopicModel = productTopicModel;
           }
           async create(createProductTopicDto) {
-            const isObjID = (0, mongoose_1.isValidObjectId)(
-              createProductTopicDto.category,
-            );
-            if (!isObjID)
-              throw new ResponseResultModel_1.ApiFail(101, '分类id不存在');
+            const isObjID = (0, mongoose_1.isValidObjectId)(createProductTopicDto.category);
+            if (!isObjID) throw new ResponseResultModel_1.ApiFail(101, '分类id不存在');
             return await this.productTopicModel.create(createProductTopicDto);
           }
           async findAll(parameters) {
@@ -11030,10 +9124,7 @@
             return await this.productTopicModel.findById(id);
           }
           async update(id, updateProductTopicDto) {
-            return await this.productTopicModel.findByIdAndUpdate(
-              id,
-              updateProductTopicDto,
-            );
+            return await this.productTopicModel.findByIdAndUpdate(id, updateProductTopicDto);
           }
           async remove(id) {
             return this.productTopicModel.findOneAndDelete({ _id: id });
@@ -11042,12 +9133,7 @@
         ProductTopicService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                product_topic_model_1.ProductTopic,
-              ),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(product_topic_model_1.ProductTopic)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -11079,51 +9165,32 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateProductUnitDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         class CreateProductUnitDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '单位名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '单位名称' }), __metadata('design:type', String)],
           CreateProductUnitDto.prototype,
           'name',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '单位排序' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '单位排序' }), __metadata('design:type', Number)],
           CreateProductUnitDto.prototype,
           'sort',
           void 0,
@@ -11149,36 +9216,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryProductUnitDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -11204,9 +9258,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateProductUnitDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_product_unit_dto_1 = __webpack_require__(
           /*! ./create-product-unit.dto */ './apps/admin/src/product-unit/dto/create-product-unit.dto.ts',
         );
@@ -11234,29 +9286,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -11269,9 +9310,7 @@
         var _a, _b, _c, _d;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductUnitController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_unit_service_1 = __webpack_require__(
           /*! ./product-unit.service */ './apps/admin/src/product-unit/product-unit.service.ts',
         );
@@ -11281,12 +9320,8 @@
         const update_product_unit_dto_1 = __webpack_require__(
           /*! ./dto/update-product-unit.dto */ './apps/admin/src/product-unit/dto/update-product-unit.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
@@ -11301,15 +9336,11 @@
             this.productUnitService = productUnitService;
           }
           async create(createProductUnitDto) {
-            const res = await this.productUnitService.create(
-              createProductUnitDto,
-            );
+            const res = await this.productUnitService.create(createProductUnitDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findAll(queryProductUnitDto) {
-            const res = await this.productUnitService.findAll(
-              queryProductUnitDto,
-            );
+            const res = await this.productUnitService.findAll(queryProductUnitDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findOne(id) {
@@ -11317,10 +9348,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async update(id, updateProductUnitDto) {
-            const res = await this.productUnitService.update(
-              id,
-              updateProductUnitDto,
-            );
+            const res = await this.productUnitService.update(id, updateProductUnitDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async remove(id) {
@@ -11336,8 +9364,7 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof create_product_unit_dto_1.CreateProductUnitDto !==
-                  'undefined' &&
+                typeof create_product_unit_dto_1.CreateProductUnitDto !== 'undefined' &&
                 create_product_unit_dto_1.CreateProductUnitDto) === 'function'
                 ? _a
                 : Object,
@@ -11356,8 +9383,7 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_b =
-                typeof query_product_unit_dto_1.QueryProductUnitDto !==
-                  'undefined' &&
+                typeof query_product_unit_dto_1.QueryProductUnitDto !== 'undefined' &&
                 query_product_unit_dto_1.QueryProductUnitDto) === 'function'
                 ? _b
                 : Object,
@@ -11373,10 +9399,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '商品单位详情' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '单位id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -11390,17 +9413,13 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiParam)({ name: 'id', description: '单位id' }),
             (0, swagger_1.ApiOperation)({ summary: '更新商品单位' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_c =
-                typeof update_product_unit_dto_1.UpdateProductUnitDto !==
-                  'undefined' &&
+                typeof update_product_unit_dto_1.UpdateProductUnitDto !== 'undefined' &&
                 update_product_unit_dto_1.UpdateProductUnitDto) === 'function'
                 ? _c
                 : Object,
@@ -11416,10 +9435,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除商品单位' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '单位id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -11436,9 +9452,8 @@
             (0, common_1.Controller)('productUnit'),
             __metadata('design:paramtypes', [
               typeof (_d =
-                typeof product_unit_service_1.ProductUnitService !==
-                  'undefined' && product_unit_service_1.ProductUnitService) ===
-              'function'
+                typeof product_unit_service_1.ProductUnitService !== 'undefined' &&
+                product_unit_service_1.ProductUnitService) === 'function'
                 ? _d
                 : Object,
             ]),
@@ -11466,27 +9481,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductUnitModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_unit_service_1 = __webpack_require__(
           /*! ./product-unit.service */ './apps/admin/src/product-unit/product-unit.service.ts',
         );
@@ -11524,29 +9529,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -11559,18 +9553,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductUnitService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_unit_model_1 = __webpack_require__(
           /*! libs/db/modules/product-unit.model */ './libs/db/src/modules/product-unit.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let ProductUnitService = class ProductUnitService {
           constructor(productUnitModel) {
             this.productUnitModel = productUnitModel;
@@ -11597,10 +9585,7 @@
             return await this.productUnitModel.findById(id);
           }
           async update(id, updateProductUnitDto) {
-            return await this.productUnitModel.findByIdAndUpdate(
-              id,
-              updateProductUnitDto,
-            );
+            return await this.productUnitModel.findByIdAndUpdate(id, updateProductUnitDto);
           }
           async remove(id) {
             return await this.productUnitModel.findByIdAndDelete(id);
@@ -11609,12 +9594,7 @@
         ProductUnitService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                product_unit_model_1.ProductUnit,
-              ),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(product_unit_model_1.ProductUnit)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -11646,40 +9626,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateProductDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class SkuDataType {}
         __decorate(
           [
@@ -11692,56 +9657,38 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '库存' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '库存' }), __metadata('design:type', Number)],
           SkuDataType.prototype,
           'inventory',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '成本价' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '成本价' }), __metadata('design:type', Number)],
           SkuDataType.prototype,
           'costPrice',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '重量' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '重量' }), __metadata('design:type', Number)],
           SkuDataType.prototype,
           'weight',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '规格图片' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '规格图片' }), __metadata('design:type', Number)],
           SkuDataType.prototype,
           'image',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '货号' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '货号' }), __metadata('design:type', Number)],
           SkuDataType.prototype,
           'artNo',
           void 0,
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '规格名称集合',
-              type: [String],
-            }),
+            (0, swagger_1.ApiProperty)({ title: '规格名称集合', type: [String] }),
             __metadata('design:type', Array),
           ],
           SkuDataType.prototype,
@@ -11760,10 +9707,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '规格属性名称',
-              type: [String],
-            }),
+            (0, swagger_1.ApiProperty)({ title: '规格属性名称', type: [String] }),
             __metadata('design:type', Array),
           ],
           SkuAttrType.prototype,
@@ -11806,9 +9750,7 @@
             (0, swagger_1.ApiProperty)({ title: '产品轮播图', type: [String] }),
             __metadata(
               'design:type',
-              typeof (_a = typeof Array !== 'undefined' && Array) === 'function'
-                ? _a
-                : Object,
+              typeof (_a = typeof Array !== 'undefined' && Array) === 'function' ? _a : Object,
             ),
           ],
           CreateProductDto.prototype,
@@ -11841,9 +9783,7 @@
             (0, class_validator_1.IsNotEmpty)({ message: '产品标签不能为空' }),
             __metadata(
               'design:type',
-              typeof (_b = typeof Array !== 'undefined' && Array) === 'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Array !== 'undefined' && Array) === 'function' ? _b : Object,
             ),
           ],
           CreateProductDto.prototype,
@@ -11861,37 +9801,25 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '折扣价' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '折扣价' }), __metadata('design:type', Number)],
           CreateProductDto.prototype,
           'costPrice',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '产品库存' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '产品库存' }), __metadata('design:type', Number)],
           CreateProductDto.prototype,
           'inventory',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '产品销量' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '产品销量' }), __metadata('design:type', Number)],
           CreateProductDto.prototype,
           'sales',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '产品浏览量' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '产品浏览量' }), __metadata('design:type', Number)],
           CreateProductDto.prototype,
           'views',
           void 0,
@@ -11911,10 +9839,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '商品规格',
-              type: [SkuDataType],
-            }),
+            (0, swagger_1.ApiProperty)({ title: '商品规格', type: [SkuDataType] }),
             __metadata('design:type', Array),
           ],
           CreateProductDto.prototype,
@@ -11923,10 +9848,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '规格属性',
-              type: [SkuAttrType],
-            }),
+            (0, swagger_1.ApiProperty)({ title: '规格属性', type: [SkuAttrType] }),
             __metadata('design:type', Array),
           ],
           CreateProductDto.prototype,
@@ -11934,19 +9856,13 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '产品排序' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '产品排序' }), __metadata('design:type', Number)],
           CreateProductDto.prototype,
           'sort',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '产品状态' }),
-            __metadata('design:type', Boolean),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '产品状态' }), __metadata('design:type', Boolean)],
           CreateProductDto.prototype,
           'status',
           void 0,
@@ -11972,36 +9888,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryProductDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -12017,10 +9920,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '是否限时精选',
-              required: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '是否限时精选', required: false }),
             __metadata('design:type', Boolean),
           ],
           QueryProductDto.prototype,
@@ -12029,10 +9929,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '是否热门推荐',
-              required: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '是否热门推荐', required: false }),
             __metadata('design:type', Boolean),
           ],
           QueryProductDto.prototype,
@@ -12060,29 +9957,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b;
@@ -12092,9 +9978,7 @@
           exports.BatchUpdateHotStatusDto =
           exports.UpdateProductDto =
             void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_product_dto_1 = __webpack_require__(
           /*! ./create-product.dto */ './apps/admin/src/product/dto/create-product.dto.ts',
         );
@@ -12108,9 +9992,7 @@
             (0, swagger_1.ApiProperty)({ title: '状态', type: [String] }),
             __metadata(
               'design:type',
-              typeof (_a = typeof Array !== 'undefined' && Array) === 'function'
-                ? _a
-                : Object,
+              typeof (_a = typeof Array !== 'undefined' && Array) === 'function' ? _a : Object,
             ),
           ],
           BatchUpdateHotStatusDto.prototype,
@@ -12133,9 +10015,7 @@
             (0, swagger_1.ApiProperty)({ title: '状态', type: [String] }),
             __metadata(
               'design:type',
-              typeof (_b = typeof Array !== 'undefined' && Array) === 'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Array !== 'undefined' && Array) === 'function' ? _b : Object,
             ),
           ],
           BatchUpdateTimeLimitStatusDto.prototype,
@@ -12183,29 +10063,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -12218,9 +10087,7 @@
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_service_1 = __webpack_require__(
           /*! ./product.service */ './apps/admin/src/product/product.service.ts',
         );
@@ -12230,12 +10097,8 @@
         const update_product_dto_1 = __webpack_require__(
           /*! ./dto/update-product.dto */ './apps/admin/src/product/dto/update-product.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const query_product_dto_1 = __webpack_require__(
           /*! ./dto/query-product.dto */ './apps/admin/src/product/dto/query-product.dto.ts',
         );
@@ -12282,10 +10145,7 @@
             return (0, ResponseResultModel_1.apiSucceed)();
           }
           async updateTimeLimitStatus(id, paramsDto) {
-            await this.productService.updateTimeLimitStatus(
-              id,
-              paramsDto.status,
-            );
+            await this.productService.updateTimeLimitStatus(id, paramsDto.status);
             return (0, ResponseResultModel_1.apiSucceed)();
           }
           async batchUpdateTimeLimitStatus(batchUpdateTimeLimitStatusDto) {
@@ -12311,10 +10171,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_b = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Promise !== 'undefined' && Promise) === 'function' ? _b : Object,
             ),
           ],
           ProductController.prototype,
@@ -12336,10 +10193,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_d = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _d
-                : Object,
+              typeof (_d = typeof Promise !== 'undefined' && Promise) === 'function' ? _d : Object,
             ),
           ],
           ProductController.prototype,
@@ -12356,10 +10210,7 @@
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_e = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _e
-                : Object,
+              typeof (_e = typeof Promise !== 'undefined' && Promise) === 'function' ? _e : Object,
             ),
           ],
           ProductController.prototype,
@@ -12384,10 +10235,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_g = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _g
-                : Object,
+              typeof (_g = typeof Promise !== 'undefined' && Promise) === 'function' ? _g : Object,
             ),
           ],
           ProductController.prototype,
@@ -12404,10 +10252,7 @@
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_h = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _h
-                : Object,
+              typeof (_h = typeof Promise !== 'undefined' && Promise) === 'function' ? _h : Object,
             ),
           ],
           ProductController.prototype,
@@ -12461,15 +10306,12 @@
         __decorate(
           [
             (0, common_1.Put)('batchUpdateHotStatus'),
-            (0, swagger_1.ApiOperation)({
-              summary: '批量更新商品热门推荐状态',
-            }),
+            (0, swagger_1.ApiOperation)({ summary: '批量更新商品热门推荐状态' }),
             __param(0, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_l =
-                typeof update_product_dto_1.BatchUpdateHotStatusDto !==
-                  'undefined' &&
+                typeof update_product_dto_1.BatchUpdateHotStatusDto !== 'undefined' &&
                 update_product_dto_1.BatchUpdateHotStatusDto) === 'function'
                 ? _l
                 : Object,
@@ -12505,17 +10347,13 @@
         __decorate(
           [
             (0, common_1.Put)('batchUpdateTimeLimitStatus'),
-            (0, swagger_1.ApiOperation)({
-              summary: '批量更新商品限时精选状态',
-            }),
+            (0, swagger_1.ApiOperation)({ summary: '批量更新商品限时精选状态' }),
             __param(0, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_o =
-                typeof update_product_dto_1.BatchUpdateTimeLimitStatusDto !==
-                  'undefined' &&
-                update_product_dto_1.BatchUpdateTimeLimitStatusDto) ===
-              'function'
+                typeof update_product_dto_1.BatchUpdateTimeLimitStatusDto !== 'undefined' &&
+                update_product_dto_1.BatchUpdateTimeLimitStatusDto) === 'function'
                 ? _o
                 : Object,
             ]),
@@ -12562,27 +10400,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const product_service_1 = __webpack_require__(
           /*! ./product.service */ './apps/admin/src/product/product.service.ts',
         );
@@ -12620,29 +10448,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -12655,15 +10472,9 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         const product_model_1 = __webpack_require__(
           /*! libs/db/modules/product.model */ './libs/db/src/modules/product.model.ts',
         );
@@ -12673,9 +10484,7 @@
           }
           async create(createProductDto) {
             if (createProductDto.skuType == 2) {
-              const mins = createProductDto.skus.find((item) =>
-                Math.min(item.price),
-              );
+              const mins = createProductDto.skus.find((item) => Math.min(item.price));
               createProductDto.price = mins.price;
               createProductDto.inventory = mins.inventory;
             }
@@ -12689,9 +10498,7 @@
                   $match: {
                     title: { $regex: new RegExp(parameters.title, 'i') },
                     isHot: parameters.isHot ? true : { $ne: parameters.isHot },
-                    isTimeLimit: parameters.isTimeLimit
-                      ? true
-                      : { $ne: parameters.isTimeLimit },
+                    isTimeLimit: parameters.isTimeLimit ? true : { $ne: parameters.isTimeLimit },
                   },
                 },
                 {
@@ -12734,16 +10541,11 @@
           }
           async update(id, updateProductDto) {
             if (updateProductDto.skuType == 2) {
-              const mins = updateProductDto.skus.find((item) =>
-                Math.min(item.price),
-              );
+              const mins = updateProductDto.skus.find((item) => Math.min(item.price));
               updateProductDto.price = mins.price;
               updateProductDto.inventory = mins.inventory;
             }
-            return await this.productModel.findByIdAndUpdate(
-              id,
-              updateProductDto,
-            );
+            return await this.productModel.findByIdAndUpdate(id, updateProductDto);
           }
           async remove(id) {
             return await this.productModel.findOneAndDelete({ _id: id });
@@ -12752,15 +10554,11 @@
             return await this.productModel.findByIdAndUpdate(id, { status });
           }
           async updateHotStatus(id, status) {
-            return await this.productModel.findByIdAndUpdate(id, {
-              isHot: status,
-            });
+            return await this.productModel.findByIdAndUpdate(id, { isHot: status });
           }
           async batchUpdateHotStatus(ids, status) {
             for (const item of ids) {
-              await this.productModel.findByIdAndUpdate(item, {
-                isHot: status,
-              });
+              await this.productModel.findByIdAndUpdate(item, { isHot: status });
             }
           }
           async updateTimeLimitStatus(id, status) {
@@ -12770,19 +10568,14 @@
           }
           async batchUpdateTimeLimitStatus(ids, status) {
             for (const item of ids) {
-              await this.productModel.findByIdAndUpdate(item, {
-                isTimeLimit: status,
-              });
+              await this.productModel.findByIdAndUpdate(item, { isTimeLimit: status });
             }
           }
         };
         ProductService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(product_model_1.Product),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(product_model_1.Product)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -12827,45 +10620,29 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryRoleDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
         class QueryRoleDto extends PaginationParametersDto_1.PaginationParametersDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '角色名称' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '角色名称' }), __metadata('design:type', String)],
           QueryRoleDto.prototype,
           'name',
           void 0,
@@ -12882,15 +10659,11 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateRoleDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_role_dto_1 = __webpack_require__(
           /*! ./create-role.dto */ './apps/admin/src/role/dto/create-role.dto.ts',
         );
-        class UpdateRoleDto extends (0, swagger_1.PartialType)(
-          create_role_dto_1.CreateRoleDto,
-        ) {}
+        class UpdateRoleDto extends (0, swagger_1.PartialType)(create_role_dto_1.CreateRoleDto) {}
         exports.UpdateRoleDto = UpdateRoleDto;
 
         /***/
@@ -12912,29 +10685,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -12947,9 +10709,7 @@
         var _a, _b, _c, _d;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.RoleController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const role_service_1 = __webpack_require__(
           /*! ./role.service */ './apps/admin/src/role/role.service.ts',
         );
@@ -12962,12 +10722,8 @@
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const parse_id_pipe_1 = __webpack_require__(
           /*! libs/common/pipe/parse-id.pipe */ './libs/common/src/pipe/parse-id.pipe.ts',
         );
@@ -13042,10 +10798,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiParam)({ name: 'id', description: '角色id' }),
             (0, swagger_1.ApiOperation)({ summary: '角色详细' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -13059,10 +10812,7 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新角色' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '角色id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
@@ -13084,10 +10834,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除角色' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '角色id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -13104,8 +10851,8 @@
             (0, common_1.Controller)('role'),
             __metadata('design:paramtypes', [
               typeof (_d =
-                typeof role_service_1.RoleService !== 'undefined' &&
-                role_service_1.RoleService) === 'function'
+                typeof role_service_1.RoleService !== 'undefined' && role_service_1.RoleService) ===
+              'function'
                 ? _d
                 : Object,
             ]),
@@ -13133,27 +10880,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.RoleModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const role_service_1 = __webpack_require__(
           /*! ./role.service */ './apps/admin/src/role/role.service.ts',
         );
@@ -13191,29 +10928,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -13226,18 +10952,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.RoleService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const role_model_1 = __webpack_require__(
           /*! libs/db/modules/role.model */ './libs/db/src/modules/role.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let RoleService = class RoleService {
           constructor(roleModel) {
             this.roleModel = roleModel;
@@ -13311,55 +11031,36 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.SetFileStorageDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const fileStorageMode_enum_1 = __webpack_require__(
           /*! libs/common/enum/fileStorageMode.enum */ './libs/common/src/enum/fileStorageMode.enum.ts',
         );
         class AliOssDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: 'region' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: 'region' }), __metadata('design:type', String)],
           AliOssDto.prototype,
           'region',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: 'accessKeyId' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: 'accessKeyId' }), __metadata('design:type', String)],
           AliOssDto.prototype,
           'accessKeyId',
           void 0,
@@ -13374,10 +11075,7 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: 'bucket' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: 'bucket' }), __metadata('design:type', String)],
           AliOssDto.prototype,
           'bucket',
           void 0,
@@ -13394,9 +11092,8 @@
             __metadata(
               'design:type',
               typeof (_a =
-                typeof fileStorageMode_enum_1.FileStorageModeEnum !==
-                  'undefined' && fileStorageMode_enum_1.FileStorageModeEnum) ===
-                'function'
+                typeof fileStorageMode_enum_1.FileStorageModeEnum !== 'undefined' &&
+                fileStorageMode_enum_1.FileStorageModeEnum) === 'function'
                 ? _a
                 : Object,
             ),
@@ -13435,29 +11132,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -13470,15 +11156,9 @@
         var _a, _b;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.SettingsController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
@@ -13498,9 +11178,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(data);
           }
           async setFileStorage(setFileStorageDto) {
-            const res = await this.settingsService.setFileStorage(
-              setFileStorageDto,
-            );
+            const res = await this.settingsService.setFileStorage(setFileStorageDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
         };
@@ -13524,9 +11202,8 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof set_file_storage_dto_1.SetFileStorageDto !==
-                  'undefined' && set_file_storage_dto_1.SetFileStorageDto) ===
-              'function'
+                typeof set_file_storage_dto_1.SetFileStorageDto !== 'undefined' &&
+                set_file_storage_dto_1.SetFileStorageDto) === 'function'
                 ? _a
                 : Object,
             ]),
@@ -13573,27 +11250,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.SettingsModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const settings_service_1 = __webpack_require__(
           /*! ./settings.service */ './apps/admin/src/settings/settings.service.ts',
         );
@@ -13631,29 +11298,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -13666,18 +11322,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.SettingsService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const site_setting_model_1 = __webpack_require__(
           /*! libs/db/modules/site-setting.model */ './libs/db/src/modules/site-setting.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let SettingsService = class SettingsService {
           constructor(settingModel) {
             this.settingModel = settingModel;
@@ -13705,12 +11355,7 @@
         SettingsService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                site_setting_model_1.SiteSettings,
-              ),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(site_setting_model_1.SiteSettings)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -13742,39 +11387,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateTagDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class CreateTagDto {}
         __decorate(
           [
@@ -13831,36 +11461,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryTagDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -13909,15 +11526,11 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateTagDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_tag_dto_1 = __webpack_require__(
           /*! ./create-tag.dto */ './apps/admin/src/tag/dto/create-tag.dto.ts',
         );
-        class UpdateTagDto extends (0, swagger_1.PartialType)(
-          create_tag_dto_1.CreateTagDto,
-        ) {}
+        class UpdateTagDto extends (0, swagger_1.PartialType)(create_tag_dto_1.CreateTagDto) {}
         exports.UpdateTagDto = UpdateTagDto;
 
         /***/
@@ -13939,29 +11552,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -13974,9 +11576,7 @@
         var _a, _b, _c, _d;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.TagController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const tag_service_1 = __webpack_require__(
           /*! ./tag.service */ './apps/admin/src/tag/tag.service.ts',
         );
@@ -13986,12 +11586,8 @@
         const update_tag_dto_1 = __webpack_require__(
           /*! ./dto/update-tag.dto */ './apps/admin/src/tag/dto/update-tag.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const query_tag_dto_1 = __webpack_require__(
           /*! ./dto/query-tag.dto */ './apps/admin/src/tag/dto/query-tag.dto.ts',
         );
@@ -14069,10 +11665,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '标签详情' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '标签id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -14086,10 +11679,7 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新标签' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '标签id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
@@ -14111,10 +11701,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除标签' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '标签id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -14131,8 +11718,8 @@
             (0, common_1.Controller)('tag'),
             __metadata('design:paramtypes', [
               typeof (_d =
-                typeof tag_service_1.TagService !== 'undefined' &&
-                tag_service_1.TagService) === 'function'
+                typeof tag_service_1.TagService !== 'undefined' && tag_service_1.TagService) ===
+              'function'
                 ? _d
                 : Object,
             ]),
@@ -14160,27 +11747,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.TagModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const tag_service_1 = __webpack_require__(
           /*! ./tag.service */ './apps/admin/src/tag/tag.service.ts',
         );
@@ -14218,29 +11795,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -14253,18 +11819,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.TagService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const tag_model_1 = __webpack_require__(
           /*! libs/db/modules/tag.model */ './libs/db/src/modules/tag.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let TagService = class TagService {
           constructor(tagModel) {
             this.tagModel = tagModel;
@@ -14347,39 +11907,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateUserAddressDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class CreateUserAddressDto {}
         __decorate(
           [
@@ -14470,36 +12015,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryUserAddressDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -14515,10 +12047,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '收货人名称',
-              required: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '收货人名称', required: false }),
             __metadata('design:type', String),
           ],
           QueryUserAddressDto.prototype,
@@ -14537,9 +12066,7 @@
       /***/ (__unused_webpack_module, exports, __webpack_require__) => {
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UpdateUserAddressDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const create_user_address_dto_1 = __webpack_require__(
           /*! ./create-user-address.dto */ './apps/admin/src/user-address/dto/create-user-address.dto.ts',
         );
@@ -14567,29 +12094,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -14602,9 +12118,7 @@
         var _a, _b, _c, _d;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserAddressController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const user_address_service_1 = __webpack_require__(
           /*! ./user-address.service */ './apps/admin/src/user-address/user-address.service.ts',
         );
@@ -14614,12 +12128,8 @@
         const update_user_address_dto_1 = __webpack_require__(
           /*! ./dto/update-user-address.dto */ './apps/admin/src/user-address/dto/update-user-address.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const query_user_address_dto_1 = __webpack_require__(
           /*! ./dto/query-user-address.dto */ './apps/admin/src/user-address/dto/query-user-address.dto.ts',
         );
@@ -14634,15 +12144,11 @@
             this.userAddressService = userAddressService;
           }
           async create(createUserAddressDto) {
-            const res = await this.userAddressService.create(
-              createUserAddressDto,
-            );
+            const res = await this.userAddressService.create(createUserAddressDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findAll(queryUserAddressDto) {
-            const res = await this.userAddressService.findAll(
-              queryUserAddressDto,
-            );
+            const res = await this.userAddressService.findAll(queryUserAddressDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findOne(id) {
@@ -14650,10 +12156,7 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async update(id, updateUserAddressDto) {
-            const res = await this.userAddressService.update(
-              id,
-              updateUserAddressDto,
-            );
+            const res = await this.userAddressService.update(id, updateUserAddressDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async remove(id) {
@@ -14669,8 +12172,7 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof create_user_address_dto_1.CreateUserAddressDto !==
-                  'undefined' &&
+                typeof create_user_address_dto_1.CreateUserAddressDto !== 'undefined' &&
                 create_user_address_dto_1.CreateUserAddressDto) === 'function'
                 ? _a
                 : Object,
@@ -14689,8 +12191,7 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_b =
-                typeof query_user_address_dto_1.QueryUserAddressDto !==
-                  'undefined' &&
+                typeof query_user_address_dto_1.QueryUserAddressDto !== 'undefined' &&
                 query_user_address_dto_1.QueryUserAddressDto) === 'function'
                 ? _b
                 : Object,
@@ -14706,10 +12207,7 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '获取会员地址' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '地址id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -14723,17 +12221,13 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新会员地址' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '地址id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_c =
-                typeof update_user_address_dto_1.UpdateUserAddressDto !==
-                  'undefined' &&
+                typeof update_user_address_dto_1.UpdateUserAddressDto !== 'undefined' &&
                 update_user_address_dto_1.UpdateUserAddressDto) === 'function'
                 ? _c
                 : Object,
@@ -14766,9 +12260,8 @@
             (0, common_1.Controller)('userAddress'),
             __metadata('design:paramtypes', [
               typeof (_d =
-                typeof user_address_service_1.UserAddressService !==
-                  'undefined' && user_address_service_1.UserAddressService) ===
-              'function'
+                typeof user_address_service_1.UserAddressService !== 'undefined' &&
+                user_address_service_1.UserAddressService) === 'function'
                 ? _d
                 : Object,
             ]),
@@ -14796,27 +12289,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserAddressModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const user_address_service_1 = __webpack_require__(
           /*! ./user-address.service */ './apps/admin/src/user-address/user-address.service.ts',
         );
@@ -14854,29 +12337,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -14889,18 +12361,12 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserAddressService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const user_address_model_1 = __webpack_require__(
           /*! libs/db/modules/user-address.model */ './libs/db/src/modules/user-address.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let UserAddressService = class UserAddressService {
           constructor(userAddressModel) {
             this.userAddressModel = userAddressModel;
@@ -14930,10 +12396,7 @@
             return await this.userAddressModel.findById(id);
           }
           async update(id, updateUserAddressDto) {
-            return await this.userAddressModel.findByIdAndUpdate(
-              id,
-              updateUserAddressDto,
-            );
+            return await this.userAddressModel.findByIdAndUpdate(id, updateUserAddressDto);
           }
           async remove(id) {
             return await this.userAddressModel.findByIdAndDelete(id);
@@ -14942,12 +12405,7 @@
         UserAddressService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                user_address_model_1.UserAddress,
-              ),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(user_address_model_1.UserAddress)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -14992,45 +12450,29 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryUserCollectionDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
         class QueryUserCollectionDto extends PaginationParametersDto_1.PaginationParametersDto {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '用户id' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '用户id' }), __metadata('design:type', String)],
           QueryUserCollectionDto.prototype,
           'userId',
           void 0,
@@ -15056,29 +12498,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -15091,21 +12522,15 @@
         var _a, _b, _c;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserCollectionController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const user_collection_service_1 = __webpack_require__(
           /*! ./user-collection.service */ './apps/admin/src/user-collection/user-collection.service.ts',
         );
         const create_user_collection_dto_1 = __webpack_require__(
           /*! ./dto/create-user-collection.dto */ './apps/admin/src/user-collection/dto/create-user-collection.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const query_user_collection_dto_1 = __webpack_require__(
           /*! ./dto/query-user-collection.dto */ './apps/admin/src/user-collection/dto/query-user-collection.dto.ts',
         );
@@ -15120,9 +12545,7 @@
             this.userCollectionService = userCollectionService;
           }
           async create(createUserCollectionDto) {
-            const res = await this.userCollectionService.create(
-              createUserCollectionDto,
-            );
+            const res = await this.userCollectionService.create(createUserCollectionDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async findAll(parameters) {
@@ -15142,10 +12565,8 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_a =
-                typeof create_user_collection_dto_1.CreateUserCollectionDto !==
-                  'undefined' &&
-                create_user_collection_dto_1.CreateUserCollectionDto) ===
-              'function'
+                typeof create_user_collection_dto_1.CreateUserCollectionDto !== 'undefined' &&
+                create_user_collection_dto_1.CreateUserCollectionDto) === 'function'
                 ? _a
                 : Object,
             ]),
@@ -15163,10 +12584,8 @@
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               typeof (_b =
-                typeof query_user_collection_dto_1.QueryUserCollectionDto !==
-                  'undefined' &&
-                query_user_collection_dto_1.QueryUserCollectionDto) ===
-              'function'
+                typeof query_user_collection_dto_1.QueryUserCollectionDto !== 'undefined' &&
+                query_user_collection_dto_1.QueryUserCollectionDto) === 'function'
                 ? _b
                 : Object,
             ]),
@@ -15181,10 +12600,7 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiParam)({ name: 'id', description: '收藏id' }),
             (0, swagger_1.ApiOperation)({ summary: '删除收藏信息' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata('design:returntype', Promise),
@@ -15201,8 +12617,7 @@
             (0, common_1.Controller)('userCollection'),
             __metadata('design:paramtypes', [
               typeof (_c =
-                typeof user_collection_service_1.UserCollectionService !==
-                  'undefined' &&
+                typeof user_collection_service_1.UserCollectionService !== 'undefined' &&
                 user_collection_service_1.UserCollectionService) === 'function'
                 ? _c
                 : Object,
@@ -15231,27 +12646,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserCollectionModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const user_collection_service_1 = __webpack_require__(
           /*! ./user-collection.service */ './apps/admin/src/user-collection/user-collection.service.ts',
         );
@@ -15262,9 +12667,7 @@
         UserCollectionModule = __decorate(
           [
             (0, common_1.Module)({
-              controllers: [
-                user_collection_controller_1.UserCollectionController,
-              ],
+              controllers: [user_collection_controller_1.UserCollectionController],
               providers: [user_collection_service_1.UserCollectionService],
             }),
           ],
@@ -15291,29 +12694,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -15326,26 +12718,18 @@
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserCollectionService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const user_collection_model_1 = __webpack_require__(
           /*! libs/db/modules/user-collection.model */ './libs/db/src/modules/user-collection.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         let UserCollectionService = class UserCollectionService {
           constructor(userCollectionModel) {
             this.userCollectionModel = userCollectionModel;
           }
           async create(createUserCollectionDto) {
-            return await this.userCollectionModel.create(
-              createUserCollectionDto,
-            );
+            return await this.userCollectionModel.create(createUserCollectionDto);
           }
           async findAll(parameters) {
             let total = 0;
@@ -15371,12 +12755,7 @@
         UserCollectionService = __decorate(
           [
             (0, common_1.Injectable)(),
-            __param(
-              0,
-              (0, nestjs_typegoose_1.InjectModel)(
-                user_collection_model_1.UserCollection,
-              ),
-            ),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(user_collection_model_1.UserCollection)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -15408,39 +12787,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CreateUserDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class CreateUserDto {}
         __decorate(
           [
@@ -15467,10 +12831,7 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '手机号码' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '手机号码' }), __metadata('design:type', String)],
           CreateUserDto.prototype,
           'phone',
           void 0,
@@ -15486,10 +12847,7 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '头像' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '头像' }), __metadata('design:type', String)],
           CreateUserDto.prototype,
           'avatar',
           void 0,
@@ -15529,36 +12887,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryUserCollectionDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -15593,36 +12938,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryUserViewHistoryDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -15657,36 +12989,23 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.QueryUserDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const PaginationParametersDto_1 = __webpack_require__(
           /*! libs/common/PaginationParametersDto */ './libs/common/src/PaginationParametersDto.ts',
         );
@@ -15734,29 +13053,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -15769,9 +13077,7 @@
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserController = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const user_service_1 = __webpack_require__(
           /*! ./user.service */ './apps/admin/src/user/user.service.ts',
         );
@@ -15781,12 +13087,8 @@
         const update_user_dto_1 = __webpack_require__(
           /*! ./dto/update-user.dto */ './apps/admin/src/user/dto/update-user.dto.ts',
         );
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const passport_1 = __webpack_require__(
-          /*! @nestjs/passport */ '@nestjs/passport',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const query_user_dto_1 = __webpack_require__(
           /*! ./dto/query-user.dto */ './apps/admin/src/user/dto/query-user.dto.ts',
         );
@@ -15827,17 +13129,11 @@
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async getUserViewHistories(id, queryUserViewHistoryDto) {
-            const res = await this.userService.getUserViewHistories(
-              id,
-              queryUserViewHistoryDto,
-            );
+            const res = await this.userService.getUserViewHistories(id, queryUserViewHistoryDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           async getUserCollections(id, queryUserCollectionDto) {
-            const res = await this.userService.getUserCollections(
-              id,
-              queryUserCollectionDto,
-            );
+            const res = await this.userService.getUserCollections(id, queryUserCollectionDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
         };
@@ -15856,10 +13152,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_b = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Promise !== 'undefined' && Promise) === 'function' ? _b : Object,
             ),
           ],
           UserController.prototype,
@@ -15881,10 +13174,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_d = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _d
-                : Object,
+              typeof (_d = typeof Promise !== 'undefined' && Promise) === 'function' ? _d : Object,
             ),
           ],
           UserController.prototype,
@@ -15896,18 +13186,12 @@
             (0, common_1.Get)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '会员信息' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '会员id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_e = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _e
-                : Object,
+              typeof (_e = typeof Promise !== 'undefined' && Promise) === 'function' ? _e : Object,
             ),
           ],
           UserController.prototype,
@@ -15919,10 +13203,7 @@
             (0, common_1.Patch)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '更新会员' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '会员id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Body)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
@@ -15935,10 +13216,7 @@
             ]),
             __metadata(
               'design:returntype',
-              typeof (_g = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _g
-                : Object,
+              typeof (_g = typeof Promise !== 'undefined' && Promise) === 'function' ? _g : Object,
             ),
           ],
           UserController.prototype,
@@ -15950,18 +13228,12 @@
             (0, common_1.Delete)(':id'),
             (0, swagger_1.ApiOperation)({ summary: '删除会员' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '会员id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [String]),
             __metadata(
               'design:returntype',
-              typeof (_h = typeof Promise !== 'undefined' && Promise) ===
-                'function'
-                ? _h
-                : Object,
+              typeof (_h = typeof Promise !== 'undefined' && Promise) === 'function' ? _h : Object,
             ),
           ],
           UserController.prototype,
@@ -15971,23 +13243,16 @@
         __decorate(
           [
             (0, common_1.Get)(':id/viewHistories'),
-            (0, swagger_1.ApiOperation)({
-              summary: '获取会员商品浏览记录列表',
-            }),
+            (0, swagger_1.ApiOperation)({ summary: '获取会员商品浏览记录列表' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '会员id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Query)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_j =
-                typeof query_user_view_history_dto_1.QueryUserViewHistoryDto !==
-                  'undefined' &&
-                query_user_view_history_dto_1.QueryUserViewHistoryDto) ===
-              'function'
+                typeof query_user_view_history_dto_1.QueryUserViewHistoryDto !== 'undefined' &&
+                query_user_view_history_dto_1.QueryUserViewHistoryDto) === 'function'
                 ? _j
                 : Object,
             ]),
@@ -16002,19 +13267,14 @@
             (0, common_1.Get)(':id/collections'),
             (0, swagger_1.ApiOperation)({ summary: '获取会员商品收藏列表' }),
             (0, swagger_1.ApiParam)({ name: 'id', description: '会员id' }),
-            __param(
-              0,
-              (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe()),
-            ),
+            __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
             __param(1, (0, common_1.Query)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
               String,
               typeof (_k =
-                typeof query_user_collection_dto_1.QueryUserCollectionDto !==
-                  'undefined' &&
-                query_user_collection_dto_1.QueryUserCollectionDto) ===
-              'function'
+                typeof query_user_collection_dto_1.QueryUserCollectionDto !== 'undefined' &&
+                query_user_collection_dto_1.QueryUserCollectionDto) === 'function'
                 ? _k
                 : Object,
             ]),
@@ -16032,8 +13292,8 @@
             (0, common_1.Controller)('user'),
             __metadata('design:paramtypes', [
               typeof (_l =
-                typeof user_service_1.UserService !== 'undefined' &&
-                user_service_1.UserService) === 'function'
+                typeof user_service_1.UserService !== 'undefined' && user_service_1.UserService) ===
+              'function'
                 ? _l
                 : Object,
             ]),
@@ -16061,27 +13321,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const user_service_1 = __webpack_require__(
           /*! ./user.service */ './apps/admin/src/user/user.service.ts',
         );
@@ -16120,29 +13370,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var __param =
@@ -16155,12 +13394,8 @@
         var _a, _b, _c;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const ResponseResultModel_1 = __webpack_require__(
           /*! libs/common/ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
         );
@@ -16173,9 +13408,7 @@
         const user_model_1 = __webpack_require__(
           /*! libs/db/modules/user.model */ './libs/db/src/modules/user.model.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
         const mongodb_1 = __webpack_require__(/*! mongodb */ 'mongodb');
         let UserService = class UserService {
           constructor(userModel, userViewsHistoryModel, userCollectionModel) {
@@ -16311,16 +13544,9 @@
             __param(0, (0, nestjs_typegoose_1.InjectModel)(user_model_1.User)),
             __param(
               1,
-              (0, nestjs_typegoose_1.InjectModel)(
-                user_views_history_model_1.UserViewsHistory,
-              ),
+              (0, nestjs_typegoose_1.InjectModel)(user_views_history_model_1.UserViewsHistory),
             ),
-            __param(
-              2,
-              (0, nestjs_typegoose_1.InjectModel)(
-                user_collection_model_1.UserCollection,
-              ),
-            ),
+            __param(2, (0, nestjs_typegoose_1.InjectModel)(user_collection_model_1.UserCollection)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
@@ -16362,45 +13588,27 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.PaginationParametersDto = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         class PaginationParametersDto {}
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              name: '页码',
-              default: 1,
-              required: false,
-              type: Number,
-            }),
+            (0, swagger_1.ApiProperty)({ name: '页码', default: 1, required: false, type: Number }),
             __metadata('design:type', Number),
           ],
           PaginationParametersDto.prototype,
@@ -16437,9 +13645,7 @@
           exports.PaginationResult =
           exports.ApiSucceedResult =
             void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         class ApiSucceedResult {}
         exports.ApiSucceedResult = ApiSucceedResult;
         class PaginationResult {}
@@ -16484,33 +13690,19 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CommonModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const config_1 = __webpack_require__(
-          /*! @nestjs/config */ '@nestjs/config',
-        );
-        const db_1 = __webpack_require__(
-          /*! libs/db */ './libs/db/src/index.ts',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const config_1 = __webpack_require__(/*! @nestjs/config */ '@nestjs/config');
+        const db_1 = __webpack_require__(/*! libs/db */ './libs/db/src/index.ts');
         const common_service_1 = __webpack_require__(
           /*! ./common.service */ './libs/common/src/common.service.ts',
         );
@@ -16552,27 +13744,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CommonService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         let CommonService = class CommonService {};
         CommonService = __decorate([(0, common_1.Injectable)()], CommonService);
         exports.CommonService = CommonService;
@@ -16650,9 +13832,7 @@
         (function (BannerStatus) {
           BannerStatus[(BannerStatus['Disable'] = 1)] = 'Disable';
           BannerStatus[(BannerStatus['Normal'] = 2)] = 'Normal';
-        })(
-          (BannerStatus = exports.BannerStatus || (exports.BannerStatus = {})),
-        );
+        })((BannerStatus = exports.BannerStatus || (exports.BannerStatus = {})));
 
         /***/
       },
@@ -16668,11 +13848,9 @@
         (function (FileStorageModeEnum) {
           FileStorageModeEnum[(FileStorageModeEnum['LOCAL'] = 1)] = 'LOCAL';
           FileStorageModeEnum[(FileStorageModeEnum['ALIOSS'] = 2)] = 'ALIOSS';
-          FileStorageModeEnum[(FileStorageModeEnum['QINIUOSS'] = 3)] =
-            'QINIUOSS';
+          FileStorageModeEnum[(FileStorageModeEnum['QINIUOSS'] = 3)] = 'QINIUOSS';
         })(
-          (FileStorageModeEnum =
-            exports.FileStorageModeEnum || (exports.FileStorageModeEnum = {})),
+          (FileStorageModeEnum = exports.FileStorageModeEnum || (exports.FileStorageModeEnum = {})),
         );
 
         /***/
@@ -16708,13 +13886,11 @@
         var ProductSkuSelectType;
         (function (ProductSkuSelectType) {
           ProductSkuSelectType[(ProductSkuSelectType['SINGLE'] = 1)] = 'SINGLE';
-          ProductSkuSelectType[(ProductSkuSelectType['MULTIPLE'] = 2)] =
-            'MULTIPLE';
+          ProductSkuSelectType[(ProductSkuSelectType['MULTIPLE'] = 2)] = 'MULTIPLE';
           ProductSkuSelectType[(ProductSkuSelectType['NONE'] = 3)] = 'NONE';
         })(
           (ProductSkuSelectType =
-            exports.ProductSkuSelectType ||
-            (exports.ProductSkuSelectType = {})),
+            exports.ProductSkuSelectType || (exports.ProductSkuSelectType = {})),
         );
 
         /***/
@@ -16752,27 +13928,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.HttpExceptionFilter = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         let HttpExceptionFilter = class HttpExceptionFilter {
           catch(exception, host) {
             const ctx = host.switchToHttp();
@@ -16808,10 +13974,7 @@
             response.send(errorResponse);
           }
         };
-        HttpExceptionFilter = __decorate(
-          [(0, common_1.Catch)()],
-          HttpExceptionFilter,
-        );
+        HttpExceptionFilter = __decorate([(0, common_1.Catch)()], HttpExceptionFilter);
         exports.HttpExceptionFilter = HttpExceptionFilter;
 
         /***/
@@ -16828,12 +13991,7 @@
             ? function (o, m, k, k2) {
                 if (k2 === undefined) k2 = k;
                 var desc = Object.getOwnPropertyDescriptor(m, k);
-                if (
-                  !desc ||
-                  ('get' in desc
-                    ? !m.__esModule
-                    : desc.writable || desc.configurable)
-                ) {
+                if (!desc || ('get' in desc ? !m.__esModule : desc.writable || desc.configurable)) {
                   desc = {
                     enumerable: true,
                     get: function () {
@@ -16851,23 +14009,16 @@
           (this && this.__exportStar) ||
           function (m, exports) {
             for (var p in m)
-              if (
-                p !== 'default' &&
-                !Object.prototype.hasOwnProperty.call(exports, p)
-              )
+              if (p !== 'default' && !Object.prototype.hasOwnProperty.call(exports, p))
                 __createBinding(exports, m, p);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         __exportStar(
-          __webpack_require__(
-            /*! ./common.module */ './libs/common/src/common.module.ts',
-          ),
+          __webpack_require__(/*! ./common.module */ './libs/common/src/common.module.ts'),
           exports,
         );
         __exportStar(
-          __webpack_require__(
-            /*! ./common.service */ './libs/common/src/common.service.ts',
-          ),
+          __webpack_require__(/*! ./common.service */ './libs/common/src/common.service.ts'),
           exports,
         );
 
@@ -16890,27 +14041,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ParseIdPipe = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const mongoose_1 = __webpack_require__(/*! mongoose */ 'mongoose');
         const ResponseResultModel_1 = __webpack_require__(
           /*! ../ResponseResultModel */ './libs/common/src/ResponseResultModel.ts',
@@ -16946,30 +14087,18 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ValidationDtoPipe = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
-        const class_validator_1 = __webpack_require__(
-          /*! class-validator */ 'class-validator',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         const class_transformer_1 = __webpack_require__(
           /*! class-transformer */ 'class-transformer',
         );
@@ -16981,19 +14110,12 @@
             if (!metatype || !this.toValidate(metatype)) {
               return value;
             }
-            const object = (0, class_transformer_1.plainToClass)(
-              metatype,
-              value,
-            );
+            const object = (0, class_transformer_1.plainToClass)(metatype, value);
             const errors = await (0, class_validator_1.validate)(object);
             if (errors.length > 0) {
               throw new ResponseResultModel_1.ApiFail(
                 101,
-                `${
-                  JSON.stringify(errors[0].constraints)
-                    .split(':')[1]
-                    .split('"')[1]
-                }`,
+                `${JSON.stringify(errors[0].constraints).split(':')[1].split('"')[1]}`,
               );
             }
             return value;
@@ -17003,10 +14125,7 @@
             return !types.includes(metatype);
           }
         };
-        ValidationDtoPipe = __decorate(
-          [(0, common_1.Injectable)()],
-          ValidationDtoPipe,
-        );
+        ValidationDtoPipe = __decorate([(0, common_1.Injectable)()], ValidationDtoPipe);
         exports.ValidationDtoPipe = ValidationDtoPipe;
 
         /***/
@@ -17082,36 +14201,22 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.DbModule = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         const db_config_1 = __webpack_require__(
           /*! libs/common/config/db.config */ './libs/common/src/config/db.config.ts',
         );
-        const nestjs_typegoose_1 = __webpack_require__(
-          /*! nestjs-typegoose */ 'nestjs-typegoose',
-        );
-        const db_service_1 = __webpack_require__(
-          /*! ./db.service */ './libs/db/src/db.service.ts',
-        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
+        const db_service_1 = __webpack_require__(/*! ./db.service */ './libs/db/src/db.service.ts');
         const admin_model_1 = __webpack_require__(
           /*! ./modules/admin.model */ './libs/db/src/modules/admin.model.ts',
         );
@@ -17232,13 +14337,10 @@
             (0, common_1.Global)(),
             (0, common_1.Module)({
               imports: [
-                nestjs_typegoose_1.TypegooseModule.forRoot(
-                  db_config_1.dbConfig.url,
-                  {
-                    useNewUrlParser: true,
-                    useUnifiedTopology: true,
-                  },
-                ),
+                nestjs_typegoose_1.TypegooseModule.forRoot(db_config_1.dbConfig.url, {
+                  useNewUrlParser: true,
+                  useUnifiedTopology: true,
+                }),
                 models,
               ],
               providers: [db_service_1.DbService],
@@ -17268,27 +14370,17 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.DbService = void 0;
-        const common_1 = __webpack_require__(
-          /*! @nestjs/common */ '@nestjs/common',
-        );
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
         let DbService = class DbService {};
         DbService = __decorate([(0, common_1.Injectable)()], DbService);
         exports.DbService = DbService;
@@ -17307,12 +14399,7 @@
             ? function (o, m, k, k2) {
                 if (k2 === undefined) k2 = k;
                 var desc = Object.getOwnPropertyDescriptor(m, k);
-                if (
-                  !desc ||
-                  ('get' in desc
-                    ? !m.__esModule
-                    : desc.writable || desc.configurable)
-                ) {
+                if (!desc || ('get' in desc ? !m.__esModule : desc.writable || desc.configurable)) {
                   desc = {
                     enumerable: true,
                     get: function () {
@@ -17330,21 +14417,13 @@
           (this && this.__exportStar) ||
           function (m, exports) {
             for (var p in m)
-              if (
-                p !== 'default' &&
-                !Object.prototype.hasOwnProperty.call(exports, p)
-              )
+              if (p !== 'default' && !Object.prototype.hasOwnProperty.call(exports, p))
                 __createBinding(exports, m, p);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
+        __exportStar(__webpack_require__(/*! ./db.module */ './libs/db/src/db.module.ts'), exports);
         __exportStar(
-          __webpack_require__(/*! ./db.module */ './libs/db/src/db.module.ts'),
-          exports,
-        );
-        __exportStar(
-          __webpack_require__(
-            /*! ./db.service */ './libs/db/src/db.service.ts',
-          ),
+          __webpack_require__(/*! ./db.service */ './libs/db/src/db.service.ts'),
           exports,
         );
 
@@ -17367,39 +14446,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.Admin = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const bcryptjs_1 = __webpack_require__(/*! bcryptjs */ 'bcryptjs');
         const role_model_1 = __webpack_require__(
           /*! ./role.model */ './libs/db/src/modules/role.model.ts',
@@ -17447,10 +14511,7 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '关联角色' }),
-            (0, typegoose_1.prop)({
-              ref: () => role_model_1.Role,
-              type: [role_model_1.Role],
-            }),
+            (0, typegoose_1.prop)({ ref: () => role_model_1.Role, type: [role_model_1.Role] }),
             __metadata('design:type', Array),
           ],
           Admin.prototype,
@@ -17508,40 +14569,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b, _c;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.Banner = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const banner_enum_1 = __webpack_require__(
           /*! libs/common/enum/banner.enum */ './libs/common/src/enum/banner.enum.ts',
         );
@@ -17561,10 +14607,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: 'banner排序',
-              description: '整数数字类型',
-            }),
+            (0, swagger_1.ApiProperty)({ title: 'banner排序', description: '整数数字类型' }),
             (0, typegoose_1.prop)({ default: 1 }),
             __metadata('design:type', Number),
           ],
@@ -17603,8 +14646,8 @@
             __metadata(
               'design:type',
               typeof (_a =
-                typeof banner_enum_1.BannerType !== 'undefined' &&
-                banner_enum_1.BannerType) === 'function'
+                typeof banner_enum_1.BannerType !== 'undefined' && banner_enum_1.BannerType) ===
+                'function'
                 ? _a
                 : Object,
             ),
@@ -17624,8 +14667,8 @@
             __metadata(
               'design:type',
               typeof (_b =
-                typeof banner_enum_1.BannerStatus !== 'undefined' &&
-                banner_enum_1.BannerStatus) === 'function'
+                typeof banner_enum_1.BannerStatus !== 'undefined' && banner_enum_1.BannerStatus) ===
+                'function'
                 ? _b
                 : Object,
             ),
@@ -17637,15 +14680,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '关联产品id' }),
-            (0, typegoose_1.prop)({
-              ref: () => product_model_1.Product,
-              default: null,
-            }),
+            (0, typegoose_1.prop)({ ref: () => product_model_1.Product, default: null }),
             __metadata(
               'design:type',
-              typeof (_c =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_c = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _c
                 : Object,
             ),
@@ -17685,40 +14723,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var Category_1, _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.Category = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         let Category = (Category_1 = class Category {});
         __decorate(
           [
@@ -17732,10 +14755,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '类别排序',
-              description: '整数数字类型',
-            }),
+            (0, swagger_1.ApiProperty)({ title: '类别排序', description: '整数数字类型' }),
             (0, typegoose_1.prop)({ default: 1 }),
             __metadata('design:type', Number),
           ],
@@ -17759,9 +14779,7 @@
             (0, typegoose_1.prop)({ ref: () => Category_1, default: null }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -17801,40 +14819,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ChatConversationRecord = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const customer_service_model_1 = __webpack_require__(
           /*! ./customer-service.model */ './libs/db/src/modules/customer-service.model.ts',
         );
@@ -17845,15 +14848,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '用户d' }),
-            (0, typegoose_1.prop)({
-              required: true,
-              ref: () => user_model_1.User,
-            }),
+            (0, typegoose_1.prop)({ required: true, ref: () => user_model_1.User }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -17871,9 +14869,7 @@
             }),
             __metadata(
               'design:type',
-              typeof (_b =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_b = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _b
                 : Object,
             ),
@@ -17979,40 +14975,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ChatMessages = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         class PushProductType {}
         __decorate(
           [
@@ -18078,10 +15059,7 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '发送人关联表' }),
-            (0, typegoose_1.prop)({
-              enum: ['User', 'CustomerService'],
-              required: true,
-            }),
+            (0, typegoose_1.prop)({ enum: ['User', 'CustomerService'], required: true }),
             __metadata('design:type', String),
           ],
           ChatMessages.prototype,
@@ -18091,10 +15069,7 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '接受人关联表' }),
-            (0, typegoose_1.prop)({
-              enum: ['User', 'CustomerService'],
-              required: true,
-            }),
+            (0, typegoose_1.prop)({ enum: ['User', 'CustomerService'], required: true }),
             __metadata('design:type', String),
           ],
           ChatMessages.prototype,
@@ -18107,9 +15082,7 @@
             (0, typegoose_1.prop)({ required: true, refPath: 'userRef' }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -18124,9 +15097,7 @@
             (0, typegoose_1.prop)({ required: true, refPath: 'targetRef' }),
             __metadata(
               'design:type',
-              typeof (_b =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_b = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _b
                 : Object,
             ),
@@ -18219,39 +15190,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ClassifyNavigation = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         let ClassifyNavigation = class ClassifyNavigation {};
         __decorate(
           [
@@ -18364,39 +15320,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.Coupon = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_model_1 = __webpack_require__(
           /*! ./product.model */ './libs/db/src/modules/product.model.ts',
         );
@@ -18436,10 +15377,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '优惠券有效期',
-              description: '单位:天',
-            }),
+            (0, swagger_1.ApiProperty)({ title: '优惠券有效期', description: '单位:天' }),
             (0, typegoose_1.prop)({ required: true, type: Number, default: 0 }),
             __metadata('design:type', Number),
           ],
@@ -18532,39 +15470,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.CustomerService = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const bcryptjs_1 = __webpack_require__(/*! bcryptjs */ 'bcryptjs');
         let CustomerService = class CustomerService {};
         __decorate(
@@ -18667,40 +15590,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var LibraryCategory_1, _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.LibraryCategory = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         let LibraryCategory = (LibraryCategory_1 = class LibraryCategory {});
         __decorate(
           [
@@ -18715,15 +15623,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '上级分类' }),
-            (0, typegoose_1.prop)({
-              ref: () => LibraryCategory_1,
-              default: null,
-            }),
+            (0, typegoose_1.prop)({ ref: () => LibraryCategory_1, default: null }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -18763,40 +15666,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.MediaLibrary = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const library_category_model_1 = __webpack_require__(
           /*! ./library-category.model */ './libs/db/src/modules/library-category.model.ts',
         );
@@ -18820,9 +15708,7 @@
             }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -18872,40 +15758,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var Menu_1, _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.Menu = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         class TagItem {}
         __decorate(
           [
@@ -19087,9 +15958,7 @@
             (0, typegoose_1.prop)({ ref: () => Menu_1, default: null }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -19129,39 +15998,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.News = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const tag_model_1 = __webpack_require__(
           /*! ./tag.model */ './libs/db/src/modules/tag.model.ts',
         );
@@ -19179,10 +16033,7 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '文章标签' }),
-            (0, typegoose_1.prop)({
-              required: true,
-              ref: () => tag_model_1.Tag,
-            }),
+            (0, typegoose_1.prop)({ required: true, ref: () => tag_model_1.Tag }),
             __metadata('design:type', Array),
           ],
           News.prototype,
@@ -19230,40 +16081,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.Order = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const orderStatus_enum_1 = __webpack_require__(
           /*! libs/common/enum/orderStatus.enum */ './libs/common/src/enum/orderStatus.enum.ts',
         );
@@ -19283,9 +16119,7 @@
             (0, typegoose_1.prop)({ ref: () => product_model_1.Product }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -19329,8 +16163,7 @@
           [
             (0, swagger_1.ApiProperty)({
               title: '订单编号',
-              default:
-                String(new Date().getFullYear) + String(new Date().getTime()),
+              default: String(new Date().getFullYear) + String(new Date().getTime()),
             }),
             (0, typegoose_1.prop)(),
             __metadata('design:type', String),
@@ -19345,9 +16178,7 @@
             (0, typegoose_1.prop)({ type: [BuyProduct] }),
             __metadata(
               'design:type',
-              typeof (_b = typeof Array !== 'undefined' && Array) === 'function'
-                ? _b
-                : Object,
+              typeof (_b = typeof Array !== 'undefined' && Array) === 'function' ? _b : Object,
             ),
           ],
           Order.prototype,
@@ -19360,9 +16191,7 @@
             (0, typegoose_1.prop)({ ref: () => user_model_1.User }),
             __metadata(
               'design:type',
-              typeof (_c =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_c = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _c
                 : Object,
             ),
@@ -19445,14 +16274,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '订单收货人地址' }),
-            (0, typegoose_1.prop)({
-              ref: () => user_address_model_1.UserAddress,
-            }),
+            (0, typegoose_1.prop)({ ref: () => user_address_model_1.UserAddress }),
             __metadata(
               'design:type',
-              typeof (_e =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_e = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _e
                 : Object,
             ),
@@ -19467,9 +16292,7 @@
             (0, typegoose_1.prop)({ type: Date }),
             __metadata(
               'design:type',
-              typeof (_f = typeof Date !== 'undefined' && Date) === 'function'
-                ? _f
-                : Object,
+              typeof (_f = typeof Date !== 'undefined' && Date) === 'function' ? _f : Object,
             ),
           ],
           Order.prototype,
@@ -19482,9 +16305,7 @@
             (0, typegoose_1.prop)({ type: Date }),
             __metadata(
               'design:type',
-              typeof (_g = typeof Date !== 'undefined' && Date) === 'function'
-                ? _g
-                : Object,
+              typeof (_g = typeof Date !== 'undefined' && Date) === 'function' ? _g : Object,
             ),
           ],
           Order.prototype,
@@ -19497,9 +16318,7 @@
             (0, typegoose_1.prop)({ type: Date }),
             __metadata(
               'design:type',
-              typeof (_h = typeof Date !== 'undefined' && Date) === 'function'
-                ? _h
-                : Object,
+              typeof (_h = typeof Date !== 'undefined' && Date) === 'function' ? _h : Object,
             ),
           ],
           Order.prototype,
@@ -19512,9 +16331,7 @@
             (0, typegoose_1.prop)({ type: Date }),
             __metadata(
               'design:type',
-              typeof (_j = typeof Date !== 'undefined' && Date) === 'function'
-                ? _j
-                : Object,
+              typeof (_j = typeof Date !== 'undefined' && Date) === 'function' ? _j : Object,
             ),
           ],
           Order.prototype,
@@ -19527,9 +16344,7 @@
             (0, typegoose_1.prop)({ type: Date }),
             __metadata(
               'design:type',
-              typeof (_k = typeof Date !== 'undefined' && Date) === 'function'
-                ? _k
-                : Object,
+              typeof (_k = typeof Date !== 'undefined' && Date) === 'function' ? _k : Object,
             ),
           ],
           Order.prototype,
@@ -19597,40 +16412,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b, _c;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductComment = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_model_1 = __webpack_require__(
           /*! ./product.model */ './libs/db/src/modules/product.model.ts',
         );
@@ -19644,9 +16444,7 @@
             (0, typegoose_1.prop)({ ref: () => user_model_1.User }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -19661,9 +16459,7 @@
             (0, typegoose_1.prop)({ ref: () => product_model_1.Product }),
             __metadata(
               'design:type',
-              typeof (_b =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_b = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _b
                 : Object,
             ),
@@ -19698,9 +16494,7 @@
             (0, typegoose_1.prop)({ type: [String] }),
             __metadata(
               'design:type',
-              typeof (_c = typeof Array !== 'undefined' && Array) === 'function'
-                ? _c
-                : Object,
+              typeof (_c = typeof Array !== 'undefined' && Array) === 'function' ? _c : Object,
             ),
           ],
           ProductComment.prototype,
@@ -19748,54 +16542,33 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductParam = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         class ParamTpye {}
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '参数名' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '参数名' }), __metadata('design:type', String)],
           ParamTpye.prototype,
           'name',
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '参数值' }),
-            __metadata('design:type', String),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '参数值' }), __metadata('design:type', String)],
           ParamTpye.prototype,
           'value',
           void 0,
@@ -19852,40 +16625,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductSkuAttr = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_model_1 = __webpack_require__(
           /*! ./product.model */ './libs/db/src/modules/product.model.ts',
         );
@@ -19903,15 +16661,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '商品id' }),
-            (0, typegoose_1.prop)({
-              ref: () => product_model_1.Product,
-              default: null,
-            }),
+            (0, typegoose_1.prop)({ ref: () => product_model_1.Product, default: null }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -19961,40 +16714,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductSku = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_model_1 = __webpack_require__(
           /*! ./product.model */ './libs/db/src/modules/product.model.ts',
         );
@@ -20002,15 +16740,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '商品id' }),
-            (0, typegoose_1.prop)({
-              ref: () => product_model_1.Product,
-              required: true,
-            }),
+            (0, typegoose_1.prop)({ ref: () => product_model_1.Product, required: true }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -20123,40 +16856,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductTopic = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const category_model_1 = __webpack_require__(
           /*! ./category.model */ './libs/db/src/modules/category.model.ts',
         );
@@ -20204,15 +16922,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '产品分类id' }),
-            (0, typegoose_1.prop)({
-              ref: () => category_model_1.Category,
-              required: true,
-            }),
+            (0, typegoose_1.prop)({ ref: () => category_model_1.Category, required: true }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -20252,39 +16965,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductUnit = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         let ProductUnit = class ProductUnit {};
         __decorate(
           [
@@ -20337,40 +17035,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.Product = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_enum_1 = __webpack_require__(
           /*! libs/common/enum/product.enum */ './libs/common/src/enum/product.enum.ts',
         );
@@ -20539,9 +17222,7 @@
             (0, typegoose_1.prop)({ ref: () => category_model_1.Category }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -20553,10 +17234,7 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '商品标签' }),
-            (0, typegoose_1.prop)({
-              type: [tag_model_1.Tag],
-              ref: () => tag_model_1.Tag,
-            }),
+            (0, typegoose_1.prop)({ type: [tag_model_1.Tag], ref: () => tag_model_1.Tag }),
             __metadata('design:type', Array),
           ],
           Product.prototype,
@@ -20656,10 +17334,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '商品排序',
-              description: '整数数字类型',
-            }),
+            (0, swagger_1.ApiProperty)({ title: '商品排序', description: '整数数字类型' }),
             (0, typegoose_1.prop)({ default: 1 }),
             __metadata('design:type', Number),
           ],
@@ -20679,10 +17354,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '是否限时精选',
-              example: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '是否限时精选', example: false }),
             (0, typegoose_1.prop)({ default: false }),
             __metadata('design:type', Boolean),
           ],
@@ -20692,10 +17364,7 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '是否热门推荐',
-              example: false,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '是否热门推荐', example: false }),
             (0, typegoose_1.prop)({ default: false }),
             __metadata('design:type', Boolean),
           ],
@@ -20744,39 +17413,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.Role = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const menu_model_1 = __webpack_require__(
           /*! ./menu.model */ './libs/db/src/modules/menu.model.ts',
         );
@@ -20814,10 +17468,7 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '关联的菜单' }),
-            (0, typegoose_1.prop)({
-              ref: () => menu_model_1.Menu,
-              default: [],
-            }),
+            (0, typegoose_1.prop)({ ref: () => menu_model_1.Menu, default: [] }),
             __metadata('design:type', Array),
           ],
           Role.prototype,
@@ -20855,40 +17506,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.SiteSettings = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const fileStorageMode_enum_1 = __webpack_require__(
           /*! libs/common/enum/fileStorageMode.enum */ './libs/common/src/enum/fileStorageMode.enum.ts',
         );
@@ -20945,9 +17581,8 @@
             __metadata(
               'design:type',
               typeof (_a =
-                typeof fileStorageMode_enum_1.FileStorageModeEnum !==
-                  'undefined' && fileStorageMode_enum_1.FileStorageModeEnum) ===
-                'function'
+                typeof fileStorageMode_enum_1.FileStorageModeEnum !== 'undefined' &&
+                fileStorageMode_enum_1.FileStorageModeEnum) === 'function'
                 ? _a
                 : Object,
             ),
@@ -21011,39 +17646,24 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.Tag = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         let Tag = class Tag {};
         __decorate(
           [
@@ -21116,40 +17736,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserAddress = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const user_model_1 = __webpack_require__(
           /*! ./user.model */ './libs/db/src/modules/user.model.ts',
         );
@@ -21220,9 +17825,7 @@
             (0, typegoose_1.prop)({ ref: () => user_model_1.User }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -21262,40 +17865,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserCart = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_model_1 = __webpack_require__(
           /*! ./product.model */ './libs/db/src/modules/product.model.ts',
         );
@@ -21309,9 +17897,7 @@
             (0, typegoose_1.prop)({ ref: () => user_model_1.User }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -21326,9 +17912,7 @@
             (0, typegoose_1.prop)({ ref: () => product_model_1.Product }),
             __metadata(
               'design:type',
-              typeof (_b =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_b = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _b
                 : Object,
             ),
@@ -21418,40 +18002,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserCollection = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_model_1 = __webpack_require__(
           /*! ./product.model */ './libs/db/src/modules/product.model.ts',
         );
@@ -21462,15 +18031,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '用户id' }),
-            (0, typegoose_1.prop)({
-              ref: () => user_model_1.User,
-              required: true,
-            }),
+            (0, typegoose_1.prop)({ ref: () => user_model_1.User, required: true }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -21482,15 +18046,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '商品id' }),
-            (0, typegoose_1.prop)({
-              ref: () => product_model_1.Product,
-              required: true,
-            }),
+            (0, typegoose_1.prop)({ ref: () => product_model_1.Product, required: true }),
             __metadata(
               'design:type',
-              typeof (_b =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_b = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _b
                 : Object,
             ),
@@ -21530,40 +18089,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a, _b;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.UserViewsHistory = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const product_model_1 = __webpack_require__(
           /*! ./product.model */ './libs/db/src/modules/product.model.ts',
         );
@@ -21574,15 +18118,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '用户id' }),
-            (0, typegoose_1.prop)({
-              ref: () => user_model_1.User,
-              required: true,
-            }),
+            (0, typegoose_1.prop)({ ref: () => user_model_1.User, required: true }),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _a
                 : Object,
             ),
@@ -21594,15 +18133,10 @@
         __decorate(
           [
             (0, swagger_1.ApiProperty)({ title: '商品id' }),
-            (0, typegoose_1.prop)({
-              ref: () => product_model_1.Product,
-              required: true,
-            }),
+            (0, typegoose_1.prop)({ ref: () => product_model_1.Product, required: true }),
             __metadata(
               'design:type',
-              typeof (_b =
-                typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) ===
-                'function'
+              typeof (_b = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
                 ? _b
                 : Object,
             ),
@@ -21642,40 +18176,25 @@
                   ? (desc = Object.getOwnPropertyDescriptor(target, key))
                   : desc,
               d;
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.decorate === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
               r = Reflect.decorate(decorators, target, key, desc);
             else
               for (var i = decorators.length - 1; i >= 0; i--)
                 if ((d = decorators[i]))
-                  r =
-                    (c < 3
-                      ? d(r)
-                      : c > 3
-                      ? d(target, key, r)
-                      : d(target, key)) || r;
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
             return c > 3 && r && Object.defineProperty(target, key, r), r;
           };
         var __metadata =
           (this && this.__metadata) ||
           function (k, v) {
-            if (
-              typeof Reflect === 'object' &&
-              typeof Reflect.metadata === 'function'
-            )
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
         var _a;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.User = void 0;
-        const swagger_1 = __webpack_require__(
-          /*! @nestjs/swagger */ '@nestjs/swagger',
-        );
-        const typegoose_1 = __webpack_require__(
-          /*! @typegoose/typegoose */ '@typegoose/typegoose',
-        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const bcryptjs_1 = __webpack_require__(/*! bcryptjs */ 'bcryptjs');
         const user_enum_1 = __webpack_require__(
           /*! libs/common/enum/user.enum */ './libs/common/src/enum/user.enum.ts',
@@ -21683,12 +18202,12 @@
         let User = class User {};
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({ title: '名称' }),
-            (0, typegoose_1.prop)({ required: true }),
+            (0, swagger_1.ApiProperty)({ title: '用户昵称' }),
+            (0, typegoose_1.prop)(),
             __metadata('design:type', String),
           ],
           User.prototype,
-          'name',
+          'nickName',
           void 0,
         );
         __decorate(
@@ -21696,7 +18215,6 @@
             (0, swagger_1.ApiProperty)({ title: '邮箱' }),
             (0, typegoose_1.prop)({
               index: true,
-              required: true,
               unique: true,
               trim: true,
             }),
@@ -21718,17 +18236,12 @@
         );
         __decorate(
           [
-            (0, swagger_1.ApiProperty)({
-              title: '性别',
-              enum: user_enum_1.Gender,
-              type: Number,
-            }),
+            (0, swagger_1.ApiProperty)({ title: '性别', enum: user_enum_1.Gender, type: Number }),
             (0, typegoose_1.prop)(),
             __metadata(
               'design:type',
-              typeof (_a =
-                typeof user_enum_1.Gender !== 'undefined' &&
-                user_enum_1.Gender) === 'function'
+              typeof (_a = typeof user_enum_1.Gender !== 'undefined' && user_enum_1.Gender) ===
+                'function'
                 ? _a
                 : Object,
             ),
@@ -21761,7 +18274,6 @@
           [
             (0, swagger_1.ApiProperty)({ title: '密码' }),
             (0, typegoose_1.prop)({
-              required: true,
               select: false,
               trim: true,
               get(val) {
@@ -21775,6 +18287,30 @@
           ],
           User.prototype,
           'password',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '小程序用户openid' }),
+            (0, typegoose_1.prop)({
+              type: String,
+            }),
+            __metadata('design:type', String),
+          ],
+          User.prototype,
+          'openid',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '小程序sessionkey' }),
+            (0, typegoose_1.prop)({
+              type: String,
+            }),
+            __metadata('design:type', String),
+          ],
+          User.prototype,
+          'sessionKey',
           void 0,
         );
         __decorate(
@@ -22201,9 +18737,7 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
     const core_1 = __webpack_require__(/*! @nestjs/core */ '@nestjs/core');
-    const swagger_1 = __webpack_require__(
-      /*! @nestjs/swagger */ '@nestjs/swagger',
-    );
+    const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
     const express_rate_limit_1 = __webpack_require__(
       /*! express-rate-limit */ 'express-rate-limit',
     );
@@ -22218,9 +18752,7 @@
       /*! libs/common/pipe/validate-dto.pipe */ './libs/common/src/pipe/validate-dto.pipe.ts',
     );
     const path_1 = __webpack_require__(/*! path */ 'path');
-    const app_module_1 = __webpack_require__(
-      /*! ./app.module */ './apps/admin/src/app.module.ts',
-    );
+    const app_module_1 = __webpack_require__(/*! ./app.module */ './apps/admin/src/app.module.ts');
     async function bootstrap() {
       const app = await core_1.NestFactory.create(app_module_1.AppModule);
       app.use(

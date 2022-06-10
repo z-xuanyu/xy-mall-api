@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-04-29 10:59:47
+ * @LastEditTime: 2022-06-10 12:13:52
  * @Description: Modify here please
  */
 import {
@@ -77,19 +77,6 @@ export class AppController {
     const domain = `${req.protocol}://${req.headers.host}`;
     const res = await this.appService.upload(file, domain);
     return apiSucceed(res?.url);
-  }
-
-  @Post('uploadTest')
-  @ApiBody({
-    description: '文件上传',
-    type: FileUploadDto,
-  })
-  @UseInterceptors(FileInterceptor('file'))
-  @ApiOperation({ summary: '文件上传测试' })
-  @ApiConsumes('multipart/form-data')
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
-    console.log(file);
-    return file;
   }
 
   @Get('weixin')
