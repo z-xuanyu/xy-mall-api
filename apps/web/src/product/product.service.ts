@@ -4,11 +4,13 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 14:42:51
- * @LastEditTime: 2022-03-15 16:25:03
- * @Description: Modify here please
+ * @LastEditTime: 2022-06-20 16:41:24
+ * @Description: 商品相关模块
  */
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
+import { ProductSkuAttr } from 'libs/db/modules/product-sku-attr.model';
+import { ProductSku } from 'libs/db/modules/product-sku.model';
 import { Product } from 'libs/db/modules/product.model';
 import { UserCollection } from 'libs/db/modules/user-collection.model';
 import { UserViewsHistory } from 'libs/db/modules/user-views-history.model';
@@ -19,12 +21,23 @@ import { UserCollectionProductDto } from './dto/user-collection-product.dto';
 export class ProductService {
   // 注入
   constructor(
+    // 商品
     @InjectModel(Product) private productModel: ReturnModelType<typeof Product>,
+
+    // 商品属性
+    @InjectModel(ProductSkuAttr)
+    private productSkuAttrModel: ReturnModelType<typeof ProductSkuAttr>,
+    // 商品sku
+    @InjectModel(ProductSku) private productSkuModel: ReturnModelType<typeof ProductSku>,
+    // 用户收藏
     @InjectModel(UserCollection)
     private userCollectionModel: ReturnModelType<typeof UserCollection>,
+    // 用户浏览记录
     @InjectModel(UserViewsHistory)
     private userViewsHistory: ReturnModelType<typeof UserViewsHistory>,
-  ) {}
+  ) {
+    console.log('ProductService');
+  }
 
   // 获取全部商品列表
   async findAll() {
@@ -61,11 +74,18 @@ export class ProductService {
         isCollection = true;
       }
     }
+
+    // 获取商品属性
+    const productSkuAttr = await this.productSkuAttrModel.find({ productId: id });
+    // 获取商品sku
+    const productSku = await this.productSkuModel.find({ productId: id });
     // 返回商品信息
     const res: any = await this.productModel.findById(id);
     return {
       isCollection,
       ...res._doc,
+      skuAttrs: productSkuAttr,
+      skus: productSku,
     };
   }
 

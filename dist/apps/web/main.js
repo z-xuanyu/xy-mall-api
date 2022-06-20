@@ -1325,6 +1325,16 @@
         'parentId',
         void 0,
       );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '缩略图' }),
+          (0, typegoose_1.prop)(),
+          __metadata('design:type', String),
+        ],
+        Category.prototype,
+        'thumbnail',
+        void 0,
+      );
       Category = Category_1 = __decorate(
         [
           (0, typegoose_1.ModelOptions)({
@@ -5748,20 +5758,31 @@
             decorator(target, key, paramIndex);
           };
         };
-      var _a, _b, _c;
+      var _a, _b, _c, _d, _e;
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ProductService = void 0;
       const common_1 = __webpack_require__(5);
       const typegoose_1 = __webpack_require__(16);
+      const product_sku_attr_model_1 = __webpack_require__(68);
+      const product_sku_model_1 = __webpack_require__(69);
       const product_model_1 = __webpack_require__(19);
       const user_collection_model_1 = __webpack_require__(73);
       const user_views_history_model_1 = __webpack_require__(74);
       const nestjs_typegoose_1 = __webpack_require__(26);
       let ProductService = class ProductService {
-        constructor(productModel, userCollectionModel, userViewsHistory) {
+        constructor(
+          productModel,
+          productSkuAttrModel,
+          productSkuModel,
+          userCollectionModel,
+          userViewsHistory,
+        ) {
           this.productModel = productModel;
+          this.productSkuAttrModel = productSkuAttrModel;
+          this.productSkuModel = productSkuModel;
           this.userCollectionModel = userCollectionModel;
           this.userViewsHistory = userViewsHistory;
+          console.log('ProductService');
         }
         async findAll() {
           return await this.productModel.find();
@@ -5783,8 +5804,13 @@
               isCollection = true;
             }
           }
+          const productSkuAttr = await this.productSkuAttrModel.find({ productId: id });
+          const productSku = await this.productSkuModel.find({ productId: id });
           const res = await this.productModel.findById(id);
-          return Object.assign({ isCollection }, res._doc);
+          return Object.assign(Object.assign({ isCollection }, res._doc), {
+            skuAttrs: productSkuAttr,
+            skus: productSku,
+          });
         }
         async collection(userCollectionProductDto) {
           const isHas = await this.userCollectionModel.findOne({
@@ -5810,9 +5836,11 @@
         [
           (0, common_1.Injectable)(),
           __param(0, (0, nestjs_typegoose_1.InjectModel)(product_model_1.Product)),
-          __param(1, (0, nestjs_typegoose_1.InjectModel)(user_collection_model_1.UserCollection)),
+          __param(1, (0, nestjs_typegoose_1.InjectModel)(product_sku_attr_model_1.ProductSkuAttr)),
+          __param(2, (0, nestjs_typegoose_1.InjectModel)(product_sku_model_1.ProductSku)),
+          __param(3, (0, nestjs_typegoose_1.InjectModel)(user_collection_model_1.UserCollection)),
           __param(
-            2,
+            4,
             (0, nestjs_typegoose_1.InjectModel)(user_views_history_model_1.UserViewsHistory),
           ),
           __metadata('design:paramtypes', [
@@ -5830,6 +5858,16 @@
               typeof typegoose_1.ReturnModelType !== 'undefined' && typegoose_1.ReturnModelType) ===
             'function'
               ? _c
+              : Object,
+            typeof (_d =
+              typeof typegoose_1.ReturnModelType !== 'undefined' && typegoose_1.ReturnModelType) ===
+            'function'
+              ? _d
+              : Object,
+            typeof (_e =
+              typeof typegoose_1.ReturnModelType !== 'undefined' && typegoose_1.ReturnModelType) ===
+            'function'
+              ? _e
               : Object,
           ]),
         ],
