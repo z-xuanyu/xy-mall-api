@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-05-25 11:27:16
+ * @LastEditTime: 2022-06-20 15:07:44
  * @Description: 产品
  */
 
@@ -16,14 +16,22 @@ import { QueryProductDto } from './dto/query-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from 'libs/db/modules/product.model';
 import { PaginationResult } from 'libs/common/ResponseResultModel';
+import { ProductSkuAttr } from 'libs/db/modules/product-sku-attr.model';
+import { ProductSku } from 'libs/db/modules/product-sku.model';
 
 @Injectable()
 export class ProductService {
   // 注入
   constructor(
-    @InjectModel(Product)
-    private productModel: ReturnModelType<typeof Product>,
-  ) {}
+    // 商品
+    @InjectModel(Product) private productModel: ReturnModelType<typeof Product>,
+    // 商品属性
+    @InjectModel(ProductSkuAttr) private productAttrModel: ReturnModelType<typeof ProductSkuAttr>,
+    // 商品规格
+    @InjectModel(ProductSku) private productSkuModel: ReturnModelType<typeof ProductSku>,
+  ) {
+    console.log('product service');
+  }
 
   /**
    * 添加产品信息
@@ -40,7 +48,30 @@ export class ProductService {
       createProductDto.inventory = mins.inventory;
     }
 
-    return await this.productModel.create(createProductDto);
+    // 商品基本信息
+    const productInfo = await this.productModel.create(createProductDto);
+    // 商品属性
+    for (const item of createProductDto.skuAttrs) {
+      await this.productAttrModel.create({
+        productId: productInfo._id,
+        name: item.name,
+        values: item.values,
+      });
+    }
+    // 商品规格
+    for (const item of createProductDto.skus) {
+      await this.productSkuModel.create({
+        productId: productInfo._id,
+        price: item.price,
+        image: item.image,
+        inventory: item.inventory,
+        costPrice: item.costPrice,
+        weight: item.weight,
+        artNo: item.artNo,
+        skuNames: item.skuNames,
+      });
+    }
+    return productInfo;
   }
 
   /**
@@ -124,7 +155,32 @@ export class ProductService {
       updateProductDto.inventory = mins.inventory;
     }
 
-    return await this.productModel.findByIdAndUpdate(id, updateProductDto);
+    // 商品基本信息
+    const productInfo = await this.productModel.findByIdAndUpdate(id, updateProductDto);
+    // 商品属性
+    await this.productAttrModel.deleteMany({ productId: id }); // 先删除记录再添加
+    for (const item of updateProductDto.skuAttrs) {
+      await this.productAttrModel.create({
+        productId: productInfo._id,
+        name: item.name,
+        values: item.values,
+      });
+    }
+    // 商品规格
+    await this.productSkuModel.deleteMany({ productId: id }); // 先删除记录再添加
+    for (const item of updateProductDto.skus) {
+      await this.productSkuModel.create({
+        productId: productInfo._id,
+        price: item.price,
+        image: item.image,
+        inventory: item.inventory,
+        costPrice: item.costPrice,
+        weight: item.weight,
+        artNo: item.artNo,
+        skuNames: item.skuNames,
+      });
+    }
+    return productInfo;
   }
 
   /**

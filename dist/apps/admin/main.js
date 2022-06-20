@@ -9652,11 +9652,7 @@
         const class_validator_1 = __webpack_require__(/*! class-validator */ 'class-validator');
         class SkuDataType {}
         __decorate(
-          [
-            (0, class_validator_1.Min)(0, { message: '商品价格必须大于' }),
-            (0, swagger_1.ApiProperty)({ title: '规格价格' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '规格价格' }), __metadata('design:type', Number)],
           SkuDataType.prototype,
           'price',
           void 0,
@@ -9796,11 +9792,7 @@
           void 0,
         );
         __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ title: '产品价格' }),
-            (0, class_validator_1.Min)(0, { message: '商品价格必须大于' }),
-            __metadata('design:type', Number),
-          ],
+          [(0, swagger_1.ApiProperty)({ title: '产品价格' }), __metadata('design:type', Number)],
           CreateProductDto.prototype,
           'price',
           void 0,
@@ -10113,8 +10105,10 @@
         let ProductController = class ProductController {
           constructor(productService) {
             this.productService = productService;
+            console.log('productController');
           }
           async create(createProductDto) {
+            console.log(createProductDto, 77888);
             const res = await this.productService.create(createProductDto);
             return (0, ResponseResultModel_1.apiSucceed)(res);
           }
@@ -10474,7 +10468,7 @@
               decorator(target, key, paramIndex);
             };
           };
-        var _a;
+        var _a, _b, _c;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.ProductService = void 0;
         const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
@@ -10483,9 +10477,18 @@
         const product_model_1 = __webpack_require__(
           /*! libs/db/modules/product.model */ './libs/db/src/modules/product.model.ts',
         );
+        const product_sku_attr_model_1 = __webpack_require__(
+          /*! libs/db/modules/product-sku-attr.model */ './libs/db/src/modules/product-sku-attr.model.ts',
+        );
+        const product_sku_model_1 = __webpack_require__(
+          /*! libs/db/modules/product-sku.model */ './libs/db/src/modules/product-sku.model.ts',
+        );
         let ProductService = class ProductService {
-          constructor(productModel) {
+          constructor(productModel, productAttrModel, productSkuModel) {
             this.productModel = productModel;
+            this.productAttrModel = productAttrModel;
+            this.productSkuModel = productSkuModel;
+            console.log('product service');
           }
           async create(createProductDto) {
             if (createProductDto.skuType == 2) {
@@ -10493,7 +10496,27 @@
               createProductDto.price = mins.price;
               createProductDto.inventory = mins.inventory;
             }
-            return await this.productModel.create(createProductDto);
+            const productInfo = await this.productModel.create(createProductDto);
+            for (const item of createProductDto.skuAttrs) {
+              await this.productAttrModel.create({
+                productId: productInfo._id,
+                name: item.name,
+                values: item.values,
+              });
+            }
+            for (const item of createProductDto.skus) {
+              await this.productSkuModel.create({
+                productId: productInfo._id,
+                price: item.price,
+                image: item.image,
+                inventory: item.inventory,
+                costPrice: item.costPrice,
+                weight: item.weight,
+                artNo: item.artNo,
+                skuNames: item.skuNames,
+              });
+            }
+            return productInfo;
           }
           async findAll(parameters) {
             let total = 0;
@@ -10550,7 +10573,29 @@
               updateProductDto.price = mins.price;
               updateProductDto.inventory = mins.inventory;
             }
-            return await this.productModel.findByIdAndUpdate(id, updateProductDto);
+            const productInfo = await this.productModel.findByIdAndUpdate(id, updateProductDto);
+            await this.productAttrModel.deleteMany({ productId: id });
+            for (const item of updateProductDto.skuAttrs) {
+              await this.productAttrModel.create({
+                productId: productInfo._id,
+                name: item.name,
+                values: item.values,
+              });
+            }
+            await this.productSkuModel.deleteMany({ productId: id });
+            for (const item of updateProductDto.skus) {
+              await this.productSkuModel.create({
+                productId: productInfo._id,
+                price: item.price,
+                image: item.image,
+                inventory: item.inventory,
+                costPrice: item.costPrice,
+                weight: item.weight,
+                artNo: item.artNo,
+                skuNames: item.skuNames,
+              });
+            }
+            return productInfo;
           }
           async remove(id) {
             return await this.productModel.findOneAndDelete({ _id: id });
@@ -10581,11 +10626,26 @@
           [
             (0, common_1.Injectable)(),
             __param(0, (0, nestjs_typegoose_1.InjectModel)(product_model_1.Product)),
+            __param(
+              1,
+              (0, nestjs_typegoose_1.InjectModel)(product_sku_attr_model_1.ProductSkuAttr),
+            ),
+            __param(2, (0, nestjs_typegoose_1.InjectModel)(product_sku_model_1.ProductSku)),
             __metadata('design:paramtypes', [
               typeof (_a =
                 typeof typegoose_1.ReturnModelType !== 'undefined' &&
                 typegoose_1.ReturnModelType) === 'function'
                 ? _a
+                : Object,
+              typeof (_b =
+                typeof typegoose_1.ReturnModelType !== 'undefined' &&
+                typegoose_1.ReturnModelType) === 'function'
+                ? _b
+                : Object,
+              typeof (_c =
+                typeof typegoose_1.ReturnModelType !== 'undefined' &&
+                typegoose_1.ReturnModelType) === 'function'
+                ? _c
                 : Object,
             ]),
           ],
