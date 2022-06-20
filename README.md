@@ -4,30 +4,25 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:46:30
- * @LastEditTime: 2022-05-09 13:59:40
+ * @LastEditTime: 2022-06-10 17:55:33
  * @Description: Modify here please
 -->
 
 ## YuYu-零售商城-NestJs-Api
 
-一个开源 YuYu-零售商城 Api 服务端，项目集成 Nestjs+Mongodb+Jwt 等。
-项目是前后端分离，分为三端：Api 服务端，Admin 管理端，Web 前端(uniapp),
+一个开源 YuYu-零售商城 Api 服务端，项目集成 Nestjs+Mongodb+Jwt 等。项目是前后端分离，分为四端：Api 服务端，Admin 管理端，Web 前端(uniapp),PC 端（Nuxt3）
 
-Admin 端仓库：<a href="https://github.com/z-xuanyu/xy-mall-admin">点击跳转</a>
-Web 端 uniapp 仓库：<a href="https://github.com/z-xuanyu/xy-mall-uni">点击跳转</a>
+Admin 端仓库：<a href="https://github.com/z-xuanyu/xy-mall-admin">点击跳转</a> Web 端 uniapp 仓库：<a href="https://github.com/z-xuanyu/xy-mall-uni">点击跳转</a> PC 端仓库：<a href="https://github.com/z-xuanyu/xy-mall-pc">点击跳转</a>
 
 ### 项目说明
 
-为了迭代更多功能，方便管理，我们这里把服务端 Api,分为两个项目来开发，一个是 admin-api,一个是 web-api,
-admin-api 只要是管理 Admin 站接口开发，web-api 只要是负责 web 站 api 接口开发。
+为了迭代更多功能，方便管理，我们这里把服务端 Api,分为两个项目来开发，一个是 admin-api,一个是 web-api, admin-api 只要是管理 Admin 站接口开发，web-api 只要是负责 web 站 api 接口开发。
 
 在 Nestjs 中创建多个子项目也非常简单。首先全局安装一下 Nest-cil,详细 cli 使用，可以去阅读官网文档。
 
 ### 演示：
 
-swagger 文档 <a href="https://fukucho-api.zhouxuanyu.com/api-docs/">（点击跳转）</a>
-![swagger](docs/images/20220412111830.png)
-Admin 端演示地址：<a href="http://fukucho-admin.zhouxuanyu.com">（点击跳转）</a>
+swagger 文档 <a href="https://fukucho-api.zhouxuanyu.com/api-docs/">（点击跳转）</a> ![swagger](docs/images/20220412111830.png) Admin 端演示地址：<a href="http://fukucho-admin.zhouxuanyu.com">（点击跳转）</a>
 
 ![admin](docs/images/20220412111927.png)
 
@@ -59,15 +54,13 @@ Admin 端演示地址：<a href="http://fukucho-admin.zhouxuanyu.com">（点击�
 └── package.json               # package.json
 ```
 
-每个子项目都是相同的目录结构,这里是按官方脚手架（nest-cli）推荐生成的。
-例如开发 user 一个模块，使用官方 nest-cli 生成 Restful 风格 api，那么就执行下面命令(注意：记得全局安装 nest-cli)
+每个子项目都是相同的目录结构,这里是按官方脚手架（nest-cli）推荐生成的。例如开发 user 一个模块，使用官方 nest-cli 生成 Restful 风格 api，那么就执行下面命令(注意：记得全局安装 nest-cli)
 
 ```bash
 $ nest g res user
 ```
 
-生成如下：
-![user](https://www.zhouxuanyu.com/usr/uploads/2022/03/955512880.png)
+生成如下： ![user](https://www.zhouxuanyu.com/usr/uploads/2022/03/955512880.png)
 
 user 模块的 serivice controller modules dto 还有一些单元测试。都归纳再 user 目录下。推荐使用此方式。
 
