@@ -10565,7 +10565,16 @@
             };
           }
           async findOne(id) {
-            return await this.productModel.findById(id);
+            const productInfo = await this.productModel.findById(id);
+            const productSkus = await this.productSkuModel.find({ productId: id });
+            const productAttrs = await this.productAttrModel.find({ productId: id });
+            if (productSkus.length > 0) {
+              productInfo.skus = productSkus;
+            }
+            if (productAttrs.length > 0) {
+              productInfo.skuAttrs = productAttrs;
+            }
+            return productInfo;
           }
           async update(id, updateProductDto) {
             if (updateProductDto.skuType == 2) {

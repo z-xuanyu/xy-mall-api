@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 15:01:54
- * @LastEditTime: 2022-06-20 15:07:44
+ * @LastEditTime: 2022-06-20 16:21:27
  * @Description: 产品
  */
 
@@ -136,7 +136,21 @@ export class ProductService {
    * @memberof ProductService
    */
   async findOne(id: string): Promise<Product> {
-    return await this.productModel.findById(id);
+    // 商品基本信息
+    const productInfo = await this.productModel.findById(id);
+    // 商品规格
+    const productSkus = await this.productSkuModel.find({ productId: id });
+    // 商品属性
+    const productAttrs = await this.productAttrModel.find({ productId: id });
+
+    if (productSkus.length > 0) {
+      productInfo.skus = productSkus as any;
+    }
+
+    if (productAttrs.length > 0) {
+      productInfo.skuAttrs = productAttrs as any;
+    }
+    return productInfo;
   }
 
   /**
