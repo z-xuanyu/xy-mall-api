@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-05-25 11:48:00
+ * @LastEditTime: 2022-06-27 10:19:06
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -35,27 +35,27 @@ import { RoleModule } from './role/role.module';
 import { MenuModule } from './menu/menu.module';
 import { ProductUnitModule } from './product-unit/product-unit.module';
 import { CustomerServiceModule } from './customer-service/customer-service.module';
-import { MulterModule } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
-import * as nuid from 'nuid';
-import { join } from 'path';
+// import { MulterModule } from '@nestjs/platform-express';
+// import { diskStorage } from 'multer';
+// import * as nuid from 'nuid';
+// import { join } from 'path';
 
 @Module({
   imports: [
     CommonModule,
     ChatMessageModule,
     AuthModule,
-    MulterModule.register({
-      storage: diskStorage({
-        // 配置文件上传后的文件夹路径
-        destination: join(__dirname, 'uploads-images'),
-        filename: (req, file, cb) => {
-          // 在此处自定义保存后的文件名称
-          const filename = `${nuid.next()}.${file.mimetype.split('/')[1]}`;
-          return cb(null, filename);
-        },
-      }),
-    }),
+    // MulterModule.register({
+    //   storage: diskStorage({
+    //     // 配置文件上传后的文件夹路径
+    //     destination: join(__dirname, 'uploads-images'),
+    //     filename: (req, file, cb) => {
+    //       // 在此处自定义保存后的文件名称
+    //       const filename = `${nuid.next()}.${file.mimetype.split('/')[1]}`;
+    //       return cb(null, filename);
+    //     },
+    //   }),
+    // }),
     AdminModule,
     RoleModule,
     MenuModule,

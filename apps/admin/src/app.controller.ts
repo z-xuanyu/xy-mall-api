@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-06-10 12:13:52
+ * @LastEditTime: 2022-06-27 10:21:13
  * @Description: Modify here please
  */
 import {
@@ -64,8 +64,8 @@ export class AppController {
 
   // 管理端文件上传
   @Post('upload')
-  @UseGuards(AuthGuard('admin-jwt'))
-  @ApiBearerAuth()
+  // @UseGuards(AuthGuard('admin-jwt'))
+  // @ApiBearerAuth()
   @ApiOperation({ summary: '管理端--文件上传' })
   @UseInterceptors(FileInterceptor('file'))
   @ApiConsumes('multipart/form-data')

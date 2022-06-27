@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:44:31
- * @LastEditTime: 2022-06-10 12:20:39
+ * @LastEditTime: 2022-06-27 10:31:46
  * @Description: Modify here please
  */
 import { Injectable, Logger } from '@nestjs/common';
@@ -24,7 +24,9 @@ export class AppService {
   public constructor(
     @InjectModel(SiteSettings)
     private settingModel: ReturnModelType<typeof SiteSettings>,
-  ) {}
+  ) {
+    console.log('appService');
+  }
 
   getHello(): string {
     return 'hello xuanyu';
@@ -58,18 +60,17 @@ export class AppService {
           }
 
           // 存储图片文件
-          const writeImage = fs.createWriteStream(
+          fs.writeFileSync(
             join(__dirname, './uploads-images', `${file.originalname}`),
+            file.buffer,
           );
-          writeImage.write(file.path);
           data = {
             url: `${domain}/uploads-images/${file.originalname}`,
           };
           break;
         //  阿里oss上传
         case 2:
-          console.log(file, 1451464);
-          data = await this.aliOssClient.put(`/images/${file.originalname}`, file.path);
+          data = await this.aliOssClient.put(`/images/${file.originalname}`, file.buffer);
           break;
         default:
           break;
