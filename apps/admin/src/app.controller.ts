@@ -4,11 +4,13 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-06-27 10:21:13
+ * @LastEditTime: 2022-06-27 11:55:42
  * @Description: Modify here please
  */
 import {
+  Body,
   Controller,
+  Delete,
   Get,
   HttpStatus,
   Post,
@@ -20,25 +22,14 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
-import {
-  ApiBearerAuth,
-  ApiBody,
-  ApiConsumes,
-  ApiOperation,
-  ApiProperty,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ApiConfig, ApiConfigKit, WeChat } from 'tnwx';
 import { AppService } from './app.service';
 import { HandMsgAdapter } from './handMsgAdapter';
 import { Request, Response } from 'express';
 import * as getRawBody from 'raw-body';
-
-class FileUploadDto {
-  @ApiProperty({ type: 'string', format: 'binary' })
-  file: any;
-}
+import { FileUploadDto, RemoveFileDto } from './app.dto';
 
 @ApiTags('首页')
 @Controller()
@@ -64,9 +55,9 @@ export class AppController {
 
   // 管理端文件上传
   @Post('upload')
-  // @UseGuards(AuthGuard('admin-jwt'))
-  // @ApiBearerAuth()
-  @ApiOperation({ summary: '管理端--文件上传' })
+  @UseGuards(AuthGuard('admin-jwt'))
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '文件上传' })
   @UseInterceptors(FileInterceptor('file'))
   @ApiConsumes('multipart/form-data')
   @ApiBody({
@@ -76,7 +67,14 @@ export class AppController {
   async upload(@UploadedFile('file') file: any, @Req() req): Promise<any> {
     const domain = `${req.protocol}://${req.headers.host}`;
     const res = await this.appService.upload(file, domain);
-    return apiSucceed(res?.url);
+    return apiSucceed(res);
+  }
+
+  @Delete('romoveFile')
+  @ApiOperation({ summary: '文件删除' })
+  async romoveFile(@Body() file: RemoveFileDto) {
+    const res = await this.appService.romoveFile(file.fileName, file.storageType);
+    return apiSucceed(res);
   }
 
   @Get('weixin')

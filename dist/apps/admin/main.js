@@ -666,10 +666,11 @@
               decorator(target, key, paramIndex);
             };
           };
-        var _a, _b, _c, _d, _e, _f;
+        var _a, _b, _c, _d, _e, _f, _g;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.AppController = void 0;
         const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const passport_1 = __webpack_require__(/*! @nestjs/passport */ '@nestjs/passport');
         const platform_express_1 = __webpack_require__(
           /*! @nestjs/platform-express */ '@nestjs/platform-express',
         );
@@ -686,16 +687,7 @@
         );
         const express_1 = __webpack_require__(/*! express */ 'express');
         const getRawBody = __webpack_require__(/*! raw-body */ 'raw-body');
-        class FileUploadDto {}
-        __decorate(
-          [
-            (0, swagger_1.ApiProperty)({ type: 'string', format: 'binary' }),
-            __metadata('design:type', Object),
-          ],
-          FileUploadDto.prototype,
-          'file',
-          void 0,
-        );
+        const app_dto_1 = __webpack_require__(/*! ./app.dto */ './apps/admin/src/app.dto.ts');
         let AppController = class AppController {
           constructor(appService) {
             this.appService = appService;
@@ -715,9 +707,11 @@
           async upload(file, req) {
             const domain = `${req.protocol}://${req.headers.host}`;
             const res = await this.appService.upload(file, domain);
-            return (0, ResponseResultModel_1.apiSucceed)(
-              res === null || res === void 0 ? void 0 : res.url,
-            );
+            return (0, ResponseResultModel_1.apiSucceed)(res);
+          }
+          async romoveFile(file) {
+            const res = await this.appService.romoveFile(file.fileName, file.storageType);
+            return (0, ResponseResultModel_1.apiSucceed)(res);
           }
           getMsg(request) {
             const signature = request.query.signature.toString(),
@@ -752,12 +746,14 @@
         __decorate(
           [
             (0, common_1.Post)('upload'),
-            (0, swagger_1.ApiOperation)({ summary: '管理端--文件上传' }),
+            (0, common_1.UseGuards)((0, passport_1.AuthGuard)('admin-jwt')),
+            (0, swagger_1.ApiBearerAuth)(),
+            (0, swagger_1.ApiOperation)({ summary: '文件上传' }),
             (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file')),
             (0, swagger_1.ApiConsumes)('multipart/form-data'),
             (0, swagger_1.ApiBody)({
               description: '文件上传',
-              type: FileUploadDto,
+              type: app_dto_1.FileUploadDto,
             }),
             __param(0, (0, common_1.UploadedFile)('file')),
             __param(1, (0, common_1.Req)()),
@@ -774,14 +770,33 @@
         );
         __decorate(
           [
+            (0, common_1.Delete)('romoveFile'),
+            (0, swagger_1.ApiOperation)({ summary: '文件删除' }),
+            __param(0, (0, common_1.Body)()),
+            __metadata('design:type', Function),
+            __metadata('design:paramtypes', [
+              typeof (_b =
+                typeof app_dto_1.RemoveFileDto !== 'undefined' && app_dto_1.RemoveFileDto) ===
+              'function'
+                ? _b
+                : Object,
+            ]),
+            __metadata('design:returntype', Promise),
+          ],
+          AppController.prototype,
+          'romoveFile',
+          null,
+        );
+        __decorate(
+          [
             (0, common_1.Get)('weixin'),
             (0, swagger_1.ApiOperation)({ summary: '微信公众号接口' }),
             __param(0, (0, common_1.Req)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
-              typeof (_b = typeof express_1.Request !== 'undefined' && express_1.Request) ===
+              typeof (_c = typeof express_1.Request !== 'undefined' && express_1.Request) ===
               'function'
-                ? _b
+                ? _c
                 : Object,
             ]),
             __metadata('design:returntype', void 0),
@@ -798,13 +813,13 @@
             __param(1, (0, common_1.Req)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
-              typeof (_c = typeof express_1.Response !== 'undefined' && express_1.Response) ===
-              'function'
-                ? _c
-                : Object,
-              typeof (_d = typeof express_1.Request !== 'undefined' && express_1.Request) ===
+              typeof (_d = typeof express_1.Response !== 'undefined' && express_1.Response) ===
               'function'
                 ? _d
+                : Object,
+              typeof (_e = typeof express_1.Request !== 'undefined' && express_1.Request) ===
+              'function'
+                ? _e
                 : Object,
             ]),
             __metadata('design:returntype', Promise),
@@ -820,9 +835,9 @@
             __param(0, (0, common_1.Req)()),
             __metadata('design:type', Function),
             __metadata('design:paramtypes', [
-              typeof (_e = typeof express_1.Request !== 'undefined' && express_1.Request) ===
+              typeof (_f = typeof express_1.Request !== 'undefined' && express_1.Request) ===
               'function'
-                ? _e
+                ? _f
                 : Object,
             ]),
             __metadata('design:returntype', Promise),
@@ -836,16 +851,81 @@
             (0, swagger_1.ApiTags)('首页'),
             (0, common_1.Controller)(),
             __metadata('design:paramtypes', [
-              typeof (_f =
+              typeof (_g =
                 typeof app_service_1.AppService !== 'undefined' && app_service_1.AppService) ===
               'function'
-                ? _f
+                ? _g
                 : Object,
             ]),
           ],
           AppController,
         );
         exports.AppController = AppController;
+
+        /***/
+      },
+
+    /***/ './apps/admin/src/app.dto.ts':
+      /*!***********************************!*\
+  !*** ./apps/admin/src/app.dto.ts ***!
+  \***********************************/
+      /***/ function (__unused_webpack_module, exports, __webpack_require__) {
+        var __decorate =
+          (this && this.__decorate) ||
+          function (decorators, target, key, desc) {
+            var c = arguments.length,
+              r =
+                c < 3
+                  ? target
+                  : desc === null
+                  ? (desc = Object.getOwnPropertyDescriptor(target, key))
+                  : desc,
+              d;
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+              r = Reflect.decorate(decorators, target, key, desc);
+            else
+              for (var i = decorators.length - 1; i >= 0; i--)
+                if ((d = decorators[i]))
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            return c > 3 && r && Object.defineProperty(target, key, r), r;
+          };
+        var __metadata =
+          (this && this.__metadata) ||
+          function (k, v) {
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+              return Reflect.metadata(k, v);
+          };
+        Object.defineProperty(exports, '__esModule', { value: true });
+        exports.RemoveFileDto = exports.FileUploadDto = void 0;
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        class FileUploadDto {}
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ type: 'string', format: 'binary' }),
+            __metadata('design:type', Object),
+          ],
+          FileUploadDto.prototype,
+          'file',
+          void 0,
+        );
+        exports.FileUploadDto = FileUploadDto;
+        class RemoveFileDto {}
+        __decorate(
+          [(0, swagger_1.ApiProperty)({ title: '文件名' }), __metadata('design:type', String)],
+          RemoveFileDto.prototype,
+          'fileName',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '文件存储方式' }),
+            __metadata('design:type', Number),
+          ],
+          RemoveFileDto.prototype,
+          'storageType',
+          void 0,
+        );
+        exports.RemoveFileDto = RemoveFileDto;
 
         /***/
       },
@@ -1072,22 +1152,35 @@
                 this.aliOssClient.useBucket(this.fileStorageInfo.aliOss.bucket);
               }
               let data;
+              const fileTime = new Date().getTime();
               switch (~~this.fileStorageInfo.mode) {
                 case 1:
-                  const stat = await (0, has_1.dirIsExist)('uploads-images');
+                  const stat = await (0, has_1.dirIsExist)(`uploads-images`);
                   if (!stat) {
                     await (0, has_1.createMkdir)('uploads-images');
                   }
                   fs.writeFileSync(
-                    (0, path_1.join)(__dirname, './uploads-images', `${file.originalname}`),
+                    (0, path_1.join)(
+                      __dirname,
+                      `./uploads-images`,
+                      `${fileTime}-${file.originalname}`,
+                    ),
                     file.buffer,
                   );
                   data = {
-                    url: `${domain}/uploads-images/${file.originalname}`,
+                    url: `${domain}/uploads-images/${fileTime}-${file.originalname}`,
+                    storageType: 1,
                   };
                   break;
                 case 2:
-                  data = await this.aliOssClient.put(`/images/${file.originalname}`, file.buffer);
+                  const aliossPath = await this.aliOssClient.put(
+                    `/images/${fileTime}-${file.originalname}`,
+                    file.buffer,
+                  );
+                  data = {
+                    url: aliossPath.url,
+                    storageType: 2,
+                  };
                   break;
                 default:
                   break;
@@ -1095,6 +1188,27 @@
               return data;
             } catch (err) {
               common_1.Logger.log(err, '上传错误');
+            }
+          }
+          async romoveFile(fileNmae, storageType) {
+            const settingRes = await this.settingModel.find();
+            this.fileStorageInfo = settingRes[0].fileStorage;
+            this.aliOssClient = new OSS({
+              region: this.fileStorageInfo.aliOss.region,
+              accessKeyId: this.fileStorageInfo.aliOss.accessKeyId,
+              accessKeySecret: this.fileStorageInfo.aliOss.accessKeySecret,
+              bucket: this.fileStorageInfo.aliOss.bucket,
+            });
+            this.aliOssClient.useBucket(this.fileStorageInfo.aliOss.bucket);
+            switch (storageType) {
+              case 1:
+                fs.unlinkSync((0, path_1.join)(__dirname, `./uploads-images`, fileNmae));
+                break;
+              case 2:
+                await this.aliOssClient.delete(fileNmae);
+                break;
+              default:
+                break;
             }
           }
         };
@@ -4971,6 +5085,15 @@
           [(0, swagger_1.ApiProperty)({ title: '文件地址' }), __metadata('design:type', String)],
           CreateMediaLibraryDto.prototype,
           'url',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '文件存储类型' }),
+            __metadata('design:type', Number),
+          ],
+          CreateMediaLibraryDto.prototype,
+          'storageType',
           void 0,
         );
         exports.CreateMediaLibraryDto = CreateMediaLibraryDto;
@@ -15791,6 +15914,16 @@
           ],
           MediaLibrary.prototype,
           'url',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '文件存储空间类型' }),
+            (0, typegoose_1.prop)({ type: Number }),
+            __metadata('design:type', Number),
+          ],
+          MediaLibrary.prototype,
+          'storageType',
           void 0,
         );
         MediaLibrary = __decorate(

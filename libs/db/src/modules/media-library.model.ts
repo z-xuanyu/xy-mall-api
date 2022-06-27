@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-07 10:47:10
- * @LastEditTime: 2022-01-08 14:30:17
- * @Description: Modify here please
+ * @LastEditTime: 2022-06-27 11:24:25
+ * @Description: 媒体文件
  */
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -30,4 +30,8 @@ export class MediaLibrary {
   @ApiProperty({ title: '文件地址' })
   @prop({ required: true })
   url: string;
+
+  @ApiProperty({ title: '文件存储空间类型' })
+  @prop({ type: Number })
+  storageType: number;
 }
