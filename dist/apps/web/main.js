@@ -5396,11 +5396,12 @@
           if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
             return Reflect.metadata(k, v);
         };
-      var _a, _b;
+      var _a, _b, _c;
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.UserCart = void 0;
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
+      const product_sku_model_1 = __webpack_require__(69);
       const product_model_1 = __webpack_require__(19);
       const user_model_1 = __webpack_require__(33);
       let UserCart = class UserCart {};
@@ -5472,6 +5473,21 @@
         ],
         UserCart.prototype,
         'skuName',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: 'skuId' }),
+          (0, typegoose_1.prop)({ ref: () => product_sku_model_1.ProductSku }),
+          __metadata(
+            'design:type',
+            typeof (_c = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
+              ? _c
+              : Object,
+          ),
+        ],
+        UserCart.prototype,
+        'skuId',
         void 0,
       );
       __decorate(
@@ -6837,17 +6853,28 @@
       let UserCartService = class UserCartService {
         constructor(userCartModel) {
           this.userCartModel = userCartModel;
+          console.log('UserCartService');
         }
         async create(createUserCartDto) {
           const has = await this.userCartModel.findOne({
             userId: createUserCartDto.userId,
             productId: createUserCartDto.productId,
           });
-          if (has) {
-            return this.userCartModel.findOneAndUpdate(
+          if (has && !createUserCartDto.skuId) {
+            return await this.userCartModel.findOneAndUpdate(
               {
                 userId: createUserCartDto.userId,
                 productId: createUserCartDto.productId,
+              },
+              { $inc: { num: 1 } },
+            );
+          }
+          if (has && createUserCartDto.skuId) {
+            return await this.userCartModel.findOneAndUpdate(
+              {
+                userId: createUserCartDto.userId,
+                productId: createUserCartDto.productId,
+                skuId: createUserCartDto.skuId,
               },
               { $inc: { num: 1 } },
             );
@@ -7082,12 +7109,6 @@
       const swagger_1 = __webpack_require__(2);
       class CreateUserCartDto {}
       __decorate(
-        [(0, swagger_1.ApiProperty)({ title: '用户id' }), __metadata('design:type', String)],
-        CreateUserCartDto.prototype,
-        'userId',
-        void 0,
-      );
-      __decorate(
         [(0, swagger_1.ApiProperty)({ title: '商品id' }), __metadata('design:type', String)],
         CreateUserCartDto.prototype,
         'productId',
@@ -7115,6 +7136,12 @@
         [(0, swagger_1.ApiProperty)({ title: '选购规格名称' }), __metadata('design:type', String)],
         CreateUserCartDto.prototype,
         'skuName',
+        void 0,
+      );
+      __decorate(
+        [(0, swagger_1.ApiProperty)({ title: 'skuId' }), __metadata('design:type', String)],
+        CreateUserCartDto.prototype,
+        'skuId',
         void 0,
       );
       __decorate(
