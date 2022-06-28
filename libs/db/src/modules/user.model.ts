@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:03:28
- * @LastEditTime: 2022-05-25 15:13:27
+ * @LastEditTime: 2022-06-28 10:52:24
  * @Description: 会员模型
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -37,7 +37,7 @@ export class User {
 
   @ApiProperty({ title: '头像' })
   @prop()
-  avatar?: string;
+  avatarUrl?: string;
 
   @ApiProperty({ title: '性别', enum: Gender, type: Number })
   @prop()

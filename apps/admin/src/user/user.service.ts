@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:07:52
- * @LastEditTime: 2022-04-28 14:49:03
+ * @LastEditTime: 2022-06-28 10:55:19
  * @Description: 会员service 模块
  */
 import { Injectable } from '@nestjs/common';
@@ -32,7 +32,9 @@ export class UserService {
     // 用户收藏
     @InjectModel(UserCollection)
     private userCollectionModel: ReturnModelType<typeof UserCollection>,
-  ) {}
+  ) {
+    console.log('UserService');
+  }
 
   /**
    *  添加会员

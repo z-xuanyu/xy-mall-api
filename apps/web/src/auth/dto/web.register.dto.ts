@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 15:19:50
- * @LastEditTime: 2022-02-25 11:21:02
+ * @LastEditTime: 2022-06-28 10:54:16
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -27,7 +27,7 @@ export class WebRegisterDto {
   password: string;
 
   @ApiProperty({ title: '头像' })
-  avatar: string;
+  avatarUrl: string;
 
   @ApiProperty({
     title: '性别',
