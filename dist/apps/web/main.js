@@ -2283,7 +2283,7 @@
           __metadata('design:type', String),
         ],
         User.prototype,
-        'avatar',
+        'avatarUrl',
         void 0,
       );
       __decorate(
@@ -2912,7 +2912,7 @@
       __decorate(
         [(0, swagger_1.ApiProperty)({ title: '头像' }), __metadata('design:type', String)],
         WebRegisterDto.prototype,
-        'avatar',
+        'avatarUrl',
         void 0,
       );
       __decorate(
@@ -4677,6 +4677,16 @@
         ],
         MediaLibrary.prototype,
         'url',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '文件存储空间类型' }),
+          (0, typegoose_1.prop)({ type: Number }),
+          __metadata('design:type', Number),
+        ],
+        MediaLibrary.prototype,
+        'storageType',
         void 0,
       );
       MediaLibrary = __decorate(
