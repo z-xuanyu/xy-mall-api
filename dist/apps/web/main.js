@@ -6869,7 +6869,12 @@
               { $inc: { num: 1 } },
             );
           }
-          if (has && createUserCartDto.skuId) {
+          const hasSku = await this.userCartModel.findOne({
+            userId: createUserCartDto.userId,
+            productId: createUserCartDto.productId,
+            skuId: createUserCartDto.skuId,
+          });
+          if (hasSku && createUserCartDto.skuId) {
             return await this.userCartModel.findOneAndUpdate(
               {
                 userId: createUserCartDto.userId,

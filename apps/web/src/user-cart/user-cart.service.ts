@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 11:02:01
- * @LastEditTime: 2022-06-28 15:20:34
+ * @LastEditTime: 2022-06-28 16:16:45
  * @Description: web用户购物车service
  */
 import { Injectable } from '@nestjs/common';
@@ -41,7 +41,12 @@ export class UserCartService {
     }
 
     // 多规格 如果购物车商品存在，数量追加一
-    if (has && createUserCartDto.skuId) {
+    const hasSku = await this.userCartModel.findOne({
+      userId: createUserCartDto.userId,
+      productId: createUserCartDto.productId,
+      skuId: createUserCartDto.skuId,
+    });
+    if (hasSku && createUserCartDto.skuId) {
       return await this.userCartModel.findOneAndUpdate(
         {
           userId: createUserCartDto.userId,
