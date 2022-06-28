@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 11:02:01
- * @LastEditTime: 2022-03-19 18:50:14
- * @Description: Modify here please
+ * @LastEditTime: 2022-06-28 15:20:34
+ * @Description: web用户购物车service
  */
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
@@ -18,7 +18,9 @@ export class UserCartService {
   constructor(
     @InjectModel(UserCart)
     private userCartModel: ReturnModelType<typeof UserCart>,
-  ) {}
+  ) {
+    console.log('UserCartService');
+  }
 
   // 加入购物车
   async create(createUserCartDto: CreateUserCartDto) {
@@ -27,12 +29,24 @@ export class UserCartService {
       productId: createUserCartDto.productId,
     });
 
-    // 如果购物车商品存在，数量追加一
-    if (has) {
-      return this.userCartModel.findOneAndUpdate(
+    // 单规格 如果购物车商品存在，数量追加一
+    if (has && !createUserCartDto.skuId) {
+      return await this.userCartModel.findOneAndUpdate(
         {
           userId: createUserCartDto.userId,
           productId: createUserCartDto.productId,
+        },
+        { $inc: { num: 1 } },
+      );
+    }
+
+    // 多规格 如果购物车商品存在，数量追加一
+    if (has && createUserCartDto.skuId) {
+      return await this.userCartModel.findOneAndUpdate(
+        {
+          userId: createUserCartDto.userId,
+          productId: createUserCartDto.productId,
+          skuId: createUserCartDto.skuId,
         },
         { $inc: { num: 1 } },
       );

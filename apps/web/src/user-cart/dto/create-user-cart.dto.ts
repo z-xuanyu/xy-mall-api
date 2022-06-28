@@ -4,13 +4,12 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 11:02:01
- * @LastEditTime: 2022-04-14 17:21:02
- * @Description: Modify here please
+ * @LastEditTime: 2022-06-28 15:09:47
+ * @Description: 添加购物车
  */
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserCartDto {
-  @ApiProperty({ title: '用户id' })
   userId?: string;
 
   @ApiProperty({ title: '商品id' })
@@ -27,6 +26,9 @@ export class CreateUserCartDto {
 
   @ApiProperty({ title: '选购规格名称' })
   skuName?: string;
+
+  @ApiProperty({ title: 'skuId' })
+  skuId?: string;
 
   @ApiProperty({ title: '选购金额' })
   price: number;

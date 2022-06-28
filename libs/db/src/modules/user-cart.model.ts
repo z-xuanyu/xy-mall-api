@@ -4,12 +4,13 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 10:53:19
- * @LastEditTime: 2022-04-14 17:20:05
- * @Description: Modify here please
+ * @LastEditTime: 2022-06-28 15:12:14
+ * @Description: 购物车模型
  */
 
 import { ApiProperty } from '@nestjs/swagger';
 import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
+import { ProductSku } from './product-sku.model';
 import { Product } from './product.model';
 import { User } from './user.model';
 
@@ -42,6 +43,10 @@ export class UserCart {
   @ApiProperty({ title: '选购规格名称' })
   @prop({ type: String })
   skuName?: string;
+
+  @ApiProperty({ title: 'skuId' })
+  @prop({ ref: () => ProductSku })
+  skuId?: Ref<ProductSku>;
 
   @ApiProperty({ title: '选购规格价格' })
   @prop({ type: Number })
