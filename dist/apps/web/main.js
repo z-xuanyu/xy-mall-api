@@ -5500,6 +5500,16 @@
         'price',
         void 0,
       );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '是否有库存' }),
+          (0, typegoose_1.prop)({ type: Boolean, default: true }),
+          __metadata('design:type', Boolean),
+        ],
+        UserCart.prototype,
+        'hasStock',
+        void 0,
+      );
       UserCart = __decorate(
         [
           (0, typegoose_1.ModelOptions)({
@@ -6889,14 +6899,12 @@
         async findAll(userId) {
           return await this.userCartModel
             .find({ userId })
-            .populate({ path: 'userId', select: ['name'] })
-            .populate({ path: 'productId', select: ['title', 'pic'] });
+            .populate({ path: 'userId', select: ['nickName'] });
         }
         async findOne(id) {
           return await this.userCartModel
             .findById(id)
-            .populate({ path: 'userId', select: ['name'] })
-            .populate({ path: 'productId', select: ['title', 'pic'] });
+            .populate({ path: 'userId', select: ['nickName'] });
         }
         async remove(id) {
           await this.userCartModel.findByIdAndDelete(id);
@@ -7233,7 +7241,7 @@
             decorator(target, key, paramIndex);
           };
         };
-      var _a, _b;
+      var _a, _b, _c, _d;
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.OrderService = void 0;
       const common_1 = __webpack_require__(5);
@@ -7241,30 +7249,40 @@
       const orderStatus_enum_1 = __webpack_require__(31);
       const ResponseResultModel_1 = __webpack_require__(8);
       const order_model_1 = __webpack_require__(30);
+      const product_sku_model_1 = __webpack_require__(69);
+      const product_model_1 = __webpack_require__(19);
       const user_cart_model_1 = __webpack_require__(72);
       const nestjs_typegoose_1 = __webpack_require__(26);
       let OrderService = class OrderService {
-        constructor(orderModel, userCartModel) {
+        constructor(orderModel, userCartModel, productSkuModel, productModel) {
           this.orderModel = orderModel;
           this.userCartModel = userCartModel;
+          this.productSkuModel = productSkuModel;
+          this.productModel = productModel;
+          console.log('order service');
         }
         async create(createOrderDto) {
-          if (!createOrderDto.way) {
-            const cartList = [];
-            for (const item of createOrderDto.cartIds) {
-              const cartInfo = await this.userCartModel.findById(item);
-              if (!cartInfo) return new ResponseResultModel_1.ApiFail(101, '订单已提交!');
-              cartList.push(cartInfo);
+          for (const item of createOrderDto.products) {
+            const skuInfo = await this.productSkuModel.findById(item.skuId);
+            if (skuInfo && skuInfo.inventory <= 0) {
+              await this.userCartModel.findOneAndUpdate(
+                { userId: createOrderDto.userId, skuId: item.skuId },
+                { hasStock: false },
+              );
+              throw new ResponseResultModel_1.ApiFail(101, `${item.productName}-库存不足`);
             }
-            const products = cartList.map((item) => {
-              return {
-                productId: item.productId,
-                num: item.num,
-                price: item.price,
-                skuName: item.skuName,
-              };
-            });
-            createOrderDto.products = products;
+            if (!item.skuId) {
+              const product = await this.productModel.findById(item.productId);
+              if (product.inventory <= 0) {
+                await this.userCartModel.findOneAndUpdate(
+                  { userId: createOrderDto.userId, productId: item.productId },
+                  { hasStock: false },
+                );
+                throw new ResponseResultModel_1.ApiFail(101, `${item.productName}-库存不足`);
+              }
+            }
+          }
+          if (!createOrderDto.way) {
             for (const item of createOrderDto.cartIds) {
               await this.userCartModel.findByIdAndDelete(item);
             }
@@ -7310,6 +7328,8 @@
           (0, common_1.Injectable)(),
           __param(0, (0, nestjs_typegoose_1.InjectModel)(order_model_1.Order)),
           __param(1, (0, nestjs_typegoose_1.InjectModel)(user_cart_model_1.UserCart)),
+          __param(2, (0, nestjs_typegoose_1.InjectModel)(product_sku_model_1.ProductSku)),
+          __param(3, (0, nestjs_typegoose_1.InjectModel)(product_model_1.Product)),
           __metadata('design:paramtypes', [
             typeof (_a =
               typeof typegoose_1.ReturnModelType !== 'undefined' && typegoose_1.ReturnModelType) ===
@@ -7320,6 +7340,16 @@
               typeof typegoose_1.ReturnModelType !== 'undefined' && typegoose_1.ReturnModelType) ===
             'function'
               ? _b
+              : Object,
+            typeof (_c =
+              typeof typegoose_1.ReturnModelType !== 'undefined' && typegoose_1.ReturnModelType) ===
+            'function'
+              ? _c
+              : Object,
+            typeof (_d =
+              typeof typegoose_1.ReturnModelType !== 'undefined' && typegoose_1.ReturnModelType) ===
+            'function'
+              ? _d
               : Object,
           ]),
         ],
@@ -7556,6 +7586,18 @@
         void 0,
       );
       __decorate(
+        [(0, swagger_1.ApiProperty)({ title: '商品标题' }), __metadata('design:type', String)],
+        BuyProduct.prototype,
+        'productName',
+        void 0,
+      );
+      __decorate(
+        [(0, swagger_1.ApiProperty)({ title: '商品封面图' }), __metadata('design:type', String)],
+        BuyProduct.prototype,
+        'productPic',
+        void 0,
+      );
+      __decorate(
         [(0, swagger_1.ApiProperty)({ title: '商品选购数量' }), __metadata('design:type', Number)],
         BuyProduct.prototype,
         'num',
@@ -7565,6 +7607,12 @@
         [(0, swagger_1.ApiProperty)({ title: '商品价格' }), __metadata('design:type', Number)],
         BuyProduct.prototype,
         'price',
+        void 0,
+      );
+      __decorate(
+        [(0, swagger_1.ApiProperty)({ title: '商品规格id' }), __metadata('design:type', String)],
+        BuyProduct.prototype,
+        'skuId',
         void 0,
       );
       __decorate(

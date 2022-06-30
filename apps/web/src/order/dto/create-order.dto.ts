@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-19 00:45:38
- * @LastEditTime: 2022-03-22 12:33:42
+ * @LastEditTime: 2022-06-30 12:20:22
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -14,11 +14,20 @@ class BuyProduct {
   @ApiProperty({ title: '商品id' })
   productId: string;
 
+  @ApiProperty({ title: '商品标题' })
+  productName: string;
+
+  @ApiProperty({ title: '商品封面图' })
+  productPic: string;
+
   @ApiProperty({ title: '商品选购数量' })
   num: number;
 
   @ApiProperty({ title: '商品价格' })
   price: number;
+
+  @ApiProperty({ title: '商品规格id' })
+  skuId?: string;
 
   @ApiProperty({ title: '商品规格名' })
   skuName: string;

@@ -4,14 +4,16 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-03-22 17:55:18
- * @Description: Modify here please
+ * @LastEditTime: 2022-06-30 14:11:40
+ * @Description: 订单service
  */
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { OrderStatus } from 'libs/common/enum/orderStatus.enum';
 import { ApiFail } from 'libs/common/ResponseResultModel';
 import { Order } from 'libs/db/modules/order.model';
+import { ProductSku } from 'libs/db/modules/product-sku.model';
+import { Product } from 'libs/db/modules/product.model';
 import { UserCart } from 'libs/db/modules/user-cart.model';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -20,38 +22,54 @@ import { QueryUserOrderDto } from './dto/query-user-oder.dto';
 @Injectable()
 export class OrderService {
   constructor(
+    // 订单
     @InjectModel(Order) private orderModel: ReturnModelType<typeof Order>,
+    // 用户购物车
     @InjectModel(UserCart)
     private userCartModel: ReturnModelType<typeof UserCart>,
-  ) {}
+    // 商品规格
+    @InjectModel(ProductSku) private productSkuModel: ReturnModelType<typeof ProductSku>,
+    // 商品
+    @InjectModel(Product) private productModel: ReturnModelType<typeof Product>,
+  ) {
+    console.log('order service');
+  }
 
   // 创建订单
   async create(createOrderDto: CreateOrderDto) {
+    // 检查库存
+    for (const item of createOrderDto.products) {
+      const skuInfo = await this.productSkuModel.findById(item.skuId);
+      // 多规格商品
+      if (skuInfo && skuInfo.inventory <= 0) {
+        //更新购物车库存状态
+        await this.userCartModel.findOneAndUpdate(
+          { userId: createOrderDto.userId, skuId: item.skuId },
+          { hasStock: false },
+        );
+        throw new ApiFail(101, `${item.productName}-库存不足`);
+      }
+      // 单规格
+      if (!item.skuId) {
+        const product = await this.productModel.findById(item.productId);
+        if (product.inventory <= 0) {
+          //更新购物车库存状态
+          await this.userCartModel.findOneAndUpdate(
+            { userId: createOrderDto.userId, productId: item.productId },
+            { hasStock: false },
+          );
+          throw new ApiFail(101, `${item.productName}-库存不足`);
+        }
+      }
+    }
     // 购物车清算
     if (!createOrderDto.way) {
-      // 查找出购物车信息
-      const cartList: any = [];
-      for (const item of createOrderDto.cartIds) {
-        const cartInfo = await this.userCartModel.findById(item);
-        if (!cartInfo) return new ApiFail(101, '订单已提交!');
-        cartList.push(cartInfo);
-      }
-
-      // 选购商品
-      const products = cartList.map((item) => {
-        return {
-          productId: item.productId,
-          num: item.num,
-          price: item.price,
-          skuName: item.skuName,
-        };
-      });
-      createOrderDto.products = products as any;
       // 清除用户购物车记录
       for (const item of createOrderDto.cartIds) {
         await this.userCartModel.findByIdAndDelete(item);
       }
     }
+    // 创建订单
     return await this.orderModel.create(createOrderDto);
   }
 

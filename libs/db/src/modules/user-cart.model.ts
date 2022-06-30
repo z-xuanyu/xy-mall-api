@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 10:53:19
- * @LastEditTime: 2022-06-28 15:12:14
+ * @LastEditTime: 2022-06-30 12:03:22
  * @Description: 购物车模型
  */
 
@@ -51,4 +51,8 @@ export class UserCart {
   @ApiProperty({ title: '选购规格价格' })
   @prop({ type: Number })
   price: number;
+
+  @ApiProperty({ title: '是否有库存' })
+  @prop({ type: Boolean, default: true })
+  hasStock: boolean;
 }

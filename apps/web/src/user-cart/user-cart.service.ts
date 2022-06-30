@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 11:02:01
- * @LastEditTime: 2022-06-28 16:16:45
+ * @LastEditTime: 2022-06-30 11:55:05
  * @Description: web用户购物车service
  */
 import { Injectable } from '@nestjs/common';
@@ -69,16 +69,12 @@ export class UserCartService {
   async findAll(userId: string): Promise<any> {
     return await this.userCartModel
       .find({ userId })
-      .populate({ path: 'userId', select: ['name'] })
-      .populate({ path: 'productId', select: ['title', 'pic'] });
+      .populate({ path: 'userId', select: ['nickName'] });
   }
 
   // 获取购物车信息详细
   async findOne(id: string) {
-    return await this.userCartModel
-      .findById(id)
-      .populate({ path: 'userId', select: ['name'] })
-      .populate({ path: 'productId', select: ['title', 'pic'] });
+    return await this.userCartModel.findById(id).populate({ path: 'userId', select: ['nickName'] });
   }
 
   /**
