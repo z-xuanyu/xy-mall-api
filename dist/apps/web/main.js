@@ -168,8 +168,8 @@
       const user_module_1 = __webpack_require__(82);
       const user_cart_module_1 = __webpack_require__(88);
       const order_module_1 = __webpack_require__(92);
-      const product_comment_module_1 = __webpack_require__(97);
-      const chat_nessage_module_1 = __webpack_require__(101);
+      const product_comment_module_1 = __webpack_require__(98);
+      const chat_nessage_module_1 = __webpack_require__(102);
       let WebModule = class WebModule {};
       WebModule = __decorate(
         [
@@ -7349,16 +7349,13 @@
             });
         }
         async findOne(id) {
-          return await this.orderModel
-            .findById(id)
-            .populate('addressId')
-            .populate({
-              path: 'products.productId',
-              select: ['title', 'pic'],
-            });
+          return await this.orderModel.findById(id).populate('addressId');
         }
         async remove(id) {
           return await this.orderModel.findByIdAndUpdate(id, { isDelete: true });
+        }
+        async updateOrderAddress(orderId, addressId) {
+          return await this.orderModel.findByIdAndUpdate(orderId, { addressId });
         }
         async confirmTake(orderId) {
           const getStatus = await this.orderModel.findById(orderId);
@@ -7440,7 +7437,7 @@
             decorator(target, key, paramIndex);
           };
         };
-      var _a, _b, _c, _d, _e;
+      var _a, _b, _c, _d, _e, _f;
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.OrderController = void 0;
       const common_1 = __webpack_require__(5);
@@ -7453,9 +7450,11 @@
       const passport_1 = __webpack_require__(12);
       const ResponseResultModel_1 = __webpack_require__(8);
       const query_user_oder_dto_1 = __webpack_require__(96);
+      const update_order_address_dto_1 = __webpack_require__(97);
       let OrderController = class OrderController {
         constructor(orderService) {
           this.orderService = orderService;
+          console.log('OrderController');
         }
         async create(createOrderDto, user) {
           createOrderDto.userId = user === null || user === void 0 ? void 0 : user._id;
@@ -7479,6 +7478,13 @@
         }
         async confirmTake(id) {
           const res = await this.orderService.confirmTake(id);
+          return (0, ResponseResultModel_1.apiSucceed)(res);
+        }
+        async updateOrderAddress(updateOrderAddressDto) {
+          const res = await this.orderService.updateOrderAddress(
+            updateOrderAddressDto.orderId,
+            updateOrderAddressDto.addressId,
+          );
           return (0, ResponseResultModel_1.apiSucceed)(res);
         }
       };
@@ -7574,6 +7580,25 @@
         'confirmTake',
         null,
       );
+      __decorate(
+        [
+          (0, common_1.Put)('updateAddress'),
+          (0, swagger_1.ApiOperation)({ summary: '更新订单收货地址' }),
+          __param(0, (0, common_1.Body)()),
+          __metadata('design:type', Function),
+          __metadata('design:paramtypes', [
+            typeof (_e =
+              typeof update_order_address_dto_1.UpdateOrderAddressDto !== 'undefined' &&
+              update_order_address_dto_1.UpdateOrderAddressDto) === 'function'
+              ? _e
+              : Object,
+          ]),
+          __metadata('design:returntype', Promise),
+        ],
+        OrderController.prototype,
+        'updateOrderAddress',
+        null,
+      );
       OrderController = __decorate(
         [
           (0, swagger_1.ApiTags)('用户订单'),
@@ -7581,10 +7606,10 @@
           (0, swagger_1.ApiBearerAuth)(),
           (0, common_1.Controller)('order'),
           __metadata('design:paramtypes', [
-            typeof (_e =
+            typeof (_f =
               typeof order_service_1.OrderService !== 'undefined' &&
               order_service_1.OrderService) === 'function'
-              ? _e
+              ? _f
               : Object,
           ]),
         ],
@@ -7820,11 +7845,58 @@
                 r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
           return c > 3 && r && Object.defineProperty(target, key, r), r;
         };
+      var __metadata =
+        (this && this.__metadata) ||
+        function (k, v) {
+          if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+            return Reflect.metadata(k, v);
+        };
+      Object.defineProperty(exports, '__esModule', { value: true });
+      exports.UpdateOrderAddressDto = void 0;
+      const swagger_1 = __webpack_require__(2);
+      class UpdateOrderAddressDto {}
+      __decorate(
+        [(0, swagger_1.ApiProperty)({ title: '收货地址id' }), __metadata('design:type', String)],
+        UpdateOrderAddressDto.prototype,
+        'addressId',
+        void 0,
+      );
+      __decorate(
+        [(0, swagger_1.ApiProperty)({ title: '订单id' }), __metadata('design:type', String)],
+        UpdateOrderAddressDto.prototype,
+        'orderId',
+        void 0,
+      );
+      exports.UpdateOrderAddressDto = UpdateOrderAddressDto;
+
+      /***/
+    },
+    /* 98 */
+    /***/ function (__unused_webpack_module, exports, __webpack_require__) {
+      var __decorate =
+        (this && this.__decorate) ||
+        function (decorators, target, key, desc) {
+          var c = arguments.length,
+            r =
+              c < 3
+                ? target
+                : desc === null
+                ? (desc = Object.getOwnPropertyDescriptor(target, key))
+                : desc,
+            d;
+          if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+            r = Reflect.decorate(decorators, target, key, desc);
+          else
+            for (var i = decorators.length - 1; i >= 0; i--)
+              if ((d = decorators[i]))
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+          return c > 3 && r && Object.defineProperty(target, key, r), r;
+        };
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ProductCommentModule = void 0;
       const common_1 = __webpack_require__(5);
-      const product_comment_service_1 = __webpack_require__(98);
-      const product_comment_controller_1 = __webpack_require__(99);
+      const product_comment_service_1 = __webpack_require__(99);
+      const product_comment_controller_1 = __webpack_require__(100);
       const web_service_1 = __webpack_require__(15);
       let ProductCommentModule = class ProductCommentModule {};
       ProductCommentModule = __decorate(
@@ -7840,7 +7912,7 @@
 
       /***/
     },
-    /* 98 */
+    /* 99 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -7925,7 +7997,7 @@
 
       /***/
     },
-    /* 99 */
+    /* 100 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -7963,8 +8035,8 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ProductCommentController = void 0;
       const common_1 = __webpack_require__(5);
-      const product_comment_service_1 = __webpack_require__(98);
-      const create_product_comment_dto_1 = __webpack_require__(100);
+      const product_comment_service_1 = __webpack_require__(99);
+      const create_product_comment_dto_1 = __webpack_require__(101);
       const swagger_1 = __webpack_require__(2);
       const passport_1 = __webpack_require__(12);
       const current_user_decorator_1 = __webpack_require__(81);
@@ -8088,7 +8160,7 @@
 
       /***/
     },
-    /* 100 */
+    /* 101 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8166,7 +8238,7 @@
 
       /***/
     },
-    /* 101 */
+    /* 102 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8190,8 +8262,8 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ChatNessageModule = void 0;
       const common_1 = __webpack_require__(5);
-      const chat_nessage_service_1 = __webpack_require__(102);
-      const chat_nessage_controller_1 = __webpack_require__(103);
+      const chat_nessage_service_1 = __webpack_require__(103);
+      const chat_nessage_controller_1 = __webpack_require__(104);
       let ChatNessageModule = class ChatNessageModule {};
       ChatNessageModule = __decorate(
         [
@@ -8206,7 +8278,7 @@
 
       /***/
     },
-    /* 102 */
+    /* 103 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8287,7 +8359,7 @@
 
       /***/
     },
-    /* 103 */
+    /* 104 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8330,7 +8402,7 @@
       const ResponseResultModel_1 = __webpack_require__(8);
       const user_model_1 = __webpack_require__(34);
       const current_user_decorator_1 = __webpack_require__(81);
-      const chat_nessage_service_1 = __webpack_require__(102);
+      const chat_nessage_service_1 = __webpack_require__(103);
       let ChatNessageController = class ChatNessageController {
         constructor(chatNessageService) {
           this.chatNessageService = chatNessageService;

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-06-30 14:56:06
+ * @LastEditTime: 2022-06-30 17:26:23
  * @Description: 订单service
  */
 import { Injectable } from '@nestjs/common';
@@ -118,13 +118,7 @@ export class OrderService {
    * @memberof OrderService
    */
   async findOne(id: string): Promise<Order> {
-    return await this.orderModel
-      .findById(id)
-      .populate('addressId')
-      .populate({
-        path: 'products.productId',
-        select: ['title', 'pic'],
-      });
+    return await this.orderModel.findById(id).populate('addressId');
   }
 
   /**
@@ -136,6 +130,18 @@ export class OrderService {
    */
   async remove(id: string): Promise<Order> {
     return await this.orderModel.findByIdAndUpdate(id, { isDelete: true });
+  }
+
+  /**
+   * 更新订单收获地址
+   *
+   * @param {string} orderId 订单id
+   * @param {string} addressId 收货地址id
+   * @return {*}
+   * @memberof OrderService
+   */
+  async updateOrderAddress(orderId: string, addressId: string): Promise<Order> {
+    return await this.orderModel.findByIdAndUpdate(orderId, { addressId });
   }
 
   /**

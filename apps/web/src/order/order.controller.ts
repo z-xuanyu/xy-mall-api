@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-03-22 18:15:04
- * @Description: Modify here please
+ * @LastEditTime: 2022-06-30 17:32:19
+ * @Description: 订单模块
  */
 import { Controller, Get, Post, Body, Param, Delete, UseGuards, Query, Put } from '@nestjs/common';
 import { OrderService } from './order.service';
@@ -17,13 +17,16 @@ import { UserDocument } from 'libs/db/modules/user.model';
 import { AuthGuard } from '@nestjs/passport';
 import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { QueryUserOrderDto } from './dto/query-user-oder.dto';
+import { UpdateOrderAddressDto } from './dto/update-order-address.dto';
 
 @ApiTags('用户订单')
 @UseGuards(AuthGuard('web-jwt'))
 @ApiBearerAuth()
 @Controller('order')
 export class OrderController {
-  constructor(private readonly orderService: OrderService) {}
+  constructor(private readonly orderService: OrderService) {
+    console.log('OrderController');
+  }
 
   @Post()
   @ApiOperation({ summary: '创建订单' })
@@ -61,6 +64,16 @@ export class OrderController {
   @ApiParam({ name: 'id', description: '订单id' })
   async confirmTake(@Param('id', new ParseIdPipe()) id: string) {
     const res = await this.orderService.confirmTake(id);
+    return apiSucceed(res);
+  }
+
+  @Put('updateAddress')
+  @ApiOperation({ summary: '更新订单收货地址' })
+  async updateOrderAddress(@Body() updateOrderAddressDto: UpdateOrderAddressDto) {
+    const res = await this.orderService.updateOrderAddress(
+      updateOrderAddressDto.orderId,
+      updateOrderAddressDto.addressId,
+    );
     return apiSucceed(res);
   }
 }
