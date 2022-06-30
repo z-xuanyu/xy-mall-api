@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-06-30 14:11:40
+ * @LastEditTime: 2022-06-30 14:56:06
  * @Description: 订单service
  */
 import { Injectable } from '@nestjs/common';
@@ -40,6 +40,7 @@ export class OrderService {
     // 检查库存
     for (const item of createOrderDto.products) {
       const skuInfo = await this.productSkuModel.findById(item.skuId);
+
       // 多规格商品
       if (skuInfo && skuInfo.inventory <= 0) {
         //更新购物车库存状态
@@ -48,7 +49,13 @@ export class OrderService {
           { hasStock: false },
         );
         throw new ApiFail(101, `${item.productName}-库存不足`);
+      } else {
+        // 库存递减
+        await this.productSkuModel.findByIdAndUpdate(item.skuId, {
+          $inc: { inventory: -1 },
+        });
       }
+
       // 单规格
       if (!item.skuId) {
         const product = await this.productModel.findById(item.productId);
@@ -59,6 +66,11 @@ export class OrderService {
             { hasStock: false },
           );
           throw new ApiFail(101, `${item.productName}-库存不足`);
+        } else {
+          // 库存递减
+          await this.productModel.findByIdAndUpdate(item.productId, {
+            $inc: { inventory: -1 },
+          });
         }
       }
     }
@@ -69,6 +81,10 @@ export class OrderService {
         await this.userCartModel.findByIdAndDelete(item);
       }
     }
+    // 商销量递增
+    await this.productModel.findByIdAndUpdate(createOrderDto.products[0].productId, {
+      $inc: { sales: 1 },
+    });
     // 创建订单
     return await this.orderModel.create(createOrderDto);
   }

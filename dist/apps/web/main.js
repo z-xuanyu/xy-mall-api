@@ -162,8 +162,8 @@
       const common_1 = __webpack_require__(5);
       const web_controller_1 = __webpack_require__(11);
       const web_service_1 = __webpack_require__(15);
-      const auth_module_1 = __webpack_require__(36);
-      const common_2 = __webpack_require__(49);
+      const auth_module_1 = __webpack_require__(37);
+      const common_2 = __webpack_require__(50);
       const product_module_1 = __webpack_require__(76);
       const user_module_1 = __webpack_require__(82);
       const user_cart_module_1 = __webpack_require__(88);
@@ -1786,15 +1786,16 @@
           if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
             return Reflect.metadata(k, v);
         };
-      var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+      var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.Order = void 0;
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
       const orderStatus_enum_1 = __webpack_require__(31);
+      const product_sku_model_1 = __webpack_require__(32);
       const product_model_1 = __webpack_require__(19);
-      const user_address_model_1 = __webpack_require__(32);
-      const user_model_1 = __webpack_require__(33);
+      const user_address_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       class BuyProduct {}
       __decorate(
         [
@@ -1809,6 +1810,26 @@
         ],
         BuyProduct.prototype,
         'productId',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '商品标题' }),
+          (0, typegoose_1.prop)(),
+          __metadata('design:type', String),
+        ],
+        BuyProduct.prototype,
+        'productName',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '商品封面图' }),
+          (0, typegoose_1.prop)(),
+          __metadata('design:type', String),
+        ],
+        BuyProduct.prototype,
+        'productPic',
         void 0,
       );
       __decorate(
@@ -1829,6 +1850,21 @@
         ],
         BuyProduct.prototype,
         'price',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '商品规格id' }),
+          (0, typegoose_1.prop)({ ref: () => product_sku_model_1.ProductSku }),
+          __metadata(
+            'design:type',
+            typeof (_b = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
+              ? _b
+              : Object,
+          ),
+        ],
+        BuyProduct.prototype,
+        'skuId',
         void 0,
       );
       __decorate(
@@ -1861,7 +1897,7 @@
           (0, typegoose_1.prop)({ type: [BuyProduct] }),
           __metadata(
             'design:type',
-            typeof (_b = typeof Array !== 'undefined' && Array) === 'function' ? _b : Object,
+            typeof (_c = typeof Array !== 'undefined' && Array) === 'function' ? _c : Object,
           ),
         ],
         Order.prototype,
@@ -1874,8 +1910,8 @@
           (0, typegoose_1.prop)({ ref: () => user_model_1.User }),
           __metadata(
             'design:type',
-            typeof (_c = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
-              ? _c
+            typeof (_d = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
+              ? _d
               : Object,
           ),
         ],
@@ -1913,10 +1949,10 @@
           }),
           __metadata(
             'design:type',
-            typeof (_d =
+            typeof (_e =
               typeof orderStatus_enum_1.OrderStatus !== 'undefined' &&
               orderStatus_enum_1.OrderStatus) === 'function'
-              ? _d
+              ? _e
               : Object,
           ),
         ],
@@ -1960,8 +1996,8 @@
           (0, typegoose_1.prop)({ ref: () => user_address_model_1.UserAddress }),
           __metadata(
             'design:type',
-            typeof (_e = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
-              ? _e
+            typeof (_f = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
+              ? _f
               : Object,
           ),
         ],
@@ -1975,7 +2011,7 @@
           (0, typegoose_1.prop)({ type: Date }),
           __metadata(
             'design:type',
-            typeof (_f = typeof Date !== 'undefined' && Date) === 'function' ? _f : Object,
+            typeof (_g = typeof Date !== 'undefined' && Date) === 'function' ? _g : Object,
           ),
         ],
         Order.prototype,
@@ -1988,7 +2024,7 @@
           (0, typegoose_1.prop)({ type: Date }),
           __metadata(
             'design:type',
-            typeof (_g = typeof Date !== 'undefined' && Date) === 'function' ? _g : Object,
+            typeof (_h = typeof Date !== 'undefined' && Date) === 'function' ? _h : Object,
           ),
         ],
         Order.prototype,
@@ -2001,7 +2037,7 @@
           (0, typegoose_1.prop)({ type: Date }),
           __metadata(
             'design:type',
-            typeof (_h = typeof Date !== 'undefined' && Date) === 'function' ? _h : Object,
+            typeof (_j = typeof Date !== 'undefined' && Date) === 'function' ? _j : Object,
           ),
         ],
         Order.prototype,
@@ -2014,7 +2050,7 @@
           (0, typegoose_1.prop)({ type: Date }),
           __metadata(
             'design:type',
-            typeof (_j = typeof Date !== 'undefined' && Date) === 'function' ? _j : Object,
+            typeof (_k = typeof Date !== 'undefined' && Date) === 'function' ? _k : Object,
           ),
         ],
         Order.prototype,
@@ -2027,7 +2063,7 @@
           (0, typegoose_1.prop)({ type: Date }),
           __metadata(
             'design:type',
-            typeof (_k = typeof Date !== 'undefined' && Date) === 'function' ? _k : Object,
+            typeof (_l = typeof Date !== 'undefined' && Date) === 'function' ? _l : Object,
           ),
         ],
         Order.prototype,
@@ -2123,10 +2159,146 @@
         };
       var _a;
       Object.defineProperty(exports, '__esModule', { value: true });
+      exports.ProductSku = void 0;
+      const swagger_1 = __webpack_require__(2);
+      const typegoose_1 = __webpack_require__(16);
+      const product_model_1 = __webpack_require__(19);
+      let ProductSku = class ProductSku {};
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '商品id' }),
+          (0, typegoose_1.prop)({ ref: () => product_model_1.Product, required: true }),
+          __metadata(
+            'design:type',
+            typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
+              ? _a
+              : Object,
+          ),
+        ],
+        ProductSku.prototype,
+        'productId',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '规格商品图片' }),
+          (0, typegoose_1.prop)(),
+          __metadata('design:type', String),
+        ],
+        ProductSku.prototype,
+        'image',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '规格商品库存' }),
+          (0, typegoose_1.prop)({ required: true, type: Number }),
+          __metadata('design:type', Number),
+        ],
+        ProductSku.prototype,
+        'inventory',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '规格商品原价' }),
+          (0, typegoose_1.prop)({ required: true, type: Number }),
+          __metadata('design:type', Number),
+        ],
+        ProductSku.prototype,
+        'costPrice',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '规格商品价格' }),
+          (0, typegoose_1.prop)({ required: true, type: Number }),
+          __metadata('design:type', Number),
+        ],
+        ProductSku.prototype,
+        'price',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)(),
+          (0, typegoose_1.prop)({ required: true }),
+          __metadata('design:type', Object),
+        ],
+        ProductSku.prototype,
+        'weight',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '货号' }),
+          (0, typegoose_1.prop)(),
+          __metadata('design:type', Object),
+        ],
+        ProductSku.prototype,
+        'artNo',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '规格属性值集' }),
+          (0, typegoose_1.prop)(),
+          __metadata('design:type', Array),
+        ],
+        ProductSku.prototype,
+        'skuNames',
+        void 0,
+      );
+      ProductSku = __decorate(
+        [
+          (0, typegoose_1.ModelOptions)({
+            schemaOptions: {
+              timestamps: true,
+            },
+            options: {
+              allowMixed: typegoose_1.Severity.ALLOW,
+            },
+          }),
+        ],
+        ProductSku,
+      );
+      exports.ProductSku = ProductSku;
+
+      /***/
+    },
+    /* 33 */
+    /***/ function (__unused_webpack_module, exports, __webpack_require__) {
+      var __decorate =
+        (this && this.__decorate) ||
+        function (decorators, target, key, desc) {
+          var c = arguments.length,
+            r =
+              c < 3
+                ? target
+                : desc === null
+                ? (desc = Object.getOwnPropertyDescriptor(target, key))
+                : desc,
+            d;
+          if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+            r = Reflect.decorate(decorators, target, key, desc);
+          else
+            for (var i = decorators.length - 1; i >= 0; i--)
+              if ((d = decorators[i]))
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+          return c > 3 && r && Object.defineProperty(target, key, r), r;
+        };
+      var __metadata =
+        (this && this.__metadata) ||
+        function (k, v) {
+          if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+            return Reflect.metadata(k, v);
+        };
+      var _a;
+      Object.defineProperty(exports, '__esModule', { value: true });
       exports.UserAddress = void 0;
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       let UserAddress = class UserAddress {};
       __decorate(
         [
@@ -2217,7 +2389,7 @@
 
       /***/
     },
-    /* 33 */
+    /* 34 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -2249,8 +2421,8 @@
       exports.User = void 0;
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
-      const bcryptjs_1 = __webpack_require__(34);
-      const user_enum_1 = __webpack_require__(35);
+      const bcryptjs_1 = __webpack_require__(35);
+      const user_enum_1 = __webpack_require__(36);
       let User = class User {};
       __decorate(
         [
@@ -2422,13 +2594,13 @@
 
       /***/
     },
-    /* 34 */
+    /* 35 */
     /***/ (module) => {
       module.exports = require('bcryptjs');
 
       /***/
     },
-    /* 35 */
+    /* 36 */
     /***/ (__unused_webpack_module, exports) => {
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.Gender = void 0;
@@ -2440,7 +2612,7 @@
 
       /***/
     },
-    /* 36 */
+    /* 37 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -2464,13 +2636,13 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.AuthModule = void 0;
       const common_1 = __webpack_require__(5);
-      const jwt_1 = __webpack_require__(37);
+      const jwt_1 = __webpack_require__(38);
       const passport_1 = __webpack_require__(12);
-      const jwt_config_1 = __webpack_require__(38);
-      const auth_controller_1 = __webpack_require__(39);
-      const web_jwt_strategy_1 = __webpack_require__(45);
-      const web_local_strategy_1 = __webpack_require__(47);
-      const auth_service_1 = __webpack_require__(40);
+      const jwt_config_1 = __webpack_require__(39);
+      const auth_controller_1 = __webpack_require__(40);
+      const web_jwt_strategy_1 = __webpack_require__(46);
+      const web_local_strategy_1 = __webpack_require__(48);
+      const auth_service_1 = __webpack_require__(41);
       let AuthModule = class AuthModule {};
       AuthModule = __decorate(
         [
@@ -2496,13 +2668,13 @@
 
       /***/
     },
-    /* 37 */
+    /* 38 */
     /***/ (module) => {
       module.exports = require('@nestjs/jwt');
 
       /***/
     },
-    /* 38 */
+    /* 39 */
     /***/ (__unused_webpack_module, exports) => {
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.webJwtConfig = exports.adminJwtConfig = void 0;
@@ -2517,7 +2689,7 @@
 
       /***/
     },
-    /* 39 */
+    /* 40 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -2555,15 +2727,15 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.AuthController = void 0;
       const common_1 = __webpack_require__(5);
-      const jwt_1 = __webpack_require__(37);
+      const jwt_1 = __webpack_require__(38);
       const passport_1 = __webpack_require__(12);
       const swagger_1 = __webpack_require__(2);
       const ResponseResultModel_1 = __webpack_require__(8);
-      const auth_service_1 = __webpack_require__(40);
-      const web_login_dto_1 = __webpack_require__(41);
-      const web_register_dto_1 = __webpack_require__(42);
-      const tnwx_1 = __webpack_require__(43);
-      const mini_program_login_dto_1 = __webpack_require__(44);
+      const auth_service_1 = __webpack_require__(41);
+      const web_login_dto_1 = __webpack_require__(42);
+      const web_register_dto_1 = __webpack_require__(43);
+      const tnwx_1 = __webpack_require__(44);
+      const mini_program_login_dto_1 = __webpack_require__(45);
       let AuthController = class AuthController {
         constructor(jwtService, authServe) {
           this.jwtService = jwtService;
@@ -2703,7 +2875,7 @@
 
       /***/
     },
-    /* 40 */
+    /* 41 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -2742,7 +2914,7 @@
       exports.AuthService = void 0;
       const common_1 = __webpack_require__(5);
       const typegoose_1 = __webpack_require__(16);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       const nestjs_typegoose_1 = __webpack_require__(26);
       let AuthService = class AuthService {
         constructor(userModel) {
@@ -2777,7 +2949,7 @@
 
       /***/
     },
-    /* 41 */
+    /* 42 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -2837,7 +3009,7 @@
 
       /***/
     },
-    /* 42 */
+    /* 43 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -2933,13 +3105,13 @@
 
       /***/
     },
-    /* 43 */
+    /* 44 */
     /***/ (module) => {
       module.exports = require('tnwx');
 
       /***/
     },
-    /* 44 */
+    /* 45 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -3024,7 +3196,7 @@
 
       /***/
     },
-    /* 45 */
+    /* 46 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -3061,12 +3233,12 @@
       var _a;
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.WebJwtStrategy = void 0;
-      const passport_jwt_1 = __webpack_require__(46);
+      const passport_jwt_1 = __webpack_require__(47);
       const passport_1 = __webpack_require__(12);
       const nestjs_typegoose_1 = __webpack_require__(26);
       const typegoose_1 = __webpack_require__(16);
-      const user_model_1 = __webpack_require__(33);
-      const jwt_config_1 = __webpack_require__(38);
+      const user_model_1 = __webpack_require__(34);
+      const jwt_config_1 = __webpack_require__(39);
       let WebJwtStrategy = class WebJwtStrategy extends (0, passport_1.PassportStrategy)(
         passport_jwt_1.Strategy,
         'web-jwt',
@@ -3100,13 +3272,13 @@
 
       /***/
     },
-    /* 46 */
+    /* 47 */
     /***/ (module) => {
       module.exports = require('passport-jwt');
 
       /***/
     },
-    /* 47 */
+    /* 48 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -3143,12 +3315,12 @@
       var _a;
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.WebLocalStrategy = void 0;
-      const passport_local_1 = __webpack_require__(48);
+      const passport_local_1 = __webpack_require__(49);
       const passport_1 = __webpack_require__(12);
       const nestjs_typegoose_1 = __webpack_require__(26);
       const typegoose_1 = __webpack_require__(16);
-      const bcryptjs_1 = __webpack_require__(34);
-      const user_model_1 = __webpack_require__(33);
+      const bcryptjs_1 = __webpack_require__(35);
+      const user_model_1 = __webpack_require__(34);
       const ResponseResultModel_1 = __webpack_require__(8);
       let WebLocalStrategy = class WebLocalStrategy extends (0, passport_1.PassportStrategy)(
         passport_local_1.Strategy,
@@ -3192,13 +3364,13 @@
 
       /***/
     },
-    /* 48 */
+    /* 49 */
     /***/ (module) => {
       module.exports = require('passport-local');
 
       /***/
     },
-    /* 49 */
+    /* 50 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __createBinding =
         (this && this.__createBinding) ||
@@ -3228,12 +3400,12 @@
               __createBinding(exports, m, p);
         };
       Object.defineProperty(exports, '__esModule', { value: true });
-      __exportStar(__webpack_require__(50), exports);
+      __exportStar(__webpack_require__(51), exports);
       __exportStar(__webpack_require__(75), exports);
 
       /***/
     },
-    /* 50 */
+    /* 51 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -3257,8 +3429,8 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.CommonModule = void 0;
       const common_1 = __webpack_require__(5);
-      const config_1 = __webpack_require__(51);
-      const db_1 = __webpack_require__(52);
+      const config_1 = __webpack_require__(52);
+      const db_1 = __webpack_require__(53);
       const common_service_1 = __webpack_require__(75);
       let CommonModule = class CommonModule {};
       CommonModule = __decorate(
@@ -3281,13 +3453,13 @@
 
       /***/
     },
-    /* 51 */
+    /* 52 */
     /***/ (module) => {
       module.exports = require('@nestjs/config');
 
       /***/
     },
-    /* 52 */
+    /* 53 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __createBinding =
         (this && this.__createBinding) ||
@@ -3317,12 +3489,12 @@
               __createBinding(exports, m, p);
         };
       Object.defineProperty(exports, '__esModule', { value: true });
-      __exportStar(__webpack_require__(53), exports);
-      __exportStar(__webpack_require__(55), exports);
+      __exportStar(__webpack_require__(54), exports);
+      __exportStar(__webpack_require__(56), exports);
 
       /***/
     },
-    /* 53 */
+    /* 54 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -3346,37 +3518,37 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.DbModule = void 0;
       const common_1 = __webpack_require__(5);
-      const db_config_1 = __webpack_require__(54);
+      const db_config_1 = __webpack_require__(55);
       const nestjs_typegoose_1 = __webpack_require__(26);
-      const db_service_1 = __webpack_require__(55);
-      const admin_model_1 = __webpack_require__(56);
+      const db_service_1 = __webpack_require__(56);
+      const admin_model_1 = __webpack_require__(57);
       const banner_model_1 = __webpack_require__(17);
       const category_model_1 = __webpack_require__(21);
-      const chat_conversation_record_model_1 = __webpack_require__(59);
-      const chat_messages_model_1 = __webpack_require__(61);
+      const chat_conversation_record_model_1 = __webpack_require__(60);
+      const chat_messages_model_1 = __webpack_require__(62);
       const classify_navigation_model_1 = __webpack_require__(23);
-      const coupon_model_1 = __webpack_require__(62);
-      const customer_service_model_1 = __webpack_require__(60);
-      const library_category_model_1 = __webpack_require__(63);
-      const media_library_model_1 = __webpack_require__(64);
-      const menu_model_1 = __webpack_require__(58);
-      const news_model_1 = __webpack_require__(65);
+      const coupon_model_1 = __webpack_require__(63);
+      const customer_service_model_1 = __webpack_require__(61);
+      const library_category_model_1 = __webpack_require__(64);
+      const media_library_model_1 = __webpack_require__(65);
+      const menu_model_1 = __webpack_require__(59);
+      const news_model_1 = __webpack_require__(66);
       const order_model_1 = __webpack_require__(30);
-      const product_comment_model_1 = __webpack_require__(66);
-      const product_param_model_1 = __webpack_require__(67);
-      const product_sku_attr_model_1 = __webpack_require__(68);
-      const product_sku_model_1 = __webpack_require__(69);
+      const product_comment_model_1 = __webpack_require__(67);
+      const product_param_model_1 = __webpack_require__(68);
+      const product_sku_attr_model_1 = __webpack_require__(69);
+      const product_sku_model_1 = __webpack_require__(32);
       const product_topic_model_1 = __webpack_require__(70);
       const product_unit_model_1 = __webpack_require__(71);
       const product_model_1 = __webpack_require__(19);
-      const role_model_1 = __webpack_require__(57);
+      const role_model_1 = __webpack_require__(58);
       const site_setting_model_1 = __webpack_require__(24);
       const tag_model_1 = __webpack_require__(22);
-      const user_address_model_1 = __webpack_require__(32);
+      const user_address_model_1 = __webpack_require__(33);
       const user_cart_model_1 = __webpack_require__(72);
       const user_collection_model_1 = __webpack_require__(73);
       const user_views_history_model_1 = __webpack_require__(74);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       const models = nestjs_typegoose_1.TypegooseModule.forFeature([
         admin_model_1.Admin,
         role_model_1.Role,
@@ -3429,7 +3601,7 @@
 
       /***/
     },
-    /* 54 */
+    /* 55 */
     /***/ (__unused_webpack_module, exports) => {
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.dbConfig = exports.baseDbConfig = void 0;
@@ -3446,7 +3618,7 @@
 
       /***/
     },
-    /* 55 */
+    /* 56 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -3476,7 +3648,7 @@
 
       /***/
     },
-    /* 56 */
+    /* 57 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -3507,8 +3679,8 @@
       exports.Admin = void 0;
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
-      const bcryptjs_1 = __webpack_require__(34);
-      const role_model_1 = __webpack_require__(57);
+      const bcryptjs_1 = __webpack_require__(35);
+      const role_model_1 = __webpack_require__(58);
       let Admin = class Admin {};
       __decorate(
         [
@@ -3593,7 +3765,7 @@
 
       /***/
     },
-    /* 57 */
+    /* 58 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -3624,7 +3796,7 @@
       exports.Role = void 0;
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
-      const menu_model_1 = __webpack_require__(58);
+      const menu_model_1 = __webpack_require__(59);
       let Role = class Role {};
       __decorate(
         [
@@ -3680,7 +3852,7 @@
 
       /***/
     },
-    /* 58 */
+    /* 59 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -3916,7 +4088,7 @@
 
       /***/
     },
-    /* 59 */
+    /* 60 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -3948,8 +4120,8 @@
       exports.ChatConversationRecord = void 0;
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
-      const customer_service_model_1 = __webpack_require__(60);
-      const user_model_1 = __webpack_require__(33);
+      const customer_service_model_1 = __webpack_require__(61);
+      const user_model_1 = __webpack_require__(34);
       let ChatConversationRecord = class ChatConversationRecord {};
       __decorate(
         [
@@ -4064,7 +4236,7 @@
 
       /***/
     },
-    /* 60 */
+    /* 61 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -4095,7 +4267,7 @@
       exports.CustomerService = void 0;
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
-      const bcryptjs_1 = __webpack_require__(34);
+      const bcryptjs_1 = __webpack_require__(35);
       let CustomerService = class CustomerService {};
       __decorate(
         [
@@ -4180,7 +4352,7 @@
 
       /***/
     },
-    /* 61 */
+    /* 62 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -4391,7 +4563,7 @@
 
       /***/
     },
-    /* 62 */
+    /* 63 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -4535,7 +4707,7 @@
 
       /***/
     },
-    /* 63 */
+    /* 64 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -4607,7 +4779,7 @@
 
       /***/
     },
-    /* 64 */
+    /* 65 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -4639,7 +4811,7 @@
       exports.MediaLibrary = void 0;
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
-      const library_category_model_1 = __webpack_require__(63);
+      const library_category_model_1 = __webpack_require__(64);
       let MediaLibrary = class MediaLibrary {};
       __decorate(
         [
@@ -4703,7 +4875,7 @@
 
       /***/
     },
-    /* 65 */
+    /* 66 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -4780,7 +4952,7 @@
 
       /***/
     },
-    /* 66 */
+    /* 67 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -4813,7 +4985,7 @@
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
       const product_model_1 = __webpack_require__(19);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       let ProductComment = class ProductComment {};
       __decorate(
         [
@@ -4902,7 +5074,7 @@
 
       /***/
     },
-    /* 67 */
+    /* 68 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -4981,7 +5153,7 @@
 
       /***/
     },
-    /* 68 */
+    /* 69 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -5061,142 +5233,6 @@
         ProductSkuAttr,
       );
       exports.ProductSkuAttr = ProductSkuAttr;
-
-      /***/
-    },
-    /* 69 */
-    /***/ function (__unused_webpack_module, exports, __webpack_require__) {
-      var __decorate =
-        (this && this.__decorate) ||
-        function (decorators, target, key, desc) {
-          var c = arguments.length,
-            r =
-              c < 3
-                ? target
-                : desc === null
-                ? (desc = Object.getOwnPropertyDescriptor(target, key))
-                : desc,
-            d;
-          if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
-            r = Reflect.decorate(decorators, target, key, desc);
-          else
-            for (var i = decorators.length - 1; i >= 0; i--)
-              if ((d = decorators[i]))
-                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-      var __metadata =
-        (this && this.__metadata) ||
-        function (k, v) {
-          if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
-            return Reflect.metadata(k, v);
-        };
-      var _a;
-      Object.defineProperty(exports, '__esModule', { value: true });
-      exports.ProductSku = void 0;
-      const swagger_1 = __webpack_require__(2);
-      const typegoose_1 = __webpack_require__(16);
-      const product_model_1 = __webpack_require__(19);
-      let ProductSku = class ProductSku {};
-      __decorate(
-        [
-          (0, swagger_1.ApiProperty)({ title: '商品id' }),
-          (0, typegoose_1.prop)({ ref: () => product_model_1.Product, required: true }),
-          __metadata(
-            'design:type',
-            typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
-              ? _a
-              : Object,
-          ),
-        ],
-        ProductSku.prototype,
-        'productId',
-        void 0,
-      );
-      __decorate(
-        [
-          (0, swagger_1.ApiProperty)({ title: '规格商品图片' }),
-          (0, typegoose_1.prop)(),
-          __metadata('design:type', String),
-        ],
-        ProductSku.prototype,
-        'image',
-        void 0,
-      );
-      __decorate(
-        [
-          (0, swagger_1.ApiProperty)({ title: '规格商品库存' }),
-          (0, typegoose_1.prop)({ required: true, type: Number }),
-          __metadata('design:type', Number),
-        ],
-        ProductSku.prototype,
-        'inventory',
-        void 0,
-      );
-      __decorate(
-        [
-          (0, swagger_1.ApiProperty)({ title: '规格商品原价' }),
-          (0, typegoose_1.prop)({ required: true, type: Number }),
-          __metadata('design:type', Number),
-        ],
-        ProductSku.prototype,
-        'costPrice',
-        void 0,
-      );
-      __decorate(
-        [
-          (0, swagger_1.ApiProperty)({ title: '规格商品价格' }),
-          (0, typegoose_1.prop)({ required: true, type: Number }),
-          __metadata('design:type', Number),
-        ],
-        ProductSku.prototype,
-        'price',
-        void 0,
-      );
-      __decorate(
-        [
-          (0, swagger_1.ApiProperty)(),
-          (0, typegoose_1.prop)({ required: true }),
-          __metadata('design:type', Object),
-        ],
-        ProductSku.prototype,
-        'weight',
-        void 0,
-      );
-      __decorate(
-        [
-          (0, swagger_1.ApiProperty)({ title: '货号' }),
-          (0, typegoose_1.prop)(),
-          __metadata('design:type', Object),
-        ],
-        ProductSku.prototype,
-        'artNo',
-        void 0,
-      );
-      __decorate(
-        [
-          (0, swagger_1.ApiProperty)({ title: '规格属性值集' }),
-          (0, typegoose_1.prop)(),
-          __metadata('design:type', Array),
-        ],
-        ProductSku.prototype,
-        'skuNames',
-        void 0,
-      );
-      ProductSku = __decorate(
-        [
-          (0, typegoose_1.ModelOptions)({
-            schemaOptions: {
-              timestamps: true,
-            },
-            options: {
-              allowMixed: typegoose_1.Severity.ALLOW,
-            },
-          }),
-        ],
-        ProductSku,
-      );
-      exports.ProductSku = ProductSku;
 
       /***/
     },
@@ -5401,9 +5437,9 @@
       exports.UserCart = void 0;
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
-      const product_sku_model_1 = __webpack_require__(69);
+      const product_sku_model_1 = __webpack_require__(32);
       const product_model_1 = __webpack_require__(19);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       let UserCart = class UserCart {};
       __decorate(
         [
@@ -5557,7 +5593,7 @@
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
       const product_model_1 = __webpack_require__(19);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       let UserCollection = class UserCollection {};
       __decorate(
         [
@@ -5636,7 +5672,7 @@
       const swagger_1 = __webpack_require__(2);
       const typegoose_1 = __webpack_require__(16);
       const product_model_1 = __webpack_require__(19);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       let UserViewsHistory = class UserViewsHistory {};
       __decorate(
         [
@@ -5738,8 +5774,8 @@
       const common_1 = __webpack_require__(5);
       const product_service_1 = __webpack_require__(77);
       const product_controller_1 = __webpack_require__(78);
-      const jwt_1 = __webpack_require__(37);
-      const jwt_config_1 = __webpack_require__(38);
+      const jwt_1 = __webpack_require__(38);
+      const jwt_config_1 = __webpack_require__(39);
       let ProductModule = class ProductModule {};
       ProductModule = __decorate(
         [
@@ -5799,8 +5835,8 @@
       exports.ProductService = void 0;
       const common_1 = __webpack_require__(5);
       const typegoose_1 = __webpack_require__(16);
-      const product_sku_attr_model_1 = __webpack_require__(68);
-      const product_sku_model_1 = __webpack_require__(69);
+      const product_sku_attr_model_1 = __webpack_require__(69);
+      const product_sku_model_1 = __webpack_require__(32);
       const product_model_1 = __webpack_require__(19);
       const user_collection_model_1 = __webpack_require__(73);
       const user_views_history_model_1 = __webpack_require__(74);
@@ -5951,12 +5987,12 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ProductController = void 0;
       const common_1 = __webpack_require__(5);
-      const jwt_1 = __webpack_require__(37);
+      const jwt_1 = __webpack_require__(38);
       const passport_1 = __webpack_require__(12);
       const swagger_1 = __webpack_require__(2);
       const parse_id_pipe_1 = __webpack_require__(79);
       const ResponseResultModel_1 = __webpack_require__(8);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       const current_user_decorator_1 = __webpack_require__(81);
       const product_service_1 = __webpack_require__(77);
       let ProductController = class ProductController {
@@ -6253,7 +6289,7 @@
       exports.UserService = void 0;
       const common_1 = __webpack_require__(5);
       const typegoose_1 = __webpack_require__(16);
-      const user_address_model_1 = __webpack_require__(32);
+      const user_address_model_1 = __webpack_require__(33);
       const user_collection_model_1 = __webpack_require__(73);
       const user_views_history_model_1 = __webpack_require__(74);
       const nestjs_typegoose_1 = __webpack_require__(26);
@@ -6380,7 +6416,7 @@
       const swagger_1 = __webpack_require__(2);
       const parse_id_pipe_1 = __webpack_require__(79);
       const ResponseResultModel_1 = __webpack_require__(8);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       const current_user_decorator_1 = __webpack_require__(81);
       const create_user_address_dto_1 = __webpack_require__(85);
       const update_address_default_dto_1 = __webpack_require__(86);
@@ -6969,7 +7005,7 @@
       const user_cart_service_1 = __webpack_require__(89);
       const create_user_cart_dto_1 = __webpack_require__(91);
       const swagger_1 = __webpack_require__(2);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       const current_user_decorator_1 = __webpack_require__(81);
       const ResponseResultModel_1 = __webpack_require__(8);
       const passport_1 = __webpack_require__(12);
@@ -7249,7 +7285,7 @@
       const orderStatus_enum_1 = __webpack_require__(31);
       const ResponseResultModel_1 = __webpack_require__(8);
       const order_model_1 = __webpack_require__(30);
-      const product_sku_model_1 = __webpack_require__(69);
+      const product_sku_model_1 = __webpack_require__(32);
       const product_model_1 = __webpack_require__(19);
       const user_cart_model_1 = __webpack_require__(72);
       const nestjs_typegoose_1 = __webpack_require__(26);
@@ -7270,6 +7306,10 @@
                 { hasStock: false },
               );
               throw new ResponseResultModel_1.ApiFail(101, `${item.productName}-库存不足`);
+            } else {
+              await this.productSkuModel.findByIdAndUpdate(item.skuId, {
+                $inc: { inventory: -1 },
+              });
             }
             if (!item.skuId) {
               const product = await this.productModel.findById(item.productId);
@@ -7279,6 +7319,10 @@
                   { hasStock: false },
                 );
                 throw new ResponseResultModel_1.ApiFail(101, `${item.productName}-库存不足`);
+              } else {
+                await this.productModel.findByIdAndUpdate(item.productId, {
+                  $inc: { inventory: -1 },
+                });
               }
             }
           }
@@ -7287,6 +7331,9 @@
               await this.userCartModel.findByIdAndDelete(item);
             }
           }
+          await this.productModel.findByIdAndUpdate(createOrderDto.products[0].productId, {
+            $inc: { sales: 1 },
+          });
           return await this.orderModel.create(createOrderDto);
         }
         async findAll(userId, queryUserOrderDto) {
@@ -7402,7 +7449,7 @@
       const swagger_1 = __webpack_require__(2);
       const parse_id_pipe_1 = __webpack_require__(79);
       const current_user_decorator_1 = __webpack_require__(81);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       const passport_1 = __webpack_require__(12);
       const ResponseResultModel_1 = __webpack_require__(8);
       const query_user_oder_dto_1 = __webpack_require__(96);
@@ -7834,7 +7881,7 @@
       const typegoose_1 = __webpack_require__(16);
       const orderStatus_enum_1 = __webpack_require__(31);
       const order_model_1 = __webpack_require__(30);
-      const product_comment_model_1 = __webpack_require__(66);
+      const product_comment_model_1 = __webpack_require__(67);
       const nestjs_typegoose_1 = __webpack_require__(26);
       let ProductCommentService = class ProductCommentService {
         constructor(productCommentModel, OrderModel) {
@@ -7921,7 +7968,7 @@
       const swagger_1 = __webpack_require__(2);
       const passport_1 = __webpack_require__(12);
       const current_user_decorator_1 = __webpack_require__(81);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       const ResponseResultModel_1 = __webpack_require__(8);
       const parse_id_pipe_1 = __webpack_require__(79);
       const platform_express_1 = __webpack_require__(13);
@@ -8198,7 +8245,7 @@
       exports.ChatNessageService = void 0;
       const common_1 = __webpack_require__(5);
       const typegoose_1 = __webpack_require__(16);
-      const chat_messages_model_1 = __webpack_require__(61);
+      const chat_messages_model_1 = __webpack_require__(62);
       const nestjs_typegoose_1 = __webpack_require__(26);
       let ChatNessageService = class ChatNessageService {
         constructor(chatMessageModel) {
@@ -8281,7 +8328,7 @@
       const passport_1 = __webpack_require__(12);
       const swagger_1 = __webpack_require__(2);
       const ResponseResultModel_1 = __webpack_require__(8);
-      const user_model_1 = __webpack_require__(33);
+      const user_model_1 = __webpack_require__(34);
       const current_user_decorator_1 = __webpack_require__(81);
       const chat_nessage_service_1 = __webpack_require__(102);
       let ChatNessageController = class ChatNessageController {

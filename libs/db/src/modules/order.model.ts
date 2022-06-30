@@ -4,13 +4,14 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-16 17:18:29
- * @LastEditTime: 2022-04-28 16:22:44
- * @Description: Modify here please
+ * @LastEditTime: 2022-06-30 14:45:37
+ * @Description: 订单相关实体模型
  */
 
 import { ApiProperty } from '@nestjs/swagger';
 import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
 import { OrderStatus } from 'libs/common/enum/orderStatus.enum';
+import { ProductSku } from './product-sku.model';
 import { Product } from './product.model';
 import { UserAddress } from './user-address.model';
 import { User } from './user.model';
@@ -20,6 +21,14 @@ class BuyProduct {
   @prop({ ref: () => Product })
   productId: Ref<Product>;
 
+  @ApiProperty({ title: '商品标题' })
+  @prop()
+  productName: string;
+
+  @ApiProperty({ title: '商品封面图' })
+  @prop()
+  productPic: string;
+
   @ApiProperty({ title: '商品选购数量' })
   @prop()
   num: number;
@@ -27,6 +36,10 @@ class BuyProduct {
   @ApiProperty({ title: '商品价格' })
   @prop()
   price: number;
+
+  @ApiProperty({ title: '商品规格id' })
+  @prop({ ref: () => ProductSku })
+  skuId?: Ref<ProductSku>;
 
   @ApiProperty({ title: '商品规格名' })
   @prop()
