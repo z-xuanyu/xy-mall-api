@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:57:10
- * @LastEditTime: 2022-07-01 10:30:03
+ * @LastEditTime: 2022-07-01 17:15:36
  * @Description: 数据库模型
  */
 import { Global, Module } from '@nestjs/common';
@@ -38,6 +38,7 @@ import { UserAddress } from './modules/user-address.model';
 import { UserCart } from './modules/user-cart.model';
 import { UserCollection } from './modules/user-collection.model';
 import { UserIntegral } from './modules/user-integral.model';
+import { UserLabel } from './modules/user-label.model';
 import { UserViewsHistory } from './modules/user-views-history.model';
 import { User } from './modules/user.model';
 
@@ -52,6 +53,7 @@ const models = TypegooseModule.forFeature([
   UserViewsHistory,
   UserCart,
   UserIntegral,
+  UserLabel,
   Coupon,
   ClassifyNavigation,
   Tag,

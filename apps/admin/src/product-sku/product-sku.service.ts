@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-15 11:36:15
- * @LastEditTime: 2022-04-02 16:48:34
+ * @LastEditTime: 2022-07-01 17:03:48
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -21,7 +21,9 @@ export class ProductSkuService {
   constructor(
     @InjectModel(ProductSkuAttr)
     private productSkuAttrModel: ReturnModelType<typeof ProductSkuAttr>,
-  ) {}
+  ) {
+    console.log('ProductSkuService');
+  }
 
   /**
    * 添加产品规格模板
@@ -44,7 +46,7 @@ export class ProductSkuService {
   async findAll(parameters: QueryProductSkuDto): Promise<PaginationResult<Array<ProductSkuAttr>>> {
     let total = 0;
     const result = await this.productSkuAttrModel
-      .find({ name: { $regex: new RegExp(parameters.name, 'i') } })
+      .find({ name: { $regex: new RegExp(parameters.name, 'i') }, productId: null })
       .limit(~~parameters.pageSize)
       .skip(~~((parameters.pageNumber - 1) * parameters.pageSize))
       .then((doc) => {

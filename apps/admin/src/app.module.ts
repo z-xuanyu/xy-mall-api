@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 09:54:20
- * @LastEditTime: 2022-06-27 10:19:06
+ * @LastEditTime: 2022-07-01 17:17:04
  * @Description: Modify here please
  */
 import { Module } from '@nestjs/common';
@@ -40,6 +40,7 @@ import { CustomerServiceModule } from './customer-service/customer-service.modul
 // import * as nuid from 'nuid';
 // import { join } from 'path';
 import { UserIntegralModule } from './user-integral/user-integral.module';
+import { UserLabelModule } from './user-label/user-label.module';
 
 @Module({
   imports: [
@@ -63,6 +64,7 @@ import { UserIntegralModule } from './user-integral/user-integral.module';
     UserModule,
     UserAddressModule,
     UserCollectionModule,
+    UserIntegralModule,
     OrderModule,
     NewsModule,
     TagModule,
@@ -79,7 +81,7 @@ import { UserIntegralModule } from './user-integral/user-integral.module';
     ProductUnitModule,
     CustomerServiceModule,
     SettingsModule,
-    UserIntegralModule,
+    UserLabelModule,
   ],
   controllers: [AppController],
   providers: [AppService],
