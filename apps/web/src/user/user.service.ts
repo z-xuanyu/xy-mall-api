@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 16:09:06
- * @LastEditTime: 2022-07-01 12:09:26
+ * @LastEditTime: 2022-07-01 14:13:16
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -64,6 +64,7 @@ export class UserService {
           pic: '$product.pic',
           price: '$product.price',
           views: '$product.views',
+          goods_id: '$product._id',
         },
       },
     ]);
@@ -102,6 +103,7 @@ export class UserService {
           pic: '$product.pic',
           price: '$product.price',
           views: '$product.views',
+          goods_id: '$product._id',
         },
       },
     ]);

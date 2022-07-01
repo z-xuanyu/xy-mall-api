@@ -6462,6 +6462,7 @@
                 pic: '$product.pic',
                 price: '$product.price',
                 views: '$product.views',
+                goods_id: '$product._id',
               },
             },
           ]);
@@ -6492,6 +6493,7 @@
                 pic: '$product.pic',
                 price: '$product.price',
                 views: '$product.views',
+                goods_id: '$product._id',
               },
             },
           ]);

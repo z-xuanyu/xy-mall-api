@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:46:30
- * @LastEditTime: 2022-06-10 17:55:33
+ * @LastEditTime: 2022-07-01 14:05:19
  * @Description: Modify here please
 -->
 
@@ -104,13 +104,13 @@ $ yarn 或者 npm install 或者pnpm install
 
 3、设置数据数据库链接字符串，文件目录在：<span style="color: red">libs/common/config/src/db.confug.ts</span> , 把里面链接替换成自己数据库信息，注意：先安装配置好 Mongodb 数据库，项目默认设置密码链接，建议大家配置密码链接数据库，详细配置<a href="https://www.zhouxuanyu.com/archives/88.html">点击查看配置教程</a>，如果想不想配置密码链接字符串，请修改链接字符串为：mongodb://127.0.0.1:27017/[数据库名]，
 
-4、修改项目启动端口,文件目录在: <span style="color: red">libs/common/config/src/port.config.ts</span>, 项目有分 admin 端，web 端，需要设置两个不用端口，这里默认 admin 端：3008， web 端：3009。需要修改自行修改。
+4、修改项目启动端口,文件目录在: <span style="color: red">libs/common/config/src/port.config.ts</span>, 项目有分 admin 端，web 端，需要设置两个不同端口，这里默认 admin 端：3008， web 端：3009。需要修改自行修改。
 
 5、修改项目 jwt 秘钥与失效时间。文件目录在：<span style="color: red">libs/common/config/src/jwt.config.ts</span>, 默认 jwt 失效时间 1 天。
 
 6、初始化数据库，脚本未写好，请先导入备份数据库文件 backup/nest-js.sql, 导入数据库可以用个 Navicat Premium 工具等
 
-###### 初始化完成之后 Admin 端的默认最高权限管理员账号：xuanyu@qq.com 密码：123456
+###### 初始化完成之后 Admin 端的默认最高权限管理员账 号：xuanyu@qq.com 密码：123456
 
 7、运行项目
 
