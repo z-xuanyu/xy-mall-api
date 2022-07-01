@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-20 10:56:11
- * @LastEditTime: 2022-03-29 17:47:23
+ * @LastEditTime: 2022-07-01 10:52:57
  * @Description: 商品评价
  */
 
@@ -17,6 +17,9 @@ import { User } from './user.model';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'product_comment',
   },
 })
 export class ProductComment {

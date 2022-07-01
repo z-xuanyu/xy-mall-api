@@ -39,6 +39,7 @@ import { CustomerServiceModule } from './customer-service/customer-service.modul
 // import { diskStorage } from 'multer';
 // import * as nuid from 'nuid';
 // import { join } from 'path';
+import { UserIntegralModule } from './user-integral/user-integral.module';
 
 @Module({
   imports: [
@@ -78,6 +79,7 @@ import { CustomerServiceModule } from './customer-service/customer-service.modul
     ProductUnitModule,
     CustomerServiceModule,
     SettingsModule,
+    UserIntegralModule,
   ],
   controllers: [AppController],
   providers: [AppService],

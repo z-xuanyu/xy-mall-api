@@ -4,15 +4,22 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-15 16:48:45
- * @LastEditTime: 2022-04-15 16:56:22
- * @Description: Modify here please
+ * @LastEditTime: 2022-07-01 10:44:32
+ * @Description: 会员等级
  */
 import { ApiProperty } from '@nestjs/swagger';
-import { prop } from '@typegoose/typegoose';
+import { ModelOptions, prop } from '@typegoose/typegoose';
 
+@ModelOptions({
+  schemaOptions: {
+    timestamps: true,
+  },
+  options: {
+    customName: 'user_level',
+  },
+})
 export class UserLevel {
   @ApiProperty({ title: '会员等级' })
-  @prop({ type: String })
   icon: string;
 
   @ApiProperty({ title: '等级背景图' })

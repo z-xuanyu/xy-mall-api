@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-25 15:42:08
- * @LastEditTime: 2022-02-25 15:58:07
- * @Description: Modify here please
+ * @LastEditTime: 2022-07-01 10:47:54
+ * @Description: 用户收货地址
  */
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -16,6 +16,9 @@ import { User } from './user.model';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'user_address',
   },
 })
 export class UserAddress {

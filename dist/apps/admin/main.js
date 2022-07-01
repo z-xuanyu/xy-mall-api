@@ -1036,6 +1036,9 @@
         const customer_service_module_1 = __webpack_require__(
           /*! ./customer-service/customer-service.module */ './apps/admin/src/customer-service/customer-service.module.ts',
         );
+        const user_integral_module_1 = __webpack_require__(
+          /*! ./user-integral/user-integral.module */ './apps/admin/src/user-integral/user-integral.module.ts',
+        );
         let AppModule = class AppModule {};
         AppModule = __decorate(
           [
@@ -1066,6 +1069,7 @@
                 product_unit_module_1.ProductUnitModule,
                 customer_service_module_1.CustomerServiceModule,
                 settings_module_1.SettingsModule,
+                user_integral_module_1.UserIntegralModule,
               ],
               controllers: [app_controller_1.AppController],
               providers: [app_service_1.AppService],
@@ -12950,6 +12954,382 @@
         /***/
       },
 
+    /***/ './apps/admin/src/user-integral/dto/create-user-integral.dto.ts':
+      /*!**********************************************************************!*\
+  !*** ./apps/admin/src/user-integral/dto/create-user-integral.dto.ts ***!
+  \**********************************************************************/
+      /***/ function (__unused_webpack_module, exports, __webpack_require__) {
+        var __decorate =
+          (this && this.__decorate) ||
+          function (decorators, target, key, desc) {
+            var c = arguments.length,
+              r =
+                c < 3
+                  ? target
+                  : desc === null
+                  ? (desc = Object.getOwnPropertyDescriptor(target, key))
+                  : desc,
+              d;
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+              r = Reflect.decorate(decorators, target, key, desc);
+            else
+              for (var i = decorators.length - 1; i >= 0; i--)
+                if ((d = decorators[i]))
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            return c > 3 && r && Object.defineProperty(target, key, r), r;
+          };
+        var __metadata =
+          (this && this.__metadata) ||
+          function (k, v) {
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+              return Reflect.metadata(k, v);
+          };
+        Object.defineProperty(exports, '__esModule', { value: true });
+        exports.CreateUserIntegralDto = void 0;
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        class CreateUserIntegralDto {}
+        __decorate(
+          [(0, swagger_1.ApiProperty)({ title: '用户id' }), __metadata('design:type', String)],
+          CreateUserIntegralDto.prototype,
+          'userId',
+          void 0,
+        );
+        __decorate(
+          [(0, swagger_1.ApiProperty)({ title: '积分' }), __metadata('design:type', Number)],
+          CreateUserIntegralDto.prototype,
+          'integral',
+          void 0,
+        );
+        exports.CreateUserIntegralDto = CreateUserIntegralDto;
+
+        /***/
+      },
+
+    /***/ './apps/admin/src/user-integral/dto/update-user-integral.dto.ts':
+      /*!**********************************************************************!*\
+  !*** ./apps/admin/src/user-integral/dto/update-user-integral.dto.ts ***!
+  \**********************************************************************/
+      /***/ (__unused_webpack_module, exports, __webpack_require__) => {
+        Object.defineProperty(exports, '__esModule', { value: true });
+        exports.UpdateUserIntegralDto = void 0;
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const create_user_integral_dto_1 = __webpack_require__(
+          /*! ./create-user-integral.dto */ './apps/admin/src/user-integral/dto/create-user-integral.dto.ts',
+        );
+        class UpdateUserIntegralDto extends (0, swagger_1.PartialType)(
+          create_user_integral_dto_1.CreateUserIntegralDto,
+        ) {}
+        exports.UpdateUserIntegralDto = UpdateUserIntegralDto;
+
+        /***/
+      },
+
+    /***/ './apps/admin/src/user-integral/user-integral.controller.ts':
+      /*!******************************************************************!*\
+  !*** ./apps/admin/src/user-integral/user-integral.controller.ts ***!
+  \******************************************************************/
+      /***/ function (__unused_webpack_module, exports, __webpack_require__) {
+        var __decorate =
+          (this && this.__decorate) ||
+          function (decorators, target, key, desc) {
+            var c = arguments.length,
+              r =
+                c < 3
+                  ? target
+                  : desc === null
+                  ? (desc = Object.getOwnPropertyDescriptor(target, key))
+                  : desc,
+              d;
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+              r = Reflect.decorate(decorators, target, key, desc);
+            else
+              for (var i = decorators.length - 1; i >= 0; i--)
+                if ((d = decorators[i]))
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            return c > 3 && r && Object.defineProperty(target, key, r), r;
+          };
+        var __metadata =
+          (this && this.__metadata) ||
+          function (k, v) {
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+              return Reflect.metadata(k, v);
+          };
+        var __param =
+          (this && this.__param) ||
+          function (paramIndex, decorator) {
+            return function (target, key) {
+              decorator(target, key, paramIndex);
+            };
+          };
+        var _a, _b, _c;
+        Object.defineProperty(exports, '__esModule', { value: true });
+        exports.UserIntegralController = void 0;
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const user_integral_service_1 = __webpack_require__(
+          /*! ./user-integral.service */ './apps/admin/src/user-integral/user-integral.service.ts',
+        );
+        const create_user_integral_dto_1 = __webpack_require__(
+          /*! ./dto/create-user-integral.dto */ './apps/admin/src/user-integral/dto/create-user-integral.dto.ts',
+        );
+        const update_user_integral_dto_1 = __webpack_require__(
+          /*! ./dto/update-user-integral.dto */ './apps/admin/src/user-integral/dto/update-user-integral.dto.ts',
+        );
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        let UserIntegralController = class UserIntegralController {
+          constructor(userIntegralService) {
+            this.userIntegralService = userIntegralService;
+            console.log('UserIntegralController');
+          }
+          create(createUserIntegralDto) {
+            return this.userIntegralService.create(createUserIntegralDto);
+          }
+          findAll() {
+            return this.userIntegralService.findAll();
+          }
+          findOne(id) {
+            return this.userIntegralService.findOne(id);
+          }
+          update(id, updateUserIntegralDto) {
+            return this.userIntegralService.update(id, updateUserIntegralDto);
+          }
+          remove(id) {
+            return this.userIntegralService.remove(id);
+          }
+        };
+        __decorate(
+          [
+            (0, common_1.Post)(),
+            (0, swagger_1.ApiOperation)({ summary: '增加积分' }),
+            __param(0, (0, common_1.Body)()),
+            __metadata('design:type', Function),
+            __metadata('design:paramtypes', [
+              typeof (_a =
+                typeof create_user_integral_dto_1.CreateUserIntegralDto !== 'undefined' &&
+                create_user_integral_dto_1.CreateUserIntegralDto) === 'function'
+                ? _a
+                : Object,
+            ]),
+            __metadata('design:returntype', void 0),
+          ],
+          UserIntegralController.prototype,
+          'create',
+          null,
+        );
+        __decorate(
+          [
+            (0, common_1.Get)(),
+            (0, swagger_1.ApiOperation)({ summary: '会员积分列表' }),
+            __metadata('design:type', Function),
+            __metadata('design:paramtypes', []),
+            __metadata('design:returntype', void 0),
+          ],
+          UserIntegralController.prototype,
+          'findAll',
+          null,
+        );
+        __decorate(
+          [
+            (0, common_1.Get)(':id'),
+            (0, swagger_1.ApiParam)({ name: 'id', description: '积分id' }),
+            (0, swagger_1.ApiOperation)({ summary: '积分详细' }),
+            __param(0, (0, common_1.Param)('id')),
+            __metadata('design:type', Function),
+            __metadata('design:paramtypes', [String]),
+            __metadata('design:returntype', void 0),
+          ],
+          UserIntegralController.prototype,
+          'findOne',
+          null,
+        );
+        __decorate(
+          [
+            (0, common_1.Patch)(':id'),
+            (0, swagger_1.ApiParam)({ name: 'id', description: '积分id' }),
+            (0, swagger_1.ApiOperation)({ summary: '更新积分' }),
+            __param(0, (0, common_1.Param)('id')),
+            __param(1, (0, common_1.Body)()),
+            __metadata('design:type', Function),
+            __metadata('design:paramtypes', [
+              String,
+              typeof (_b =
+                typeof update_user_integral_dto_1.UpdateUserIntegralDto !== 'undefined' &&
+                update_user_integral_dto_1.UpdateUserIntegralDto) === 'function'
+                ? _b
+                : Object,
+            ]),
+            __metadata('design:returntype', void 0),
+          ],
+          UserIntegralController.prototype,
+          'update',
+          null,
+        );
+        __decorate(
+          [
+            (0, common_1.Delete)(':id'),
+            (0, swagger_1.ApiParam)({ name: 'id', description: '积分id' }),
+            (0, swagger_1.ApiOperation)({ summary: '删除积分' }),
+            __param(0, (0, common_1.Param)('id')),
+            __metadata('design:type', Function),
+            __metadata('design:paramtypes', [String]),
+            __metadata('design:returntype', void 0),
+          ],
+          UserIntegralController.prototype,
+          'remove',
+          null,
+        );
+        UserIntegralController = __decorate(
+          [
+            (0, swagger_1.ApiTags)('会员积分'),
+            (0, common_1.Controller)('userIntegral'),
+            __metadata('design:paramtypes', [
+              typeof (_c =
+                typeof user_integral_service_1.UserIntegralService !== 'undefined' &&
+                user_integral_service_1.UserIntegralService) === 'function'
+                ? _c
+                : Object,
+            ]),
+          ],
+          UserIntegralController,
+        );
+        exports.UserIntegralController = UserIntegralController;
+
+        /***/
+      },
+
+    /***/ './apps/admin/src/user-integral/user-integral.module.ts':
+      /*!**************************************************************!*\
+  !*** ./apps/admin/src/user-integral/user-integral.module.ts ***!
+  \**************************************************************/
+      /***/ function (__unused_webpack_module, exports, __webpack_require__) {
+        var __decorate =
+          (this && this.__decorate) ||
+          function (decorators, target, key, desc) {
+            var c = arguments.length,
+              r =
+                c < 3
+                  ? target
+                  : desc === null
+                  ? (desc = Object.getOwnPropertyDescriptor(target, key))
+                  : desc,
+              d;
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+              r = Reflect.decorate(decorators, target, key, desc);
+            else
+              for (var i = decorators.length - 1; i >= 0; i--)
+                if ((d = decorators[i]))
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            return c > 3 && r && Object.defineProperty(target, key, r), r;
+          };
+        Object.defineProperty(exports, '__esModule', { value: true });
+        exports.UserIntegralModule = void 0;
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const user_integral_service_1 = __webpack_require__(
+          /*! ./user-integral.service */ './apps/admin/src/user-integral/user-integral.service.ts',
+        );
+        const user_integral_controller_1 = __webpack_require__(
+          /*! ./user-integral.controller */ './apps/admin/src/user-integral/user-integral.controller.ts',
+        );
+        let UserIntegralModule = class UserIntegralModule {};
+        UserIntegralModule = __decorate(
+          [
+            (0, common_1.Module)({
+              controllers: [user_integral_controller_1.UserIntegralController],
+              providers: [user_integral_service_1.UserIntegralService],
+            }),
+          ],
+          UserIntegralModule,
+        );
+        exports.UserIntegralModule = UserIntegralModule;
+
+        /***/
+      },
+
+    /***/ './apps/admin/src/user-integral/user-integral.service.ts':
+      /*!***************************************************************!*\
+  !*** ./apps/admin/src/user-integral/user-integral.service.ts ***!
+  \***************************************************************/
+      /***/ function (__unused_webpack_module, exports, __webpack_require__) {
+        var __decorate =
+          (this && this.__decorate) ||
+          function (decorators, target, key, desc) {
+            var c = arguments.length,
+              r =
+                c < 3
+                  ? target
+                  : desc === null
+                  ? (desc = Object.getOwnPropertyDescriptor(target, key))
+                  : desc,
+              d;
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+              r = Reflect.decorate(decorators, target, key, desc);
+            else
+              for (var i = decorators.length - 1; i >= 0; i--)
+                if ((d = decorators[i]))
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            return c > 3 && r && Object.defineProperty(target, key, r), r;
+          };
+        var __metadata =
+          (this && this.__metadata) ||
+          function (k, v) {
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+              return Reflect.metadata(k, v);
+          };
+        var __param =
+          (this && this.__param) ||
+          function (paramIndex, decorator) {
+            return function (target, key) {
+              decorator(target, key, paramIndex);
+            };
+          };
+        var _a;
+        Object.defineProperty(exports, '__esModule', { value: true });
+        exports.UserIntegralService = void 0;
+        const common_1 = __webpack_require__(/*! @nestjs/common */ '@nestjs/common');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
+        const user_integral_model_1 = __webpack_require__(
+          /*! libs/db/modules/user-integral.model */ './libs/db/src/modules/user-integral.model.ts',
+        );
+        const nestjs_typegoose_1 = __webpack_require__(/*! nestjs-typegoose */ 'nestjs-typegoose');
+        let UserIntegralService = class UserIntegralService {
+          constructor(userIntegralModel) {
+            this.userIntegralModel = userIntegralModel;
+            console.log('UserIntegralService');
+          }
+          async create(createUserIntegralDto) {
+            return await this.userIntegralModel.create(createUserIntegralDto);
+          }
+          async findAll() {
+            return await this.userIntegralModel.find();
+          }
+          async findOne(id) {
+            return await this.userIntegralModel.findById(id);
+          }
+          async update(id, updateUserIntegralDto) {
+            return await this.userIntegralModel.findByIdAndUpdate(id, updateUserIntegralDto);
+          }
+          async remove(id) {
+            return await this.userIntegralModel.findByIdAndRemove(id);
+          }
+        };
+        UserIntegralService = __decorate(
+          [
+            (0, common_1.Injectable)(),
+            __param(0, (0, nestjs_typegoose_1.InjectModel)(user_integral_model_1.UserIntegral)),
+            __metadata('design:paramtypes', [
+              typeof (_a =
+                typeof typegoose_1.ReturnModelType !== 'undefined' &&
+                typegoose_1.ReturnModelType) === 'function'
+                ? _a
+                : Object,
+            ]),
+          ],
+          UserIntegralService,
+        );
+        exports.UserIntegralService = UserIntegralService;
+
+        /***/
+      },
+
     /***/ './apps/admin/src/user/dto/create-user.dto.ts':
       /*!****************************************************!*\
   !*** ./apps/admin/src/user/dto/create-user.dto.ts ***!
@@ -14475,6 +14855,9 @@
         const user_collection_model_1 = __webpack_require__(
           /*! ./modules/user-collection.model */ './libs/db/src/modules/user-collection.model.ts',
         );
+        const user_integral_model_1 = __webpack_require__(
+          /*! ./modules/user-integral.model */ './libs/db/src/modules/user-integral.model.ts',
+        );
         const user_views_history_model_1 = __webpack_require__(
           /*! ./modules/user-views-history.model */ './libs/db/src/modules/user-views-history.model.ts',
         );
@@ -14490,6 +14873,7 @@
           user_collection_model_1.UserCollection,
           user_views_history_model_1.UserViewsHistory,
           user_cart_model_1.UserCart,
+          user_integral_model_1.UserIntegral,
           coupon_model_1.Coupon,
           classify_navigation_model_1.ClassifyNavigation,
           tag_model_1.Tag,
@@ -16295,13 +16679,16 @@
             if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
               return Reflect.metadata(k, v);
           };
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
         Object.defineProperty(exports, '__esModule', { value: true });
         exports.Order = void 0;
         const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
         const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
         const orderStatus_enum_1 = __webpack_require__(
           /*! libs/common/enum/orderStatus.enum */ './libs/common/src/enum/orderStatus.enum.ts',
+        );
+        const product_sku_model_1 = __webpack_require__(
+          /*! ./product-sku.model */ './libs/db/src/modules/product-sku.model.ts',
         );
         const product_model_1 = __webpack_require__(
           /*! ./product.model */ './libs/db/src/modules/product.model.ts',
@@ -16330,6 +16717,26 @@
         );
         __decorate(
           [
+            (0, swagger_1.ApiProperty)({ title: '商品标题' }),
+            (0, typegoose_1.prop)(),
+            __metadata('design:type', String),
+          ],
+          BuyProduct.prototype,
+          'productName',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '商品封面图' }),
+            (0, typegoose_1.prop)(),
+            __metadata('design:type', String),
+          ],
+          BuyProduct.prototype,
+          'productPic',
+          void 0,
+        );
+        __decorate(
+          [
             (0, swagger_1.ApiProperty)({ title: '商品选购数量' }),
             (0, typegoose_1.prop)(),
             __metadata('design:type', Number),
@@ -16346,6 +16753,21 @@
           ],
           BuyProduct.prototype,
           'price',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '商品规格id' }),
+            (0, typegoose_1.prop)({ ref: () => product_sku_model_1.ProductSku }),
+            __metadata(
+              'design:type',
+              typeof (_b = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
+                ? _b
+                : Object,
+            ),
+          ],
+          BuyProduct.prototype,
+          'skuId',
           void 0,
         );
         __decorate(
@@ -16378,7 +16800,7 @@
             (0, typegoose_1.prop)({ type: [BuyProduct] }),
             __metadata(
               'design:type',
-              typeof (_b = typeof Array !== 'undefined' && Array) === 'function' ? _b : Object,
+              typeof (_c = typeof Array !== 'undefined' && Array) === 'function' ? _c : Object,
             ),
           ],
           Order.prototype,
@@ -16391,8 +16813,8 @@
             (0, typegoose_1.prop)({ ref: () => user_model_1.User }),
             __metadata(
               'design:type',
-              typeof (_c = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
-                ? _c
+              typeof (_d = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
+                ? _d
                 : Object,
             ),
           ],
@@ -16430,10 +16852,10 @@
             }),
             __metadata(
               'design:type',
-              typeof (_d =
+              typeof (_e =
                 typeof orderStatus_enum_1.OrderStatus !== 'undefined' &&
                 orderStatus_enum_1.OrderStatus) === 'function'
-                ? _d
+                ? _e
                 : Object,
             ),
           ],
@@ -16477,8 +16899,8 @@
             (0, typegoose_1.prop)({ ref: () => user_address_model_1.UserAddress }),
             __metadata(
               'design:type',
-              typeof (_e = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
-                ? _e
+              typeof (_f = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
+                ? _f
                 : Object,
             ),
           ],
@@ -16492,7 +16914,7 @@
             (0, typegoose_1.prop)({ type: Date }),
             __metadata(
               'design:type',
-              typeof (_f = typeof Date !== 'undefined' && Date) === 'function' ? _f : Object,
+              typeof (_g = typeof Date !== 'undefined' && Date) === 'function' ? _g : Object,
             ),
           ],
           Order.prototype,
@@ -16505,7 +16927,7 @@
             (0, typegoose_1.prop)({ type: Date }),
             __metadata(
               'design:type',
-              typeof (_g = typeof Date !== 'undefined' && Date) === 'function' ? _g : Object,
+              typeof (_h = typeof Date !== 'undefined' && Date) === 'function' ? _h : Object,
             ),
           ],
           Order.prototype,
@@ -16518,7 +16940,7 @@
             (0, typegoose_1.prop)({ type: Date }),
             __metadata(
               'design:type',
-              typeof (_h = typeof Date !== 'undefined' && Date) === 'function' ? _h : Object,
+              typeof (_j = typeof Date !== 'undefined' && Date) === 'function' ? _j : Object,
             ),
           ],
           Order.prototype,
@@ -16531,7 +16953,7 @@
             (0, typegoose_1.prop)({ type: Date }),
             __metadata(
               'design:type',
-              typeof (_j = typeof Date !== 'undefined' && Date) === 'function' ? _j : Object,
+              typeof (_k = typeof Date !== 'undefined' && Date) === 'function' ? _k : Object,
             ),
           ],
           Order.prototype,
@@ -16544,7 +16966,7 @@
             (0, typegoose_1.prop)({ type: Date }),
             __metadata(
               'design:type',
-              typeof (_k = typeof Date !== 'undefined' && Date) === 'function' ? _k : Object,
+              typeof (_l = typeof Date !== 'undefined' && Date) === 'function' ? _l : Object,
             ),
           ],
           Order.prototype,
@@ -18189,6 +18611,16 @@
           'price',
           void 0,
         );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '是否有库存' }),
+            (0, typegoose_1.prop)({ type: Boolean, default: true }),
+            __metadata('design:type', Boolean),
+          ],
+          UserCart.prototype,
+          'hasStock',
+          void 0,
+        );
         UserCart = __decorate(
           [
             (0, typegoose_1.ModelOptions)({
@@ -18287,6 +18719,88 @@
           UserCollection,
         );
         exports.UserCollection = UserCollection;
+
+        /***/
+      },
+
+    /***/ './libs/db/src/modules/user-integral.model.ts':
+      /*!****************************************************!*\
+  !*** ./libs/db/src/modules/user-integral.model.ts ***!
+  \****************************************************/
+      /***/ function (__unused_webpack_module, exports, __webpack_require__) {
+        var __decorate =
+          (this && this.__decorate) ||
+          function (decorators, target, key, desc) {
+            var c = arguments.length,
+              r =
+                c < 3
+                  ? target
+                  : desc === null
+                  ? (desc = Object.getOwnPropertyDescriptor(target, key))
+                  : desc,
+              d;
+            if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+              r = Reflect.decorate(decorators, target, key, desc);
+            else
+              for (var i = decorators.length - 1; i >= 0; i--)
+                if ((d = decorators[i]))
+                  r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            return c > 3 && r && Object.defineProperty(target, key, r), r;
+          };
+        var __metadata =
+          (this && this.__metadata) ||
+          function (k, v) {
+            if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+              return Reflect.metadata(k, v);
+          };
+        var _a;
+        Object.defineProperty(exports, '__esModule', { value: true });
+        exports.UserIntegral = void 0;
+        const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ '@nestjs/swagger');
+        const typegoose_1 = __webpack_require__(/*! @typegoose/typegoose */ '@typegoose/typegoose');
+        const user_model_1 = __webpack_require__(
+          /*! ./user.model */ './libs/db/src/modules/user.model.ts',
+        );
+        let UserIntegral = class UserIntegral {};
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '用户id' }),
+            (0, typegoose_1.prop)({ required: true, ref: () => user_model_1.User }),
+            __metadata(
+              'design:type',
+              typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
+                ? _a
+                : Object,
+            ),
+          ],
+          UserIntegral.prototype,
+          'userId',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '积分' }),
+            (0, typegoose_1.prop)({ required: true }),
+            __metadata('design:type', Number),
+          ],
+          UserIntegral.prototype,
+          'integral',
+          void 0,
+        );
+        UserIntegral = __decorate(
+          [
+            (0, typegoose_1.modelOptions)({
+              options: {
+                customName: 'user_integral',
+              },
+              schemaOptions: {
+                timestamps: true,
+              },
+            }),
+          ],
+          UserIntegral,
+        );
+        exports.UserIntegral = UserIntegral;
 
         /***/
       },

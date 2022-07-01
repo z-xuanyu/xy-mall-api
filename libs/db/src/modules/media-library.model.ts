@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-07 10:47:10
- * @LastEditTime: 2022-06-27 11:24:25
+ * @LastEditTime: 2022-07-01 11:08:11
  * @Description: 媒体文件
  */
 
@@ -16,6 +16,9 @@ import { LibraryCategory } from './library-category.model';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'media_library',
   },
 })
 export class MediaLibrary {

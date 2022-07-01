@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-16 17:06:37
- * @LastEditTime: 2022-04-12 14:57:46
- * @Description: Modify here please
+ * @LastEditTime: 2022-07-01 11:03:20
+ * @Description: 分类导航
  */
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -15,6 +15,9 @@ import { ModelOptions, prop } from '@typegoose/typegoose';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'classify_navigation',
   },
 })
 export class ClassifyNavigation {

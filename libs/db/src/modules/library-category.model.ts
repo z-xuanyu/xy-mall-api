@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-07 10:48:42
- * @LastEditTime: 2022-01-07 10:52:03
- * @Description: Modify here please
+ * @LastEditTime: 2022-07-01 11:07:23
+ * @Description: 媒体文件分类
  */
 import { ApiProperty } from '@nestjs/swagger';
 import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
@@ -15,9 +15,12 @@ import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
   schemaOptions: {
     timestamps: true,
   },
+  options: {
+    customName: 'library_category',
+  },
 })
 export class LibraryCategory {
-  @ApiProperty({ title: '名称' })
+  @ApiProperty({ title: '分类名称' })
   @prop({ required: true })
   name: string;
 

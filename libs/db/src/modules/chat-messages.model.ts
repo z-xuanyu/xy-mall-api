@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-04 09:50:34
- * @LastEditTime: 2022-04-28 14:28:42
+ * @LastEditTime: 2022-07-01 10:55:02
  * @Description: 聊天对话记录模型
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -12,6 +12,14 @@ import { ModelOptions, prop, Ref } from '@typegoose/typegoose';
 import { CustomerService } from './customer-service.model';
 import { User } from './user.model';
 
+@ModelOptions({
+  schemaOptions: {
+    timestamps: true,
+  },
+  options: {
+    customName: 'chat_message',
+  },
+})
 class PushProductType {
   @ApiProperty({ title: '商品标题' })
   @prop()

@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-24 14:46:55
- * @LastEditTime: 2022-04-26 18:01:30
+ * @LastEditTime: 2022-07-01 10:50:09
  * @Description: 客服聊天会话列表
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -16,6 +16,9 @@ import { User } from './user.model';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'chat_conversation_record',
   },
 })
 export class ChatConversationRecord {

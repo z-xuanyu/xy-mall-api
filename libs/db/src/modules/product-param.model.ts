@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-12 15:33:23
- * @LastEditTime: 2022-01-12 15:47:21
- * @Description: 产品参数模板模型
+ * @LastEditTime: 2022-07-01 10:53:44
+ * @Description: 商品参数模板模型
  */
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -23,6 +23,9 @@ class ParamTpye {
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'product_param',
   },
 })
 export class ProductParam {

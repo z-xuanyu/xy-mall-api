@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 15:22:10
- * @LastEditTime: 2022-03-03 15:23:23
- * @Description: Modify here please
+ * @LastEditTime: 2022-07-01 10:44:46
+ * @Description: 用户浏览记录
  */
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -17,6 +17,9 @@ import { User } from './user.model';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'user_view_history',
   },
 })
 export class UserViewsHistory {

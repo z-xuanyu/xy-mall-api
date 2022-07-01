@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-28 16:26:23
- * @LastEditTime: 2021-12-28 16:43:00
- * @Description: 产品专题
+ * @LastEditTime: 2022-07-01 10:55:33
+ * @Description: 商品专题
  */
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -16,6 +16,9 @@ import { Category } from './category.model';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'product_topic',
   },
 })
 export class ProductTopic {

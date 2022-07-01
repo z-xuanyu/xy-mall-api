@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-02-25 16:47:09
- * @LastEditTime: 2022-02-25 16:51:58
+ * @LastEditTime: 2022-07-01 10:40:17
  * @Description: 用户收藏
  */
 
@@ -17,6 +17,9 @@ import { User } from './user.model';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'user_collection',
   },
 })
 export class UserCollection {

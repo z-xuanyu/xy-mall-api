@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-21 18:15:07
- * @LastEditTime: 2022-04-22 09:58:25
+ * @LastEditTime: 2022-07-01 11:00:35
  * @Description: 客服实体模型
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -15,6 +15,9 @@ import { hashSync } from 'bcryptjs';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'customer_service',
   },
 })
 export class CustomerService {

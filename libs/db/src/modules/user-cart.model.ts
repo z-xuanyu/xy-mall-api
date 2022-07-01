@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 10:53:19
- * @LastEditTime: 2022-06-30 12:03:22
+ * @LastEditTime: 2022-07-01 10:46:38
  * @Description: 购物车模型
  */
 
@@ -17,6 +17,9 @@ import { User } from './user.model';
 @ModelOptions({
   schemaOptions: {
     timestamps: true,
+  },
+  options: {
+    customName: 'user_cart',
   },
 })
 export class UserCart {

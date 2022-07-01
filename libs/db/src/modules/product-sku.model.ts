@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-01-15 11:30:46
- * @LastEditTime: 2022-04-01 14:54:43
- * @Description: 产品规格模型
+ * @LastEditTime: 2022-07-01 10:59:06
+ * @Description: 商品sku
  */
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -19,6 +19,7 @@ import { Product } from './product.model';
   },
   options: {
     allowMixed: Severity.ALLOW,
+    customName: 'product_sku',
   },
 })
 export class ProductSku {
