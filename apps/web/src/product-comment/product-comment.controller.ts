@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-03-23 16:26:34
+ * @LastEditTime: 2022-07-01 12:05:55
  * @Description: Modify here please
  */
 import {
@@ -30,12 +30,14 @@ import { FilesInterceptor } from '@nestjs/platform-express';
 import { WebService } from '../web.service';
 
 @ApiTags('商品评价')
-@Controller('product-comment')
+@Controller('productComment')
 export class ProductCommentController {
   constructor(
     private readonly productCommentService: ProductCommentService,
     private readonly webService: WebService,
-  ) {}
+  ) {
+    console.log('ProductCommentController');
+  }
 
   @Post()
   @UseGuards(AuthGuard('web-jwt'))

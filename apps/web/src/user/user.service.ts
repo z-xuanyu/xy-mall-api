@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 16:09:06
- * @LastEditTime: 2022-03-14 14:48:38
+ * @LastEditTime: 2022-07-01 12:09:26
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -12,6 +12,7 @@ import { ReturnModelType } from '@typegoose/typegoose';
 import { UserAddress } from 'libs/db/modules/user-address.model';
 import { UserCollection } from 'libs/db/modules/user-collection.model';
 import { UserViewsHistory } from 'libs/db/modules/user-views-history.model';
+import { ObjectId } from 'mongodb';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateUserAddressDto } from './dto/create-user-address.dto';
 import { UpdateAddressDefaultDto } from './dto/update-address-default.dto';
@@ -26,7 +27,9 @@ export class UserService {
     private userViewsHistoryModel: ReturnModelType<typeof UserViewsHistory>,
     @InjectModel(UserAddress)
     private userAddressModel: ReturnModelType<typeof UserAddress>,
-  ) {}
+  ) {
+    console.log('UserService');
+  }
 
   /**
    * 获取用户收藏商品列表
@@ -35,11 +38,35 @@ export class UserService {
    * @return {*}
    * @memberof UserService
    */
-  async findUserCollectionList(userId: string) {
-    return await this.userCollectionModel.find({ userId }).populate({
-      path: 'productId',
-      select: ['_id', 'pic', 'title', 'sku', 'price', 'skuType'],
-    });
+  async findUserCollectionList(userId: string): Promise<any> {
+    return await this.userCollectionModel.aggregate([
+      {
+        $match: {
+          userId: new ObjectId(userId),
+        },
+      },
+      {
+        $lookup: {
+          from: 'products',
+          localField: 'productId',
+          foreignField: '_id',
+          as: 'product',
+        },
+      },
+      {
+        $unwind: {
+          path: '$product',
+        },
+      },
+      {
+        $project: {
+          title: '$product.title',
+          pic: '$product.pic',
+          price: '$product.price',
+          views: '$product.views',
+        },
+      },
+    ]);
   }
 
   /**
@@ -49,11 +76,35 @@ export class UserService {
    * @return {*}
    * @memberof UserService
    */
-  async findUserViewsHistoryAll(userId: string) {
-    return await this.userViewsHistoryModel.find({ userId }).populate({
-      path: 'productId',
-      select: ['_id', 'pic', 'title', 'price', 'skuType', 'sku'],
-    });
+  async findUserViewsHistoryAll(userId: string): Promise<any> {
+    return await this.userViewsHistoryModel.aggregate([
+      {
+        $match: {
+          userId: new ObjectId(userId),
+        },
+      },
+      {
+        $lookup: {
+          from: 'products',
+          localField: 'productId',
+          foreignField: '_id',
+          as: 'product',
+        },
+      },
+      {
+        $unwind: {
+          path: '$product',
+        },
+      },
+      {
+        $project: {
+          title: '$product.title',
+          pic: '$product.pic',
+          price: '$product.price',
+          views: '$product.views',
+        },
+      },
+    ]);
   }
 
   // 添加用户地址
