@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-06-30 17:26:23
+ * @LastEditTime: 2022-07-04 10:12:58
  * @Description: 订单service
  */
 import { Injectable } from '@nestjs/common';
@@ -98,16 +98,11 @@ export class OrderService {
    * @memberof OrderService
    */
   async findAll(userId: string, queryUserOrderDto: QueryUserOrderDto): Promise<Array<Order>> {
-    return await this.orderModel
-      .find({
-        userId,
-        isDelete: false,
-        status: ~~queryUserOrderDto.status ? queryUserOrderDto.status : { $ne: null },
-      })
-      .populate({
-        path: 'products.productId',
-        select: ['title', 'pic'],
-      });
+    return await this.orderModel.find({
+      userId,
+      isDelete: false,
+      status: ~~queryUserOrderDto.status ? queryUserOrderDto.status : { $ne: null },
+    });
   }
 
   /**

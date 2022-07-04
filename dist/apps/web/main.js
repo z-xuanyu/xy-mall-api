@@ -164,12 +164,12 @@
       const web_service_1 = __webpack_require__(15);
       const auth_module_1 = __webpack_require__(37);
       const common_2 = __webpack_require__(50);
-      const product_module_1 = __webpack_require__(77);
-      const user_module_1 = __webpack_require__(83);
-      const user_cart_module_1 = __webpack_require__(90);
-      const order_module_1 = __webpack_require__(94);
-      const product_comment_module_1 = __webpack_require__(100);
-      const chat_nessage_module_1 = __webpack_require__(104);
+      const product_module_1 = __webpack_require__(78);
+      const user_module_1 = __webpack_require__(84);
+      const user_cart_module_1 = __webpack_require__(91);
+      const order_module_1 = __webpack_require__(95);
+      const product_comment_module_1 = __webpack_require__(101);
+      const chat_nessage_module_1 = __webpack_require__(105);
       let WebModule = class WebModule {};
       WebModule = __decorate(
         [
@@ -3409,7 +3409,7 @@
         };
       Object.defineProperty(exports, '__esModule', { value: true });
       __exportStar(__webpack_require__(51), exports);
-      __exportStar(__webpack_require__(76), exports);
+      __exportStar(__webpack_require__(77), exports);
 
       /***/
     },
@@ -3439,7 +3439,7 @@
       const common_1 = __webpack_require__(5);
       const config_1 = __webpack_require__(52);
       const db_1 = __webpack_require__(53);
-      const common_service_1 = __webpack_require__(76);
+      const common_service_1 = __webpack_require__(77);
       let CommonModule = class CommonModule {};
       CommonModule = __decorate(
         [
@@ -3556,7 +3556,8 @@
       const user_cart_model_1 = __webpack_require__(72);
       const user_collection_model_1 = __webpack_require__(73);
       const user_integral_model_1 = __webpack_require__(74);
-      const user_views_history_model_1 = __webpack_require__(75);
+      const user_label_model_1 = __webpack_require__(75);
+      const user_views_history_model_1 = __webpack_require__(76);
       const user_model_1 = __webpack_require__(34);
       const models = nestjs_typegoose_1.TypegooseModule.forFeature([
         admin_model_1.Admin,
@@ -3568,6 +3569,7 @@
         user_views_history_model_1.UserViewsHistory,
         user_cart_model_1.UserCart,
         user_integral_model_1.UserIntegral,
+        user_label_model_1.UserLabel,
         coupon_model_1.Coupon,
         classify_navigation_model_1.ClassifyNavigation,
         tag_model_1.Tag,
@@ -5798,6 +5800,107 @@
           if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
             return Reflect.metadata(k, v);
         };
+      var _a;
+      Object.defineProperty(exports, '__esModule', { value: true });
+      exports.UserLabel = void 0;
+      const swagger_1 = __webpack_require__(2);
+      const typegoose_1 = __webpack_require__(16);
+      const user_model_1 = __webpack_require__(34);
+      let UserLabel = class UserLabel {};
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ name: '名称' }),
+          (0, typegoose_1.prop)({ required: true }),
+          __metadata('design:type', String),
+        ],
+        UserLabel.prototype,
+        'name',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({
+            name: '类型',
+            type: Number,
+            enum: [1, 2],
+            description: '1: 手动添加，2: 自动添加',
+          }),
+          (0, typegoose_1.prop)({ enum: [1, 2], default: 1, type: Number }),
+          __metadata('design:type', Number),
+        ],
+        UserLabel.prototype,
+        'type',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ name: '用户数' }),
+          (0, typegoose_1.prop)({ type: Number, default: 0 }),
+          __metadata('design:type', Number),
+        ],
+        UserLabel.prototype,
+        'userCount',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ name: '用户id' }),
+          (0, typegoose_1.prop)({ ref: () => user_model_1.User }),
+          __metadata(
+            'design:type',
+            typeof (_a = typeof typegoose_1.Ref !== 'undefined' && typegoose_1.Ref) === 'function'
+              ? _a
+              : Object,
+          ),
+        ],
+        UserLabel.prototype,
+        'userId',
+        void 0,
+      );
+      UserLabel = __decorate(
+        [
+          (0, typegoose_1.modelOptions)({
+            schemaOptions: {
+              timestamps: true,
+            },
+            options: {
+              customName: 'user_label',
+            },
+          }),
+        ],
+        UserLabel,
+      );
+      exports.UserLabel = UserLabel;
+
+      /***/
+    },
+    /* 76 */
+    /***/ function (__unused_webpack_module, exports, __webpack_require__) {
+      var __decorate =
+        (this && this.__decorate) ||
+        function (decorators, target, key, desc) {
+          var c = arguments.length,
+            r =
+              c < 3
+                ? target
+                : desc === null
+                ? (desc = Object.getOwnPropertyDescriptor(target, key))
+                : desc,
+            d;
+          if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+            r = Reflect.decorate(decorators, target, key, desc);
+          else
+            for (var i = decorators.length - 1; i >= 0; i--)
+              if ((d = decorators[i]))
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+          return c > 3 && r && Object.defineProperty(target, key, r), r;
+        };
+      var __metadata =
+        (this && this.__metadata) ||
+        function (k, v) {
+          if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+            return Reflect.metadata(k, v);
+        };
       var _a, _b;
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.UserViewsHistory = void 0;
@@ -5853,7 +5956,7 @@
 
       /***/
     },
-    /* 76 */
+    /* 77 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -5883,7 +5986,7 @@
 
       /***/
     },
-    /* 77 */
+    /* 78 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -5907,8 +6010,8 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ProductModule = void 0;
       const common_1 = __webpack_require__(5);
-      const product_service_1 = __webpack_require__(78);
-      const product_controller_1 = __webpack_require__(79);
+      const product_service_1 = __webpack_require__(79);
+      const product_controller_1 = __webpack_require__(80);
       const jwt_1 = __webpack_require__(38);
       const jwt_config_1 = __webpack_require__(39);
       let ProductModule = class ProductModule {};
@@ -5931,7 +6034,7 @@
 
       /***/
     },
-    /* 78 */
+    /* 79 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -5974,7 +6077,7 @@
       const product_sku_model_1 = __webpack_require__(32);
       const product_model_1 = __webpack_require__(19);
       const user_collection_model_1 = __webpack_require__(73);
-      const user_views_history_model_1 = __webpack_require__(75);
+      const user_views_history_model_1 = __webpack_require__(76);
       const nestjs_typegoose_1 = __webpack_require__(26);
       let ProductService = class ProductService {
         constructor(
@@ -6084,7 +6187,7 @@
 
       /***/
     },
-    /* 79 */
+    /* 80 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -6125,11 +6228,11 @@
       const jwt_1 = __webpack_require__(38);
       const passport_1 = __webpack_require__(12);
       const swagger_1 = __webpack_require__(2);
-      const parse_id_pipe_1 = __webpack_require__(80);
+      const parse_id_pipe_1 = __webpack_require__(81);
       const ResponseResultModel_1 = __webpack_require__(8);
       const user_model_1 = __webpack_require__(34);
-      const current_user_decorator_1 = __webpack_require__(82);
-      const product_service_1 = __webpack_require__(78);
+      const current_user_decorator_1 = __webpack_require__(83);
+      const product_service_1 = __webpack_require__(79);
       let ProductController = class ProductController {
         constructor(productService, jwtService) {
           this.productService = productService;
@@ -6287,7 +6390,7 @@
 
       /***/
     },
-    /* 80 */
+    /* 81 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -6311,7 +6414,7 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ParseIdPipe = void 0;
       const common_1 = __webpack_require__(5);
-      const mongoose_1 = __webpack_require__(81);
+      const mongoose_1 = __webpack_require__(82);
       const ResponseResultModel_1 = __webpack_require__(8);
       let ParseIdPipe = class ParseIdPipe {
         transform(value) {
@@ -6327,13 +6430,13 @@
 
       /***/
     },
-    /* 81 */
+    /* 82 */
     /***/ (module) => {
       module.exports = require('mongoose');
 
       /***/
     },
-    /* 82 */
+    /* 83 */
     /***/ (__unused_webpack_module, exports, __webpack_require__) => {
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.CurrentUser = void 0;
@@ -6345,7 +6448,7 @@
 
       /***/
     },
-    /* 83 */
+    /* 84 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -6369,8 +6472,8 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.UserModule = void 0;
       const common_1 = __webpack_require__(5);
-      const user_service_1 = __webpack_require__(84);
-      const user_controller_1 = __webpack_require__(86);
+      const user_service_1 = __webpack_require__(85);
+      const user_controller_1 = __webpack_require__(87);
       let UserModule = class UserModule {};
       UserModule = __decorate(
         [
@@ -6385,7 +6488,7 @@
 
       /***/
     },
-    /* 84 */
+    /* 85 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -6426,8 +6529,8 @@
       const typegoose_1 = __webpack_require__(16);
       const user_address_model_1 = __webpack_require__(33);
       const user_collection_model_1 = __webpack_require__(73);
-      const user_views_history_model_1 = __webpack_require__(75);
-      const mongodb_1 = __webpack_require__(85);
+      const user_views_history_model_1 = __webpack_require__(76);
+      const mongodb_1 = __webpack_require__(86);
       const nestjs_typegoose_1 = __webpack_require__(26);
       let UserService = class UserService {
         constructor(userCollectionModel, userViewsHistoryModel, userAddressModel) {
@@ -6561,13 +6664,13 @@
 
       /***/
     },
-    /* 85 */
+    /* 86 */
     /***/ (module) => {
       module.exports = require('mongodb');
 
       /***/
     },
-    /* 86 */
+    /* 87 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -6607,14 +6710,14 @@
       const common_1 = __webpack_require__(5);
       const passport_1 = __webpack_require__(12);
       const swagger_1 = __webpack_require__(2);
-      const parse_id_pipe_1 = __webpack_require__(80);
+      const parse_id_pipe_1 = __webpack_require__(81);
       const ResponseResultModel_1 = __webpack_require__(8);
       const user_model_1 = __webpack_require__(34);
-      const current_user_decorator_1 = __webpack_require__(82);
-      const create_user_address_dto_1 = __webpack_require__(87);
-      const update_address_default_dto_1 = __webpack_require__(88);
-      const update_user_address_dto_1 = __webpack_require__(89);
-      const user_service_1 = __webpack_require__(84);
+      const current_user_decorator_1 = __webpack_require__(83);
+      const create_user_address_dto_1 = __webpack_require__(88);
+      const update_address_default_dto_1 = __webpack_require__(89);
+      const update_user_address_dto_1 = __webpack_require__(90);
+      const user_service_1 = __webpack_require__(85);
       let UserController = class UserController {
         constructor(userService) {
           this.userService = userService;
@@ -6842,7 +6945,7 @@
 
       /***/
     },
-    /* 87 */
+    /* 88 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -6942,7 +7045,7 @@
 
       /***/
     },
-    /* 88 */
+    /* 89 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -6995,12 +7098,12 @@
 
       /***/
     },
-    /* 89 */
+    /* 90 */
     /***/ (__unused_webpack_module, exports, __webpack_require__) => {
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.UpdateUserAddressDto = void 0;
       const swagger_1 = __webpack_require__(2);
-      const create_user_address_dto_1 = __webpack_require__(87);
+      const create_user_address_dto_1 = __webpack_require__(88);
       class UpdateUserAddressDto extends (0, swagger_1.PartialType)(
         create_user_address_dto_1.CreateUserAddressDto,
       ) {}
@@ -7008,7 +7111,7 @@
 
       /***/
     },
-    /* 90 */
+    /* 91 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -7032,8 +7135,8 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.UserCartModule = void 0;
       const common_1 = __webpack_require__(5);
-      const user_cart_service_1 = __webpack_require__(91);
-      const user_cart_controller_1 = __webpack_require__(92);
+      const user_cart_service_1 = __webpack_require__(92);
+      const user_cart_controller_1 = __webpack_require__(93);
       let UserCartModule = class UserCartModule {};
       UserCartModule = __decorate(
         [
@@ -7048,7 +7151,7 @@
 
       /***/
     },
-    /* 91 */
+    /* 92 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -7157,7 +7260,7 @@
 
       /***/
     },
-    /* 92 */
+    /* 93 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -7195,14 +7298,14 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.UserCartController = void 0;
       const common_1 = __webpack_require__(5);
-      const user_cart_service_1 = __webpack_require__(91);
-      const create_user_cart_dto_1 = __webpack_require__(93);
+      const user_cart_service_1 = __webpack_require__(92);
+      const create_user_cart_dto_1 = __webpack_require__(94);
       const swagger_1 = __webpack_require__(2);
       const user_model_1 = __webpack_require__(34);
-      const current_user_decorator_1 = __webpack_require__(82);
+      const current_user_decorator_1 = __webpack_require__(83);
       const ResponseResultModel_1 = __webpack_require__(8);
       const passport_1 = __webpack_require__(12);
-      const parse_id_pipe_1 = __webpack_require__(80);
+      const parse_id_pipe_1 = __webpack_require__(81);
       let UserCartController = class UserCartController {
         constructor(userCartService) {
           this.userCartService = userCartService;
@@ -7319,7 +7422,7 @@
 
       /***/
     },
-    /* 93 */
+    /* 94 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -7396,7 +7499,7 @@
 
       /***/
     },
-    /* 94 */
+    /* 95 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -7420,8 +7523,8 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.OrderModule = void 0;
       const common_1 = __webpack_require__(5);
-      const order_service_1 = __webpack_require__(95);
-      const order_controller_1 = __webpack_require__(96);
+      const order_service_1 = __webpack_require__(96);
+      const order_controller_1 = __webpack_require__(97);
       let OrderModule = class OrderModule {};
       OrderModule = __decorate(
         [
@@ -7436,7 +7539,7 @@
 
       /***/
     },
-    /* 95 */
+    /* 96 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -7530,16 +7633,11 @@
           return await this.orderModel.create(createOrderDto);
         }
         async findAll(userId, queryUserOrderDto) {
-          return await this.orderModel
-            .find({
-              userId,
-              isDelete: false,
-              status: ~~queryUserOrderDto.status ? queryUserOrderDto.status : { $ne: null },
-            })
-            .populate({
-              path: 'products.productId',
-              select: ['title', 'pic'],
-            });
+          return await this.orderModel.find({
+            userId,
+            isDelete: false,
+            status: ~~queryUserOrderDto.status ? queryUserOrderDto.status : { $ne: null },
+          });
         }
         async findOne(id) {
           return await this.orderModel.findById(id).populate('addressId');
@@ -7596,7 +7694,7 @@
 
       /***/
     },
-    /* 96 */
+    /* 97 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -7634,16 +7732,16 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.OrderController = void 0;
       const common_1 = __webpack_require__(5);
-      const order_service_1 = __webpack_require__(95);
-      const create_order_dto_1 = __webpack_require__(97);
+      const order_service_1 = __webpack_require__(96);
+      const create_order_dto_1 = __webpack_require__(98);
       const swagger_1 = __webpack_require__(2);
-      const parse_id_pipe_1 = __webpack_require__(80);
-      const current_user_decorator_1 = __webpack_require__(82);
+      const parse_id_pipe_1 = __webpack_require__(81);
+      const current_user_decorator_1 = __webpack_require__(83);
       const user_model_1 = __webpack_require__(34);
       const passport_1 = __webpack_require__(12);
       const ResponseResultModel_1 = __webpack_require__(8);
-      const query_user_oder_dto_1 = __webpack_require__(98);
-      const update_order_address_dto_1 = __webpack_require__(99);
+      const query_user_oder_dto_1 = __webpack_require__(99);
+      const update_order_address_dto_1 = __webpack_require__(100);
       let OrderController = class OrderController {
         constructor(orderService) {
           this.orderService = orderService;
@@ -7812,7 +7910,7 @@
 
       /***/
     },
-    /* 97 */
+    /* 98 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -7976,7 +8074,7 @@
 
       /***/
     },
-    /* 98 */
+    /* 99 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8017,7 +8115,7 @@
 
       /***/
     },
-    /* 99 */
+    /* 100 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8064,7 +8162,7 @@
 
       /***/
     },
-    /* 100 */
+    /* 101 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8088,8 +8186,8 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ProductCommentModule = void 0;
       const common_1 = __webpack_require__(5);
-      const product_comment_service_1 = __webpack_require__(101);
-      const product_comment_controller_1 = __webpack_require__(102);
+      const product_comment_service_1 = __webpack_require__(102);
+      const product_comment_controller_1 = __webpack_require__(103);
       const web_service_1 = __webpack_require__(15);
       let ProductCommentModule = class ProductCommentModule {};
       ProductCommentModule = __decorate(
@@ -8105,7 +8203,7 @@
 
       /***/
     },
-    /* 101 */
+    /* 102 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8190,7 +8288,7 @@
 
       /***/
     },
-    /* 102 */
+    /* 103 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8228,14 +8326,14 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ProductCommentController = void 0;
       const common_1 = __webpack_require__(5);
-      const product_comment_service_1 = __webpack_require__(101);
-      const create_product_comment_dto_1 = __webpack_require__(103);
+      const product_comment_service_1 = __webpack_require__(102);
+      const create_product_comment_dto_1 = __webpack_require__(104);
       const swagger_1 = __webpack_require__(2);
       const passport_1 = __webpack_require__(12);
-      const current_user_decorator_1 = __webpack_require__(82);
+      const current_user_decorator_1 = __webpack_require__(83);
       const user_model_1 = __webpack_require__(34);
       const ResponseResultModel_1 = __webpack_require__(8);
-      const parse_id_pipe_1 = __webpack_require__(80);
+      const parse_id_pipe_1 = __webpack_require__(81);
       const platform_express_1 = __webpack_require__(13);
       const web_service_1 = __webpack_require__(15);
       let ProductCommentController = class ProductCommentController {
@@ -8354,7 +8452,7 @@
 
       /***/
     },
-    /* 103 */
+    /* 104 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8432,7 +8530,7 @@
 
       /***/
     },
-    /* 104 */
+    /* 105 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8456,8 +8554,8 @@
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ChatNessageModule = void 0;
       const common_1 = __webpack_require__(5);
-      const chat_nessage_service_1 = __webpack_require__(105);
-      const chat_nessage_controller_1 = __webpack_require__(106);
+      const chat_nessage_service_1 = __webpack_require__(106);
+      const chat_nessage_controller_1 = __webpack_require__(107);
       let ChatNessageModule = class ChatNessageModule {};
       ChatNessageModule = __decorate(
         [
@@ -8472,7 +8570,7 @@
 
       /***/
     },
-    /* 105 */
+    /* 106 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8553,7 +8651,7 @@
 
       /***/
     },
-    /* 106 */
+    /* 107 */
     /***/ function (__unused_webpack_module, exports, __webpack_require__) {
       var __decorate =
         (this && this.__decorate) ||
@@ -8595,8 +8693,8 @@
       const swagger_1 = __webpack_require__(2);
       const ResponseResultModel_1 = __webpack_require__(8);
       const user_model_1 = __webpack_require__(34);
-      const current_user_decorator_1 = __webpack_require__(82);
-      const chat_nessage_service_1 = __webpack_require__(105);
+      const current_user_decorator_1 = __webpack_require__(83);
+      const chat_nessage_service_1 = __webpack_require__(106);
       let ChatNessageController = class ChatNessageController {
         constructor(chatNessageService) {
           this.chatNessageService = chatNessageService;
