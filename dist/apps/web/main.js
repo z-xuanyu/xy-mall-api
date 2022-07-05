@@ -8365,7 +8365,7 @@
           return await this.productCommentModel.find({ userId }).populate('userId');
         }
         async findProductComments(productId) {
-          return await this.productCommentModel.find({ productId });
+          return await this.productCommentModel.find({ productId }).populate('userId');
         }
       };
       ProductCommentService = __decorate(
@@ -8470,18 +8470,42 @@
                 contnet: obj.followContent || '',
                 day: obj.followDays,
               },
+              replyCount: obj.replyCount,
             };
           });
           return (0, ResponseResultModel_1.apiSucceed)(reslut);
         }
         async findProductComments(id) {
           const res = await this.productCommentService.findProductComments(id);
-          return (0, ResponseResultModel_1.apiSucceed)(res);
+          const reslut = res.map((item) => {
+            const obj = item.toObject();
+            return {
+              info: {
+                content: obj.content,
+                nickName: obj.userId.nickName,
+                avatar: obj.userId.avatarUrl,
+                time: obj.createdAt,
+                replay: obj.replyCount,
+                like: obj.likeCount,
+                score: obj.rate,
+              },
+              videos: obj.videos,
+              images: obj.images.map((v) => ({ imgUrl: v })),
+              follow: {
+                contnet: obj.followContent || '',
+                day: obj.followDays,
+              },
+              replyCount: obj.replyCount,
+            };
+          });
+          return (0, ResponseResultModel_1.apiSucceed)(reslut);
         }
       };
       __decorate(
         [
           (0, common_1.Post)(),
+          (0, common_1.UseGuards)((0, passport_1.AuthGuard)('web-jwt')),
+          (0, swagger_1.ApiBearerAuth)(),
           (0, swagger_1.ApiOperation)({ summary: '创建商品评论' }),
           __param(0, (0, common_1.Body)()),
           __param(1, (0, current_user_decorator_1.CurrentUser)()),
@@ -8507,6 +8531,8 @@
       __decorate(
         [
           (0, common_1.Get)('user/comments'),
+          (0, common_1.UseGuards)((0, passport_1.AuthGuard)('web-jwt')),
+          (0, swagger_1.ApiBearerAuth)(),
           (0, swagger_1.ApiOperation)({ summary: '获取用户商品评论列表' }),
           __param(0, (0, current_user_decorator_1.CurrentUser)()),
           __metadata('design:type', Function),
@@ -8540,8 +8566,6 @@
       ProductCommentController = __decorate(
         [
           (0, swagger_1.ApiTags)('商品评价'),
-          (0, common_1.UseGuards)((0, passport_1.AuthGuard)('web-jwt')),
-          (0, swagger_1.ApiBearerAuth)(),
           (0, common_1.Controller)('productComment'),
           __metadata('design:paramtypes', [
             typeof (_d =
