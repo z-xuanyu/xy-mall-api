@@ -4,21 +4,26 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:46:30
- * @LastEditTime: 2022-07-01 14:05:19
+ * @LastEditTime: 2022-07-05 16:53:09
  * @Description: Modify here please
 -->
 
-## YuYu-零售商城-NestJs-Api
+## XYMALL 商城-NestJs-Api
 
-一个开源 YuYu-零售商城 Api 服务端，项目集成 Nestjs+Mongodb+Jwt 等。项目是前后端分离，分为四端：Api 服务端，Admin 管理端，Web 前端(uniapp),PC 端（Nuxt3）
+XYMALL 商城 Api 服务端，项目集成 Nestjs+Mongodb+Jwt 等。项目是前后端分离，分为四端：Api 服务端，Admin 管理端，Web 前端(uniapp),PC 端（Nuxt3）
 
 Admin 端仓库：<a href="https://github.com/z-xuanyu/xy-mall-admin">点击跳转</a> Web 端 uniapp 仓库：<a href="https://github.com/z-xuanyu/xy-mall-uni">点击跳转</a> PC 端仓库：<a href="https://github.com/z-xuanyu/xy-mall-pc">点击跳转</a>
 
 ### 项目说明
 
-为了迭代更多功能，方便管理，我们这里把服务端 Api,分为两个项目来开发，一个是 admin-api,一个是 web-api, admin-api 只要是管理 Admin 站接口开发，web-api 只要是负责 web 站 api 接口开发。
+为了迭代更多功能，方便管理，使用 Nestjs monorepo 模式, 什么是 monorepo 模式，推荐去官网文档看，获取下面推荐的中文文档，我们这里把服务端 Api,分为两个项目来开发，一个是 admin-api,一个是 web-api, admin-api 只要是管理 Admin 站接口开发，web-api 只要是负责 web 站 api 接口开发。
 
-在 Nestjs 中创建多个子项目也非常简单。首先全局安装一下 Nest-cil,详细 cli 使用，可以去阅读官网文档。
+在 Nestjs 中创建多个子项目也非常简单。首先全局安装一下 Nest-cil,详细 cli 使用，可以去阅读官网文档。如果对 nestjs 不熟悉，推荐看下面资源。
+
+### 推荐 Nestjs 学习资源
+
+- Nestjs 中文文档：<a href="https://docs.nestjs.cn/">点击跳转</a>
+- B 站 UP 主-全栈之巅：<a href="https://space.bilibili.com/341919508/">点击跳转</a>
 
 ### 演示：
 
@@ -139,19 +144,6 @@ $ npm run build:admin
 # Web端
 $ npm run build:web
 
-```
-
-## 测试
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## License
