@@ -17522,6 +17522,36 @@
           'replyContent',
           void 0,
         );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '物流星级' }),
+            (0, typegoose_1.prop)({ type: Number, default: 0 }),
+            __metadata('design:type', Number),
+          ],
+          ProductComment.prototype,
+          'logisticsRate',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '服务星级' }),
+            (0, typegoose_1.prop)({ type: Number, default: 0 }),
+            __metadata('design:type', Number),
+          ],
+          ProductComment.prototype,
+          'serviceRate',
+          void 0,
+        );
+        __decorate(
+          [
+            (0, swagger_1.ApiProperty)({ title: '是否匿名' }),
+            (0, typegoose_1.prop)({ type: Boolean, default: false }),
+            __metadata('design:type', Boolean),
+          ],
+          ProductComment.prototype,
+          'anonymous',
+          void 0,
+        );
         ProductComment = __decorate(
           [
             (0, typegoose_1.ModelOptions)({

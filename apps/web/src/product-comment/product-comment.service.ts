@@ -4,8 +4,8 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-03-23 16:24:48
- * @Description: Modify here please
+ * @LastEditTime: 2022-07-04 11:15:19
+ * @Description: 商品评价
  */
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
@@ -22,7 +22,9 @@ export class ProductCommentService {
     private productCommentModel: ReturnModelType<typeof ProductComment>,
     @InjectModel(Order)
     private OrderModel: ReturnModelType<typeof Order>,
-  ) {}
+  ) {
+    console.log('ProductCommentService');
+  }
 
   // 添加商品评价
   async create(createProductCommentDto: CreateProductCommentDto): Promise<any> {

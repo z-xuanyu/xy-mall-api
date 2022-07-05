@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-20 10:56:11
- * @LastEditTime: 2022-07-01 10:52:57
+ * @LastEditTime: 2022-07-04 11:11:35
  * @Description: 商品评价
  */
 
@@ -46,4 +46,16 @@ export class ProductComment {
   @ApiProperty({ title: '回复内容' })
   @prop({ type: String })
   replyContent?: string;
+
+  @ApiProperty({ title: '物流星级' })
+  @prop({ type: Number, default: 0 })
+  logisticsRate: number;
+
+  @ApiProperty({ title: '服务星级' })
+  @prop({ type: Number, default: 0 })
+  serviceRate: number;
+
+  @ApiProperty({ title: '是否匿名' })
+  @prop({ type: Boolean, default: false })
+  anonymous: boolean;
 }
