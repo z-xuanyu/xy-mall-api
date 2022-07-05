@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-07-05 15:47:03
+ * @LastEditTime: 2022-07-05 15:52:06
  * @Description: 商品评价
  */
 import { Controller, Get, Post, Body, UseGuards, Param } from '@nestjs/common';
@@ -18,8 +18,6 @@ import { apiSucceed } from 'libs/common/ResponseResultModel';
 import { ParseIdPipe } from 'libs/common/pipe/parse-id.pipe';
 
 @ApiTags('商品评价')
-@UseGuards(AuthGuard('web-jwt'))
-@ApiBearerAuth()
 @Controller('productComment')
 export class ProductCommentController {
   constructor(private readonly productCommentService: ProductCommentService) {
@@ -27,6 +25,8 @@ export class ProductCommentController {
   }
 
   @Post()
+  @UseGuards(AuthGuard('web-jwt'))
+  @ApiBearerAuth()
   @ApiOperation({ summary: '创建商品评论' })
   async create(
     @Body() createProductCommentDto: CreateProductCommentDto,
@@ -38,6 +38,8 @@ export class ProductCommentController {
   }
 
   @Get('user/comments')
+  @UseGuards(AuthGuard('web-jwt'))
+  @ApiBearerAuth()
   @ApiOperation({ summary: '获取用户商品评论列表' })
   async findUserComments(@CurrentUser() user: UserDocument) {
     const res = await this.productCommentService.findUserComments(user?._id);
@@ -59,6 +61,7 @@ export class ProductCommentController {
           contnet: obj.followContent || '',
           day: obj.followDays,
         },
+        replyCount: obj.replyCount,
       };
     });
     return apiSucceed(reslut);
@@ -69,6 +72,27 @@ export class ProductCommentController {
   @ApiOperation({ summary: '获取指定商品评论列表' })
   async findProductComments(@Param('id', new ParseIdPipe()) id: string) {
     const res = await this.productCommentService.findProductComments(id);
-    return apiSucceed(res);
+    const reslut = res.map((item) => {
+      const obj = item.toObject();
+      return {
+        info: {
+          content: obj.content,
+          nickName: obj.userId.nickName,
+          avatar: obj.userId.avatarUrl,
+          time: obj.createdAt,
+          replay: obj.replyCount,
+          like: obj.likeCount,
+          score: obj.rate,
+        },
+        videos: obj.videos,
+        images: obj.images.map((v) => ({ imgUrl: v })),
+        follow: {
+          contnet: obj.followContent || '',
+          day: obj.followDays,
+        },
+        replyCount: obj.replyCount,
+      };
+    });
+    return apiSucceed(reslut);
   }
 }
