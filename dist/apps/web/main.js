@@ -5016,7 +5016,7 @@
           if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
             return Reflect.metadata(k, v);
         };
-      var _a, _b, _c;
+      var _a, _b, _c, _d;
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ProductComment = void 0;
       const swagger_1 = __webpack_require__(2);
@@ -5125,6 +5125,79 @@
         ],
         ProductComment.prototype,
         'anonymous',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '回复数' }),
+          (0, typegoose_1.prop)({ type: Number, default: 0 }),
+          __metadata('design:type', Number),
+        ],
+        ProductComment.prototype,
+        'replyCount',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '点赞数' }),
+          (0, typegoose_1.prop)({ type: Number, default: 0 }),
+          __metadata('design:type', Number),
+        ],
+        ProductComment.prototype,
+        'like',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '评论视频' }),
+          (0, typegoose_1.prop)(),
+          __metadata('design:type', Array),
+        ],
+        ProductComment.prototype,
+        'videos',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '评论人购买的商品规格' }),
+          (0, typegoose_1.prop)({ type: String }),
+          __metadata('design:type', String),
+        ],
+        ProductComment.prototype,
+        'size',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '追评内容' }),
+          (0, typegoose_1.prop)({ type: String, default: '' }),
+          __metadata('design:type', String),
+        ],
+        ProductComment.prototype,
+        'followContent',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '追评图片' }),
+          (0, typegoose_1.prop)({ type: [String] }),
+          __metadata(
+            'design:type',
+            typeof (_d = typeof Array !== 'undefined' && Array) === 'function' ? _d : Object,
+          ),
+        ],
+        ProductComment.prototype,
+        'followImages',
+        void 0,
+      );
+      __decorate(
+        [
+          (0, swagger_1.ApiProperty)({ title: '追评天数' }),
+          (0, typegoose_1.prop)({ type: Number, default: 0 }),
+          __metadata('design:type', Number),
+        ],
+        ProductComment.prototype,
+        'followDays',
         void 0,
       );
       ProductComment = __decorate(
@@ -8289,7 +8362,7 @@
           });
         }
         async findUserComments(userId) {
-          return await this.productCommentModel.find({ userId });
+          return await this.productCommentModel.find({ userId }).populate('userId');
         }
         async findProductComments(productId) {
           return await this.productCommentModel.find({ productId });
@@ -8353,7 +8426,7 @@
             decorator(target, key, paramIndex);
           };
         };
-      var _a, _b, _c, _d, _e, _f;
+      var _a, _b, _c, _d;
       Object.defineProperty(exports, '__esModule', { value: true });
       exports.ProductCommentController = void 0;
       const common_1 = __webpack_require__(5);
@@ -8365,27 +8438,41 @@
       const user_model_1 = __webpack_require__(34);
       const ResponseResultModel_1 = __webpack_require__(8);
       const parse_id_pipe_1 = __webpack_require__(81);
-      const platform_express_1 = __webpack_require__(13);
-      const web_service_1 = __webpack_require__(15);
       let ProductCommentController = class ProductCommentController {
-        constructor(productCommentService, webService) {
+        constructor(productCommentService) {
           this.productCommentService = productCommentService;
-          this.webService = webService;
           console.log('ProductCommentController');
         }
-        async create(createProductCommentDto, user, images, req) {
+        async create(createProductCommentDto, user) {
           createProductCommentDto.userId = user === null || user === void 0 ? void 0 : user._id;
-          const domain = `${req.protocol}://${req.headers.host}`;
-          const imgs = await this.webService.multipleUpload(images, domain);
-          createProductCommentDto.images = imgs;
-          await this.productCommentService.create(createProductCommentDto);
-          return (0, ResponseResultModel_1.apiSucceed)();
+          const res = await this.productCommentService.create(createProductCommentDto);
+          return (0, ResponseResultModel_1.apiSucceed)(res);
         }
         async findUserComments(user) {
           const res = await this.productCommentService.findUserComments(
             user === null || user === void 0 ? void 0 : user._id,
           );
-          return (0, ResponseResultModel_1.apiSucceed)(res);
+          const reslut = res.map((item) => {
+            const obj = item.toObject();
+            return {
+              info: {
+                content: obj.content,
+                nickName: obj.userId.nickName,
+                avatar: obj.userId.avatarUrl,
+                time: obj.createdAt,
+                replay: obj.replyCount,
+                like: obj.likeCount,
+                score: obj.rate,
+              },
+              videos: obj.videos,
+              images: obj.images.map((v) => ({ imgUrl: v })),
+              follow: {
+                contnet: obj.followContent || '',
+                day: obj.followDays,
+              },
+            };
+          });
+          return (0, ResponseResultModel_1.apiSucceed)(reslut);
         }
         async findProductComments(id) {
           const res = await this.productCommentService.findProductComments(id);
@@ -8395,15 +8482,9 @@
       __decorate(
         [
           (0, common_1.Post)(),
-          (0, common_1.UseGuards)((0, passport_1.AuthGuard)('web-jwt')),
-          (0, swagger_1.ApiBearerAuth)(),
           (0, swagger_1.ApiOperation)({ summary: '创建商品评论' }),
-          (0, common_1.UseInterceptors)((0, platform_express_1.FilesInterceptor)('images')),
-          (0, swagger_1.ApiConsumes)('multipart/form-data'),
           __param(0, (0, common_1.Body)()),
           __param(1, (0, current_user_decorator_1.CurrentUser)()),
-          __param(2, (0, common_1.UploadedFiles)()),
-          __param(3, (0, common_1.Req)()),
           __metadata('design:type', Function),
           __metadata('design:paramtypes', [
             typeof (_a =
@@ -8416,8 +8497,6 @@
             'function'
               ? _b
               : Object,
-            typeof (_c = typeof Array !== 'undefined' && Array) === 'function' ? _c : Object,
-            Object,
           ]),
           __metadata('design:returntype', Promise),
         ],
@@ -8428,16 +8507,14 @@
       __decorate(
         [
           (0, common_1.Get)('user/comments'),
-          (0, common_1.UseGuards)((0, passport_1.AuthGuard)('web-jwt')),
-          (0, swagger_1.ApiBearerAuth)(),
           (0, swagger_1.ApiOperation)({ summary: '获取用户商品评论列表' }),
           __param(0, (0, current_user_decorator_1.CurrentUser)()),
           __metadata('design:type', Function),
           __metadata('design:paramtypes', [
-            typeof (_d =
+            typeof (_c =
               typeof user_model_1.UserDocument !== 'undefined' && user_model_1.UserDocument) ===
             'function'
-              ? _d
+              ? _c
               : Object,
           ]),
           __metadata('design:returntype', Promise),
@@ -8463,17 +8540,14 @@
       ProductCommentController = __decorate(
         [
           (0, swagger_1.ApiTags)('商品评价'),
+          (0, common_1.UseGuards)((0, passport_1.AuthGuard)('web-jwt')),
+          (0, swagger_1.ApiBearerAuth)(),
           (0, common_1.Controller)('productComment'),
           __metadata('design:paramtypes', [
-            typeof (_e =
+            typeof (_d =
               typeof product_comment_service_1.ProductCommentService !== 'undefined' &&
               product_comment_service_1.ProductCommentService) === 'function'
-              ? _e
-              : Object,
-            typeof (_f =
-              typeof web_service_1.WebService !== 'undefined' && web_service_1.WebService) ===
-            'function'
-              ? _f
+              ? _d
               : Object,
           ]),
         ],

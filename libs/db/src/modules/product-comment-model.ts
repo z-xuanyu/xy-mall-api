@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-20 10:56:11
- * @LastEditTime: 2022-07-04 11:11:35
+ * @LastEditTime: 2022-07-05 15:43:05
  * @Description: 商品评价
  */
 
@@ -58,4 +58,32 @@ export class ProductComment {
   @ApiProperty({ title: '是否匿名' })
   @prop({ type: Boolean, default: false })
   anonymous: boolean;
+
+  @ApiProperty({ title: '回复数' })
+  @prop({ type: Number, default: 0 })
+  replyCount: number;
+
+  @ApiProperty({ title: '点赞数' })
+  @prop({ type: Number, default: 0 })
+  like: number;
+
+  @ApiProperty({ title: '评论视频' })
+  @prop()
+  videos: [{ mainUrl: string; videoUrl: string }];
+
+  @ApiProperty({ title: '评论人购买的商品规格' })
+  @prop({ type: String })
+  size: string;
+
+  @ApiProperty({ title: '追评内容' })
+  @prop({ type: String, default: '' })
+  followContent: string;
+
+  @ApiProperty({ title: '追评图片' })
+  @prop({ type: [String] })
+  followImages?: Array<string>;
+
+  @ApiProperty({ title: '追评天数' })
+  @prop({ type: Number, default: 0 })
+  followDays: number;
 }
