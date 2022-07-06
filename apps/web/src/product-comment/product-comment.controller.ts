@@ -4,13 +4,13 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-07-06 10:42:21
+ * @LastEditTime: 2022-07-06 12:13:21
  * @Description: 商品评价
  */
-import { Controller, Get, Post, Body, UseGuards, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Param, Query } from '@nestjs/common';
 import { ProductCommentService } from './product-comment.service';
 import { CreateProductCommentDto } from './dto/create-product-comment.dto';
-import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { UserDocument } from 'libs/db/modules/user.model';
@@ -69,10 +69,21 @@ export class ProductCommentController {
 
   @Get('product/:id')
   @ApiParam({ name: 'id', description: '商品id' })
+  @ApiQuery({
+    name: 'type',
+    description: '筛选类型',
+    type: Number,
+    required: false,
+    enum: [0, 1, 2, 3, 4],
+    example: '0: 全部，1: 带图，2: 好评，3: 中评，4: 差评',
+  })
   @ApiOperation({ summary: '获取指定商品评论列表' })
-  async findProductComments(@Param('id', new ParseIdPipe()) id: string) {
-    const res = await this.productCommentService.findProductComments(id);
-    const reslut = res.map((item) => {
+  async findProductComments(
+    @Param('id', new ParseIdPipe()) id: string,
+    @Query('type') type: number,
+  ) {
+    const { comments, tabs } = await this.productCommentService.findProductComments(id, type);
+    const reslut = comments.map((item) => {
       const obj = item.toObject();
       return {
         info: {
@@ -87,12 +98,12 @@ export class ProductCommentController {
         videos: obj.videos,
         images: obj.images.map((v) => ({ imgUrl: v })),
         follow: {
-          contnet: obj.followContent || '',
+          contnet: obj.followContent || null,
           day: obj.followDays,
         },
         replyContent: obj.replyContent || null,
       };
     });
-    return apiSucceed(reslut);
+    return apiSucceed({ comments: reslut, tabs });
   }
 }

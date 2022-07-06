@@ -1973,9 +1973,12 @@
             });
             return (0, ResponseResultModel_1.apiSucceed)(reslut);
           }
-          async findProductComments(id) {
-            const res = await this.productCommentService.findProductComments(id);
-            const reslut = res.map((item) => {
+          async findProductComments(id, type) {
+            const { comments, tabs } = await this.productCommentService.findProductComments(
+              id,
+              type,
+            );
+            const reslut = comments.map((item) => {
               const obj = item.toObject();
               return {
                 info: {
@@ -1990,13 +1993,13 @@
                 videos: obj.videos,
                 images: obj.images.map((v) => ({ imgUrl: v })),
                 follow: {
-                  contnet: obj.followContent || '',
+                  contnet: obj.followContent || null,
                   day: obj.followDays,
                 },
                 replyContent: obj.replyContent || null,
               };
             });
-            return (0, ResponseResultModel_1.apiSucceed)(reslut);
+            return (0, ResponseResultModel_1.apiSucceed)({ comments: reslut, tabs });
           }
         };
         __decorate(
@@ -2051,10 +2054,19 @@
           [
             (0, common_1.Get)('product/:id'),
             (0, swagger_1.ApiParam)({ name: 'id', description: '商品id' }),
+            (0, swagger_1.ApiQuery)({
+              name: 'type',
+              description: '筛选类型',
+              type: Number,
+              required: false,
+              enum: [0, 1, 2, 3, 4],
+              example: '0: 全部，1: 带图，2: 好评，3: 中评，4: 差评',
+            }),
             (0, swagger_1.ApiOperation)({ summary: '获取指定商品评论列表' }),
             __param(0, (0, common_1.Param)('id', new parse_id_pipe_1.ParseIdPipe())),
+            __param(1, (0, common_1.Query)('type')),
             __metadata('design:type', Function),
-            __metadata('design:paramtypes', [String]),
+            __metadata('design:paramtypes', [String, Number]),
             __metadata('design:returntype', Promise),
           ],
           ProductCommentController.prototype,
@@ -2201,8 +2213,49 @@
           async findUserComments(userId) {
             return await this.productCommentModel.find({ userId }).populate('userId');
           }
-          async findProductComments(productId) {
-            return await this.productCommentModel.find({ productId }).populate('userId');
+          async findProductComments(productId, type) {
+            const allCount = await this.productCommentModel.countDocuments();
+            const hasImgCount = await this.productCommentModel
+              .find({ images: { $exists: true } })
+              .countDocuments();
+            const badCount = await this.productCommentModel
+              .find({ rate: { $lt: 2 } })
+              .countDocuments();
+            const goodCount = await this.productCommentModel
+              .find({ rate: { $gte: 3 } })
+              .countDocuments();
+            const normalCount = await this.productCommentModel
+              .find({ rate: { $gte: 2, $lt: 3 } })
+              .countDocuments();
+            const tabs = {
+              allCount,
+              hasImgCount,
+              badCount,
+              goodCount,
+              normalCount,
+            };
+            const query = {
+              productId,
+              rate: { $ne: null },
+            };
+            switch (~~type) {
+              case 1:
+                query.images = { $exists: true };
+                break;
+              case 2:
+                query.rate = { $gte: 3 };
+                break;
+              case 3:
+                query.rate = { $gte: 2, $lt: 3 };
+                break;
+              case 4:
+                query.rate = { $lt: 2 };
+                break;
+              default:
+                break;
+            }
+            const comments = await this.productCommentModel.find(query).populate('userId');
+            return { comments, tabs };
           }
         };
         ProductCommentService = __decorate(

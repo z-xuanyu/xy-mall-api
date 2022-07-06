@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-07-05 15:51:40
+ * @LastEditTime: 2022-07-06 12:10:04
  * @Description: 商品评价
  */
 import { Injectable } from '@nestjs/common';
@@ -53,7 +53,57 @@ export class ProductCommentService {
    * @return {*}
    * @memberof ProductCommentService
    */
-  async findProductComments(productId: string) {
-    return await this.productCommentModel.find({ productId }).populate('userId');
+  async findProductComments(productId: string, type?: number) {
+    // 全部评论数
+    const allCount = await this.productCommentModel.countDocuments();
+    // 带图数
+    const hasImgCount = await this.productCommentModel
+      .find({ images: { $exists: true } })
+      .countDocuments();
+    // 差评数量
+    const badCount = await this.productCommentModel.find({ rate: { $lt: 2 } }).countDocuments();
+    // 好评数量
+    const goodCount = await this.productCommentModel.find({ rate: { $gte: 3 } }).countDocuments();
+    // 中评数量
+    const normalCount = await this.productCommentModel
+      .find({ rate: { $gte: 2, $lt: 3 } })
+      .countDocuments();
+
+    const tabs = {
+      allCount,
+      hasImgCount,
+      badCount,
+      goodCount,
+      normalCount,
+    };
+
+    // 查询参数
+    const query: any = {
+      productId,
+      rate: { $ne: null },
+    };
+
+    switch (~~type) {
+      case 1:
+        // 带图
+        query.images = { $exists: true };
+        break;
+      case 2:
+        // 好评
+        query.rate = { $gte: 3 };
+        break;
+      case 3:
+        // 中评
+        query.rate = { $gte: 2, $lt: 3 };
+        break;
+      case 4:
+        // 差评
+        query.rate = { $lt: 2 };
+        break;
+      default:
+        break;
+    }
+    const comments = await this.productCommentModel.find(query).populate('userId');
+    return { comments, tabs };
   }
 }
