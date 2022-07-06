@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-07-06 10:26:01
+ * @LastEditTime: 2022-07-06 10:42:21
  * @Description: 商品评价
  */
 import { Controller, Get, Post, Body, UseGuards, Param } from '@nestjs/common';
@@ -79,7 +79,7 @@ export class ProductCommentController {
           content: obj.content,
           nickName: obj.userId.nickName,
           avatar: obj.userId.avatarUrl,
-          time: obj.createdAt.split('T')[0],
+          time: new Date(obj.createdAt).toLocaleDateString(),
           replay: obj.replyCount,
           like: obj.likeCount,
           score: obj.rate,
