@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:46:30
- * @LastEditTime: 2022-07-05 16:53:09
+ * @LastEditTime: 2022-07-05 16:55:33
  * @Description: Modify here please
 -->
 
@@ -12,7 +12,7 @@
 
 XYMALL 商城 Api 服务端，项目集成 Nestjs+Mongodb+Jwt 等。项目是前后端分离，分为四端：Api 服务端，Admin 管理端，Web 前端(uniapp),PC 端（Nuxt3）
 
-Admin 端仓库：<a href="https://github.com/z-xuanyu/xy-mall-admin">点击跳转</a> Web 端 uniapp 仓库：<a href="https://github.com/z-xuanyu/xy-mall-uni">点击跳转</a> PC 端仓库：<a href="https://github.com/z-xuanyu/xy-mall-pc">点击跳转</a>
+Admin 端仓库：<a href="https://github.com/z-xuanyu/xy-mall-admin">点击跳转</a> Web 端(Taro) 仓库：<a href="https://github.com/z-xuanyu/xy-mall-taro">点击跳转</a> PC 端仓库：<a href="https://github.com/z-xuanyu/xy-mall-pc">点击跳转</a>
 
 ### 项目说明
 
