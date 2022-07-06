@@ -5090,7 +5090,7 @@
       __decorate(
         [
           (0, swagger_1.ApiProperty)({ title: '回复内容' }),
-          (0, typegoose_1.prop)({ type: String }),
+          (0, typegoose_1.prop)({ type: String, default: '' }),
           __metadata('design:type', String),
         ],
         ProductComment.prototype,
@@ -8484,7 +8484,7 @@
                 content: obj.content,
                 nickName: obj.userId.nickName,
                 avatar: obj.userId.avatarUrl,
-                time: obj.createdAt,
+                time: obj.createdAt.split('T')[0],
                 replay: obj.replyCount,
                 like: obj.likeCount,
                 score: obj.rate,
@@ -8495,7 +8495,7 @@
                 contnet: obj.followContent || '',
                 day: obj.followDays,
               },
-              replyCount: obj.replyCount,
+              replyContent: obj.replyContent || null,
             };
           });
           return (0, ResponseResultModel_1.apiSucceed)(reslut);

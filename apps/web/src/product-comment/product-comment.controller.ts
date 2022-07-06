@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-07-06 10:24:12
+ * @LastEditTime: 2022-07-06 10:26:01
  * @Description: 商品评价
  */
 import { Controller, Get, Post, Body, UseGuards, Param } from '@nestjs/common';
@@ -90,7 +90,7 @@ export class ProductCommentController {
           contnet: obj.followContent || '',
           day: obj.followDays,
         },
-        replyContent: obj.replyContent,
+        replyContent: obj.replyContent || null,
       };
     });
     return apiSucceed(reslut);
