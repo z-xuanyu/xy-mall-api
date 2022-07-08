@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:07:52
- * @LastEditTime: 2022-06-28 10:55:19
+ * @LastEditTime: 2022-07-08 12:20:02
  * @Description: 会员service 模块
  */
 import { Injectable } from '@nestjs/common';
@@ -191,7 +191,7 @@ export class UserService {
   }
 
   /**
-   * 更新会员
+   * 更新会员基本信息
    *
    * @param {string} id 会员id
    * @param {UpdateUserDto} updateUserDto

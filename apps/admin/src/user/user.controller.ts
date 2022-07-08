@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:07:52
- * @LastEditTime: 2022-04-07 16:42:22
+ * @LastEditTime: 2022-07-08 12:23:37
  * @Description: 会员控制器
  */
 import {
@@ -35,7 +35,9 @@ import { QueryUserCollectionDto } from './dto/query-user-collection.dto';
 @ApiBearerAuth()
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService) {
+    console.log('UserController');
+  }
 
   @Post()
   @ApiOperation({ summary: '添加会员' })
@@ -62,7 +64,7 @@ export class UserController {
   }
 
   @Patch(':id')
-  @ApiOperation({ summary: '更新会员' })
+  @ApiOperation({ summary: '更新会员基本信息' })
   @ApiParam({ name: 'id', description: '会员id' })
   async update(
     @Param('id', new ParseIdPipe()) id: string,
