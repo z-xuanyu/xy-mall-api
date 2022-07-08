@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:07:52
- * @LastEditTime: 2022-07-08 12:23:37
+ * @LastEditTime: 2022-07-08 15:50:19
  * @Description: 会员控制器
  */
 import {
@@ -102,6 +102,14 @@ export class UserController {
     @Query() queryUserCollectionDto: QueryUserCollectionDto,
   ) {
     const res = await this.userService.getUserCollections(id, queryUserCollectionDto);
+    return apiSucceed(res);
+  }
+
+  // 批量查询用户信息
+  @Post('findIds')
+  @ApiOperation({ summary: '批量查询用户信息' })
+  async findAllUser(@Body() ids: Array<string>): Promise<ApiSucceedResult<Array<User>>> {
+    const res = await this.userService.findAllUser(ids);
     return apiSucceed(res);
   }
 }

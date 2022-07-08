@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-27 12:07:52
- * @LastEditTime: 2022-07-08 12:20:02
+ * @LastEditTime: 2022-07-08 15:47:57
  * @Description: 会员service 模块
  */
 import { Injectable } from '@nestjs/common';
@@ -211,5 +211,16 @@ export class UserService {
    */
   async remove(id: string): Promise<User> {
     return await this.userModel.findOneAndDelete({ _id: id });
+  }
+
+  /**
+   * 批量查询用户信息
+   *
+   * @param {string[]} ids 用户id集合
+   * @return {*}  {Promise<User[]>}
+   * @memberof UserService
+   */
+  async findAllUser(ids: string[]): Promise<User[]> {
+    return await this.userModel.find({ _id: { $in: ids } });
   }
 }
