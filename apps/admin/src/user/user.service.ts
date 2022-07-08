@@ -221,6 +221,8 @@ export class UserService {
    * @memberof UserService
    */
   async findAllUser(ids: string[]): Promise<User[]> {
-    return await this.userModel.find({ _id: { $in: ids } });
+    // 装换成ObjectId数组
+    const objectIds = ids.map((id) => new ObjectId(id));
+    return await this.userModel.find({ _id: { $in: objectIds } });
   }
 }

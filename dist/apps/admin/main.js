@@ -14522,7 +14522,8 @@
             return await this.userModel.findOneAndDelete({ _id: id });
           }
           async findAllUser(ids) {
-            return await this.userModel.find({ _id: { $in: ids } });
+            const objectIds = ids.map((id) => new mongodb_1.ObjectId(id));
+            return await this.userModel.find({ _id: { $in: objectIds } });
           }
         };
         UserService = __decorate(
