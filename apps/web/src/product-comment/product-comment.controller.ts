@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-07-06 12:13:21
+ * @LastEditTime: 2023-08-02 15:28:31
  * @Description: 商品评价
  */
 import { Controller, Get, Post, Body, UseGuards, Param, Query } from '@nestjs/common';
@@ -44,7 +44,7 @@ export class ProductCommentController {
   async findUserComments(@CurrentUser() user: UserDocument) {
     const res = await this.productCommentService.findUserComments(user?._id);
     const reslut = res.map((item) => {
-      const obj = item.toObject();
+      const obj: any = item.toObject();
       return {
         info: {
           content: obj.content,
@@ -84,7 +84,7 @@ export class ProductCommentController {
   ) {
     const { comments, tabs } = await this.productCommentService.findProductComments(id, type);
     const reslut = comments.map((item) => {
-      const obj = item.toObject();
+      const obj: any = item.toObject();
       return {
         info: {
           content: obj.content,

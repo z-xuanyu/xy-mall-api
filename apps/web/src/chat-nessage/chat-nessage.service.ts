@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-27 11:15:35
- * @LastEditTime: 2022-04-27 11:19:50
+ * @LastEditTime: 2023-08-02 15:15:21
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -27,7 +27,7 @@ export class ChatNessageService {
    * @return {*}
    * @memberof CustomerServiceService
    */
-  async getChatMessageList(id: string, userId: string): Promise<Array<ChatMessages>> {
+  async getChatMessageList(id: string, userId: unknown): Promise<Array<ChatMessages>> {
     return await this.chatMessageModel
       .find({
         $or: [

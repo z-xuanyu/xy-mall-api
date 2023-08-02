@@ -1,13 +1,13 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2021-12-24 17:19:09
- * @LastEditTime: 2022-05-09 16:32:14
+ * @LastEditTime: 2023-08-02 15:06:00
  * @Description: 登录控制器
  */
-import { Body, CACHE_MANAGER, Controller, Get, Inject, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtService } from '@nestjs/jwt';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -18,12 +18,16 @@ import { AdminDocument } from 'libs/db/modules/admin.model';
 import { CurrentUser } from './current-user.decorator';
 import { Cache } from 'cache-manager';
 import * as svgCaptcha from 'svg-captcha';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
 @ApiTags('登录')
 @Controller('auth')
 export class AuthController {
   // 注入
-  constructor(private jwtService: JwtService, @Inject(CACHE_MANAGER) private cacheManager: Cache) {}
+  constructor(
+    private jwtService: JwtService,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+  ) {}
 
   @ApiOperation({ summary: '登录' })
   @Post('admin/login')
@@ -40,6 +44,8 @@ export class AuthController {
         message: '验证码错误!',
       };
     }
+    // 删除缓存
+    await this.cacheManager.del(`captcha_${dto.captcha.toLocaleUpperCase()}`);
     // 生成token
     const accessToken = this.jwtService.sign({
       email: req.user.email,
@@ -78,9 +84,7 @@ export class AuthController {
       height: 40,
       background: '#cc9966',
     });
-    await this.cacheManager.set(`captcha_${captcha.text.toLocaleUpperCase()}`, captcha.text, {
-      ttl: 300, // 5分钟失效
-    });
+    await this.cacheManager.set(`captcha_${captcha.text.toLocaleUpperCase()}`, captcha.text, 60000);
     return apiSucceed(captcha.data);
   }
 }

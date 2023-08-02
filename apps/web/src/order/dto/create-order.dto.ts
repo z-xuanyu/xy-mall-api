@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-19 00:45:38
- * @LastEditTime: 2022-06-30 12:20:22
+ * @LastEditTime: 2023-08-02 15:16:18
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -34,7 +34,7 @@ class BuyProduct {
 }
 
 export class CreateOrderDto {
-  userId: string;
+  userId: string | unknown;
 
   @ApiProperty({
     title: '创建方式',

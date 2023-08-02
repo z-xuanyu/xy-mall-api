@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-14 14:37:17
- * @LastEditTime: 2022-03-14 14:39:18
+ * @LastEditTime: 2023-08-02 15:18:37
  * @Description: Modify here please
  */
 
@@ -15,7 +15,7 @@ export class UpdateAddressDefaultDto {
   id: string;
 
   @ApiProperty({ title: '用户id' })
-  userId: string;
+  userId: string | unknown;
 
   @ApiProperty({ title: '是否默认' })
   isDefault: boolean;

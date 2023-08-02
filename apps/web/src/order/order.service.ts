@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-17 10:12:28
- * @LastEditTime: 2022-07-04 10:12:58
+ * @LastEditTime: 2023-08-02 15:17:15
  * @Description: 订单service
  */
 import { Injectable } from '@nestjs/common';
@@ -97,7 +97,10 @@ export class OrderService {
    * @return {*}
    * @memberof OrderService
    */
-  async findAll(userId: string, queryUserOrderDto: QueryUserOrderDto): Promise<Array<Order>> {
+  async findAll(
+    userId: string | unknown,
+    queryUserOrderDto: QueryUserOrderDto,
+  ): Promise<Array<Order>> {
     return await this.orderModel.find({
       userId,
       isDelete: false,

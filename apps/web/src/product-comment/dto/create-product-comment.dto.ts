@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-07-05 09:57:37
+ * @LastEditTime: 2023-08-02 15:17:55
  * @Description: Modify here please
  */
 import { ApiProperty } from '@nestjs/swagger';
@@ -13,7 +13,7 @@ export class CreateProductCommentDto {
   @ApiProperty({ title: '订单id' })
   orderId: string;
 
-  userId: string;
+  userId: string | unknown;
 
   @ApiProperty({ title: '商品id' })
   productId: string;

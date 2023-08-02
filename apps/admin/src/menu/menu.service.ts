@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-04-02 15:27:55
+ * @LastEditTime: 2023-08-02 15:12:11
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -57,7 +57,7 @@ export class MenuService {
   }
 
   // 获取权限菜单列表
-  async findPermissionsMenus(adminId: string) {
+  async findPermissionsMenus(adminId: unknown) {
     // 通过admin查询该管理员的角色
     const roles: any = await this.adminModel.findById({ _id: adminId });
     // 获取角色的菜单

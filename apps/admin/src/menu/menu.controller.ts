@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-25 12:16:37
- * @LastEditTime: 2022-04-07 14:40:45
+ * @LastEditTime: 2023-08-02 15:12:00
  * @Description: Modify here please
  */
 import {
@@ -66,7 +66,7 @@ export class MenuController {
   @Get('permissions')
   @ApiOperation({ summary: '管理员关联的角色的权限菜单列表' })
   async getPermissionsMenus(@CurrentUser() user: AdminDocument) {
-    const res = await this.menuService.findPermissionsMenus(user?._id);
+    const res = await this.menuService.findPermissionsMenus(user?._id as unknown);
     return apiSucceed(res);
   }
 

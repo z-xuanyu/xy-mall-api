@@ -7,13 +7,14 @@
  * @LastEditTime: 2022-05-09 15:21:30
  * @Description: 登录策略和jwt错误 模块
  */
-import { CacheModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { adminJwtConfig } from 'libs/common/config/jwt.config';
 import { AdminJwtStrategy } from './admin.jwt.strategy';
 import { AdminLocalStrategy } from './admin.local.strategy';
 import { AuthController } from './auth.controller';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   imports: [

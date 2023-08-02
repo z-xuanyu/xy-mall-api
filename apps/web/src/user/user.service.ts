@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 16:09:06
- * @LastEditTime: 2022-07-01 14:13:16
+ * @LastEditTime: 2023-08-02 15:23:54
  * @Description: Modify here please
  */
 import { Injectable } from '@nestjs/common';
@@ -38,7 +38,7 @@ export class UserService {
    * @return {*}
    * @memberof UserService
    */
-  async findUserCollectionList(userId: string): Promise<any> {
+  async findUserCollectionList(userId: ObjectId): Promise<any> {
     return await this.userCollectionModel.aggregate([
       {
         $match: {
@@ -77,7 +77,7 @@ export class UserService {
    * @return {*}
    * @memberof UserService
    */
-  async findUserViewsHistoryAll(userId: string): Promise<any> {
+  async findUserViewsHistoryAll(userId: string | ObjectId): Promise<any> {
     return await this.userViewsHistoryModel.aggregate([
       {
         $match: {
@@ -121,7 +121,7 @@ export class UserService {
    * @return {*}
    * @memberof UserService
    */
-  async findUserAddressAll(userId: string) {
+  async findUserAddressAll(userId: string | unknown) {
     return await this.userAddressModel.find({ userId });
   }
 

@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-08 09:56:39
- * @LastEditTime: 2022-07-01 11:13:37
+ * @LastEditTime: 2023-08-02 15:34:12
  * @Description: 站点设置
  */
 
@@ -31,6 +31,11 @@ class AliOss {
   bucket: string;
 }
 
+@ModelOptions({
+  options: {
+    allowMixed: Severity.ALLOW,
+  },
+})
 class FileStorage {
   @ApiProperty({
     title: '文件存储模式',

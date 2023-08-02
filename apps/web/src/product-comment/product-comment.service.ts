@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-21 17:46:06
- * @LastEditTime: 2022-07-06 12:10:04
+ * @LastEditTime: 2023-08-02 15:29:50
  * @Description: 商品评价
  */
 import { Injectable } from '@nestjs/common';
@@ -12,6 +12,7 @@ import { ReturnModelType } from '@typegoose/typegoose';
 import { OrderStatus } from 'libs/common/enum/orderStatus.enum';
 import { Order } from 'libs/db/modules/order.model';
 import { ProductComment } from 'libs/db/modules/product-comment-model';
+import { ObjectId } from 'mongodb';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateProductCommentDto } from './dto/create-product-comment.dto';
 
@@ -42,7 +43,7 @@ export class ProductCommentService {
    * @return {*}
    * @memberof ProductCommentService
    */
-  async findUserComments(userId: string) {
+  async findUserComments(userId: ObjectId) {
     return await this.productCommentModel.find({ userId }).populate('userId');
   }
 

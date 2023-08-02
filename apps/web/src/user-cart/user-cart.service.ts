@@ -1,10 +1,10 @@
 /*
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-15 11:02:01
- * @LastEditTime: 2022-06-30 11:55:05
+ * @LastEditTime: 2023-08-02 15:22:54
  * @Description: web用户购物车service
  */
 import { Injectable } from '@nestjs/common';
@@ -12,7 +12,7 @@ import { ReturnModelType } from '@typegoose/typegoose';
 import { UserCart } from 'libs/db/modules/user-cart.model';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateUserCartDto } from './dto/create-user-cart.dto';
-
+import { ObjectId } from 'mongodb';
 @Injectable()
 export class UserCartService {
   constructor(
@@ -66,7 +66,7 @@ export class UserCartService {
    * @return {*}
    * @memberof UserCartService
    */
-  async findAll(userId: string): Promise<any> {
+  async findAll(userId: ObjectId): Promise<any> {
     return await this.userCartModel
       .find({ userId })
       .populate({ path: 'userId', select: ['nickName'] });
