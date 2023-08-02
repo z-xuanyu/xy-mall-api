@@ -1,10 +1,10 @@
 <!--
  * @Author: xuanyu
- * @LastEditors: xuanyu
+ * @LastEditors: xuanyu 969718197@qq.com
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-03-03 11:46:30
- * @LastEditTime: 2022-07-05 16:55:33
+ * @LastEditTime: 2023-08-02 15:39:09
  * @Description: Modify here please
 -->
 
@@ -121,10 +121,10 @@ $ yarn 或者 npm install 或者pnpm install
 
 ```bash
 # 开发环境 Amdin端
-$ npm run start:admin-dev
+$ npm run dev:admin
 
 # 开发环境 Web端
-$ npm run start:web-dev
+$ npm run dev:web-dev
 
 # 生产环境 mode Admin端
 $ npm run start:admin-prod
